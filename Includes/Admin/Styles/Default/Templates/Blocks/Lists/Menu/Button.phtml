@@ -1,0 +1,9 @@
+<span class="list-title"><?= str_starts_with($row['data']['title'], '$') ? substr($row['data']['title'] , 1) : $row['data']['title'] ?></span>
+<br>
+<span>
+    <?php if (isset($row['data']['is_dropdown']) and $row['data']['is_dropdown'] == 1) : ?>
+        <strong><?= $L_MENU_DROPDOWN ?></strong>
+    <?php else : ?>
+        <?= $L_MENU_BUTTON_REFERS_TO ?> <strong> <?= $row['data']['link'] ?></strong>
+    <?php endif; ?>
+</span>

@@ -1,0 +1,9 @@
+<?php require $this->template->require('/Blocks/Block/Block'); ?>
+<?php $cache = array_pop($this->data->list['body']); ?>
+<div class="lists">
+    <div class="lists-middle"> 
+        <?php require $this->template->require('/Blocks/Lists/List'); ?>
+    </div>
+</div>
+<?php $this->data->list['body'] = ['solved' => $cache]; ?>
+<?php require $this->template->require('/Blocks/Lists/List'); ?>

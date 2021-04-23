@@ -1,0 +1,67 @@
+{
+    "body": {
+        "settings": {
+            "data": {
+                "title": "L_WEBSITE_SETTINGS",
+                "desc": "L_WEBSITE_SETTINGS_DESC",
+                "icon": "fas fa-cogs"
+            },
+            "body": {
+                "registration.enabled": {
+                    "options": {
+                        "type": "checkbox"
+                    },
+                    "data": {
+                        "title": "L_WEBSITE_ALLOW_REGISTRATION"
+                    },
+                    "body": {
+                        "registration_enabled": {
+                            "data": {
+                                "value": 1
+                            }
+                        }
+                    }
+                },
+                "registration.key_site": {
+                    "on": {
+                        "show": "registration.enabled"
+                    },
+                    "options": {
+                        "type": "text"
+                    },
+                    "data": {
+                        "desc": "L_WEBSITE_RECAPTCHA",
+                        "title": "L_WEBSITE_RECAPTCHA_SITE",
+                        "placeholder": "L_KEY"
+                    }
+                },
+                "registration.key_secret": {
+                    "on": {
+                        "show": "registration.enabled"
+                    },
+                    "options": {
+                        "type": "text"
+                    },
+                    "data": {
+                        "desc": "L_WEBSITE_RECAPTCHA",
+                        "title": "L_WEBSITE_RECAPTCHA_SECRET",
+                        "placeholder": "L_KEY"
+                    }
+                },
+                "registration.terms": {
+                    "on": {
+                        "show": "registration.enabled"
+                    },
+                    "options": {
+                        "type": "textarea"
+                    },
+                    "data": {
+                        "desc": "L_WEBSITE_REGISTER_TERMS_DESC",
+                        "title": "L_WEBSITE_REGISTER_TERMS",
+                        "placeholder": "L_TEXT"
+                    }
+                }
+            }
+        }
+    }
+}

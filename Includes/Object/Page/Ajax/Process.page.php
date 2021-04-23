@@ -1,0 +1,215 @@
+<?php
+
+namespace Page\Ajax;
+
+use Model\Get;
+
+use Visualization\Block\Block;
+
+/**
+ * Ajax like page
+ */
+class Process extends \Page\Page
+{
+    /**
+     * @var array $settings Page settings
+     */
+    protected $settings = [
+        'loggedIn' => true
+    ];
+    
+    /**
+     * Body of this page
+     *
+     * @return void
+     */
+    protected function body()
+    {
+        $get = new Get();
+
+        // REQUIRED QUERY DATA
+        $get->get('id') or exit();
+        $get->get('method') or exit();
+        $get->get('process') or exit();
+
+        // PROCESS NAME
+        $process = $get->get('process');
+
+        // TYPE
+        $type = explode('/', $get->get('process'))[0];
+
+        // PERMISSION
+        $permission = match($get->get('process')) {
+            'Post/Create' => 'post.create',
+            'Post/Edit' => 'post.edit',
+            'Post/Delete' => 'post.delete',
+            'ProfilePost/Edit', 'ProfilePostComment/Edit' => 'profilepost.edit',
+            'ProfilePost/Create', 'ProfilePostComment/Create' => 'profilepost.create',
+            'ProfilePost/Delete', 'ProfilePostComment/Delete' => 'profilepost.delete',
+            default => ''
+        };
+
+        if ($permission and !$this->user->perm->has($permission)) exit();
+
+        // SET NAME OF ID KEY
+        $id = match($get->get('process')) {
+
+            // REPORT
+            'Post/Report', 'Topic/Report', 'ProfilePost/Report', 'ProfilePostComment/Report' => 'report_type_id',
+
+            // NEW POSTS REQUIRES PARENT ID
+            'Post/Create' => 'topic_id',
+            'Message/Create' => 'pm_id',
+            'ProfilePost/Create' => 'user_id',
+            'ProfilePostComment/Create' => 'profile_post_id',
+
+            'Message/Edit' => 'message_id',
+            'Topic/Like', 'Topic/Unlike' => 'topic_id',
+            'Post/Edit', 'Post/Delete', 'Post/Like', 'Post/Unlike' => 'post_id',
+            'ProfilePost/Edit', 'ProfilePost/Delete' => 'profile_post_id',
+            'ProfilePostComment/Edit', 'ProfilePostComment/Delete' => 'profile_post_comment_id',
+            default => exit()
+        };
+
+        // SET PROCESS METHOD
+        $method = $get->get('method') === 'post' ? 'form' : 'call';
+
+        // PROCESS DATA
+        $options = [$id => $get->get('id')];
+
+        if ($id == 'report_type_id') {
+            $process = 'Report/Send';
+            $options['report_type'] = $type;
+            $this->process->setBlock('\Block\\' . $type);
+        }
+
+        $this->process->direct();
+        if ($this->process->{$method}(type: $process, data: $options)) {
+
+            switch ($get->get('process')) {
+
+                case 'Post/Create':
+                case 'Message/Create':
+                case 'ProfilePost/Create':
+                case 'ProfilePostComment/Create':
+
+                    // SET VISUALIZATION NAME
+                    $visualization = match($get->get('process')) {
+                        'Post/Create' => 'Topic',
+                        'Message/Create' => 'Pm',
+                        'ProfilePost/Create' => 'ProfilePost',
+                        'ProfilePostComment/Create' => 'ProfilePostComment'
+                    };
+
+                    // SET TEMPLATE NAME
+                    $template = match($get->get('process')) {
+                        'ProfilePost/Create' => 'ProfilePost',
+                        'ProfilePostComment/Create' => 'ProfilePostComment',
+                        default => 'Block'
+                    };
+                
+                    // VERIFY PARENT
+                    $block = '\Block\\' . $type;
+                    $block = new $block();
+                    $blockData = $block->get($this->process->getID()) or exit();
+
+                    // BLOCK
+                    $block = new Block($visualization);
+                    $block->object(strtolower($type))->appTo(array_merge($blockData, $this->user->get()))->jumpTo();
+
+                    switch ($get->get('process')) {
+                        
+                        case 'ProfilePost/Create':
+                            $block->option('bottom')->show();
+
+                        case 'ProfilePost/Create':
+                        case 'ProfilePostComment/Create':
+                            $prefix = 'profilepost';
+                        break;
+
+                        case 'Post/Create':
+                            $prefix = 'post';
+                        break;
+                    }
+
+                    if ($prefix ?? false) {
+                        if ($this->user->perm->has($prefix . '.edit') === false) {
+                            $block->delButton('edit');
+                        }
+
+                        if ($this->user->perm->has($prefix . '.delete') === false) {
+                            $block->delButton('delete');
+                        }
+                    }
+
+                    $this->data->data['pm_subject'] = $blockData['pm_subject'] ?? '';
+
+                    $this->data->data([
+                        'content' => $this->file('/Blocks/Block/' . $template, [
+                            'data' => $get->get('process') === 'ProfilePostComment/Create' ? $block->getData()['body']['profilepostcomment']['body'][$block->lastInsertName()] : $block->getData(),
+                            'variable' => $get->get('process') === 'ProfilePostComment/Create' ? '$row' : '$this->data->block'
+                        ]),
+                        'status' => 'ok'
+                    ]);
+
+                break;
+
+                case 'Post/Report':
+                case 'Topic/Report':
+                case 'ProfilePost/Report':
+                case 'ProfilePostComment/Report':
+                
+                    $this->data->data([
+                        'url' => $this->user->perm->has('admin.forum') ? $this->system->url->build('/admin/report/show/' . $this->process->getID()) : '',
+                        'status' => 'ok',
+                        'notice' => $this->user->perm->has('admin.forum') ? $this->file('/Blocks/Block/Notice/Reported') : '',
+                        'message' => $this->language->get('notice')['success'][$this->process->getMessage()] ?? ''
+                    ]);
+                
+                break;
+
+                case 'Post/Edit':
+                case 'Message/Edit':
+                case 'ProfilePost/Edit':
+                case 'ProfilePostComment/Edit':
+
+                    $this->data->data([
+                        'button' => $this->file('/Blocks/Block/Buttons/Edit'),
+                        'status' => 'ok'
+                    ]);
+                break;
+
+                case 'Post/Delete':
+                case 'ProfilePost/Delete':
+                case 'ProfilePostComment/Delete':
+
+                    $this->data->data([
+                        'url' => $this->system->url->build('/admin/deleted/show/' . $this->process->getID()),
+                        'notice' => $this->user->perm->has('admin.forum') ? $this->file('/Blocks/Block/Notice/Deleted') : '',
+                        'status' => 'ok'
+                    ]);
+                break;
+
+                case 'Post/Like':
+                case 'Topic/Like':
+
+                    $this->data->data([
+                        'you' => $this->language->get('L_YOU'),
+                        'block' => $this->file('/Blocks/Block/Likes'),
+                        'button' => $this->file('/Blocks/Block/Buttons/Unlike'),
+                        'status' => 'ok'
+                    ]);
+                break;
+
+                case 'Post/Unlike':
+                case 'Topic/Unlike':
+                    
+                    $this->data->data([
+                        'button' => $this->file('/Blocks/Block/Buttons/Like'),
+                        'status' => 'ok'
+                    ]);
+                break;
+            }
+        }
+    }
+}

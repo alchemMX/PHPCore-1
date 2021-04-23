@@ -1,0 +1,174 @@
+{
+    "body": {
+        "background": {
+            "data": {
+                "title": "L_WEBISTE_HEADER_IMAGE",
+                "desc": "L_WEBISTE_HEADER"
+            },
+            "body": {
+                "site.background_image": {
+                    "options": {
+                        "type": "file",
+                        "deleteCheckBox": true
+                    },
+                    "data": {
+                        "desc": "L_WEBISTE_HEADER_IMAGE_DESC",
+                        "title": "L_WEBISTE_HEADER_IMAGE",
+                        "delete": "L_WEBSITE_HEADER_IMAGE_DELETE"
+                    }
+                },
+                "site.favicon": {
+                    "options": {
+                        "type": "file",
+                        "deleteCheckBox": true
+                    },
+                    "data": {
+                        "desc": "L_WEBISTE_ICON_DESC",
+                        "title": "L_WEBISTE_ICON",
+                        "delete": "L_WEBSITE_ICON_DELETE"
+                    }
+                },
+                "site.background_image_position": {
+                    "options": {
+                        "type": "radio"
+                    },
+                    "data": {
+                        "title": "L_WEBSITE_HEADER_POSITION",
+                        "placeholder": "L_SIZE"
+                    },
+                    "body": {
+                        "up": {
+                            "data": {
+                                "title": "L_WEBISTE_HEADER_IMAGE_UP",
+                                "value": "top"
+                            }
+                        },
+                        "center": {
+                            "data": {
+                                "title": "L_WEBISTE_HEADER_IMAGE_CENTER",
+                                "value": "center"
+                            }
+                        },
+                        "down": {
+                            "data": {
+                                "title": "L_WEBISTE_HEADER_IMAGE_DOWN",
+                                "value": "bottom"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "language": {
+            "data": {
+                "title": "L_WEBSITE_LANGUAGE",
+                "desc": "L_WEBSITE_LANGUAGE_DESC"
+            },
+            "body": {
+                "site.locale": {
+                    "options": {
+                        "type": "select"
+                    },
+                    "data": {
+                        "desc": "L_WEBSITE_LOCALISATION_DESC",
+                        "title": "L_WEBSITE_LOCALISTION"
+                    },
+                    "body": {
+                        "cs": {
+                            "data": {
+                                "value": "cs_CZ",
+                                "title": "$Česko"
+                            }
+                        },
+                        "en": {
+                            "data": {
+                                "value": "en_US",
+                                "title": "$Amerika"
+                            }
+                        },
+                        "sk": {
+                            "data": {
+                                "value": "sk_SK",
+                                "title": "$Slovensko"
+                            }
+                        }
+                    }
+                },
+                "site.timezone": {
+                    "options": {
+                        "type": "select"
+                    },
+                    "data": {
+                        "title": "L_WEBSITE_TIMEZONE"
+                    },
+                    "body": {
+                        "Europe/Berlin": {
+                            "data": {
+                                "value": "Europe/Berlin",
+                                "title": "$Europe/Berlin"
+                            }
+                        },
+                        "Europe/Bratislava": {
+                            "data": {
+                                "value": "Europe/Bratislava",
+                                "title": "$Europe/Bratislava"
+                            }
+                        },
+                        "Europe/Prague": {
+                            "data": {
+                                "value": "Europe/Prague",
+                                "title": "$Europe/Prague"
+                            }
+                        },
+                        "Europe/Vienna": {
+                            "data": {
+                                "value": "Europe/Vienna",
+                                "title": "$Europe/Vienna"
+                            }
+                        },
+                        "Europe/Warsaw": {
+                            "data": {
+                                "value": "Europe/Warsaw",
+                                "title": "$Europe/Warsaw"
+                            }
+                        }
+                    }
+                },
+                "site.language": {
+                    "options": {
+                        "type": "select"
+                    },
+                    "data": {
+                        "title": "L_WEBSITE_LANGUAGE_WEBSITE"
+                    },
+                    "body": {
+                        "default": {
+                            "data": {
+                                "convert": {
+                                    "title": "title"
+                                }
+                            }
+                        }
+                    }
+                },
+                "site.language_editor": {
+                    "options": {
+                        "type": "select"
+                    },
+                    "data": {
+                        "title": "L_WEBSITE_LANGUAGE_EDITOR"
+                    },
+                    "body": {
+                        "default": {
+                            "data": {
+                                "convert": {
+                                    "title": "title"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

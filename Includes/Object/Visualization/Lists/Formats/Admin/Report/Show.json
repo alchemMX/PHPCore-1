@@ -1,0 +1,26 @@
+{
+    "body": {
+        "reasons": {
+            "options": {
+                "template": {
+                    "medium": "/Pagination.phtml"
+                }
+            },
+            "data": {
+                "icon": "fas fa-bug",
+                "desc": "L_REPORT_REASON_DESC",
+                "title": "L_REPORT_REASON"
+            },
+            "body": {
+                "default": {
+                    "options": {
+                        "template": {
+                            "big": "/Report/Reason.phtml"
+                        }
+                    },
+                    "data": {}
+                }
+            }
+        }
+    }
+}

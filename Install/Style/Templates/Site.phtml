@@ -1,0 +1,32 @@
+<form method="post" enctype="multipart/form-data">
+    <div class="field">
+        <div class="field-head">
+            <span><?= $L_NAVBAR['L_WEBSITE_SETTINGS'] ?></span>
+            <br>
+            <span class="field-head-description"><?= $L_WEBSITE_SETTINGS_DESC ?></span>
+        </div>
+        <div class="field-body">
+            <div class="field-row">
+                <div class="field-text">
+                    <span class="title"><?= $L_WEBSITE_NAME ?>:</span><?= $L_WEBSITE_NAME_DESC ?>
+                </div>
+                <div class="field-option">
+                    <input type="text" name="name" placeholder="<?= $L_NAME ?>" value="<?= $form->get('name') ?>">
+                </div>
+            </div>
+            <div class="field-row">
+                <div class="field-text">
+                    <span class="title"><?= $L_WEBSITE_DESCRIPTION ?>:</span><?= $L_WEBSITE_DESCRIPTION_DESC ?>
+                </div>
+                <div class="field-option">
+                    <input type="text" name="description" placeholder="<?= $L_DESCRIPTION ?>" value="<?= $form->get('description') ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field-submit">
+        <input type="hidden" value="<?= SESSION_ID ?>" name="key">
+        <input type="submit" name="submit" class="button" value="<?= $L_NEXT ?>">
+    </div>
+</form>

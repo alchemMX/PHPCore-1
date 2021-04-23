@@ -1,0 +1,1 @@
+.label.label--nelze{background-color:green}.label-text.label--nelze{color:green !important}.label--nelze input[type="checkbox"] + label .checkbox-icon{border-color:green}.label--nelze input[type="checkbox"]:checked + label .checkbox-icon{background-color:green}

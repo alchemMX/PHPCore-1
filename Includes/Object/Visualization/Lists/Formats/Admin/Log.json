@@ -1,0 +1,23 @@
+{
+    "body": {
+        "log": {
+            "options": {
+                "empty": "L_LOG_LIST_NO"
+            },
+            "data": {
+                "icon": "fas fa-clipboard-list",
+                "title": "L_LOG_LIST"
+            },
+            "body": {
+                "default": {
+                    "options": {
+                        "template": {
+                            "big": "/Log.phtml"
+                        }
+                    },
+                    "data": {}
+                }
+            }
+        }
+    }
+}

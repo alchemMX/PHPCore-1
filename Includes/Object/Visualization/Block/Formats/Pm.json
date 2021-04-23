@@ -1,0 +1,57 @@
+{
+    "body": {
+        "pm": {
+            "options": {
+                "hide": true
+            },
+            "body": {
+                "default": {
+                    "options": {
+                        "type": "Pm"
+                    },
+                    "data": {
+                        "type": "pm",
+                        "convert": {
+                            "id": "pm_id",
+                            "text": "pm_text",
+                            "name": "pm_subject",
+                            "created": "pm_created",
+                            "edited_time": "pm_edited"
+                        }
+                    }
+                }
+            }
+        },
+        "message": {
+            "body": {
+                "default": {
+                    "options": {
+                        "type": "Message"
+                    },
+                    "data": {
+                        "convert": {
+                            "id": "message_id",
+                            "text": "message_text",
+                            "name": "pm_subject",
+                            "created": "message_created",
+                            "edited_time": "message_edited"
+                        },
+                        "type": "message",
+                        "button": {
+                            "quote": {},
+                            "edit": {}
+                        }
+                    }
+                },
+                "bottom": {
+                    "options": {
+                        "hide": true,
+                        "template": {
+                            "body": "$/MessageNew.phtml"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

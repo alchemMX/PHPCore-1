@@ -1,0 +1,16 @@
+{
+    "body": {
+        "user": {
+            "data": {
+                "href": "/user/",
+                "title": "L_BAR_USER_SETTINGS"
+            }
+        },
+        "pm": {
+            "data": {
+                "href": "/user/pm/",
+                "title": "L_BAR_MESSAGE_LIST"
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "body": {
+        "pm": {
+            "options": {
+                "empty": "L_USER_PM_NO"
+            },
+            "body": {
+                "default": {
+                    "options": {
+                        "template": {
+                            "big": "/Pm/Big.phtml",
+                            "medium": "/Pm/Medium.phtml"
+                        }
+                    },
+                    "data": {}
+                }
+            }
+        }
+    }
+}

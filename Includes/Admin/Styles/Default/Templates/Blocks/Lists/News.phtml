@@ -1,0 +1,13 @@
+<div class="vertical-align">
+    <div class="profile">
+        <img class="profile-image" src="<?= $row['data']['author']['avatar_url'] ?>" />
+    </div>
+    <div class="inner">
+        <a class="list-title"><?= $row['data']['name'] ?: $row['data']['tag_name'] ?></a>
+        <?php if ($row['data']['prerelease'] == 1) : ?>
+            <span class="text-warning"> <?= $L_FRONT_NEWS_PRERELASE ?></span>
+        <?php endif; ?>
+        <br>
+        <?= $L_BY ?> <a href="<?= $row['data']['author']['html_url'] ?>" class="fw-600"><?= $row['data']['author']['login'] ?></a> <?= $this->build->date->short($row['data']['published_at'], true) ?>
+    </div>
+</div>

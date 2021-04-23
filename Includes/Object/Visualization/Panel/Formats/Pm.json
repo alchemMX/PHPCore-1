@@ -1,0 +1,36 @@
+{
+    "body": {
+        "mark":{
+            "options": {
+                "type": "button"
+            },
+            "data": {
+                "href": "/mark/",
+                "icon": "fas fa-envelope",
+                "title": "L_USER_PM_MARK_AS_UNREAD"
+            }
+        },
+        "leave":{
+            "options": {
+                "type": "button"
+            },
+            "data": {
+                "href": "/leave/",
+                "icon": "fas fa-sign-out-alt",
+                "title": "L_USER_PM_LEAVE"
+            }
+        },
+        "edit":{
+            "options": {
+                "type": "button",
+                "hide": true
+            },
+            "data": {
+                "type": "button",
+                "href": "/edit/",
+                "icon": "fas fa-edit",
+                "title": "L_EDIT"
+            }
+        }
+    }
+}
