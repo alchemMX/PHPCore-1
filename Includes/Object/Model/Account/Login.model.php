@@ -11,10 +11,10 @@ use Block\User;
 /**
  * Login
  */
-class Login
+class Login extends \Model\Model
 {
     /**
-     * @var string $username Username of user
+     * @var string $username Name of user
      */
     private string $username;
 
@@ -24,7 +24,7 @@ class Login
     private string $password;
 
     /**
-     * @var bool $remember True if user wants to remember login
+     * @var bool $remember If true - login will be remembered
      */
     private bool $remember = false;
 
@@ -34,14 +34,12 @@ class Login
     private array $result;
 
     /**
-     * @var object $user User block
+     * @var \Block\User $user User
      */
     private \Block\User $user;
 
     /**
      * Constructor
-     * 
-     * Loads login informations
      *
      * @param string $username
      * @param string $pasword
@@ -49,6 +47,8 @@ class Login
      */
     public function __construct( string $username, string $password, int $remember )
     {
+        parent::__construct();
+        
         $this->username = $username;
         $this->password = $password;
         $this->remember = (bool)$remember;
@@ -64,47 +64,19 @@ class Login
      */
     private function validate()
     {
-        if ($this->isAccountExists() === true) {
-            if ($this->isAccountActivated() === true) {
-                return true;
-            }
+        $this->result = $this->user->getByName($this->username) ?: [];
+
+        if (!$this->result or password_verify($this->password, $this->result['user_password']) === false) {
+            throw new \Exception\Notice('login_validate');
         }
 
-        return false;
-    }
-
-    /**
-     * Checks if given account exists
-     *
-     * @return bool
-     */
-    private function isAccountExists()
-    {    
-        if ($this->result = $this->user->getByName($this->username) ?: []) {
-            if (password_verify($this->password, $this->result['user_password'])) {
-                return true;
-            }
+        if ($this->result['verify_code']) {
+            throw new \Exception\Notice('account_not_activated', [
+                'url' => $this->system->url->build('/login/send-' . $this->result['user_id'])
+            ]);
         }
 
-        throw new \Exception\Notice('login_validate');
-        return false;
-    }
-
-    /**
-     * Checks if given account is activated
-     *
-     * @return bool
-     */
-    private function isAccountActivated()
-    {
-        if (!$this->result['verify_code']) {
-            return true;
-        }
-
-        throw new \Exception\Notice('account_not_activated', [
-            'url' => $this->system->url->build('/login/send-' . $this->result['user_id'])
-        ]);
-        return false;
+        return true;
     }
 
     /**

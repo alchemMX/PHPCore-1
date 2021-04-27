@@ -48,11 +48,11 @@
                     }
                 },
                 "button_link": {
-                    "on": {
-                        "enable": "is_external_link"
-                    },
                     "options": {
-                        "type": "text"
+                        "type": "text",
+                        "on": {
+                            "enable": "is_external_link"
+                        }
                     },
                     "data": {
                         "title": "L_EXTERNAL_LINK",
@@ -61,12 +61,12 @@
                     }
                 },
                 "page_id": {
-                    "on": {
-                        "disable": "is_external_link"
-                    },
                     "options": {
                         "type": "select",
-                        "multiple": true
+                        "multiple": true,
+                        "on": {
+                            "disable": "is_external_link"
+                        }
                     },
                     "data": {
                         "title": "L_MENU_PAGE_LIST",

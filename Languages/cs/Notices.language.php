@@ -9,11 +9,11 @@ $language['notice'] = [
         'report_reason' => 'Zadejte důvod nahlášení',
         'report_reason_length_max' => 'Hlášení je příliš dlouhé',
         
-        'pm_subject' => 'Zadejte předmět zprávy',
-        'pm_subject_length_max' => 'Předmět zprávy je příliš dlouhý',
+        'conversation_subject' => 'Zadejte předmět zprávy',
+        'conversation_subject_length_max' => 'Předmět zprávy je příliš dlouhý',
         
-        'pm_text' => 'Zadejte obsah zprávy',
-        'pm_text_length_max' => 'Obsah zprávy je příliš dlouhý',
+        'conversation_text' => 'Zadejte obsah zprávy',
+        'conversation_text_length_max' => 'Obsah zprávy je příliš dlouhý',
         
         'text' => 'Zadejte zprávu',
         'text_length_max' => 'Zpráva je příliš dlouhá',
@@ -21,7 +21,8 @@ $language['notice'] = [
         'topic_text' => 'Zadejte obsah tématu',
         'topic_text_length_max' => 'Obsah tématu je příliš dlouhý',
 
-        'topic_label_legth_max' => 'Maximální limit štítků je 4',
+        'topic_label' => 'Vyberte platné štítky',
+        'topic_label_length_max' => 'Maximální limit štítků je 4',
 
         'topic_name' => 'Zadejte název tématu',
         'topic_name_length_max' => 'Název tématu je příliš dlouhý',
@@ -64,7 +65,7 @@ $language['notice'] = [
 
         'agree' => 'Musíte souhlasit s podmínkami',
 
-        'account_not_activated' => 'Váš účet není aktivován.<br>Pokud vám stále nepřišel potvrzovací email klikněte <a href="{url}/" class="fw-600">zde</a>.',
+        'account_not_activated' => 'Váš účet není aktivován.<br>Pokud vám stále nepřišel potvrzovací email klikněte <a href="{url}" class="fw-600">zde</a>.',
         'login_validate' => 'Zadali jste špatné uživatelské jméno nebo heslo',
     ],
 

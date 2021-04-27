@@ -8,9 +8,9 @@ namespace Block;
 class ButtonSub extends Block
 {
     /**
-     * Return given sub button
+     * Return sub button
      *
-     * @param  int $buttonSubID
+     * @param  int $buttonSubID Button sub ID
      * 
      * @return array
      */

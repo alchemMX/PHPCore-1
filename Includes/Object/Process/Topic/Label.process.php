@@ -7,7 +7,7 @@ class Label extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
             'topic_label' => [
                 'type' => 'array',
@@ -27,7 +27,7 @@ class Label extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'verify' => [
             'block' => '\Block\Topic',
             'method' => 'get',

@@ -8,7 +8,7 @@ namespace Model\System;
 class SystemUrl
 {    
     /**
-     * @var array $pages Pages class
+     * @var array $pages Pages URLs
      */
     protected static array $pages = [];
     
@@ -21,29 +21,24 @@ class SystemUrl
             self::$pages = json_decode(file_get_contents(ROOT . '/Includes/Settings/URL.json'), true);
         }
     }
-    
+
     /**
-     * Returns value from pages settings
-     *
-     * @param  string $key
+     * Returns translated page parameter from URL
      * 
      * @return string
      */
-    public function get( string $key )
+    public function getPage()
     {
         $pages = array_merge(self::$pages['default'], self::$pages['hidden']);
 
-        if (empty($pages[$key])) {
-            return $key;
-        }
-
-        return trim(rtrim($pages[$key], '-'), '/');
+        return isset($pages['/page-']) ? substr($pages['/page-'], 1, 1) : '';
     }
 
     /**
      * Translates URL
      *
      * @param  string $url
+     * @param  bool $hidden If true - uses also hidden URL
      * 
      * @return string
      */
@@ -91,6 +86,5 @@ class SystemUrl
         }
 
         return $url;
-
     }
 }

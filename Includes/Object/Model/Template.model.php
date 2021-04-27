@@ -8,21 +8,21 @@ namespace Model;
 class Template
 {    
     /**
-     * Returns path to given template file
+     * Returns path to template file
      *
      * @param  string $path
      * 
      * @throws \Exception\System If given file is not found
      * 
-     * @return string|false
+     * @return string
      */
     public function require( string $path )
     {
         $templatePath = defined('ERROR_PAGE') ? TEMPLATE_PATH_DEFAULT : TEMPLATE_PATH;
 
         $paths = [
-            ROOT . $templatePath . '/Templates/' . ltrim($path, '/') . '.phtml',
-            ROOT . '/Styles/Default/Templates/' . ltrim($path, '/') . '.phtml'
+            ROOT . $templatePath . '/Templates/' . ltrim($path, '/'),
+            ROOT . '/Styles/Default/Templates/' . ltrim($path, '/')
         ];
 
         foreach ($paths as $_path) {
@@ -36,7 +36,7 @@ class Template
     }
 
     /**
-     * Returns path to given theme file
+     * Returns path to theme file
      *
      * @param  string $path
      * @param bool $useDefaultPath

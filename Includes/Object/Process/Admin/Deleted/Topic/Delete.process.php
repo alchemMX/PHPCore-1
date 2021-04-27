@@ -7,16 +7,19 @@ class Delete extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'data' => [
             'deleted_id'
+        ],
+        'block' => [
+            'deleted_type_user_id'
         ]
     ];
 
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'verify' => [
             'block' => '\Block\Deleted',
             'method' => 'get',
@@ -39,7 +42,6 @@ class Delete extends \Process\ProcessExtend
             WHERE dc.deleted_id = ?
         ', [$this->data->get('deleted_id')])['count'] ?? 0;
 
-
         $this->db->query('
             DELETE dc, t, tl, tlb, r, rr, p, pl, r2, rr2, dc2
             FROM ' . TABLE_DELETED_CONTENT . '
@@ -58,7 +60,6 @@ class Delete extends \Process\ProcessExtend
         ', [$this->data->get('deleted_id')]);
 
         $this->system->stats->set('topic_deleted', +1);
-        
         $this->system->stats->set('post_deleted', +($posts));
 
         // ADD RECORD TO LOG

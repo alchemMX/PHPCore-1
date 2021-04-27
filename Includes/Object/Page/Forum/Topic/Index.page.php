@@ -65,7 +65,14 @@ class Index extends \Page\Page
             'is_locked' => $topic['is_locked'],
             'topic_name' => $topic['topic_name'],
             'deleted_id' => $topic['deleted_id'],
+            'report_status' => $topic['report_status'],
         ]);
+
+        // HEAD
+        $this->data->head = [
+            'title'         => $topic['topic_name'],
+            'description'   => $topic['topic_text']
+        ];
 
         // BREADCRUMB
         $breadcrumb = new Breadcrumb('Forum/Topic');
@@ -286,8 +293,9 @@ class Index extends \Page\Page
                         $block->delButton();
                     }
 
-                    if ($item['report_id']) {
+                    if ($item['report_id'] and $item['report_status'] == 0 and $this->user->perm->has('admin.forum')) {
                         $block->notice('reported');
+                        $block->disable();
                     }
 
                     // IF TOPIC OR POST IS DELETED
@@ -298,6 +306,7 @@ class Index extends \Page\Page
                         if ($item['deleted_id']) {
 
                             $block->notice('deleted');
+                            $block->disable();
                             $block->close();
                         }
 
@@ -333,21 +342,9 @@ class Index extends \Page\Page
                     
                     // EDIT LABELS
                     $this->process->form(type: 'Topic/Label', on: 'confirm', data: [
-                        'topic_id' => $topic['topic_id'],
-                        'options' => [
-                            'input' => [
-                                'topic_label' => array_column((array)$this->data->data['labels'], 'label_id')
-                            ]
-                        ]
+                        'topic_id' => $topic['topic_id']
                     ]);
                 }
-
-                // HEAD
-                $this->data->head = [
-                    'title'         => $topic['topic_name'],
-                    'description'   => $topic['topic_text']
-                ];
-
             break;
         }
     }

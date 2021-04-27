@@ -1,0 +1,20 @@
+{
+    "body": {
+        "conversation": {
+            "options": {
+                "empty": "L_USER_CONVERSATION_NO"
+            },
+            "body": {
+                "default": {
+                    "options": {
+                        "template": {
+                            "big": "/Conversation/Big.phtml",
+                            "medium": "/Conversation/Medium.phtml"
+                        }
+                    },
+                    "data": {}
+                }
+            }
+        }
+    }
+}

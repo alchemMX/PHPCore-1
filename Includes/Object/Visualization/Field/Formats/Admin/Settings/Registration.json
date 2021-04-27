@@ -23,11 +23,11 @@
                     }
                 },
                 "registration.key_site": {
-                    "on": {
-                        "show": "registration.enabled"
-                    },
                     "options": {
-                        "type": "text"
+                        "type": "text",
+                        "on": {
+                            "show": "registration.enabled"
+                        }
                     },
                     "data": {
                         "desc": "L_WEBSITE_RECAPTCHA",
@@ -36,11 +36,11 @@
                     }
                 },
                 "registration.key_secret": {
-                    "on": {
-                        "show": "registration.enabled"
-                    },
                     "options": {
-                        "type": "text"
+                        "type": "text",
+                        "on": {
+                            "show": "registration.enabled"
+                        }
                     },
                     "data": {
                         "desc": "L_WEBSITE_RECAPTCHA",
@@ -49,11 +49,11 @@
                     }
                 },
                 "registration.terms": {
-                    "on": {
-                        "show": "registration.enabled"
-                    },
                     "options": {
-                        "type": "textarea"
+                        "type": "textarea",
+                        "on": {
+                            "show": "registration.enabled"
+                        }
                     },
                     "data": {
                         "desc": "L_WEBSITE_REGISTER_TERMS_DESC",

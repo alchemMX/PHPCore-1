@@ -1,5 +1,5 @@
 <script src="/Assets/jQuery/jQuery.min.js?14"></script>
-<script defer src="/Assets/cAjax/cAjax.min.js?22"></script>
+<script defer src="/Assets/cAjax/cAjax.min.js?33"></script>
 <?php if ($this->user->isLogged()) : ?>
     <?php if (isset($this->data->data['editor'])) : ?>
         <script src="/Assets/Trumbowyg/trumbowyg.min.js?<?= $this->system->settings->get('session') ?>"></script>
@@ -10,7 +10,7 @@
     <?php endif; ?>
 <?php endif; ?>
 <script defer src="/Includes/Template/js/Others.min.js"></script>
-<script defer src="/Includes/Template/js/Ajax.min.js?11"></script>
+<script defer src="/Includes/Template/js/Ajax.min.js?8888"></script>
 <?php if ($this->system->settings->get('cookie.enabled') == 1) : ?>
     <script src="/Assets/Cookie/Cookie.min.js"></script>
 <?php endif; ?>

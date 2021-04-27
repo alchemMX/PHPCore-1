@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html id="html" lang="cs-cz" class="html-hidden <?= $this->data->data['pageName'] ?>">
 
-    <?php require $this->template->require('/Blocks/Head'); ?>
+    <?php require $this->template->require('/Blocks/Head.phtml'); ?>
     <body id="body">
 
         <div class="navbar navbar-mobile" ajax-selector="navbar navbar-mobile"></div>
         <div class="page" ajax-selector="page">
     
-            <?php require $this->template->require('/Blocks/Navbar/Navbar'); ?>
+            <?php require $this->template->require('/Blocks/Navbar/Navbar.phtml'); ?>
             
             <div class="page-header page-header-align-<?= $this->system->settings->get('site.background_image_position') ?> <?php if (isset($this->data->data['bigHeader']) and $this->data->data['bigHeader'] === true) : ?>page-header-type-big<?php endif; ?>" <?php if (!empty($this->system->settings->get('site.background_image'))) : ?> style="background-image: url('/Uploads/Site/Header.<?= $this->system->settings->get('site.background_image') ?>?<?= $this->system->settings->get('session') ?>');"<?php endif; ?>>
                 <div class="page-header-overlay"></div>
@@ -71,7 +71,7 @@
                         <?php else : ?>
                             <?php if (isset($this->data->sidebar['side']) and $this->data->sidebar['side'] == 'left') : ?>
                                 <div class="page-content-side page-content-side-align-left page-content-side-type-<?= $this->data->sidebar['type'] ?>">
-                                    <?php require $this->template->require('/Blocks/Sidebar/Sidebar'); ?>
+                                    <?php require $this->template->require('/Blocks/Sidebar/Sidebar.phtml'); ?>
                                 </div>
                             <?php endif; ?>
                             <div class="page-content-middle">
@@ -79,7 +79,7 @@
                             </div>
                             <?php if (isset($this->data->sidebar['side']) and $this->data->sidebar['side'] == 'right') : ?>
                                 <div class="page-content-side page-content-side-align-right page-content-side-type-<?= $this->data->sidebar['type'] ?>">
-                                    <?php require $this->template->require('/Blocks/Sidebar/Sidebar'); ?>
+                                    <?php require $this->template->require('/Blocks/Sidebar/Sidebar.phtml'); ?>
                                 </div>
                             <?php endif; ?>
                         <?php endif; ?>
@@ -119,8 +119,7 @@
             <div></div>
             <div></div>
         </div>
-        <?php require $this->template->require('/Blocks/Cookie'); ?>
+        <?php require $this->template->require('/Blocks/Cookie.phtml'); ?>
         <?php require ROOT . '/Includes/Template/Footer.phtml' ?>
     </body>
-    
 </html>

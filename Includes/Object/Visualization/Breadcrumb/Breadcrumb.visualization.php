@@ -3,7 +3,7 @@
 namespace Visualization\Breadcrumb;
 
 /**
- * Breadcrumb visualization
+ * Breadcrumb
  */
 class Breadcrumb extends \Visualization\Visualization 
 {    

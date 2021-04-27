@@ -2,11 +2,11 @@
 
 namespace Model;
 
+use Block\User as BlockUser;
+
 use Model\Cookie;
 use Model\Permission;
 use Model\Database\Query;
-
-use Block\User as BlockUser;
 
 /**
  * User
@@ -14,12 +14,12 @@ use Block\User as BlockUser;
 class User
 {
     /**
-     * @var object $perm Permission model
+     * @var \Model\Permission $perm Permission
      */
     public \Model\Permission $perm;
 
     /**
-     * @var bool $admin True if logged user is admin
+     * @var bool $admin If true - logged user is admin otherwise false
      */
     public bool $admin = false;
 
@@ -35,8 +35,6 @@ class User
     
     /**
      * Constructor
-     * 
-     * Gets data about logged user.
      */
     public function __construct()
     {
@@ -80,7 +78,7 @@ class User
     }
 
     /**
-     * Checks whether user is logged
+     * Checks if user is logged
      *
      * @return bool
      */
@@ -91,13 +89,12 @@ class User
         }
         
         return false;
-
     }
 
     /**
-     * Gets given value from user data
+     * Returns value from user data
      *
-     * @param string|null $value If null method returns all data
+     * @param string|null $value If null - method returns all use data
      * 
      * @return string|array
      */
@@ -111,15 +108,15 @@ class User
     }
 
     /**
-     * Changes user information
+     * Sets value to logged user data
      *
-     * @param string $value
-     * @param mixed $mixed
+     * @param string $key 
+     * @param mixed $value
      * 
      * @return void
      */
-    public function set( string $column, $mixed )
+    public function set( string $key, mixed $value )
     {
-        $this->data[$column] = $mixed;
+        $this->data[$key] = $value;
     }
 }

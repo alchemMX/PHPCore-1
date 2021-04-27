@@ -3,17 +3,21 @@
 namespace Visualization\Navbar;
 
 /**
- * Navbar visualization
+ * Navbar
  */
 class Navbar extends \Visualization\Visualization
 {
+    /**
+     * @var \Model\Permission $perm Permission
+     */
     public \Model\Permission $perm;
 
     /**
      * Adds count notification
      *
      * @param string $count Count
-     * @return object
+     * 
+     * @return \Visualization\Visualization
      */
     public function notifiCount( $count )
     {
@@ -27,7 +31,8 @@ class Navbar extends \Visualization\Visualization
      * Adds icon notification
      *
      * @param string $unicode Icon unicode
-     * @return object
+     * 
+     * @return \Visualization\Visualization
      */
     public function notifiIcon( string $unicode )
     {
@@ -38,7 +43,7 @@ class Navbar extends \Visualization\Visualization
     /**
      * Actives button in navbar
      *
-     * @return object
+     * @return \Visualization\Visualization
      */
     public function active()
     {

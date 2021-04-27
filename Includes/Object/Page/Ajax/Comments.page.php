@@ -6,13 +6,11 @@ use Block\ProfilePostComment;
 use Block\Admin\ProfilePostComment as AdminProfilePostComment;
 
 use Model\Get;
-use Model\Builder;
-use Model\Template;
 
 use Visualization\Block\Block;
 
 /**
- * Ajax page
+ * Comments
  */
 class Comments extends \Page\Page
 {
@@ -40,7 +38,7 @@ class Comments extends \Page\Page
 
         $blocks = '';
         foreach ($block->getData()['body']['profilepostcomment']['body'] as $row) {
-            $blocks .= $this->file('/Blocks/Block/ProfilePostComment', [
+            $blocks .= $this->file('/Blocks/Block/ProfilePostComment.phtml', [
                 'variable' => '$row',
                 'data' => $row
             ]);

@@ -5,7 +5,7 @@ namespace Page\Ajax;
 use Model\Get;
 
 /**
- * Ajax report language pack
+ * Language
  */
 class Language extends \Page\Page
 {
@@ -30,11 +30,11 @@ class Language extends \Page\Page
         switch ($get->get('process')) {
 
             case 'Post/Editor':
-            case 'Message/Editor':
             case 'ProfilePost/Editor':
             case 'ProfilePostComment/Editor':
+            case 'ConversationMessage/Editor':
                 $this->data->data([
-                    'button' => $this->file('/Blocks/Block/Buttons/Save'),
+                    'button' => $this->file('/Blocks/Block/Buttons/Save.phtml'),
                     'status' => 'ok'
                 ]);
             break;

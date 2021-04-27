@@ -9,7 +9,7 @@ class Settings extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
             'user_text' => [
                 'type' => 'text',
@@ -23,6 +23,7 @@ class Settings extends \Process\ProcessExtend
                 'type' => 'number'
             ],
             'user_gender'               => [
+                'required' => true,
                 'custom' => ['man', 'woman', 'undefined']
             ],
             'delete_user_profile_image' => [
@@ -37,7 +38,7 @@ class Settings extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [];
+    public array $options = [];
 
     /**
      * Body of process
@@ -110,7 +111,7 @@ class Settings extends \Process\ProcessExtend
         $this->db->update(TABLE_USERS, [
             'user_age' 		        => $this->data->get('user_age'),
             'user_text'             => $this->data->get('user_text'),
-            'user_gender' 	        => $this->data->get('user_gender') == 'undefined' ? '' : $this->data->get('user_gender'),
+            'user_gender' 	        => $this->data->get('user_gender'),
             'user_location'         => $this->data->get('user_location')
         ], LOGGED_USER_ID);
     }

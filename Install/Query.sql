@@ -4,6 +4,9 @@ DROP TABLE IF EXISTS `phpcore_buttons`;
 DROP TABLE IF EXISTS `phpcore_buttons_sub`;
 DROP TABLE IF EXISTS `phpcore_categories`;
 DROP TABLE IF EXISTS `phpcore_categories_permission_see`;
+DROP TABLE IF EXISTS `phpcore_conversations`;
+DROP TABLE IF EXISTS `phpcore_conversations_messages`;
+DROP TABLE IF EXISTS `phpcore_conversations_recipients`;
 DROP TABLE IF EXISTS `phpcore_deleted_content`;
 DROP TABLE IF EXISTS `phpcore_forgot_password`;
 DROP TABLE IF EXISTS `phpcore_forums`;
@@ -13,13 +16,10 @@ DROP TABLE IF EXISTS `phpcore_forums_permission_topic`;
 DROP TABLE IF EXISTS `phpcore_groups`;
 DROP TABLE IF EXISTS `phpcore_labels`;
 DROP TABLE IF EXISTS `phpcore_logs`;
-DROP TABLE IF EXISTS `phpcore_messages`;
 DROP TABLE IF EXISTS `phpcore_notifications`;
 DROP TABLE IF EXISTS `phpcore_pages`;
 DROP TABLE IF EXISTS `phpcore_posts`;
 DROP TABLE IF EXISTS `phpcore_posts_likes`;
-DROP TABLE IF EXISTS `phpcore_private_messages`;
-DROP TABLE IF EXISTS `phpcore_private_messages_recipients`;
 DROP TABLE IF EXISTS `phpcore_profile_posts`;
 DROP TABLE IF EXISTS `phpcore_profile_posts_comments`;
 DROP TABLE IF EXISTS `phpcore_reports`;
@@ -95,6 +95,53 @@ CREATE TABLE IF NOT EXISTS `phpcore_categories_permission_see` (
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 INSERT INTO `phpcore_categories_permission_see` (`category_id`, `group_id`) VALUES (1, 0), (1, 1), (1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- phpcore_conversations
+--
+
+CREATE TABLE IF NOT EXISTS `phpcore_conversations` (
+  `conversation_id` bigint(11) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(11) NOT NULL,
+  `conversation_subject` varchar(225) COLLATE utf8_general_ci NOT NULL,
+  `conversation_text` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `conversation_url` varchar(225) COLLATE utf8_general_ci NOT NULL,
+  `conversation_messages` int(11) NOT NULL DEFAULT '0',
+  `conversation_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_edited` tinyint(4) NOT NULL DEFAULT '0',
+  `conversation_edited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`conversation_id`)
+) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- phpcore_conversations_messages
+--
+
+CREATE TABLE IF NOT EXISTS `phpcore_conversations_messages` (
+  `conversation_message_id` bigint(11) NOT NULL AUTO_INCREMENT,
+  `conversation_id` bigint(11) NOT NULL,
+  `user_id` bigint(11) NOT NULL,
+  `conversation_message_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `conversation_message_text` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `is_edited` tinyint(1) NOT NULL DEFAULT '0',
+  `conversation_message_edited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`conversation_message_id`)
+) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- phpcore_conversations_recipients
+--
+
+CREATE TABLE IF NOT EXISTS `phpcore_conversations_recipients` (
+  `conversation_id` bigint(11) NOT NULL,
+  `user_id` bigint(11) NOT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -241,23 +288,6 @@ CREATE TABLE IF NOT EXISTS `phpcore_logs` (
 -- --------------------------------------------------------
 
 --
--- phpcore_messages
---
-
-CREATE TABLE IF NOT EXISTS `phpcore_messages` (
-  `message_id` bigint(11) NOT NULL AUTO_INCREMENT,
-  `pm_id` bigint(11) NOT NULL,
-  `user_id` bigint(11) NOT NULL,
-  `message_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `message_text` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `is_edited` tinyint(1) NOT NULL DEFAULT '0',
-  `message_edited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`message_id`)
-) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- phpcore_notifications
 --
 
@@ -314,36 +344,6 @@ CREATE TABLE IF NOT EXISTS `phpcore_posts_likes` (
   `post_id` bigint(11) NOT NULL,
   `user_id` bigint(11) NOT NULL,
   `like_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- phpcore_private_messages
---
-
-CREATE TABLE IF NOT EXISTS `phpcore_private_messages` (
-  `pm_id` bigint(11) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(11) NOT NULL,
-  `pm_subject` varchar(225) COLLATE utf8_general_ci NOT NULL,
-  `pm_text` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `pm_url` varchar(225) COLLATE utf8_general_ci NOT NULL,
-  `pm_messages` int(11) NOT NULL DEFAULT '0',
-  `pm_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `is_edited` tinyint(4) NOT NULL DEFAULT '0',
-  `pm_edited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`pm_id`)
-) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- phpcore_private_messages_recipients
---
-
-CREATE TABLE IF NOT EXISTS `phpcore_private_messages_recipients` (
-  `pm_id` bigint(11) NOT NULL,
-  `user_id` bigint(11) NOT NULL
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -492,7 +492,7 @@ CREATE TABLE IF NOT EXISTS `phpcore_users` (
   `user_signature` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `user_location` varchar(225) COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `user_age` int(11) NOT NULL DEFAULT '0',
-  `user_gender` varchar(225) COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `user_gender` varchar(225) COLLATE utf8_general_ci NOT NULL DEFAULT 'undefined',
   `user_posts` mediumint(11) NOT NULL DEFAULT '0',
   `user_topics` mediumint(11) NOT NULL DEFAULT '0',
   `user_reputation` mediumint(11) NOT NULL DEFAULT '0',
@@ -524,7 +524,7 @@ CREATE TABLE IF NOT EXISTS `phpcore_users_notifications` (
 --
 
 CREATE TABLE IF NOT EXISTS `phpcore_users_unread` (
-  `pm_id` bigint(11) NOT NULL,
+  `conversation_id` bigint(11) NOT NULL,
   `user_id` bigint(11) NOT NULL
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 

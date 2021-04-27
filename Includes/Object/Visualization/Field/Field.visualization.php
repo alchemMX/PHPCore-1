@@ -3,7 +3,7 @@
 namespace Visualization\Field;
 
 /**
- * Field visualization model
+ * Field
  */
 class Field extends \Visualization\Visualization
 {
@@ -62,9 +62,10 @@ class Field extends \Visualization\Visualization
     }
 
     /**
-     * Adds date to form
+     * Adds data to form
      *
      * @param  array $data
+     * 
      * @return void
      */
     public function data( array $data )
@@ -73,24 +74,16 @@ class Field extends \Visualization\Visualization
     }
 
     /**
-     * Checks current row
-     *
-     * @return void
-     */
-    public function check()
-    {
-        $this->setOptions('checked', true);
-    }
-
-    /**
      * Sets value to current row data
      *
      * @param  mixed $value Value
-     * @return object
+     * 
+     * @return \Visualization\Visualization
      */
     public function setValue( $value )
     {   
         $this->data[$this->list[1]] = $value;
+
         return $this;
     }
 

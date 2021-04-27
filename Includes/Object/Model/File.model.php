@@ -25,7 +25,7 @@ class File extends Model
     /**
      * Loads file
      *
-     * @param  string $fileName
+     * @param  string $fileName Name of file
      * 
      * @return void
      */
@@ -81,6 +81,8 @@ class File extends Model
     /**
      * Checks if uploaded file is an image
      *
+     * @throws \Exception\Notice If File is not valid image
+     * 
      * @return bool
      */
     private function isImage()
@@ -96,6 +98,8 @@ class File extends Model
     /**
      * Checks if uploaded file has valid size
      *
+     * @throws \Exception\Notice If size of image is larger than allowed
+     * 
      * @return bool
      */
     private function maxImageSize()
@@ -109,7 +113,7 @@ class File extends Model
     }
 
     /**
-     * Returns file format
+     * Returns uploaded file format
      *
      * @return string Image format
      */
@@ -141,26 +145,19 @@ class File extends Model
      */
     public function upload( string $dir )
     {
-        if ($this->file) {
-
-            $this->delete($dir);
-
-            foreach ($this->images as $image) {
-                $format = explode('/', $image)[1];
-                if (file_exists(ROOT . '/Uploads' . $dir . '.' . $format)) {
-                    $this->delete(ROOT . '/Uploads' . $dir . '.' . $format);
-                }
-            }
-            move_uploaded_file($this->file['tmp_name'], ROOT . '/Uploads/' . $dir . '.' . $this->getFormat());
-
-            return true;
+        if (!$this->file) {
+            return false;
         }
 
-        return false;
+        $this->deleteImage($dir);
+
+        move_uploaded_file($this->file['tmp_name'], ROOT . '/Uploads/' . $dir . '.' . $this->getFormat());
+
+        return true;
     }
 
     /**
-     * Resizes file
+     * Resizes image
      *
      * @param string $path Image path
      * @param int $width Image width
@@ -171,7 +168,6 @@ class File extends Model
     function resize( string $path, int $width, int $height )
     {
         if ($this->file['type'] === 'image/svg+xml') {
-
             return true;
         }
 
@@ -205,7 +201,7 @@ class File extends Model
     /**
      * Recursively deletes files
      *
-     * @param string $path
+     * @param string $path 
      * 
      * @return bool
      */
@@ -228,9 +224,9 @@ class File extends Model
     /**
      * Deletes image
      * 
-     * This method deleted only image with allowd format
+     * This method deletes only image with allowd format.
      *
-     * @param string $path Path to image
+     * @param string $path Path to image without format
      * 
      * @return void
      */
@@ -273,7 +269,7 @@ class File extends Model
      * Downloads file from given url
      *
      * @param string $url Url to download
-     * @param string $path Path where will be downloaded file saved
+     * @param string $path Path where downloaded files will be saved
      * 
      * @return void
      */
@@ -287,7 +283,7 @@ class File extends Model
      * Unzips given zip file and saves content of zip to given path
      *
      * @param string $fileToUnzip Path to zip file
-     * @param string $saveTo Path where will be content of the zip file saved
+     * @param string $saveTo Path where content of the zip will be saved
      * 
      * @return bool
      */

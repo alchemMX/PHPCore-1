@@ -7,7 +7,7 @@ class Up extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'data' => [
             'button_sub_id'
         ]
@@ -16,7 +16,7 @@ class Up extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'verify' => [
             'block' => '\Block\ButtonSub',
             'method' => 'get',

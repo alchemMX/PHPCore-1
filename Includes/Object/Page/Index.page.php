@@ -76,7 +76,7 @@ class Index extends Page
             }
 
             if ($item['is_sticky']) {
-                $block->focus();
+                $block->select();
             }
         }
 

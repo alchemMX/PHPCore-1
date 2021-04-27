@@ -8,7 +8,7 @@ namespace Model;
 class Get
 {    
     /**
-     * Return param from url
+     * Return parameter from url
      *
      * @param  string $key
      * 
@@ -16,21 +16,18 @@ class Get
      */
     public function get( string $key )
     {
-        if (isset($_GET[$key])) {
-            return preg_replace("/[^A-Za-z0-9_\/]/", '', $_GET[$key]);
-        }
-        return '';
+        return preg_replace("/[^A-Za-z0-9_\/]/", '', $_GET[$key] ?? '');
     }
     
     /**
-     * Checks if given param is in url
+     * Checks if given parameter is in url
      *
-     * @param  mixed $key
+     * @param  string $key
      * 
      * @return bool
      */
     public function is( string $key )
     {
-        return isset($_GET[$key]) ? true : false;
+        return isset($_GET[$key]);
     }
 }

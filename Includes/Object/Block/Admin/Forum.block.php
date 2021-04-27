@@ -42,7 +42,7 @@ class Forum extends \Block\Forum
     /**
      * Returns forums from category
      *
-     * @param  int $categoryID
+     * @param  int $categoryID Category ID
      * 
      * @return array
      */

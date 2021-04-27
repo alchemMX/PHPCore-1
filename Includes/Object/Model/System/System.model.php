@@ -8,29 +8,27 @@ namespace Model\System;
 class System
 {
     /**
-     * @var \Model\System\SystemUrl $url Pages url name class
+     * @var \Model\System\SystemUrl $url SystemUrl
      */
     public \Model\System\SystemUrl $url;
 
     /**
-     * @var \Model\System\SystemSettings $settings List of PHPCore configuration
+     * @var \Model\System\SystemSettings $settings SystemSettings
      */
     public \Model\System\SystemSettings $settings;
 
     /**
-     * @var \Model\System\SystemTemplate $template List of PHPCore configuration
+     * @var \Model\System\SystemTemplate $template SystemTemplate
      */
     public \Model\System\SystemTemplate $template;
 
     /**
-     * @var \Model\System\SystemStatistics $config List of PHPCore configuration
+     * @var \Model\System\SystemStatistics $stats SystemStatistics
      */
     public \Model\System\SystemStatistics $stats;
     
     /**
      * Constructor
-     * 
-     * @return object
      */
     public function __construct()
     {

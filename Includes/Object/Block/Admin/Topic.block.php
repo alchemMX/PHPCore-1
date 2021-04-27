@@ -10,20 +10,21 @@ class Topic extends \Block\Topic
     /**
      * Returns topic
      *
-     * @param  int $topicID
+     * @param  int $topicID Topic ID
      * 
      * @return array
      */
     public function get( int $topicID )
     {
         return $this->db->query('
-            SELECT t.*, c.*, f.*, ' . $this->select->user() . ', user_signature, user_topics, user_posts, user_reputation, user_last_activity, group_name, group_index,
+            SELECT t.*, c.*, f.*, r.report_status, ' . $this->select->user() . ', user_signature, user_topics, user_posts, user_reputation, user_last_activity, group_name, group_index,
                 CASE WHEN fpt.forum_id IS NOT NULL THEN 1 ELSE 0 END as topic_permission,
                 CASE WHEN fpp.forum_id IS NOT NULL THEN 1 ELSE 0 END as post_permission,
                 CASE WHEN ( SELECT COUNT(*) FROM ' . TABLE_TOPICS_LIKES . ' WHERE topic_id = t.topic_id ) > 5 THEN 1 ELSE 0 END AS is_more_likes,
                 ( SELECT COUNT(*) FROM ' . TABLE_TOPICS_LIKES . ' WHERE topic_id = t.topic_id ) AS count_of_likes, t.deleted_id AS topic_deleted_id
             FROM ' . TABLE_TOPICS . ' 
             ' . $this->join->user('t.user_id'). '
+            LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = t.report_id 
             LEFT JOIN ' . TABLE_FORUMS . ' ON f.forum_id = t.forum_id 
             LEFT JOIN ' . TABLE_CATEGORIES . ' ON c.category_id = f.category_id
             LEFT JOIN ' . TABLE_FORUMS_PERMISSION_SEE . ' ON fps.forum_id = t.forum_id AND fps.group_id = ' . LOGGED_USER_GROUP_ID . '
@@ -37,7 +38,7 @@ class Topic extends \Block\Topic
     /**
      * Returns topics from forum
      *
-     * @param  int $forumID
+     * @param  int $forumID Forum ID
      * 
      * @return array
      */

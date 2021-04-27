@@ -15,7 +15,7 @@ class Form
     /**
      * Constructor
      *
-     * @param  mixed $direct
+     * @param  bool $direct
      */
     public function __construct( bool $direct = false )
     {
@@ -45,9 +45,9 @@ class Form
     }
 
     /**
-     * Checks id submit button was pressed.
+     * Checks if submit button was pressed.
      *
-     * @param string $button
+     * @param string $button Button name
      * 
      * @return bool
      */
@@ -62,5 +62,4 @@ class Form
 
         return false;
     }
-
 }

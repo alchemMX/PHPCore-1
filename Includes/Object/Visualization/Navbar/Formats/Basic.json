@@ -65,14 +65,14 @@
                 "hide": true
             },
             "body": {
-                "pm": {
+                "conversation": {
                     "options": {
                         "type": "button"
                     },
                     "data": {
                         "type": "button",
                         "icon": "fas fa-envelope",
-                        "href": "/user/pm/"
+                        "href": "/user/conversation/"
                     }
                 },
                 "notification": {

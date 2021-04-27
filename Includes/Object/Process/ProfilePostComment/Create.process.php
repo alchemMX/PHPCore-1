@@ -7,7 +7,7 @@ class Create extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
 
             // PROFILE COMMENT TEXT
@@ -21,15 +21,14 @@ class Create extends \Process\ProcessExtend
             'profile_post_id'
         ],
         'block' => [
-            'user_id',
-            'profile_id'
+            'user_id'
         ]
     ];
 
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'verify' => [
             'block' => '\Block\ProfilePost',
             'method' => 'get',
@@ -47,7 +46,6 @@ class Create extends \Process\ProcessExtend
         // CREATES NEW PROFILE SUB POST
         $this->db->insert(TABLE_PROFILE_POSTS_COMMENTS, [
             'user_id'               => LOGGED_USER_ID,
-            'profile_id'            => $this->data->get('profile_id'),
             'profile_post_id'       => $this->data->get('profile_post_id'),
             'profile_post_comment_text' => $this->data->get('text')
         ]);

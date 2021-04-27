@@ -10,11 +10,11 @@ class User extends Block
     /**
      * Returns user by user id
      *
-     * @param  int $ID
+     * @param  int $userID User ID
      * 
      * @return array
      */
-    public function get( int $ID )
+    public function get( int $userID )
     {
         return $this->db->query('
             SELECT u.*, g.group_name, g.group_class_name, g.group_index, fp.code AS forgot_code, v.code AS verify_code
@@ -23,13 +23,13 @@ class User extends Block
             LEFT JOIN ' . TABLE_FORGOT . ' ON fp.user_id = u.user_id
             LEFT JOIN ' . TABLE_VERIFY . ' ON v.user_id = u.user_id
             WHERE u.user_id = ? AND is_deleted = 0
-        ', [$ID]);
+        ', [$userID]);
     }
 
     /**
      * Returns user by user name
      *
-     * @param  string $userName
+     * @param  string $name User name
      * 
      * @return array
      */
@@ -48,11 +48,11 @@ class User extends Block
     /**
      * Returns user by email
      *
-     * @param  string $email
+     * @param  string $userEmail User emial
      * 
      * @return array
      */
-    public function getByEmail( string $email )
+    public function getByEmail( string $userEmail )
     {
         return $this->db->query('
             SELECT u.*, g.group_name, g.group_class_name, g.group_index, fp.code
@@ -60,40 +60,40 @@ class User extends Block
             LEFT JOIN ' . TABLE_GROUPS . ' ON g.group_id = u.group_id
             LEFT JOIN ' . TABLE_FORGOT . ' ON fp.user_id = u.user_id
             WHERE u.user_email = ?
-        ', [$email]);
+        ', [$userEmail]);
     }
 
     /**
      * Returns user by user hash
      *
-     * @param  string $hash
+     * @param  string $userHash User hash
      * 
      * @return array
      */
-    public function getByHash( string $hash )
+    public function getByHash( string $userHash )
     {
         return $this->db->query('
             SELECT u.*, g.group_name, g.group_class_name, g.group_index, g.group_permission
             FROM ' . TABLE_USERS . '
             LEFT JOIN ' . TABLE_GROUPS . ' ON g.group_id = u.group_id
             WHERE user_hash = ?
-        ', [$hash]) ?: [];
+        ', [$userHash]) ?: [];
     }
 
     /**
      * Returns users unread private messages
      *
-     * @param  int $ID
+     * @param  int $userID User ID
      * 
      * @return array
      */
-    public function getUnread( int $ID )
+    public function getUnread( int $userID )
     {
         return array_column($this->db->query('
-            SELECT pm_id
+            SELECT conversation_id
             FROM ' . TABLE_USERS_UNREAD . '
             WHERE user_id = ?
-        ', [$ID], ROWS), 'pm_id');
+        ', [$userID], ROWS), 'conversation_id');
     }
     
     /**
@@ -174,33 +174,33 @@ class User extends Block
     /**
      * Returns user by forgot code
      *
-     * @param string $code 
+     * @param string $forgotCode Forgot code
      * 
      * @return array
      */
-    public function getByForgotCode( string $code )
+    public function getByForgotCode( string $forgotCode )
     {
         return $this->db->query('
             SELECT user_id
             FROM ' . TABLE_FORGOT . '
             WHERE code = ?
-        ', [$code]);
+        ', [$forgotCode]);
     }
 
     /**
      * Returns user by verify code
      *
-     * @param string $code 
+     * @param string $verifyCode Verify code 
      * 
      * @return array
      */
-    public function getByVerifyCode( string $code )
+    public function getByVerifyCode( string $verifyCode )
     {
         return $this->db->query('
             SELECT user_id
             FROM ' . TABLE_VERIFY . '
             WHERE code = ?
-        ', [$code]);
+        ', [$verifyCode]);
     }
 
     /**

@@ -2,8 +2,6 @@
 
 namespace Exception;
 
-use Model\Language;
-
 /**
  * Notice exception
  */
@@ -12,7 +10,7 @@ class Notice extends \Exception {
     /**
      * Constructor
      *
-     * @param string $message
+     * @param string $notice
      * @param array $assign
      */
     public function __construct( string $notice, array $assign = [] )

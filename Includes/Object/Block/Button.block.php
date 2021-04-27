@@ -10,7 +10,7 @@ class Button extends Block
     /**
      * Return button
      *
-     * @param  int $buttonID
+     * @param  int $buttonID Button ID
      * 
      * @return array
      */

@@ -10,7 +10,7 @@ class Permission
     /**
      * @var array $list List of permissions
      */
-    public $list = [
+    private array $list = [
         'topic' => [
             'topic.edit',
             'topic.lock',
@@ -48,7 +48,7 @@ class Permission
     /**
      * @var array $userPermission Stored logged user permission
      */
-    public array $userPermission = [];
+    private array $userPermission = [];
 
     /**
      * @var int $data Logged user group index
@@ -56,12 +56,12 @@ class Permission
     private int $index = 0;
 
     /**
-     * @var bool $data True if logged user is admin otherwise false
+     * @var bool $data If true - logged user is admin otherwise false
      */
     private bool $admin = false;
     
     /**
-     * Set logged user index
+     * Sets logged user index
      *
      * @return void
      */
@@ -71,7 +71,7 @@ class Permission
     }
 
     /**
-     * Set logged user as admin
+     * Sets logged user as admin
      *
      * @return void
      */
@@ -81,7 +81,7 @@ class Permission
     }
     
     /**
-     * Returns permission by groups
+     * Returns list of permissions by groups
      *
      * @return array
      */
@@ -94,7 +94,7 @@ class Permission
     }
 
     /**
-     * Returns all permissions
+     * Returns all permissions without division by groups
      *
      * @return array
      */
@@ -115,7 +115,7 @@ class Permission
      *
      * @param  array|string $permission
      * 
-     * @return bool True if logged user has given permission otherwise false
+     * @return bool If true - logged user has given permission otherwise false
      */
     public function has( array|string $permission )
     {
@@ -215,7 +215,7 @@ class Permission
      * Compare given user with logged user
      *
      * @param  int $index User index
-     * @param  bool $admin True if user is admin otherwise false
+     * @param  bool $admin If true - user is admin otherwise false
      * 
      * @return bool
      */

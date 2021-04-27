@@ -96,6 +96,5 @@ class Index extends \Page\Page
             'title'         => $forum['forum_name'],
             'description'   => $forum['forum_description'],
         ];
-
     }
 }

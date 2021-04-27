@@ -14,14 +14,14 @@ define('TABLE_FORUMS_PERMISSION_TOPIC', 'phpcore_forums_permission_topic fpt');
 define('TABLE_GROUPS', 'phpcore_groups g');
 define('TABLE_LABELS', 'phpcore_labels l');
 define('TABLE_LOG', 'phpcore_logs lg');
-define('TABLE_MESSAGES', 'phpcore_messages m');
 define('TABLE_NOTIFICATIONS', 'phpcore_notifications n');
 define('TABLE_PAGES', 'phpcore_pages pg');
 define('TABLE_PERMISSIONS', 'phpcore_permissions pi');
 define('TABLE_POSTS', 'phpcore_posts p');
 define('TABLE_POSTS_LIKES', 'phpcore_posts_likes pl');
-define('TABLE_PRIVATE_MESSAGES', 'phpcore_private_messages pm');
-define('TABLE_PRIVATE_MESSAGES_RECIPIENTS', 'phpcore_private_messages_recipients pmr');
+define('TABLE_CONVERSATIONS', 'phpcore_conversations c');
+define('TABLE_CONVERSATIONS_MESSAGES', 'phpcore_conversations_messages cm');
+define('TABLE_CONVERSATIONS_RECIPIENTS', 'phpcore_conversations_recipients cr');
 define('TABLE_PROFILE_POSTS', 'phpcore_profile_posts pp');
 define('TABLE_PROFILE_POSTS_REPORTS', 'phpcore_profile_post_reports ppr');
 define('TABLE_PROFILE_POSTS_COMMENTS', 'phpcore_profile_posts_comments ppc');
@@ -36,8 +36,6 @@ define('TABLE_USERS', 'phpcore_users u');
 define('TABLE_USERS_NOTIFICATIONS', 'phpcore_users_notifications un');
 define('TABLE_USERS_UNREAD', 'phpcore_users_unread unr');
 define('TABLE_VERIFY', 'phpcore_verify_waiting v');
-
-define('SELECT_USER', 'u.user_id, u.user_name, u.user_profile_image, u.is_deleted, g.group_class_name');
 
 define('RAND', mt_rand());
 define('DATE', 'j M Y, G:i');
@@ -65,13 +63,6 @@ define('PROFILE_IMAGES_COLORS', [
     'red', 'blue', 'purple', 'grey', 'brown', 'green', 'orange'
 ]);
 
-define('DATE_LONG', 10);
-define('DATE_SHORT', 11);
-
-define('KEEP', 44);
-define('STRIP', 30);
-define('PURIFY', 22);
-
 define('MAX_NEWS', 10);
 define('MAX_USERS', 20);
 define('MAX_POSTS', 10);
@@ -85,16 +76,6 @@ define('MAX_REPORTED_TOPIC', 20);
 define('MAX_REPORTED_COMMENTS', 20);
 define('MAX_REPORTED_PROFILE_POSTS', 20);
 
-define('URL_SELECT', 'select');
-define('URL_DELETE', 'delete');
-
-define('CONTENT_URL_NAME', [
-    'post' => 'post',
-    'topic' => 'topic',
-    'profile_post' => 'profile',
-    'profile_post_comment' => 'comment'
-]);
-
 define('REQUIRE_LOGIN', 1152);
 define('REQUIRE_LOGOUT', 3489);
 define('OPTIONAL_LOGIN', 5927);
@@ -106,3 +87,6 @@ define('EDITOR_MEDIUM', 'Medium');
 define('CONTEXT', stream_context_create(['http' => ['method' => 'GET','header' => ['User-Agent: PHP']]]));
 
 define('GITHUB', 'https://api.github.com/repos/Infin48/PHPCore/releases');
+
+define('SUCCESS_SESSION', 'SUCCESS_SESSION');
+define('SUCCESS_RETURN', 'SUCCESS_RETURN');

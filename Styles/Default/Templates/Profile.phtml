@@ -11,7 +11,7 @@
                     <div class="statue statue--<?= $this->data->data['group_class_name'] ?>"><?= $this->data->data['group_name'] ?></div>
                     <div class="statue<?php if ($this->data->data['user_reputation'] > 0) : ?> statue-green<?php else :?> statue-grey<?php endif; ?>">
                         <?php if ($this->data->data['user_reputation'] > 0) : ?>    
-                            <i class="fas fa-thumbs-up" ajax="title" data-ajax="title" data-title="<?= $L_USER_REPUTATION ?>"></i>
+                            <i class="fas fa-thumbs-up"></i>
                         <?php endif; ?>
                         <?= $this->data->data['user_reputation'] ?>
                     </div>
@@ -30,7 +30,7 @@
                     <hr>
                     <div class="table">
                         <div class="table-left"><?= $L_REGISTERED ?>:</div>
-                        <div class="table-right"><?= $this->build->date->short($this->data->data['user_registered'], DATE_SHORT) ?></div>
+                        <div class="table-right"><?= $this->build->date->short($this->data->data['user_registered']) ?></div>
                     </div>
                     <hr>
                     <div class="table">
@@ -46,7 +46,7 @@
                         <div class="table m-top">
                             <?php  if ($this->user->isLogged() and LOGGED_USER_ID != $this->data->data['user_id']) : ?>
                                 <div class="table-left">
-                                    <a class="a-reverse" href="<?= $this->system->url->build('/user/pm/add/to-' . $this->data->data['user_id']) ?>"><?= $L_USER_PM_SEND ?></a>
+                                    <a class="a-reverse" href="<?= $this->system->url->build('/user/conversation/add/to-' . $this->data->data['user_id']) ?>"><?= $L_USER_CONVERSATION_SEND ?></a>
                                 </div>
                             <?php endif; ?>
                             <?php if ($this->user->perm->has('admin.user') and $this->user->perm->compare(index: $this->data->data['group_index'], admin: $this->data->data['is_admin'])) : ?>
@@ -59,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <?php if ($this->data->data['user_gender'] or $this->data->data['user_location'] or $this->data->data['user_age']) : ?>
+        <?php if ($this->data->data['user_gender'] != 'undefined' or $this->data->data['user_location'] or $this->data->data['user_age']) : ?>
             <div class="list list-small list-clear">
                 <div class="list-head">
                     <span><?= $L_INFORMATIONS ?></span>
@@ -105,11 +105,11 @@
 
             <?php if (isset($this->data->pagination['enabled']) and $this->data->pagination['enabled'] == true) : ?>
                 <div class="panel panel-top">
-                    <?php require $this->template->require('/Blocks/Pagination'); ?>
+                    <?php require $this->template->require('/Blocks/Pagination.phtml'); ?>
                 </div>
             <?php endif; ?>
             <div class="block-list" ajax-selector="block-list">
-                <?php require $this->template->require('/Blocks/Block/ProfilePost'); ?>
+                <?php require $this->template->require('/Blocks/Block/ProfilePost.phtml'); ?>
 
                 <?php if (empty($this->data->block['body']['profilepost']['body'])) : ?>
                     <div class="block" ajax-selector="block block-empty">
@@ -118,7 +118,7 @@
                 <?php endif; ?>
 
             </div>
-            <?php require $this->template->require('/Blocks/Pagination'); ?>
+            <?php require $this->template->require('/Blocks/Pagination.phtml'); ?>
         </div>
 
         <?php if (!empty($this->data->data['user_signature'])) : ?>

@@ -28,7 +28,7 @@
         <?php if (!empty($list['body'])) : ?>
             <div class="list-body">
                 <?php foreach ($list['body'] as $row) : ?>
-                    <div class="list-row<?php if ($row['options']['disabled'] ?? false) : ?> list-row-disabled<?php endif; ?>">
+                    <div class="list-row<?php if ($row['options']['disabled'] ?? false) : ?> list-row-disabled<?php endif; ?><?php if ($row['options']['selected'] ?? false) : ?> list-row-selected<?php endif; ?>">
                         <?php if (isset($row['options']['template']['big'])) : ?>
                             <div class="list-row-big">
                                 <?php require $row['options']['template']['big']; ?>

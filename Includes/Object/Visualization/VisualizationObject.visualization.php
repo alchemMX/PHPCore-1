@@ -8,17 +8,17 @@ namespace Visualization;
 class VisualizationObject
 {
     /**
-     * @var object $is VisualiaztionObjectIs
+     * @var \Visualization\VisualizationObjectIs $is VisualiaztionObjectIs
      */
     public VisualizationObjectIs $is;
 
     /**
-     * @var object $get VisualiaztionObjectGet
+     * @var \Visualization\VisualizationObjectGet $get VisualiaztionObjectGet
      */
     public VisualizationObjectGet $get;
 
     /**
-     * @var object $set VisualiaztionObjectSet
+     * @var \Visualization\VisualizationObjectSet $set VisualiaztionObjectSet
      */
     public VisualizationObjectSet $set;
 
@@ -26,8 +26,6 @@ class VisualizationObject
      * Sets object
      * 
      * @param array $object
-     * 
-     * @return void
      */
     public function __construct( array $object )
     {

@@ -10,7 +10,7 @@ class Notification extends Block
     /**
      * Return notification
      *
-     * @param  int $notificationID
+     * @param  int $notificationID Notification ID
      * 
      * @return array
      */
@@ -20,7 +20,7 @@ class Notification extends Block
     }
 
     /**
-     * Returns all notifications
+     * Returns all notifications Notification ID
      *
      * @return array
      */

@@ -43,5 +43,4 @@ class News extends Block
             WHERE f.is_main = 1 AND t.deleted_id IS NULL AND fps.forum_id IS NOT NULL AND cps.category_id IS NOT NULL
         ')['count'];
     }
-
 }

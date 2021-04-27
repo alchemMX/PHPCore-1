@@ -225,7 +225,7 @@ class Router extends Page
         }
 
         if ($this->user->isLogged()) {
-            $this->navbar->object('logged')->row('pm')->notifiCount(count($this->user->get('unread')));
+            $this->navbar->object('logged')->row('conversation')->notifiCount(count($this->user->get('unread')));
         }
 
         $this->data->navbar = $this->navbar->getData();
@@ -251,7 +251,7 @@ class Router extends Page
         foreach ($parsedURL as $parameter) {
             $_ex = explode('-', $parameter);
             if (count($_ex) > 1) {
-                if ($_ex[0] === $this->system->url->get('/page-')) {
+                if ($_ex[0] === $this->system->url->getPage()) {
                     self::$urlData['page'] = trim(strip_tags($_ex[1]));
                     unset($parsedURL[$i]);
                 } else {

@@ -3,7 +3,7 @@
 namespace Page\Ajax;
 
 /**
- * Ajax page
+ * Mark
  */
 class Mark extends \Page\Page
 {

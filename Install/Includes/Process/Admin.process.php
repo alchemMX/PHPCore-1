@@ -7,7 +7,7 @@ class Admin extends Process
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
             'user_name'      => [
                 'type' => 'username',

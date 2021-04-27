@@ -7,7 +7,7 @@ class Edit extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
 
             // POST TEXT
@@ -22,6 +22,7 @@ class Edit extends \Process\ProcessExtend
         ],
         'block' => [
             'user_id',
+            'is_locked',
             'post_permission'
         ]
     ];
@@ -29,7 +30,7 @@ class Edit extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'verify' => [
             'block' => '\Block\Post',
             'method' => 'get',
@@ -44,11 +45,18 @@ class Edit extends \Process\ProcessExtend
      */
     public function process()
     {
+        // IF POST IS NOT FROM LOGGED USER
         if (LOGGED_USER_ID != $this->data->get('user_id')) {
             return false;
         }
 
+        // IF USER DOESN'T HAVE PERMISSION TO EDIT POST
         if ($this->data->get('post_permission') != 1) {
+            return false;
+        }
+
+        // IF TOPIC IS LOCKED
+        if ($this->data->get('is_locked') == 1) {
             return false;
         }
 

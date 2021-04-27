@@ -8,13 +8,13 @@ namespace Model\Build;
 class BuildDate extends Build
 {
     /**
-     * Compiles date to time
+     * Converts date to time
      *
-     * @param  array $date Date
+     * @param  string $date Date
      * 
      * @return int
      */
-    private function toTime( $date )
+    private function toTime( string $date )
     {
         return strtotime($date);
     }

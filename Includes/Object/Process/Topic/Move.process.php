@@ -7,7 +7,7 @@ class Move extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'data' => [
             'topic_id',
             'user_id', // TOPIC USER ID
@@ -22,7 +22,7 @@ class Move extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'verify' => [
             'block' => '\Block\Forum',
             'method' => 'get',

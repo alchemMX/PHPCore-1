@@ -2,11 +2,9 @@
 
 namespace Model\Account;
 
-use Model\System\System;
-use Model\Database\Query;
-
 use Block\User;
 
+use Model\Database\Query;
 
 /**
  * Register
@@ -14,7 +12,7 @@ use Block\User;
 class Register extends \Model\Model
 {
     /**
-     * @var string $username Username of user
+     * @var string $username Name of user
      */
     private string $username;
 
@@ -41,22 +39,20 @@ class Register extends \Model\Model
     /**
      * @var string $url URL of recaptcha
      */
-    public string $url = 'https://www.google.com/recaptcha/api/siteverify';
+    private string $url = 'https://www.google.com/recaptcha/api/siteverify';
 
     /**
-     * @var object $user User block
+     * @var \Block\User $user User block
      */
     private \Block\User $user;
 
     /**
-     * @var object $db Query
+     * @var \Model\Database\Query $db Query
      */
     private \Model\Database\Query $db;
 
     /**
      * Constructor
-     * 
-     * Loads register informations
      *
      * @param string $username
      * @param string $password
@@ -77,74 +73,41 @@ class Register extends \Model\Model
     }
 
     /**
-     * Checks if given account is valid
+     * Checks if regitration is valid
+     * 
+     * @throws \Exception\Notice If is found any error in registration data
      *
      * @return bool
      */
     private function validate()
     {
-        if ($this->recaptcha() === true) {
-            if ($this->exists() === true) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Checks if recaptcha is valid
-     *
-     * @return bool
-     */
-    private function recaptcha()
-    {
-        $data = [
-            'secret' => $this->system->settings->get('registration.key_secret'),
-            'response' => $this->token,
-            'remoteip' => $_SERVER['REMOTE_ADDR']
-        ];
-
-        $options = array(
-            'http' => array(
+        $options = [
+            'http' => [
                 'header'  => 'Content-type: application/x-www-form-urlencoded\r\n',
                 'method'  => 'POST',
-                'content' => http_build_query($data)
-            )
-        );
+                'content' => http_build_query([
+                    'secret' => $this->system->settings->get('registration.key_secret'),
+                    'response' => $this->token,
+                    'remoteip' => $_SERVER['REMOTE_ADDR']
+                ])
+            ]
+        ];
 
-        $mysqliText  = stream_context_create($options);
-  	    $response = file_get_contents($this->url, false, $mysqliText);
-        $res = json_decode($response, true);
+        $res = json_decode(file_get_contents($this->url, false, stream_context_create($options)), true);
 
-        if ($res['success'] == true) {
-            return true;
-        } 
-
-        throw new \Exception\Notice('recaptcha');
-        return false;
-
-    }
-
-    /**
-     * Checks if given account exists
-     *
-     * @return bool
-     */
-    private function exists()
-    {        
-        if (empty($this->user->getByName($this->username))) {
-            
-            if (empty($this->user->getByEmail($this->email))) { 
-                return true;
-            }
-
-            throw new \Exception\Notice('user_email_exist');
-            return false;
+        if ($res['success'] != true) {
+            throw new \Exception\Notice('recaptcha');
         }
 
-        throw new \Exception\Notice('user_name_exist');
-        return false;
+        if (!empty($this->user->getByName($this->username))) {
+            throw new \Exception\Notice('user_name_exist');
+        }
+
+        if (!empty($this->user->getByEmail($this->email))) { 
+            throw new \Exception\Notice('user_email_exist');
+        }
+
+        return true;
     }
 
     /**

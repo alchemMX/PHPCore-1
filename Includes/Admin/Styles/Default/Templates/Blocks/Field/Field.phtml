@@ -19,8 +19,8 @@
                         <?php if ($field['body']) : ?>
                             <?php foreach ($field['body'] as $rowName => $row) : ?>
                                 <div class="field-row<?php if (isset($row['options']['type']) and $row['options']['type'] === 'textarea') : ?> field-row-grid<?php endif; ?><?php if (isset($row['options']['type']) and $row['options']['type'] === 'icon') : ?> field-row-icon<?php endif; ?>" ajax-selector="field-row"
-                                    <?php if (isset($row['on'])) : ?>
-                                        <?php foreach ((array)$row['on'] as $on => $_rowName) : ?>
+                                    <?php if (isset($row['options']['on'])) : ?>
+                                        <?php foreach ((array)$row['options']['on'] as $on => $_rowName) : ?>
                                             <?= $on . '-on="' . $_rowName . '"' ?>
                                         <?php endforeach; ?>
                                     <?php endif; ?>

@@ -1,9 +1,9 @@
-<?php require $this->template->require('/Blocks/Block/Block'); ?>
-<?php require $this->template->require('/Blocks/Field/Field'); ?>
-<?php require $this->template->require('/Blocks/Lists/List'); ?>
+<?php require $this->template->require('/Blocks/Block/Block.phtml'); ?>
+<?php require $this->template->require('/Blocks/Field/Field.phtml'); ?>
+<?php require $this->template->require('/Blocks/Lists/List.phtml'); ?>
 
 <?php if (isset($this->data->pagination)) : ?>
     <?php if ($this->data->pagination['enabled'] ?? false === true) : ?>
-        <?php require $this->template->require('/Blocks/Pagination'); ?>
+        <?php require $this->template->require('/Blocks/Pagination.phtml'); ?>
     <?php endif; ?>
 <?php endif; ?>

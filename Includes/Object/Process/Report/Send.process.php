@@ -7,7 +7,7 @@ class Send extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
             'report_reason' => [
                 'type' => 'text',
@@ -28,7 +28,8 @@ class Send extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
+        'success' => SUCCESS_RETURN,
         'verify' => [
             'method' => 'get',
             'selector' => 'report_type_id'

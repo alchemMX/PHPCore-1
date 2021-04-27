@@ -66,11 +66,11 @@
                     }
                 },
                 "email_smtp_host": {
-                    "on": {
-                        "show": "email_smtp_enabled"
-                    },
                     "options": {
-                        "type": "text"
+                        "type": "text",
+                        "on": {
+                            "show": "email_smtp_enabled"
+                        }
                     },
                     "data": {
                         "title": "L_HOST",
@@ -79,11 +79,11 @@
                     }
                 },
                 "email_smtp_username": {
-                    "on": {
-                        "show": "email_smtp_enabled"
-                    },
                     "options": {
-                        "type": "text"
+                        "type": "text",
+                        "on": {
+                            "show": "email_smtp_enabled"
+                        }
                     },
                     "data": {
                         "title": "L_USERNAME",
@@ -92,11 +92,11 @@
                     }
                 },
                 "email_smtp_password": {
-                    "on": {
-                        "show": "email_smtp_enabled"
-                    },
                     "options": {
-                        "type": "password"
+                        "type": "password",
+                        "on": {
+                            "show": "email_smtp_enabled"
+                        }
                     },
                     "data": {
                         "title": "L_PASSWORD",
@@ -105,11 +105,11 @@
                     }
                 },
                 "email_smtp_port": {
-                    "on": {
-                        "show": "email_smtp_enabled"
-                    },
                     "options": {
-                        "type": "text"
+                        "type": "text",
+                        "on": {
+                            "show": "email_smtp_enabled"
+                        }
                     },
                     "data": {
                         "title": "L_PORT",

@@ -10,7 +10,7 @@ class BuildUser extends Build
     /**
      * @var array $settins Settings for user notifications
      */
-    private $settings = [
+    private array $settings = [
         'Topic' => [
             'max' => null,
             'name' => 'topic_name',
@@ -60,12 +60,10 @@ class BuildUser extends Build
     }
     
     /**
-     * Builds user profile image with link and some other informations
-     * 
-     * This method is same as linkImg(), but this method returns more details about user.
+     * Builds advanced user information block
      *
-     * @param  array $data User data
-     * @param  array $online If true - returned image will be with online indicator
+     * @param  array $data User data [is_deleted, user_id, user_profile_image, user_name, user_text, user_reputation, user_posts, ?user_last_activity]
+     * @param  array $online If true - returned image will have online indicator
      * @param  array $prefix Prefix for data
      * 
      * @return string
@@ -87,8 +85,8 @@ class BuildUser extends Build
     /**
      * Builds user profile image
      *
-     * @param  array $data User data
-     * @param  array $online If true - returned image will be with online indicator
+     * @param  array $data User data [is_deleted, user_id, user_profile_image, user_name, ?user_last_activity]
+     * @param  array $online If true - returned image will have online indicator
      * @param  array $prefix Prefix for data
      * 
      * @return string
@@ -113,14 +111,14 @@ class BuildUser extends Build
     /**
      * Builds online indicator
      *
-     * @param  int $time
+     * @param  string $date
      * 
      * @return string
      */
-    public function online( string $time )
+    public function online( string $date )
     {
-        if (time() < strtotime('+60 seconds', strtotime($time))) {
-            return '<div class="online" title="' . $this->language->get('L_ONLINE') . '"></div>';
+        if (time() < strtotime('+60 seconds', strtotime($date))) {
+            return '<div class="online"></div>';
         }
 
         return '';
@@ -129,7 +127,7 @@ class BuildUser extends Build
     /**
      * Builds user notification
      *
-     * @param  array $data
+     * @param  array $data User notification data
      * 
      * @return string
      */
@@ -174,7 +172,7 @@ class BuildUser extends Build
     /**
      * Builds username with link to profile
      *
-     * @param  array $data User data
+     * @param  array $data User data [is_deleted, user_name, user_id, ?group_class_name]
      * @param  bool $groupColor If true - link will have color as group
      * @param  string $prefix Prefix for data
      * 
@@ -194,7 +192,7 @@ class BuildUser extends Build
     /**
      * Builds username with link to profile and user image
      *
-     * @param  array $data User data
+     * @param  array $data User data [is_deleted, user_name, user_id, group_class_name]
      * 
      * @return string
      */
@@ -210,7 +208,7 @@ class BuildUser extends Build
     /**
      * Builds group label
      *
-     * @param  array $data Group data
+     * @param  array $data Group data [group_name]
      * 
      * @return string
      */

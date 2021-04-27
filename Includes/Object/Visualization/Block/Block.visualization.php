@@ -3,25 +3,14 @@
 namespace Visualization\Block;
 
 /**
- * Block visualization
+ * Block
  */
 class Block extends \Visualization\Visualization
 {
     /**
-     * Selects current object
-     *
-     * @return self
-     */
-    public function select()
-    {   
-        $this->obj->set->options('selected', true);
-        return $this;
-    }
-
-    /**
      * Opens current object
      *
-     * @return self
+     * @return \Visualization\Visualization
      */
     public function open()
     {
@@ -32,7 +21,7 @@ class Block extends \Visualization\Visualization
     /**
      * Closes current object
      *
-     * @return self
+     * @return \Visualization\Visualization
      */
     public function close()
     {
@@ -42,8 +31,10 @@ class Block extends \Visualization\Visualization
 
     /**
      * Shows notice
+     * 
+     * @param string $notice Notice name
      *
-     * @return self
+     * @return \Visualization\Visualization
      */
     public function notice( string $notice )
     {
@@ -67,7 +58,7 @@ class Block extends \Visualization\Visualization
                 if ($notice['hide'] === true) {
                     $visual->obj->set->notice($noticeName, false);
                 } else {
-                    $visual->obj->set->notice($noticeName, $this->template->require('/Blocks/Block/Notice/' . ucfirst($noticeName)));
+                    $visual->obj->set->notice($noticeName, $this->template->require('/Blocks/Block/Notice/' . ucfirst($noticeName) . '.phtml'));
                 }
             }
         }
@@ -111,7 +102,7 @@ class Block extends \Visualization\Visualization
                 }
                 
                 // ASSIGN BUTTON TEMPLATE
-                $visual->obj->set->button($btn, $visual->template->require('/Blocks/Block/Buttons/' . ucfirst($btn)));
+                $visual->obj->set->button($btn, $visual->template->require('/Blocks/Block/Buttons/' . ucfirst($btn) . '.phtml'));
             }
         }
     }

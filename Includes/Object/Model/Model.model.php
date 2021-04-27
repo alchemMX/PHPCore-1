@@ -11,19 +11,17 @@ use \Model\System\System;
 abstract class Model
 {
     /**
-     * @var object $language Language
+     * @var \Model\Language $language Language
      */
     protected \Model\Language $language;
 
     /**
-     * @var object $language Language
+     * @var \Model\System\System $system System
      */
     protected \Model\System\System $system;
     
     /**
      * Constructor
-     *
-     * @return void
      */
     public function __construct()
     {

@@ -7,7 +7,7 @@ class Unlike extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'data' => [
             'post_id'
         ],
@@ -19,7 +19,7 @@ class Unlike extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'verify' => [
             'block' => '\Block\Post',
             'method' => 'get',

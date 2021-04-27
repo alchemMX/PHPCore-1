@@ -49,7 +49,7 @@ class VisualizationObjectDelete
     /**
      * Deletes button
      *
-     * @param  string $key
+     * @param  string $key If null - deletes all buttons
      * 
      * @return void
      */
@@ -59,12 +59,11 @@ class VisualizationObjectDelete
             unset($this->object['data']['button']);
             return;
         }
-
         unset($this->object['data']['button'][$key]);
     }
 
     /**
-     * Deletes row from body
+     * Deletes object from body
      *
      * @param  string $key
      * 

@@ -8,7 +8,7 @@
                     <?= $this->build->user->image($row['data'], true) ?>
                     <div class="inner">
                         <div class="block-title">
-                            <?php require $this->template->require('/Blocks/Labels'); ?>
+                            <?php require $this->template->require('/Blocks/Labels.phtml'); ?>
                             <span ajax-selector="name"><?= $row['data']['name'] ?></span>
                         </div>
                         <?= $this->build->user->link($row['data'], true) ?>
@@ -30,7 +30,7 @@
                     <div class="block-image" style="background-image: url(/Uploads/Topics/<?= $row['data']['id'] ?>.<?= $row['data']['image'] ?>);"></div>
                 <?php endif; ?>
 
-                <?php require $this->template->require('/Blocks/Block/Notice/Load'); ?>
+                <?php require $this->template->require('/Blocks/Block/Notice/Load.phtml'); ?>
 
                 <div class="block-body" ajax-selector="block-body">
                     <div class="block-content" ajax-selector="block-content"><?= $row['data']['text'] ?></div>
@@ -40,7 +40,7 @@
                         </div>
                     <?php endif; ?>
                     <?php if (!empty($row['data']['likes'])) : ?>
-                        <?php require $this->template->require('/Blocks/Block/Likes'); ?>
+                        <?php require $this->template->require('/Blocks/Block/Likes.phtml'); ?>
                     <?php endif; ?>
                     <div ajax-place="likes"></div>
                     <?php if (!empty($row['data']['button'])) : ?>

@@ -45,7 +45,7 @@ class SystemStatistics
     public function set( string $key, int $value )
     {
         if (!isset(self::$statistics[$key])) {
-            return false;
+            self::$statistics[$key] = 0;
         }
 
         self::$statistics[$key] = (int)self::$statistics[$key] + (int)$value;

@@ -51,7 +51,7 @@ class VisualizationObjectGet
     }
 
     /**
-     * Returns template path
+     * Returns template
      *
      * @param  string $key
      * 
@@ -63,7 +63,7 @@ class VisualizationObjectGet
     }
 
     /**
-     * Returns cihld row convert data
+     * Returns cihld default object convert data
      * 
      * @return array
      */
@@ -75,11 +75,11 @@ class VisualizationObjectGet
     /**
      * Returns button data
      *
-     * @param  string $key
+     * @param  string $key If null - returns all buttons
      * 
      * @return mixed
      */
-    public function button( string $key = null)
+    public function button( string $key = null )
     {
         if (is_null($key)) {
             return $this->object['data']['button'] ?? [];
@@ -91,7 +91,7 @@ class VisualizationObjectGet
     /**
      * Returns object body or row from body
      * 
-     * @param string $key
+     * @param string $key If null - returns whole body
      * 
      * @return array
      */

@@ -8,13 +8,13 @@ namespace Block;
 class Deleted extends Block
 {
     /**
-     * Returns deleted content details
+     * Returns deleted content
      *
      * @param  int $deletedID Deleted ID
      * 
      * @return array
      */
-    public function get( $deletedID )
+    public function get( int $deletedID )
     {
         return $this->db->query('
             SELECT *

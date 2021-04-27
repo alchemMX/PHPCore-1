@@ -27,7 +27,10 @@
                 },
                 "is_main": {
                     "options": {
-                        "type": "checkbox"
+                        "type": "checkbox",
+                        "on": {
+                            "disable": "enable_link"
+                        }
                     },
                     "data": {
                         "desc": "L_FORUM_MAIN_DESC",
@@ -94,11 +97,11 @@
                     }
                 },
                 "forum_link": {
-                    "on": {
-                        "show": "enable_link"
-                    },
                     "options": {
-                        "type": "text"
+                        "type": "text",
+                        "on": {
+                            "show": "enable_link"
+                        }
                     },
                     "data": {
                         "title": "L_FORUM_LINK",

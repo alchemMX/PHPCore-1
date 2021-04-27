@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html id="html" lang="cs-cz" class="acp no-transition">
+<html id="html" lang="cs-cz" class="html-hidden">
 
-    <?php require $this->template->require('/Blocks/Head'); ?>
+    <?php require $this->template->require('/Blocks/Head.phtml'); ?>
 
     <body id="body">
         
-        <?php require $this->template->require('/Blocks/Navbar/Navbar'); ?>
+        <?php require $this->template->require('/Blocks/Navbar/Navbar.phtml'); ?>
 
         <div class="page" ajax-selector="page">
-            <?php require $this->template->require('/Blocks/NavbarTop'); ?>
+            <?php require $this->template->require('/Blocks/NavbarTop.phtml'); ?>
             <div class="page-body">
                 <div class="page-container container">
             
@@ -41,8 +41,8 @@
         </div>
         <div class="window-opacity"></div>
         <script src="/Assets/jQuery/jQuery.min.js?<?= $this->system->settings->get('session') ?>"></script> 
-        <script src="/Assets/cAjax/cAjax.js?11"></script>
-        <script src="/Includes/Admin/Styles/Default/Themes/Addons.js?22"></script>
+        <script src="/Assets/cAjax/cAjax.js?33"></script>
+        <script src="/Includes/Admin/Styles/Default/Themes/Addons.min.js?44"></script>
         <script src="/Assets/ApexCharts/ApexCharts.min.js"></script>
     </body>
     

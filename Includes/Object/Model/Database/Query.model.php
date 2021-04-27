@@ -5,24 +5,12 @@ namespace Model\Database;
 /**
  * Query
  */
-class Query extends Database {
-    
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        if (empty(self::$connect)) {
-            parent::__construct();
-        }
-
-        return $this;
-    }
-
+class Query extends Database
+{
     /**
      * Executes query
      *
-     * @param  string $query
+     * @param  string $query The query
      * @param  array $parameters
      * @param  int $catchType
      * 
@@ -39,28 +27,28 @@ class Query extends Database {
     /**
      * Update query
      *
-     * @param  string $tableName
-     * @param  array $query
+     * @param  string $table Table name
+     * @param  array $query The query
      * @param int $id Item id
      * 
      * @return void
      */
-    public function update( string $tableName, array $query, int $id = null )
+    public function update( string $table, array $query, int $id = null )
     {
-        $this->compile($tableName, $query, 'update', $id);
+        $this->compile($table, $query, 'update', $id);
     }
 
     /**
      * Insert query
      *
-     * @param  string $tableName
-     * @param  array $query
+     * @param  string $table Table name
+     * @param  array $query The query
      * 
      * @return void
      */
-    public function insert( string $tableName, array $query )
+    public function insert( string $table, array $query )
     {
-        $this->compile($tableName, $query, 'insert');
+        $this->compile($table, $query, 'insert');
         $this->id = self::$connect->lastInsertId();
     }
 }

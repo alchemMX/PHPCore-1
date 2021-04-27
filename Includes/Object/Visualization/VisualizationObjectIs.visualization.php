@@ -23,19 +23,19 @@ class VisualizationObjectIs
     }
 
     /**
-     * Returns value from data
+     * Checks if data exists
      *
      * @param  string $key
      * 
      * @return bool
      */
-    public function data( string $key = null )
+    public function data( string $key )
     {
         return isset($this->object['data'][$key]);
     }
 
     /**
-     * Returns value from options
+     * Checks if options exists
      *
      * @param  string $key
      * 
@@ -47,7 +47,7 @@ class VisualizationObjectIs
     }
 
     /**
-     * Returns template path
+     * Checks if template exists
      *
      * @param  string $key
      * 
@@ -59,7 +59,7 @@ class VisualizationObjectIs
     }
 
     /**
-     * Returns cihld row convert data
+     * Checks if convert data from default object exists
      * 
      * @return bool
      */
@@ -69,25 +69,9 @@ class VisualizationObjectIs
     }
 
     /**
-     * Returns button data
-     *
-     * @param  string $key
+     * Checks if body or object in body exists
      * 
-     * @return bool
-     */
-    public function button( string $key = null)
-    {
-        if (is_null($key)) {
-            return isset($this->object['data']['button']);
-        }
-
-        return isset($this->object['data']['button'][$key]);
-    }
-
-    /**
-     * Returns object body or row from body
-     * 
-     * @param string $key
+     * @param string $key If null - checks if body exists
      * 
      * @return bool
      */

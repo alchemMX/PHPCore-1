@@ -8,7 +8,7 @@ namespace Model;
 class Pagination
 {
     /**
-     * @var array $pagination SDefault pagination data
+     * @var array $pagination Pagination data
      */
     private array $pagination = ['enabled' => false, 'url' => ''];
 
@@ -67,7 +67,7 @@ class Pagination
     }
     
     /**
-     * Returns total amount of objects
+     * Returns max objects on one page
      *
      * @return int
      */
@@ -83,7 +83,6 @@ class Pagination
      */
     public function getData()
     {
-
         // IF IS NOT ENTERED ONE OF REQUIRED PARAMETERS
         if (isset($this->pagination['total']) === false or isset($this->pagination['max']) === false) return false;
 
@@ -127,7 +126,7 @@ class Pagination
             // DATA
             'data' => $paginationData,
 
-            // URL PAGE
+            // URL
             'url' => $this->pagination['url'],
 
             // IF NEXT BUTTON IS ENABLED

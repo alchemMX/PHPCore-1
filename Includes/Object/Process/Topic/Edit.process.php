@@ -9,7 +9,7 @@ class Edit extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
             'topic_name'            => [
                 'type' => 'text',

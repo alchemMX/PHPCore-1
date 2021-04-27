@@ -3,7 +3,7 @@
 namespace Visualization\Sidebar;
 
 /**
- * Sidebar visualization
+ * Sidebar
  */
 class Sidebar extends \Visualization\Visualization
 {

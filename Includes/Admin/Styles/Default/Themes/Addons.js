@@ -1,12 +1,14 @@
-
-// CLONE NAVBAR TO MOBILE NAVBAR
 $('.navbar.navbar-default .container > ul').clone().appendTo('.navbar.navbar-mobile');
 
 $('body').on('click', function(event) {
 
+    if (!$(event.target).parents('[ajax-selector="window"]').length) {
+        $('[ajax-selector="window"]').removeClass('window-active');
+    }
+
     if ($(event.target).attr('ajax') == 'close') {
         $(event.target).closest('[ajax-selector="alert"]').remove();
-        $(event.target).closest('[ajax-selector="window"]').removeClass('window-active');
+        $(event.target).closest('[ajax-selector="window"]').remove();
     }
 
     if ($(event.target).parents('[ajax-selector^="navbar"]').length == 0) {
@@ -14,16 +16,14 @@ $('body').on('click', function(event) {
     }
 });
 
+window.onload = function() {
+    $('html').removeClass('html-hidden');
+}
 
 // ALLOW FONT AWESOME IN PSEUDO ELEMENTS
 window.FontAwesomeConfig = {
     searchPseudoElements: true
 }
-
-// SHOW PAGE WHEN IS LOADED
-$(document).ready(function() {
-    $('body').css('display', 'flex');
-});
 
 // TAB
 $('.' + $('.tab-button.default').attr('id')).show();
@@ -124,19 +124,6 @@ $('[ajax="title"]').on({
         }, 500);
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 $.cAjax('up', {
     ajax: {

@@ -81,14 +81,16 @@ class Profile extends Page
                 $block->delButton();
             }
 
-            if ($item['report_id']) {
+            if ($item['report_id'] and $item['report_status'] == 0 and $this->user->perm->has('admin.forum')) {
                 $block->notice('reported');
+                $block->disable();
             }
 
             // IF PROFILE POST IS DELETED
             if ($item['deleted_id']) {
 
                 $block->notice('deleted');
+                $block->disable();
                 $block->delButton();
                 $block->close();
             } else {
@@ -129,6 +131,7 @@ class Profile extends Page
                     if ($_item['deleted_id']) {
 
                         $block->close();
+                        $block->disable();
                         $block->notice('deleted');
                     }
                 } else {
@@ -142,8 +145,9 @@ class Profile extends Page
                     }
                 }
 
-                if ($_item['report_id']) {
+                if ($_item['report_id'] and $_item['report_status'] == 0 and $this->user->perm->has('admin.forum')) {
                     $block->notice('reported');
+                    $block->disable();
                 }
 
                 // IF IS SET SELECT

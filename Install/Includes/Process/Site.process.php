@@ -7,7 +7,7 @@ class Site extends Process
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
             'name'      => [
                 'type' => 'text',

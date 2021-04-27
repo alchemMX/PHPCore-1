@@ -3,56 +3,56 @@
 namespace Model;
 
 /**
- * Session class
+ * Session
  */
 class Session 
 {
     /**
-     * Checks if given session exists
+     * Checks if session exists
      *
-     * @param string $key
+     * @param string $session Session name
      * 
      * @return bool
      */
-    public static function exists( string $key )
+    public static function exists( string $session )
     {
-        return isset($_SESSION[$key]) ? true : false;
+        return isset($_SESSION[$session]);
     }
     
     /**
-     * Returns value of given session.
+     * Returns value of session.
      *
-     * @param string $key
+     * @param string $session Session name
      * 
      * @return string
      */
-    public static function get( string $key )
+    public static function get( string $session )
     {
-        return $_SESSION[$key] ?? '';
+        return $_SESSION[$session] ?? '';
     }
 
     /**
      * Creates new session
      *
-     * @param string $name
+     * @param string $session Session name
      * @param mixed $value
      * 
      * @return void
      */
-    public static function put( string $name, mixed $value )
+    public static function put( string $session, mixed $value )
     {
-        $_SESSION[$name] = $value;
+        $_SESSION[$session] = $value;
     }
 
     /**
      * Deletes session
      *
-     * @param string $name
+     * @param string $session Session name
      * 
      * @return void
      */
-    public static function delete( string $name )
+    public static function delete( string $session )
     {
-        unset($_SESSION[$name]);
+        unset($_SESSION[$session]);
     }
 }

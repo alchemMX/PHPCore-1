@@ -39,7 +39,7 @@ class Category extends Block
     /**
      * Returns id of all groups which has permission to see category
      *
-     * @param  int $categoryID
+     * @param  int $categoryID Category ID
      * 
      * @return array
      */

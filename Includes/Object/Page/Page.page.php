@@ -16,11 +16,6 @@ abstract class Page
     private array $listOfOperations = ['add', 'move', 'deleteall', 'new', 'edit', 'delete', 'up', 'down', 'activate', 'lock', 'unlock', 'stick', 'unstick', 'send', 'leave', 'mark', 'back', 'like', 'unlike', 'set', 'refresh'];
 
     /**
-     * @var mixed $id Page id
-     */
-    private static mixed $id = '';
-
-    /**
      * @var string $definedURL Stored page or folder pre-defined redirect url
      */
     private static string $definedURL = '';
@@ -41,68 +36,60 @@ abstract class Page
     protected object $page;
 
     /**
-     * @var object $data Data model
+     * @var \Model\Data $data Data
      */
     protected \Model\Data $data;
     
     /**
-     * @var object $user User model
+     * @var \Model\User $user User
      */
     protected \Model\User $user;
     
     /**
-     * @var object $build Builder model
+     * @var \Model\Build\Build $build Build
      */
     protected \Model\Build\Build $build;
     
     /**
-     * @var object $process Process
+     * @var \Process\Process $process Process
      */
     protected \Process\Process $process;
     
     /**
-     * @var object $language Language model
+     * @var \Model\Language $language Language
      */
     protected \Model\Language $language;
 
     /**
-     * @var object $template Template model
+     * @var \Model\Template $template Template
      */
     protected \Model\Template $template;
 
     /**
-     * @var object $system System model
+     * @var \Model\System\System $system System
      */
     protected \Model\System\System $system;
 
     /**
-     * @var string $navbar Navbar visualization
+     * @var \Visualization\Navbar\Navbar $navbar Navbar
      */
     protected \Visualization\Navbar\Navbar $navbar;
 
     /**
-     * @var string $url Current page url
-     */
-    protected static string $url = '/';
-
-    /**
-     * @var array $parsedURL Parsed url
+     * @var array $parsedURL Parsed URL
      */
     protected static array $parsedURL = [];
 
     /**
-     * @var array $urlData Data from parsed url
+     * @var array $urlData Data from URL
      */
     protected static array $urlData = ['page' => 1];
 
     /**
      * Construct
-     *
-     * @return void
      */
     public function __construct()
     {
-        // OPTIMALIZE VARIABLE
         if (self::$parsedURL){
             self::$parsedURL = array_values(array_filter(self::$parsedURL));
         }
@@ -129,22 +116,22 @@ abstract class Page
             array_pop($pageClass);
         }
 
-        $this->style->URL = $this->urlExc = $this->system->url->build(mb_strtolower(implode('/', array_filter($pageClass))));
+        $this->style->URL = $this->system->url->build(mb_strtolower(implode('/', array_filter($pageClass))));
         
         // LOADS ID
         if (isset($this->settings['id'])) {
 
             self::$parsedURL[0] ?? [] or $this->error();
 
-            $this->style->ID = self::$id = explode('.', self::$parsedURL[0])[0];
+            $this->style->ID = explode('.', self::$parsedURL[0])[0];
             
             if ($this->settings['id'] == int) {
-                if (!ctype_digit(self::$id)) {
+                if (!ctype_digit($this->style->ID)) {
                     $this->error();
                 }
             }
 
-            $this->style->URL = $this->urlExc .= self::$parsedURL[0] . '/';
+            $this->style->URL .= self::$parsedURL[0] . '/';
         }
         
         // LOADS TITLE
@@ -190,11 +177,9 @@ abstract class Page
                     break;
 
                     case 'notification':
-                        if ($this->settings['notification'] === true) {
-                            $this->data->data([
-                                'globalNotification' => (new \Block\Notification())->getAll()
-                            ]);
-                        }
+                        $this->data->data([
+                            'globalNotification' => (new \Block\Notification())->getAll()
+                        ]);
                     break;
                 }
             }
@@ -300,21 +285,21 @@ abstract class Page
      */
     protected function getURL()
     {
-        return $this->urlExc;
+        return $this->style->URL;
     }
 
     /**
-     * Returns root page url
+     * Returns page item ID
      *
-     * @return mixed
+     * @return string|int
      */
     protected function getID()
     {
-        return self::$id;
+        return $this->style->ID;
     }
 
     /**
-     * Redirects user to error page
+     * Shows error page
      *
      * @return void
      */
@@ -339,7 +324,7 @@ abstract class Page
     }
 
     /**
-     * Returns content of given path
+     * Returns content of file
      *
      * @return string
      */

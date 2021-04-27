@@ -9,9 +9,10 @@ $language = array_merge($language, array(
     'L_BAR_OPTIONS' => 'Registrační údaje',
     'L_BAR_MESSAGES' => 'Konverzace',
     'L_BAR_SIGNATURE' => 'Podpis',
-    'L_BAR_MESSAGE_LIST' => 'Seznam konverzací',
+    'L_BAR_CONVERSATION' => 'Konverzace',
+    'L_BAR_CONVERSATION_LIST' => 'Seznam konverzací',
+    'L_BAR_CONVERSATION_NEW' => 'Nová konverzace',
     'L_BAR_USER_SETTINGS' => 'Uživatelské nastavení',
-    'L_BAR_MESSAGE_PARTICIPANTS' => 'Účastníci konverzace',
 
 
     // ABOUT
@@ -52,24 +53,23 @@ $language = array_merge($language, array(
     'L_USER_SIGNATURE_DESC' => 'Bude zobrazen na profilu a pod každým vaším příspěvkem',
 
 
-    // PM
+    // CONVERSATION
 
-    'L_USER_PM_SEND' => 'Poslat zprávu',
-    'L_USER_PM_NEW' => 'Nová zpráva',
-    'L_USER_PM_NEW_LABEL' => 'Nová zpráva',
-    'L_USER_PM_SUBJECT' => 'Předmět zprávy',
-    'L_USER_PM_INFO' => 'Informace o konverzaci',
-    'L_USER_PM_NO' => 'Žádné zprávy',
-    'L_USER_PM_BODY' => 'Tělo zprávy', 
-    'L_USER_PM_LEAVE' => 'Opustit konverzaci',
-    'L_USER_PM_MESSAGE_COUNT' => 'Odpovědí',
-    'L_USER_PM_RECIPIENT_LIST' => 'Seznam účastníků',
-    'L_USER_PM_RECIPIENT_COUNT' => 'Účastníků',
-    'L_USER_PM_RECIPIENT_NO' => 'Žádní příjemci',
-    'L_USER_PM_MESSAGE_LAST' => 'Poslední odpověď',
-    'L_USER_PM_RECIPIENT_ADD' => 'Přidat účastníky',
-    'L_USER_PM_RECIPIENT_ADD_DESC' => 'Rozlišujte malá a velká písměna',
-    'L_USER_PM_MARK_AS_UNREAD' => 'Označit jako nepřečtené',
+    'L_USER_CONVERSATION_SEND' => 'Poslat zprávu',
+    'L_USER_CONVERSATION_NEW' => 'Nová konverzace',
+    'L_USER_CONVERSATION_SUBJECT' => 'Předmět konverzace',
+    'L_USER_CONVERSATION_INFO' => 'Informace o konverzaci',
+    'L_USER_CONVERSATION_NO' => 'Žádné konverzace',
+    'L_USER_CONVERSATION_BODY' => 'Tělo konverzace', 
+    'L_USER_CONVERSATION_LEAVE' => 'Opustit konverzaci',
+    'L_USER_CONVERSATION_MESSAGE_COUNT' => 'Odpovědí',
+    'L_USER_CONVERSATION_RECIPIENT_LIST' => 'Seznam účastníků',
+    'L_USER_CONVERSATION_RECIPIENT_COUNT' => 'Účastníků',
+    'L_USER_CONVERSATION_RECIPIENT_NO' => 'Žádní příjemci',
+    'L_USER_CONVERSATION_MESSAGE_LAST' => 'Poslední odpověď',
+    'L_USER_CONVERSATION_RECIPIENT_ADD' => 'Přidat účastníky',
+    'L_USER_CONVERSATION_RECIPIENT_ADD_DESC' => 'Rozlišujte malá a velká písmena',
+    'L_USER_CONVERSATION_MARK_AS_UNREAD' => 'Označit jako nepřečtené',
 
 
     // REGISTRATION

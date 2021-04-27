@@ -10,7 +10,7 @@ class UserNotification extends Block
     /**
      * Returns users notifications
      *
-     * @param  int $userID
+     * @param  int $userID User ID
      * 
      * @return array
      */

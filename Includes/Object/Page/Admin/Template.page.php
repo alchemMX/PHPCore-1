@@ -43,8 +43,16 @@ class Template extends \Page\Page
 
         // LIST
         $list = new Lists('Admin/Template');
-        $list->object('current')->appTo(['template_name' => $this->system->template->get('name')])
-            ->object('loaded')->fill($templates);
+        $list->object('current')->appTo(['template_name' => $this->system->template->get('name')]);
+
+        foreach ($templates as $item) {
+            $list->object('loaded')->appTo($item)->jumpTo();
+
+            if ($item['template_name_folder'] === 'Default') {
+                $list->delButton('delete');
+            }
+        }
+
         $this->data->list = $list->getData();
 
         // REFRESH TEMPLATE

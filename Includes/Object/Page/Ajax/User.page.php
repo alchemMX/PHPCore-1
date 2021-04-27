@@ -7,7 +7,7 @@ use Block\User as BlockUser;
 use Model\Get;
 
 /**
- * Ajax page
+ * User
  */
 class User extends \Page\Page
 {

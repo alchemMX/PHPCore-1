@@ -3,7 +3,7 @@
 namespace Visualization\Lists;
 
 /**
- * List visualization
+ * Lists
  */
 class Lists extends \Visualization\Visualization
 {

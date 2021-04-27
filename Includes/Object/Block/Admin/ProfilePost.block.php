@@ -10,7 +10,7 @@ class ProfilePost extends \Block\ProfilePost
     /**
      * Returns profile post
      * 
-     * @param int $profilePostID
+     * @param int $profilePostID Profile post ID
      * 
      * @return array
      */
@@ -29,7 +29,7 @@ class ProfilePost extends \Block\ProfilePost
     /**
      * Returns profile posts from profile
      * 
-     * @param int $profileID
+     * @param int $profileID Profile ID
      * 
      * @return array
      */
@@ -40,7 +40,7 @@ class ProfilePost extends \Block\ProfilePost
             CASE WHEN ( SELECT COUNT(*) FROM ' . TABLE_PROFILE_POSTS_COMMENTS . ' WHERE profile_post_id = pp.profile_post_id ) > 5 THEN 1 ELSE 0 END AS next
             FROM ' . TABLE_PROFILE_POSTS . '
             ' . $this->join->user('pp.user_id'). '
-            LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = pp.report_id AND r.report_status = 0
+            LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = pp.report_id
             WHERE profile_id = ?
             ORDER BY profile_post_time DESC
             LIMIT ?, ?
@@ -51,11 +51,16 @@ class ProfilePost extends \Block\ProfilePost
     /**
      * Returns count of profile posts from profile
      *
-     * @param  int $profileID ProfileID
+     * @param  int $profileID ProfileID Profile ID
+     * 
      * @return int
      */
     public function getParentCount( int $profileID )
     {
-        return (int)$this->db->query('SELECT COUNT(*) AS count FROM ' . TABLE_PROFILE_POSTS . ' WHERE profile_id = ?', [$profileID])['count'];
+        return (int)$this->db->query('
+            SELECT COUNT(*) AS count
+            FROM ' . TABLE_PROFILE_POSTS . '
+            WHERE profile_id = ?
+        ', [$profileID])['count'];
     } 
 }

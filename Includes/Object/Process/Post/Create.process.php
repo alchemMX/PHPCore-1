@@ -7,7 +7,7 @@ class Create extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
 
             // POST TEXT
@@ -23,6 +23,7 @@ class Create extends \Process\ProcessExtend
         'block' => [
             'user_id',
             'forum_id',
+            'is_locked',
             'post_permission'
         ]
     ];
@@ -30,7 +31,7 @@ class Create extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'verify' => [
             'block' => '\Block\Topic',
             'method' => 'get',
@@ -45,7 +46,13 @@ class Create extends \Process\ProcessExtend
      */
     public function process()
     {
+        // IF USER DOESN'T HAVE PERMISSION TO CREATE NEW POST
         if ($this->data->get('post_permission') == 0) {
+            return false;
+        }
+
+        // IF TOPIC IS LOCKED
+        if ($this->data->get('is_locked') == 1) {
             return false;
         }
             

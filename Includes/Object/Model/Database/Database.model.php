@@ -2,7 +2,6 @@
 
 namespace Model\Database;
 
-use PDO;
 use Model\Database\QueryCompiler;
 
 /**
@@ -11,9 +10,9 @@ use Model\Database\QueryCompiler;
 class Database
 {
     /**
-     * @var object $connect Connect to database
+     * @var \PDO $connect PDO
      */
-    protected static object $connect;
+    protected static \PDO $connect;
 
     /**
      * @var int $id Last inserted id
@@ -21,30 +20,30 @@ class Database
     protected int $id;
 
     /**
-     * @var array $options Connection options
+     * @var array $options PDO options
      */
-    private static array $options = [
-        PDO::ATTR_ERRMODE               => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_EMULATE_PREPARES      => false,
-        PDO::MYSQL_ATTR_INIT_COMMAND    => 'SET NAMES utf8mb4',
+    private array $options = [
+        \PDO::ATTR_ERRMODE               => \PDO::ERRMODE_EXCEPTION,
+        \PDO::ATTR_EMULATE_PREPARES      => false,
+        \PDO::MYSQL_ATTR_INIT_COMMAND    => 'SET NAMES utf8mb4',
     ];
     
     /**
      * Constructor
      */
-    protected function __construct()
+    public function __construct()
     {
-        try {
-            // GET DATABASE ACCESS
-            $access = json_decode(@file_get_contents(ROOT . '/Includes/Settings/.htdata.json'), true);
+        if (!isset(self::$connect)) {
+            try {
 
-            // CONNECT
-            self::$connect = @new PDO('mysql:dbname=' . $access['name'] . ';host=' . $access['host'] . ';port=' . $access['port'] . ';charset=utf8mb4', $access['user'], $access['pass'], self::$options);
-            
-            return true;
+                $access = json_decode(@file_get_contents(ROOT . '/Includes/Settings/.htdata.json'), true);
 
-        } catch (\Exception $e) {
-            throw new \Exception\System('Nepodařilo se připojit k databázi! ' . $e->getMessage());
+                // CONNECT
+                self::$connect = @new \PDO('mysql:dbname=' . $access['name'] . ';host=' . $access['host'] . ';port=' . $access['port'] . ';charset=utf8mb4', $access['user'], $access['pass'], $this->options);
+
+            } catch (\Exception $e) {
+                throw new \Exception\System('Nepodařilo se připojit k databázi! ' . $e->getMessage());
+            }
         }
     }
 
@@ -70,7 +69,7 @@ class Database
     {
         try {
             $row = self::$connect->prepare($query);
-            $row->execute((array)$param);
+            $row->execute($param);
 
             return $row;
 
@@ -84,8 +83,8 @@ class Database
      *
      * @param  string $tableName
      * @param  array $query
-     * @param  string $type
-     * @param int $id Item Id
+     * @param  string $type Query type
+     * @param  int $id Item Id
      * 
      * @return string Compiled query
      */

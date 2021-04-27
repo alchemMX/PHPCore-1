@@ -40,7 +40,5 @@ class Add extends \Page\Page
                 ]
             ]
         ]);
-
     }
-
 }

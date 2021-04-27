@@ -25,7 +25,7 @@ class SystemSettings
     /**
      * Returns value from system settings
      *
-     * @param  string $key
+     * @param  string|null $key If null - returns whole system settings
      * 
      * @return mixed
      */
@@ -41,7 +41,7 @@ class SystemSettings
     /**
      * Sets value to system settings
      *
-     * @param  string|array $key
+     * @param  string|array $key If is array - replaces whole system settings with this array
      * @param  mixed $value
      * 
      * @return void

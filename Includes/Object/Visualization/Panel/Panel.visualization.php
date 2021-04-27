@@ -3,7 +3,7 @@
 namespace Visualization\Panel;
 
 /**
- * Panel visualization
+ * Panel
  */
 class Panel extends \Visualization\Visualization
 {

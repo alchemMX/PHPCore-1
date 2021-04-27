@@ -17,7 +17,7 @@ class Post extends Block
     public function get( int $postID )
     {
         return $this->db->query('
-            SELECT p.*, t.topic_id, t.topic_url, t.topic_name, t.topic_posts, CASE WHEN fpp.forum_id IS NOT NULL THEN 1 ELSE 0 END AS post_permission,
+            SELECT p.*, t.topic_id, t.is_locked, t.topic_url, t.topic_name, t.topic_posts, CASE WHEN fpp.forum_id IS NOT NULL THEN 1 ELSE 0 END AS post_permission,
                 (SELECT COUNT(*) FROM ' . TABLE_POSTS . '2 WHERE p2.post_id <= p.post_id AND p2.topic_id = p.topic_id AND p2.deleted_id IS NULL) AS position
             FROM ' . TABLE_POSTS . ' 
             LEFT JOIN ' . TABLE_TOPICS . ' ON t.topic_id = p.topic_id
@@ -118,7 +118,8 @@ class Post extends Block
     /**
      * Returns users who liked post
      *
-     * @param  int $postID
+     * @param  int $postID Post ID
+     * @param int $number Number of users
      * 
      * @return array
      */
@@ -137,7 +138,7 @@ class Post extends Block
     /**
      * Returns all users who liked post
      *
-     * @param  int $ID
+     * @param  int $postID Post ID
      * 
      * @return array
      */

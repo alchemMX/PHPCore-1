@@ -5,12 +5,12 @@ namespace Model\Database;
 /**
  * QueryCompiler
  */
-class QueryCompiler {
-
+class QueryCompiler
+{
     /**
-     * @var array $listOfTables List of table keys
+     * @var array $tableKeys List of table keys
      */
-    private $tableKeys = [
+    private array $tableKeys = [
         TABLE_BUTTONS => 'button_id',
         TABLE_BUTTONS_SUB => 'button_sub_id',
         TABLE_CATEGORIES => 'category_id',
@@ -24,12 +24,11 @@ class QueryCompiler {
         TABLE_GROUPS => 'group_id',
         TABLE_LABELS => 'label_id',
         TABLE_LOG => 'log_id',
-        TABLE_MESSAGES => 'message_id',
+        TABLE_CONVERSATIONS => 'conversation_id',
+        TABLE_CONVERSATIONS_MESSAGES => 'conversation_message_id',
         TABLE_PAGES => 'page_id',
         TABLE_POSTS => 'post_id',
         TABLE_POSTS_LIKES => 'post_id',
-        TABLE_PRIVATE_MESSAGES => 'pm_id',
-        TABLE_PRIVATE_MESSAGES_RECIPIENTS => 'pm_id',
         TABLE_PROFILE_POSTS => 'profile_post_id',
         TABLE_PROFILE_POSTS_COMMENTS => 'profile_post_comment_id',
         TABLE_NOTIFICATIONS => 'notification_id',
@@ -65,13 +64,11 @@ class QueryCompiler {
 
     /**
      * Constructor
-     * 
-     * Loads query in array
      *
      * @param string $table Table name
      * @param array $query Array query
      * @param string $type Type of query
-     * @param int $id ID of object, only for update query
+     * @param int $id Item ID, only for update query
      */
     public function __construct( string $table, array $query, string $type, int $id = null )
     {
@@ -146,5 +143,4 @@ class QueryCompiler {
     {
         return array_values($this->params);
     }
-
 }

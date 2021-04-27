@@ -161,6 +161,7 @@ class Process {
         $def->addAttribute('span', 'data-user', 'Text');
 
         $this->purifier = new \HTMLPurifier($config);
+
         foreach ($format as $input => $settings) {
 
             foreach ($settings as $key => $value) {
@@ -303,10 +304,10 @@ class Process {
      *
      * @param  string $type Path to process
      * @param  string $on Name of submit button
-     * @param  string $url URL where user will be redirected after successfully execution a process
+     * @param  string $url URL where user will be redirected after successfull process execution
      * @param  array $data Additional process data
      *
-     * @return bool|void If is enabled "Direct mode", returns boolean otherwise user will be automatically redirected to set URL. To enable direct mode call method ->direct().
+     * @return bool|void If is enabled "Direct mode", returns boolean otherwise user will be automatically redirected to set URL.
      */
     public function form( string $type, string $on = 'submit', string $url = null, array $data = [] )
     {
@@ -339,10 +340,10 @@ class Process {
      * Calls a process without submitting a form
      *
      * @param  string $type Path to process
-     * @param  string $url URL where user will be redirected after successfully execution a process
+     * @param  string $url URL where user will be redirected after successfull process execution
      * @param  array $data Additional process data
      * 
-     * @return bool|void If is enabled "Direct mode", returns boolean otherwise user will be automatically redirected to set URL. To enable direct mode call method ->direct().
+     * @return bool|void If is enabled "Direct mode", returns boolean otherwise user will be automatically redirected to set URL.
      */
     public function call( string $type, string $url = null, array $data = [] )
     {
@@ -362,17 +363,17 @@ class Process {
     /**
      * Explodes process
      *
-     * @param  string $processName
+     * @param  string $type Process path
      * 
      * @return object
      */
-    private function explode( string $processName )
+    private function explode( string $type )
     {
         // EXPLODE PROCESS NAME
-        $ex = explode('/', $processName);
+        $ex = explode('/', $type);
 
         // SET VARIABLES
-        $this->process = $processName;
+        $this->process = $type;
 
         $this->id = $this->data[array_key_first($this->data)] ?? 0;
 
@@ -423,7 +424,7 @@ class Process {
                 if ($this->direct === true) {
                     return false;
                 }
-                $this->end(false);
+                throw new \Exception\Notice($this->process);
             }
 
             foreach ($process->require['block'] ?? [] as $column) {
@@ -450,49 +451,26 @@ class Process {
 
             $this->id = $process->getID();
 
+            if ($process->options['success'] ?? SUCCESS_SESSION === SUCCESS_RETURN) {
+                $this->message = $this->process;
+            } else {
+                Session::put('success', $this->process);
+            }
+
             if (AJAX) {
                 $this->redirectURL = $process->redirectURL ?: '';
             } else {
                 $this->redirectURL = $process->redirectURL ?: $this->redirectURL;
                 $this->redirectURL .= PAGE != 1 ? '/page-' . PAGE . '/' : '';
+
+                $this->redirect();
             }
 
-            $this->end(true);
             return true;
 
         }
 
-        $this->end(false);
+        throw new \Exception\Notice($this->process);
         return false;
-    }
-    
-    /**
-     * Ends process
-     *
-     * @param  bool $status
-     * 
-     * @throws \Exception\Notice If $status is false.
-     * 
-     * @return void|bool If "Direct mode" is enabled returns given $status otherwise it will redirect user to pre-defined URL.
-     */
-    private function end( bool $status = false )
-    {
-        // SHOW NOTICE
-        if ($status === true) {
-            if (AJAX and empty($this->redirectURL)) {
-                $this->message = $this->process;
-            } else {
-                Session::put('success', $this->process);
-            }
-        } else {
-            throw new \Exception\Notice($this->process);
-        }
-
-        if ($this->direct === false) {
-
-            // REDIRECTS USER
-            $this->redirect();
-        }
-        return $status;
     }
 }

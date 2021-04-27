@@ -7,7 +7,7 @@ class Edit extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
             'page_name' => [
                 'type' => 'text',
@@ -28,7 +28,7 @@ class Edit extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [];
+    public array $options = [];
 
     /**
      * Body of process

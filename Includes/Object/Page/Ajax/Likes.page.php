@@ -8,7 +8,7 @@ use Block\Topic;
 use Model\Get;
 
 /**
- * Ajax page
+ * Likes
  */
 class Likes extends \Page\Page
 {

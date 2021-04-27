@@ -10,20 +10,21 @@ class Topic extends Block
     /**
      * Returns topic
      *
-     * @param  int $ID
+     * @param  int $topicID Topic ID
      * 
      * @return array
      */
-    public function get( int $ID )
+    public function get( int $topicID )
     {
         return $this->db->query('
-            SELECT t.*, c.*, f.*, ' . $this->select->user() . ', user_signature, user_topics, user_posts, user_reputation, user_last_activity, group_name, group_index,
+            SELECT t.*, c.*, f.*, r.report_status, ' . $this->select->user() . ', user_signature, user_topics, user_posts, user_reputation, user_last_activity, group_name, group_index,
                 CASE WHEN fpt.forum_id IS NOT NULL THEN 1 ELSE 0 END as topic_permission,
                 CASE WHEN fpp.forum_id IS NOT NULL THEN 1 ELSE 0 END as post_permission,
                 CASE WHEN ( SELECT COUNT(*) FROM ' . TABLE_TOPICS_LIKES . ' WHERE topic_id = t.topic_id ) > 5 THEN 1 ELSE 0 END AS is_more_likes,
                 ( SELECT COUNT(*) FROM ' . TABLE_TOPICS_LIKES . ' WHERE topic_id = t.topic_id ) AS count_of_likes
             FROM ' . TABLE_TOPICS . '
             ' . $this->join->user('t.user_id'). '
+            LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = t.report_id 
             LEFT JOIN ' . TABLE_FORUMS . ' ON f.forum_id = t.forum_id 
             LEFT JOIN ' . TABLE_CATEGORIES . ' ON c.category_id = f.category_id
             LEFT JOIN ' . TABLE_FORUMS_PERMISSION_SEE . ' ON fps.forum_id = t.forum_id AND fps.group_id = ' . LOGGED_USER_GROUP_ID . '
@@ -31,17 +32,17 @@ class Topic extends Block
             LEFT JOIN ' . TABLE_FORUMS_PERMISSION_TOPIC . ' ON fpt.forum_id = t.forum_id AND fpt.group_id = ' . LOGGED_USER_GROUP_ID . '
             LEFT JOIN ' . TABLE_CATEGORIES_PERMISSION_SEE . ' ON cps.category_id = t.category_id AND cps.group_id = ' . LOGGED_USER_GROUP_ID . '
             WHERE t.topic_id = ? AND t.deleted_id IS NULL AND fps.forum_id IS NOT NULL AND cps.category_id IS NOT NULL 
-        ', [$ID]);
+        ', [$topicID]);
     }
 
     /**
      * Returns topic. This method is for user notifications.
      *
-     * @param  int $ID Topic ID
+     * @param  int $topicID Topic ID
      * 
-     * @return array Topic Data
+     * @return array
      */
-    public function getUN( int $ID )
+    public function getUN( int $topicID )
     {
         return $this->db->query('
             SELECT t.topic_id, t.topic_name, t.topic_url, f.forum_id, f.forum_url
@@ -51,13 +52,13 @@ class Topic extends Block
             LEFT JOIN ' . TABLE_FORUMS_PERMISSION_SEE . ' ON fps.forum_id = t.forum_id AND fps.group_id = ' . LOGGED_USER_GROUP_ID . '
             LEFT JOIN ' . TABLE_CATEGORIES_PERMISSION_SEE . ' ON cps.category_id = t.category_id AND cps.group_id = ' . LOGGED_USER_GROUP_ID . '
             WHERE t.topic_id = ? AND fps.forum_id IS NOT NULL AND cps.category_id IS NOT NULL
-        ', [$ID]);
+        ', [$topicID]);
     }
 
     /**
      * Returns topics from forum
      *
-     * @param  int $forumID
+     * @param  int $forumID Forum ID
      * 
      * @return array
      */
@@ -87,7 +88,7 @@ class Topic extends Block
     /**
      * Returns count of topics from forum
      *
-     * @param  int $forumID
+     * @param  int $forumID Forum ID
      * 
      * @return int
      */
@@ -103,12 +104,12 @@ class Topic extends Block
     /**
      * Returns users who liked topic
      *
-     * @param  int $ID
+     * @param  int $topicID Topic ID
      * @param  int $number Number of users
      * 
      * @return array
      */
-    public function getLikes( int $ID, int $number = 5 )
+    public function getLikes( int $topicID, int $number = 5 )
     {
         return $this->db->query('
             SELECT u.user_id, user_name, u.is_deleted
@@ -117,17 +118,17 @@ class Topic extends Block
             WHERE tl.topic_id = ?
             ORDER BY FIELD(u.user_id, ?) DESC, like_time DESC
             LIMIT ?
-        ', [$ID, LOGGED_USER_ID, $number], ROWS);
+        ', [$topicID, LOGGED_USER_ID, $number], ROWS);
     }
 
     /**
      * Returns all users who liked topic
      *
-     * @param  int $ID
+     * @param  int $topicID Topic ID
      * 
      * @return array
      */
-    public function getLikesAll( int $ID )
+    public function getLikesAll( int $topicID )
     {
         return $this->db->query('
             SELECT ' . $this->select->user() . ', user_text, user_posts, user_reputation
@@ -135,17 +136,17 @@ class Topic extends Block
             ' . $this->join->user('tl.user_id'). '
             WHERE tl.topic_id = ?
             ORDER BY FIELD(u.user_id, ?) DESC
-        ', [$ID, LOGGED_USER_ID], ROWS);
+        ', [$topicID, LOGGED_USER_ID], ROWS);
     }
     
     /**
      * Returns labels from topic
      *
-     * @param  int $ID
+     * @param  int $topicID Topic ID
      * 
      * @return array
      */
-    public function getLabels( int $ID )
+    public function getLabels( int $topicID )
     {
         return $this->db->query('
             SELECT label_name, label_class_name, l.label_id
@@ -153,6 +154,6 @@ class Topic extends Block
             LEFT JOIN ' . TABLE_LABELS . ' ON l.label_id = tlb.label_id
             WHERE tlb.topic_id = ?
             ORDER BY l.position_index DESC
-        ', [$ID], ROWS);
+        ', [$topicID], ROWS);
     }
 }

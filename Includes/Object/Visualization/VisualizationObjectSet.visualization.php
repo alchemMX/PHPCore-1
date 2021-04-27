@@ -23,7 +23,7 @@ class VisualizationObjectSet
     }
 
     /**
-     * Set value to object
+     * Sets value to object
      *
      * @param  string $key
      * @param  mixed $value
@@ -36,7 +36,7 @@ class VisualizationObjectSet
     }
     
     /**
-     * Set value to data
+     * Sets value to data
      *
      * @param  string $key
      * @param  mixed $value
@@ -49,7 +49,7 @@ class VisualizationObjectSet
     }
 
     /**
-     * Set value to options
+     * Sets value to options
      *
      * @param  string $key
      * @param  mixed $value
@@ -62,7 +62,7 @@ class VisualizationObjectSet
     }
 
     /**
-     * Set path to template
+     * Sets value to template
      *
      * @param  string $key
      * @param  mixed $value
@@ -75,7 +75,7 @@ class VisualizationObjectSet
     }
 
     /**
-     * Set data to button
+     * Sets data to button
      *
      * @param  string $key
      * @param  mixed $value
@@ -101,7 +101,7 @@ class VisualizationObjectSet
     }
 
     /**
-     * Set data to notice
+     * Sets data to notice
      *
      * @param  string $key
      * @param  mixed $value

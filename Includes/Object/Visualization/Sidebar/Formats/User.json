@@ -38,26 +38,26 @@
                 }
             }
         },
-        "pm": {
+        "conversation": {
             "options": {
                 "type":"menu"
             },
             "data": {
-                "title":"L_BAR_MESSAGES"
+                "title":"L_BAR_CONVERSATION"
             },
             "body": {
                 "about": {
                     "data": {
-                        "href":"/user/pm/",
+                        "href":"/user/conversation/",
                         "icon":"fas fa-inbox",
-                        "title":"L_BAR_MESSAGE_LIST"
+                        "title":"L_BAR_CONVERSATION_LIST"
                     }
                 },
                 "settings": {
                     "data": {
-                        "href":"/user/pm/add/",
+                        "href":"/user/conversation/add/",
                         "icon":"fas fa-pen",
-                        "title":"L_USER_PM_NEW"
+                        "title":"L_USER_CONVERSATION_NEW"
                     }
                 }
             }

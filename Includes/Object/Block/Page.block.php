@@ -10,7 +10,7 @@ class Page extends Block
     /**
      * Returns custom page
      *
-     * @param  int $pageID
+     * @param  int $pageID Page ID
      * 
      * @return array
      */

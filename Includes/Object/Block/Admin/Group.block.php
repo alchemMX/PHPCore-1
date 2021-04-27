@@ -10,7 +10,7 @@ class Group extends \Block\Group
     /**
      * Returns group
      *
-     * @param  int $groupID
+     * @param  int $groupID Group ID
      * 
      * @return array
      */

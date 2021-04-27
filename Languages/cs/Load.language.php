@@ -27,6 +27,8 @@ $language = array_merge($language, [
     'L_STRICT_MODE_ENABLED' => 'Strikní režim aktivován!',
     'L_CANCEL' => 'Zrušit',
 
+    'L_RE' => 'Re',
+
     'L_DELETED_USER' => 'Smazaný uživatel',
 
     'L_AUTHOR' => 'Autor obsahu',

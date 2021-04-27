@@ -14,20 +14,21 @@ class System extends \Exception {
      * Construct
      *
      * @param string $error
+     * @param array $assign
      */
-    public function __construct( string $error, array $assignData = null )
+    public function __construct( string $error, array $assign = null )
     {
         $language = new Language();
         $system = new _System();
         extract($language->get());
 
-        if (isset($assignData)) {
+        if (isset($assign)) {
 
-            foreach ($assignData as $key => $value) {
-                $assignData['{' . $key . '}'] = $value;
+            foreach ($assign as $key => $value) {
+                $assign['{' . $key . '}'] = $value;
             }
 
-            $error = $language[$error] ? strtr($language->get($error), $assignData) : $error;
+            $error = $language[$error] ? strtr($language->get($error), $assign) : $error;
         }
 
         if (defined('AJAX') and AJAX === true) {
@@ -42,5 +43,4 @@ class System extends \Exception {
         require ROOT . '/Includes/Object/Exception/Template/Body.phtml';
         exit();
     }
-
 }

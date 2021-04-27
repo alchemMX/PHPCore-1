@@ -7,7 +7,7 @@ class Database extends Process
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
             'host'      => [
                 'type' => 'text',

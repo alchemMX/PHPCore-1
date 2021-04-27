@@ -27,10 +27,8 @@ class Language
 
     /**
      * Returns given key from language
-     * 
-     * To get whole language do not fill $key.
      *
-     * @param  string|null $string If null method returns whole language
+     * @param  string|null $string If null - method returns whole language
      * 
      * @return mixed
      */

@@ -7,7 +7,7 @@ class Activate extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'data' => [
             'user_id'
         ],
@@ -19,7 +19,7 @@ class Activate extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'verify' => [
             'block' => '\Block\User',
             'method' => 'get',

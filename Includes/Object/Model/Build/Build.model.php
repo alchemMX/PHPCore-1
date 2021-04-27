@@ -8,19 +8,19 @@ namespace Model\Build;
 class Build extends \Model\Model
 {  
     /**
-     * @var object $url Builder for url
+     * @var \Model\Build\BuildUrl $url BuildUrl
      */
-    public $url;
+    public \Model\Build\BuildUrl $url;
 
     /**
-     * @var object $date Builder for date
+     * @var \Model\Build\BuildDate $date BuildDate
      */
-    public $date;
+    public \Model\Build\BuildDate $date;
 
     /**
-     * @var object $user Builder for user 
+     * @var \Model\Build\BuildUser $user BuildUser
      */
-    public $user;
+    public \Model\Build\BuildUser $user;
     
     /**
      * Loads builders
@@ -33,15 +33,5 @@ class Build extends \Model\Model
         $this->date = new BuildDate();
         $this->user = new BuildUser();
         $this->user->url = $this->url;
-    }
-
-    /**
-     * Builds max allowed image size
-     *
-     * @return string
-     */
-    public function size()
-    {
-        return strtr($this->language->get('L_MAX_IMAGE_SIZE'), ['{size}' => $this->system->settings->get('max_image_size') / 1024]);
     }
 }

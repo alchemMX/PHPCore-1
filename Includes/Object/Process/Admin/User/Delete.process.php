@@ -9,7 +9,7 @@ class Delete extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'data' => [
             'user_id'
         ],
@@ -21,7 +21,7 @@ class Delete extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'verify' => [
             'block' => '\Block\User',
             'method' => 'get',
@@ -58,7 +58,7 @@ class Delete extends \Process\ProcessExtend
         ', [$this->system->settings->get('default_group'), $this->data->get('user_id')]);
 
         $this->db->query('
-            DELETE pl, tl, unr, un, pp, dc, r, ppc, dc2, r2, fp, v, pmr
+            DELETE pl, tl, unr, un, pp, dc, r, ppc, dc2, r2, fp, v, cr
             FROM ' . TABLE_USERS . '
             LEFT JOIN ' . TABLE_POSTS_LIKES . ' ON pl.user_id = u.user_id
             LEFT JOIN ' . TABLE_TOPICS_LIKES . ' ON tl.user_id = u.user_id
@@ -67,12 +67,12 @@ class Delete extends \Process\ProcessExtend
             LEFT JOIN ' . TABLE_PROFILE_POSTS . ' ON pp.profile_id = u.user_id
             LEFT JOIN ' . TABLE_DELETED_CONTENT . ' ON dc.deleted_id = pp.deleted_id
             LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = pp.report_id
-            LEFT JOIN ' . TABLE_PROFILE_POSTS_COMMENTS . ' ON ppc.profile_id = u.user_id
+            LEFT JOIN ' . TABLE_PROFILE_POSTS_COMMENTS . ' ON ppc.profile_post_id = pp.profile_post_id
             LEFT JOIN ' . TABLE_DELETED_CONTENT . '2 ON dc.deleted_id = ppc.deleted_id
             LEFT JOIN ' . TABLE_REPORTS . '2 ON r.report_id = ppc.report_id
             LEFT JOIN ' . TABLE_FORGOT . ' ON fp.user_id = u.user_id
             LEFT JOIN ' . TABLE_VERIFY . ' ON v.user_id = u.user_id
-            LEFT JOIN ' . TABLE_PRIVATE_MESSAGES_RECIPIENTS . ' ON pmr.user_id = u.user_id
+            LEFT JOIN ' . TABLE_CONVERSATIONS_RECIPIENTS . ' ON cr.user_id = u.user_id
             WHERE u.user_id = ?
         ', [$this->data->get('user_id')]);
 

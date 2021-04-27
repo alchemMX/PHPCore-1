@@ -61,12 +61,7 @@ class Add extends \Page\Page
 
         // CREATE TOPIC
         $this->process->form(type: 'Topic/Create', data: [
-            'forum_id' => $this->getID(),
-            'options' => [
-                'input' => [
-                    'topic_label' => array_column($labels, 'label_id')
-                ]
-            ]
+            'forum_id' => $this->getID()
         ]);
 
         // HEAD

@@ -61,11 +61,11 @@
                     }
                 },
                 "cookie.text": {
-                    "on": {
-                        "show": "cookie.enabled"
-                    },
                     "options": {
-                        "type": "textarea"
+                        "type": "textarea",
+                        "on": {
+                            "show": "cookie.enabled"
+                        }
                     },
                     "data": {
                         "title": "L_WEBSITE_COOKIE_TEXT",

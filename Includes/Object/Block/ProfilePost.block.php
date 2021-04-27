@@ -10,11 +10,11 @@ class ProfilePost extends Block
     /**
      * Returns profile post
      * 
-     * @param int $ID
+     * @param int $profilePostID Profile post ID
      * 
      * @return array
      */
-    public function get( int $ID )
+    public function get( int $profilePostID )
     {
         return $this->db->query('
             SELECT pp.*, u.user_id AS profile_user_id, u.user_name AS profile_user_name,
@@ -22,40 +22,41 @@ class ProfilePost extends Block
             FROM ' . TABLE_PROFILE_POSTS . '
             LEFT JOIN ' . TABLE_USERS . ' ON u.user_id = pp.profile_id
             WHERE profile_post_id = ? AND pp.deleted_id IS NULL
-        ', [$ID]);
+        ', [$profilePostID]);
     }
 
     /**
      * Returns given profile post. This method is for user notifications.
      *
-     * @param  int $ID
+     * @param  int $profilePostID Profile post ID
      * 
      * @return array
      */
-    public function getUN( int $ID )
+    public function getUN( int $profilePostID )
     {
         return $this->db->query('
             SELECT profile_post_id, u.user_id, u.user_name, (SELECT COUNT(*) FROM ' . TABLE_PROFILE_POSTS . '2 WHERE pp2.profile_post_id >= pp.profile_post_id AND pp2.profile_id = pp.profile_id AND pp.deleted_id IS NULL) AS position
             FROM ' . TABLE_PROFILE_POSTS . '
             LEFT JOIN ' . TABLE_USERS . ' ON u.user_id = pp.profile_id
             WHERE profile_post_id = ?
-        ', [$ID]);
+        ', [$profilePostID]);
     }
 
     /**
      * Returns profile posts from profile
      * 
-     * @param int $profileID
+     * @param int $profileID Profile ID
      * 
      * @return array
      */
     public function getParent( int $profileID )
     {
         return $this->db->query('
-            SELECT pp.*, ' . $this->select->user() . ', user_last_activity,
+            SELECT pp.*, r.report_status, ' . $this->select->user() . ', user_last_activity,
                 CASE WHEN ( SELECT COUNT(*) FROM ' . TABLE_PROFILE_POSTS_COMMENTS . ' WHERE profile_post_id = pp.profile_post_id AND ppc.deleted_id IS NULL) > 5 THEN 1 ELSE 0 END AS next
             FROM ' . TABLE_PROFILE_POSTS . '
             ' . $this->join->user('pp.user_id'). '
+            LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = pp.report_id
             WHERE profile_id = ? AND pp.deleted_id IS NULL
             ORDER BY profile_post_time DESC
             LIMIT ?, ?
@@ -66,7 +67,7 @@ class ProfilePost extends Block
     /**
      * Returns count of profile posts from profile
      *
-     * @param  int $profileID
+     * @param  int $profileID Profile post ID
      * 
      * @return int
      */

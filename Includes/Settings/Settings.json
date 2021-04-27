@@ -5,13 +5,14 @@
     "site.favicon":"",
     "site.updated":"",
     "site.started":"",
-    "site.timezone":"Europe/Prague",
+    "site.timezone":"Europe\/Prague",
     "site.language":"cs",
     "site.template":"Default",
     "site.description":"",
     "site.language_editor":"cs",
     "site.background_image":"",
     "site.background_image_position":"center",
+    "registration.terms":"",
     "registration.enabled":0,
     "registration.key_site":"",
     "registration.key_secret":"",
@@ -24,6 +25,6 @@
     "image.max_size":"10400",
     "cookie.enabled":0,
     "cookie.text":"",
-    "session":365958314,
+    "session":864736180,
     "default_group":"1"
 }

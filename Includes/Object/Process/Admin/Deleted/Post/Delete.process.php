@@ -7,16 +7,19 @@ class Delete extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'data' => [
             'deleted_id'
+        ],
+        'block' => [
+            'deleted_type_user_id'
         ]
     ];
 
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'verify' => [
             'block' => '\Block\Deleted',
             'method' => 'get',

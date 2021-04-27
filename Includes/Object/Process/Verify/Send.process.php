@@ -9,7 +9,7 @@ class Send extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'data' => [
             'verify_code',
             'user_email'
@@ -19,7 +19,7 @@ class Send extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'login' => REQUIRE_LOGOUT
     ];
 

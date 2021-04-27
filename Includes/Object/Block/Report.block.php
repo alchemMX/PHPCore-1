@@ -8,13 +8,13 @@ namespace Block;
 class Report extends Block
 {    
     /**
-     * Returns group
+     * Returns report
      *
-     * @param  int $ID
+     * @param  int $reportID Report ID
      * 
      * @return array
      */
-    public function get( $ID )
+    public function get( int $reportID )
     {
         return $this->db->query('
             SELECT r.*, ' . $this->select->user() . '
@@ -22,12 +22,14 @@ class Report extends Block
             LEFT JOIN ' . TABLE_USERS . ' ON u.user_id = r.report_type_user_id
             LEFT JOIN ' . TABLE_GROUPS . ' ON g.group_id = u.group_id
             WHERE report_id = ?
-        ', [$ID]);
+        ', [$reportID]);
     }
 
     /**
      * Returns last pending reports
      *
+     * @param int $number Number of pending reports
+     * 
      * @return array
      */
     public function getLastPending( int $number = 5 )
@@ -82,6 +84,8 @@ class Report extends Block
     /**
      * Returns users by number of reported content
      *
+     * @param int $number Number of users
+     * 
      * @return void
      */
     public function getUsers( int $number = 5 )
@@ -120,9 +124,9 @@ class Report extends Block
     }
     
     /**
-     * Returns count of report text reasons 
+     * Returns count of report reasons 
      *
-     * @param  int $reportID
+     * @param  int $reportID Report ID
      * 
      * @return int
      */
@@ -138,7 +142,7 @@ class Report extends Block
     /**
      * Returns count of all report reasons 
      *
-     * @param  int $reportID
+     * @param  int $reportID Report ID
      * 
      * @return int
      */
@@ -154,7 +158,7 @@ class Report extends Block
     /**
      * Returns all report reasons
      *
-     * @param  int $reportID
+     * @param  int $reportID Report ID
      * 
      * @return array
      */

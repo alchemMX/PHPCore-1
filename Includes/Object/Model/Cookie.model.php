@@ -8,53 +8,52 @@ namespace Model;
 class Cookie 
 {
     /**
-     * Checks ig given cookie exists.
+     * Checks if cookie exists
      *
-     * @param string $key
+     * @param string $cookie Cookie name
      * 
      * @return bool
      */
-    public static function exists( string $key )
+    public static function exists( string $cookie )
     {
-        return isset($_COOKIE[$key]) ? true : false;
+        return isset($_COOKIE[$cookie]);
     }
 
     /**
-     * Returns value of given cookie
+     * Returns value of cookie
      *
-     * @param string $key
+     * @param string $cookie
      * 
      * @return mixed
      */
-    public static function get( string $key )
+    public static function get( string $cookie )
     {
-        return $_COOKIE[$key];
+        return $_COOKIE[$cookie] ?? '';
     }
 
     /**
-     * Creates new cookie.
+     * Creates new cookie
      *
-     * @param string $name
-     * @param mixed $value
+     * @param string $cookie Cookie name
+     * @param mixed $value Cookie value
      * @param int $expiry
      * 
      * @return void
      */
-    public static function put( string $name, $value, int $expiry = 0 )
+    public static function put( string $cookie, $value, int $expiry = 0 )
     {
-        setcookie($name, $value, time() + $expiry, '/', null, null, true);
+        setcookie($cookie, $value, time() + $expiry, '/', null, null, true);
     }
 
     /**
      * Deletes cookie
      *
-     * @param string $key
+     * @param string $cookie Cookie name
      * 
      * @return void
      */
-    public static function delete( string $key )
+    public static function delete( string $cookie )
     {
-        self::put($key, '', -3600);
+        self::put($cookie, '', -3600);
     }
-
 }

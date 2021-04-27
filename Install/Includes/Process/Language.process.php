@@ -7,7 +7,7 @@ class Language extends Process
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
             'language'      => [
                 'type' => 'string',

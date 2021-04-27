@@ -22,7 +22,7 @@ class BuildUrl extends Build
     /**
      * Builds url to post
      *
-     * @param  array $data Post data
+     * @param  array $data Post data [topic_id, topic_url, post_id, ?position]
      * 
      * @return string
      */
@@ -36,7 +36,7 @@ class BuildUrl extends Build
     /**
      * Builds url to topic
      *
-     * @param  array $data Topic data
+     * @param  array $data Topic data [topic_id, topic_url]
      * 
      * @return string
      */
@@ -48,7 +48,7 @@ class BuildUrl extends Build
     /**
      * Builds url to forum
      *
-     * @param  array $data Forum data
+     * @param  array $data Forum data [forum_id, forum_url]
      * 
      * @return string
      */
@@ -60,7 +60,7 @@ class BuildUrl extends Build
     /**
      * Builds url to profile post
      *
-     * @param  array $data Profile post data
+     * @param  array $data Profile post data [profile_user_id, profile_user_name, profilePost_id, ?position]
      * 
      * @return string
      */
@@ -74,7 +74,7 @@ class BuildUrl extends Build
     /**
      * Builds url to profile post comment
      *
-     * @param  array $data Profile post comment data
+     * @param  array $data Profile post comment data [profile_user_id, profile_user_name, profile_post_comment_id, ?position]
      * 
      * @return string
      */
@@ -88,7 +88,7 @@ class BuildUrl extends Build
     /**
      * Builds url to user profile
      *
-     * @param  array $data User profile data
+     * @param  array $data User profile data [user_id, user_name]
      * 
      * @return string
      */

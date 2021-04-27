@@ -44,7 +44,12 @@ class Forum extends Block
             LEFT JOIN (
                 SELECT t.topic_id, t.forum_id, t.topic_name, t.topic_url, t.user_id, CASE WHEN t2.topic_created < p2.post_created THEN p2.post_created ELSE t2.topic_created END AS created
                 FROM ' . TABLE_TOPICS . '
-                LEFT JOIN ' . TABLE_POSTS . '2 ON p2.post_id = ( SELECT MAX(post_id) FROM ' . explode(' ', TABLE_POSTS)[0] . ' WHERE forum_id = t.forum_id AND deleted_id IS NULL)
+                LEFT JOIN ' . TABLE_POSTS . '2 ON p2.post_id = (
+                    SELECT MAX(post_id)
+                    FROM ' . TABLE_POSTS . '3
+                    LEFT JOIN ' . TABLE_TOPICS . '3 ON t3.topic_id = p3.topic_id
+                    WHERE p3.forum_id = t.forum_id AND p3.deleted_id IS NULL AND t3.deleted_id IS NULL
+                )
                 LEFT JOIN ' . TABLE_TOPICS . '2 ON t2.topic_id = ( SELECT MAX(topic_id) FROM ' . explode(' ', TABLE_TOPICS)[0] . ' WHERE forum_id = t.forum_id AND deleted_id IS NULL)
                 WHERE t.topic_id = CASE WHEN t2.topic_created < p2.post_created THEN p2.topic_id ELSE t2.topic_id END AND t.deleted_id IS NULL
             ) t ON t.forum_id = f.forum_id

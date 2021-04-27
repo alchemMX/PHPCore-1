@@ -9,7 +9,7 @@ class Other extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
             'delete_site_background_image'   => [
                 'type' => 'checkbox'
@@ -42,7 +42,7 @@ class Other extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [];
+    public array $options = [];
 
     /**
      * Body of process

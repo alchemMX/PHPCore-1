@@ -92,7 +92,7 @@
                     if (settings.data.status != 'ok') {
 
                         if (settings.data.status == 'error') {
-                            $alert.removeClass('window-hide').addClass('window-active');
+                            $alert.removeClass('window-hide').addClass('window-active').removeClass('window-alert-success');
                             $alert.find('[ajax-selector="window-alert-body"]').text(settings.data.error);
                             setTimeout(function() {
                                 $alert.addClass('window-hide').removeClass('window-active');
@@ -113,10 +113,6 @@
                         $alert.find('[ajax-selector="window-alert-body"]').text(settings.data.message);
                         setTimeout(function() {
                             $alert.addClass('window-hide').removeClass('window-active');
-                            setTimeout(function() {
-                                $alert.removeClass('window-hide');
-                                $alert.removeClass('window-alert-success');
-                            }, 1000)
                         }, 1500);
                     }
 

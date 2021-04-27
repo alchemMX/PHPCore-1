@@ -7,7 +7,7 @@ class Create extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'form' => [
 
             // PROFILE POST TEXT
@@ -25,7 +25,13 @@ class Create extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [];
+    public array $options = [
+        'verify' => [
+            'block' => '\Block\User',
+            'method' => 'get',
+            'selector' => 'user_id'
+        ]
+    ];
 
     /**
      * Body of process
@@ -47,7 +53,6 @@ class Create extends \Process\ProcessExtend
             id: $this->db->lastInsertId(),
             to: $this->data->get('user_id')
         );
-
 
         return true;
     }

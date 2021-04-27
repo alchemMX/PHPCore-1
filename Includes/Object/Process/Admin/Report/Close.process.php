@@ -7,7 +7,7 @@ class Close extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'data' => [
             'report_id',
             'report_type',
@@ -18,7 +18,7 @@ class Close extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [];
+    public array $options = [];
 
     /**
      * Body of process
@@ -38,26 +38,6 @@ class Close extends \Process\ProcessExtend
             'report_id' => $this->data->get('report_id'),
             'reason_type' => (int)2
         ]);
-
-        switch ($this->data->get('report_type')) {
-
-            case 'Post':
-                $this->db->query('UPDATE ' . TABLE_POSTS . ' SET report_id = NULL WHERE post_id = ?', [$this->data->get('report_type_id')]);
-            break;
-
-            case 'Topic':
-                $this->db->query('UPDATE ' . TABLE_TOPICS . ' SET report_id = NULL WHERE topic_id = ?', [$this->data->get('report_type_id')]);
-            break;
-
-            case 'ProfilePost':
-                $this->db->query('UPDATE ' . TABLE_PROFILE_POSTS . ' SET report_id = NULL WHERE profile_post_id = ?', [$this->data->get('report_type_id')]);
-            break;
-
-            case 'ProfilePostComment':
-                $this->db->query('UPDATE ' . TABLE_PROFILE_POSTS_COMMENTS . ' SET report_id = NULL WHERE profile_post_comment_id = ?', [$this->data->get('report_type_id')]);
-            break;
-
-        }
 
         // ADD RECORD TO LOG
         $this->log();

@@ -7,7 +7,7 @@ class Delete extends \Process\ProcessExtend
     /**
      * @var array $require Required data
      */
-    public $require = [
+    public array $require = [
         'data' => [
             'profile_post_comment_id',
         ],
@@ -19,7 +19,7 @@ class Delete extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public $options = [
+    public array $options = [
         'verify' => [
             'block' => '\Block\ProfilePostComment',
             'method' => 'get',

@@ -51,7 +51,7 @@ class Show extends \Page\Page
         // FIELD
         $field = new Field('Admin/User/User');
         $field->data($user);
-        $field->object('user')->row('group_id')->fill($groups = $group->getLess());
+        $field->object('user')->row('group_id')->fill($group->getLess());
 
         // IF USER DOESN'T HAVE ACTIVATED ACCOUNT
         if ($user['code']) {
@@ -98,12 +98,7 @@ class Show extends \Page\Page
 
         // EDIT USER
         $this->process->form(type: 'Admin/User/Edit', data: [
-            'user_id' => $user['user_id'],
-            'options' => [
-                'input' => [
-                    'group_id' => array_column($groups, 'group_id')
-                ]
-            ]
+            'user_id' => $user['user_id']
         ]);
 
         if ($user['code']) {

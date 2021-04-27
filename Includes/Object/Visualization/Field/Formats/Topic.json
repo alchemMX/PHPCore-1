@@ -34,7 +34,7 @@
                         "default": {
                             "options": {
                                 "template": {
-                                    "option": "/Topic/Label.phtml"
+                                    "option": "$/Topic/Label.phtml"
                                 }
                             },
                             "data": {}

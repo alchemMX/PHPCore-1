@@ -16,7 +16,7 @@ class Style
     private array $templates = ['shift'];
 
     /**
-     * @var string|int $ID Page ID
+     * @var string|int $ID URL ID
      */
     public string|int $ID = 0;
 
@@ -26,32 +26,32 @@ class Style
     public string $URL = '/';
 
     /**
-     * @var \Model\Form $form Form model
+     * @var \Model\Form $form Form
      */
     private \Model\Form $form;
 
     /**
-     * @var \Model\Data $data Data model
+     * @var \Model\Data $data Data
      */
     private \Model\Data $data;
 
     /**
-     * @var \Model\Build\Build $build Builder model
+     * @var \Model\Build\Build $build Builder
      */
     private \Model\Build\Build $build;
 
     /**
-     * @var \Model\System\System $system System model
+     * @var \Model\System\System $system System
      */
     private \Model\System\System $system;
 
     /**
-     * @var \Model\Template $template Template model
+     * @var \Model\Template $template Template
      */
     private \Model\Template $template;
 
     /**
-     * @var \Model\Language $language Language model
+     * @var \Model\Language $language Language
      */
     private \Model\Language $language;
     
@@ -76,6 +76,7 @@ class Style
      *
      * @param  \Model\Data $data
      * @param  \Model\Build\Build $build
+     * @param  \Model\User $user
      */
     public function load( \Model\Data $data, \Model\Build\Build $build, \Model\User $user )
     {
@@ -83,7 +84,7 @@ class Style
         $this->user = $user;
         $this->build = $build;
 
-        if (isset($this->system->template->get('body')[$this->templates[2] ?? 'rrr'])) {
+        if (isset($this->system->template->get('body')[$this->templates[2] ?? ''])) {
             $this->templates[1] = $this->system->template->get('body')[$this->templates[2]];
         }
 
@@ -125,8 +126,6 @@ class Style
 
     /**
      * Shows error page
-     *
-     * @param  string $notice
      * 
      * @return void
      */
@@ -143,14 +142,14 @@ class Style
 
         extract($this->language->get());
 
-        require $this->template->require('Error');
+        require $this->template->require('Error.phtml');
         exit();
     }
     
     /**
      * Sets next template
      *
-     * @param  string $template
+     * @param  string $template Template name
      * 
      * @return void
      */
@@ -168,7 +167,7 @@ class Style
     {
         array_shift($this->templates);
         extract($this->language->get());
-        require $this->template->require($this->templates[0]);
+        require $this->template->require($this->templates[0] . '.phtml');
     }
 
     /**

@@ -11,16 +11,11 @@ class SystemTemplate
      * @var array $template Settings about current template
      */
     public static array $template = [];
-
-    /**
-     * @var string $templateName Name of default template
-     */
-    public string $templateName;
     
     /**
      * Constructor
      *
-     * @param  mixed $template Default template name
+     * @param  string $template Default template name
      */
     public function __construct( string $template )
     {
@@ -30,18 +25,14 @@ class SystemTemplate
     }
     
     /**
-     * Returns value from template .json file
+     * Returns value from template settings
      *
-     * @param  mixed $key
+     * @param  string $key
      * 
      * @return mixed
      */
-    public function get( string $key = null )
+    public function get( string $key )
     {
-        if (is_null($key)) {
-            return self::$template;
-        }
-
         return self::$template[$key] ?? '';
     }
 }

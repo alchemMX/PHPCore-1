@@ -7,7 +7,7 @@ use Model\Get;
 use Visualization\Block\Block;
 
 /**
- * Ajax like page
+ * Process
  */
 class Process extends \Page\Page
 {
@@ -59,11 +59,11 @@ class Process extends \Page\Page
 
             // NEW POSTS REQUIRES PARENT ID
             'Post/Create' => 'topic_id',
-            'Message/Create' => 'pm_id',
+            'ConversationMessage/Create' => 'conversation_id',
             'ProfilePost/Create' => 'user_id',
             'ProfilePostComment/Create' => 'profile_post_id',
 
-            'Message/Edit' => 'message_id',
+            'ConversationMessage/Edit' => 'conversation_message_id',
             'Topic/Like', 'Topic/Unlike' => 'topic_id',
             'Post/Edit', 'Post/Delete', 'Post/Like', 'Post/Unlike' => 'post_id',
             'ProfilePost/Edit', 'ProfilePost/Delete' => 'profile_post_id',
@@ -89,14 +89,14 @@ class Process extends \Page\Page
             switch ($get->get('process')) {
 
                 case 'Post/Create':
-                case 'Message/Create':
+                case 'ConversationMessage/Create':
                 case 'ProfilePost/Create':
                 case 'ProfilePostComment/Create':
 
                     // SET VISUALIZATION NAME
                     $visualization = match($get->get('process')) {
                         'Post/Create' => 'Topic',
-                        'Message/Create' => 'Pm',
+                        'ConversationMessage/Create' => 'Conversation',
                         'ProfilePost/Create' => 'ProfilePost',
                         'ProfilePostComment/Create' => 'ProfilePostComment'
                     };
@@ -120,7 +120,7 @@ class Process extends \Page\Page
                     switch ($get->get('process')) {
                         
                         case 'ProfilePost/Create':
-                            $block->option('bottom')->show();
+                            $block->option('bottom')->show()->up();
 
                         case 'ProfilePost/Create':
                         case 'ProfilePostComment/Create':
@@ -142,10 +142,8 @@ class Process extends \Page\Page
                         }
                     }
 
-                    $this->data->data['pm_subject'] = $blockData['pm_subject'] ?? '';
-
                     $this->data->data([
-                        'content' => $this->file('/Blocks/Block/' . $template, [
+                        'content' => $this->file('/Blocks/Block/' . $template . '.phtml', [
                             'data' => $get->get('process') === 'ProfilePostComment/Create' ? $block->getData()['body']['profilepostcomment']['body'][$block->lastInsertName()] : $block->getData(),
                             'variable' => $get->get('process') === 'ProfilePostComment/Create' ? '$row' : '$this->data->block'
                         ]),
@@ -162,19 +160,19 @@ class Process extends \Page\Page
                     $this->data->data([
                         'url' => $this->user->perm->has('admin.forum') ? $this->system->url->build('/admin/report/show/' . $this->process->getID()) : '',
                         'status' => 'ok',
-                        'notice' => $this->user->perm->has('admin.forum') ? $this->file('/Blocks/Block/Notice/Reported') : '',
+                        'notice' => $this->user->perm->has('admin.forum') ? $this->file('/Blocks/Block/Notice/Reported.phtml') : '',
                         'message' => $this->language->get('notice')['success'][$this->process->getMessage()] ?? ''
                     ]);
                 
                 break;
 
                 case 'Post/Edit':
-                case 'Message/Edit':
                 case 'ProfilePost/Edit':
                 case 'ProfilePostComment/Edit':
+                case 'ConversationMessage/Edit':
 
                     $this->data->data([
-                        'button' => $this->file('/Blocks/Block/Buttons/Edit'),
+                        'button' => $this->file('/Blocks/Block/Buttons/Edit.phtml'),
                         'status' => 'ok'
                     ]);
                 break;
@@ -185,7 +183,7 @@ class Process extends \Page\Page
 
                     $this->data->data([
                         'url' => $this->system->url->build('/admin/deleted/show/' . $this->process->getID()),
-                        'notice' => $this->user->perm->has('admin.forum') ? $this->file('/Blocks/Block/Notice/Deleted') : '',
+                        'notice' => $this->user->perm->has('admin.forum') ? $this->file('/Blocks/Block/Notice/Deleted.phtml') : '',
                         'status' => 'ok'
                     ]);
                 break;
@@ -195,8 +193,8 @@ class Process extends \Page\Page
 
                     $this->data->data([
                         'you' => $this->language->get('L_YOU'),
-                        'block' => $this->file('/Blocks/Block/Likes'),
-                        'button' => $this->file('/Blocks/Block/Buttons/Unlike'),
+                        'block' => $this->file('/Blocks/Block/Likes.phtml'),
+                        'button' => $this->file('/Blocks/Block/Buttons/Unlike.phtml'),
                         'status' => 'ok'
                     ]);
                 break;
@@ -205,7 +203,7 @@ class Process extends \Page\Page
                 case 'Topic/Unlike':
                     
                     $this->data->data([
-                        'button' => $this->file('/Blocks/Block/Buttons/Like'),
+                        'button' => $this->file('/Blocks/Block/Buttons/Like.phtml'),
                         'status' => 'ok'
                     ]);
                 break;

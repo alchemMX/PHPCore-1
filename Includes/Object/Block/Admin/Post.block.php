@@ -36,7 +36,7 @@ class Post extends \Block\Post
     public function getParent( int $topicID )
     {
         return $this->db->query('
-            SELECT r.report_id, p.*, t.topic_name, user_last_activity, ' . $this->select->user() . ', user_signature, user_posts, user_topics, group_name, user_reputation,
+            SELECT r.report_id, r.report_status, p.*, t.topic_name, user_last_activity, ' . $this->select->user() . ', user_signature, user_posts, user_topics, group_name, user_reputation,
                 CASE WHEN pl.post_id IS NULL THEN 0 ELSE 1 END AS is_like, t.topic_name, t.deleted_id AS topic_deleted_id, p.deleted_id AS post_deleted_id,
                 CASE WHEN ( SELECT COUNT(*) FROM ' . TABLE_POSTS_LIKES . ' WHERE post_id = p.post_id ) > 5 THEN 1 ELSE 0 END AS is_more_likes,
                 ( SELECT COUNT(*) FROM ' . TABLE_POSTS_LIKES . ' WHERE post_id = p.post_id ) AS count_of_likes
@@ -44,7 +44,7 @@ class Post extends \Block\Post
             LEFT JOIN ' . TABLE_TOPICS . ' ON t.topic_id = p.topic_id
             ' . $this->join->user('p.user_id'). '
             LEFT JOIN ' . TABLE_POSTS_LIKES . ' ON pl.post_id = p.post_id
-            LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = t.report_id AND r.report_status = 0
+            LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = p.report_id
             WHERE p.topic_id = ?
             GROUP BY p.post_id 
             ORDER BY post_created ASC 
