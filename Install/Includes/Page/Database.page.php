@@ -3,7 +3,7 @@
 namespace Page;
 
 /**
- * Database page
+ * Database
  */
 class Database extends Page
 {

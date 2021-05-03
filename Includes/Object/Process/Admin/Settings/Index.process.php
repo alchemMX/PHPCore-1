@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Settings;
 
+/**
+ * Index
+ */
 class Index extends \Process\ProcessExtend
 {    
     /**

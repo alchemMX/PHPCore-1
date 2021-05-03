@@ -10,7 +10,7 @@ class Mark extends \Page\Page
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'loggedIn' => true
     ];
     
@@ -21,9 +21,7 @@ class Mark extends \Page\Page
      */
     protected function body()
     {
-        $this->process->direct();
-        
-        if ($this->process->call(type: 'User/Mark')) {
+        if ($this->process->call(type: 'User/Mark', mode: 'direct')) {
             $this->data->data([
                 'empty' => $this->language->get('L_NAVBAR')['L_NOTIFICATION_NO'],
                 'status' => 'ok'

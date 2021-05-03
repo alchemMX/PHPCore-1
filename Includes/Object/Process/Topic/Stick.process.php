@@ -2,6 +2,9 @@
 
 namespace Process\Topic;
 
+/**
+ * Stick
+ */
 class Stick extends \Process\ProcessExtend
 {    
     /**

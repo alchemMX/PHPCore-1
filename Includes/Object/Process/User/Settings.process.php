@@ -4,6 +4,9 @@ namespace Process\User;
 
 use Model\File;
 
+/**
+ * Settings
+ */
 class Settings extends \Process\ProcessExtend
 {    
     /**

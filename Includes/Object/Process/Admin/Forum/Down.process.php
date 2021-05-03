@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Forum;
 
+/**
+ * Down
+ */
 class Down extends \Process\ProcessExtend
 {    
     /**

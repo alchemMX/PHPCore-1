@@ -73,7 +73,7 @@ abstract class Page
     }
 
     /**
-     * Abstract process method for every page
+     * Body method for every page
      *
      * @return void
      */

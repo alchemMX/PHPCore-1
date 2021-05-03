@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Menu\ButtonSub;
 
+/**
+ * Up
+ */
 class Up extends \Process\ProcessExtend
 {    
     /**

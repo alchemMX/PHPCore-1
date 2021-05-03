@@ -7,12 +7,15 @@ use Block\Admin\Notification;
 use Visualization\Lists\Lists;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Index
+ */
 class Index extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Overall',
         'permission' => 'admin.notification'
     ];
@@ -36,7 +39,26 @@ class Index extends \Page\Page
         
         // LIST
         $list = new Lists('Admin/Notification');
-        $list->object('notification')->fill($notification->getAll());
+
+        // NOTIFICATIONS
+        $notifications = $notification->getAll();
+
+        $i = 1;
+        foreach ($notifications as $notification) {
+
+            $list->object('notification')->appTo($notification)->jumpTo();
+
+            if ($i === 1) {
+                $list->delButton('up');
+            }
+
+            if ($i === count($notifications)) {
+                $list->delButton('down');
+            }
+
+            $i++;
+        }
+
         $this->data->list = $list->getData();
     }
 }

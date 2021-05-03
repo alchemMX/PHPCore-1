@@ -2,6 +2,9 @@
 
 namespace Process\Admin\User;
 
+/**
+ * Search
+ */
 class Search extends \Process\ProcessExtend
 {    
     /**

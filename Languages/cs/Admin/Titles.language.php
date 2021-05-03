@@ -3,8 +3,14 @@
 $language['L_TITLE'] = [
 
     'Page\Admin\Index' => 'Administrátorský panel',
+
     'Page\Admin\Log' => 'Auditní protokol',
-    'Page\Admin\Label' => 'Štítky',
+
+    'Page\Admin\Status' => 'Stav',
+    'Page\Admin\Statistics' => 'Statistiky',
+
+    'Page\Admin\Label\Index' => 'Štítky',
+
     'Page\Admin\Settings\Index' => 'Nastavení webových stránek',
     'Page\Admin\Settings\Registration' => 'Nastavení registrace',
     'Page\Admin\Settings\Email' => 'Nastavení emailů',

@@ -7,12 +7,15 @@ use Block\ButtonSub;
 use Visualization\Lists\Lists;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Index
+ */
 class Index extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Overall',
         'permission' => 'admin.menu'
     ];
@@ -38,12 +41,44 @@ class Index extends \Page\Page
         // LIST
         $list = new Lists('Admin/Menu');
 
-        foreach ($button->getAll() as $item) {
+        // BUTTONS
+        $buttons = $button->getAll();
+
+        $i = 1;
+        foreach ($buttons as $item) {
 
             $list->object('button')->appTo($item)->jumpTo();
-            if ((bool)$item['is_dropdown'] === true) {
-                $list->fill($buttonSub->getParent($item['button_id']))->sync();
+
+            if ($i === 1) {
+                $list->delButton('up');
             }
+
+            if ($i === count($buttons)) {
+                $list->delButton('down');
+            }
+
+            if ((bool)$item['is_dropdown'] === true) {
+
+                // SUB BUTTONS
+                $subButtons = $buttonSub->getParent($item['button_id']);
+
+                $x = 1;
+                foreach ($subButtons as $subButton) {
+
+                    $list->appTo($subButton)->jumpTo();
+
+                    if ($x === 1) {
+                        $list->delButton('up');
+                    }
+        
+                    if ($x === count($subButtons)) {
+                        $list->delButton('down');
+                    }
+
+                    $x++;
+                }
+            }
+            $i++;
         }
         $this->data->list = $list->getData();
     }

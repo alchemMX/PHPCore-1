@@ -7,14 +7,14 @@ use Visualization\Sidebar\Sidebar;
 use Visualization\Breadcrumb\Breadcrumb;
 
 /**
- * Signature page
+ * Signature
  */
 class Signature extends \Page\Page
 {    
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'editor' => EDITOR_MEDIUM,
         'template' => 'User/Signature',
         'loggedIn' => true

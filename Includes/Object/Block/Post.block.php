@@ -145,10 +145,10 @@ class Post extends Block
     public function getLikesAll( int $postID )
     {
         return $this->db->query('
-            SELECT ' . $this->select->user() . ', user_text, user_posts, user_reputation
+            SELECT ' . $this->select->user() . ', user_posts, user_reputation
             FROM ' . TABLE_POSTS_LIKES . '
-            ' . $this->join->user('tl.user_id'). '
-            WHERE tl.topic_id = ?
+            ' . $this->join->user('pl.user_id'). '
+            WHERE pl.post_id = ?
             ORDER BY FIELD(u.user_id, ?) DESC
         ', [$postID, LOGGED_USER_ID], ROWS);
     }

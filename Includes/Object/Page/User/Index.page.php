@@ -2,21 +2,19 @@
 
 namespace Page\User;
 
-
-
 use Visualization\Field\Field;
 use Visualization\Sidebar\Sidebar;
 use Visualization\Breadcrumb\Breadcrumb;
 
 /**
- * Index page
+ * Index
  */
 class Index extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'User/About',
         'loggedIn' => true
     ];

@@ -1,7 +1,10 @@
 <?php
 
-namespace Process\Verify;
+namespace Process\User;
 
+/**
+ * Verify
+ */
 class Verify extends \Process\ProcessExtend
 {    
     /**
@@ -9,7 +12,10 @@ class Verify extends \Process\ProcessExtend
      */
     public array $require = [
         'data' => [
-            'user_id',
+            'verify_code',
+        ],
+        'block' => [
+            'user_id'
         ]
     ];
 
@@ -17,7 +23,12 @@ class Verify extends \Process\ProcessExtend
      * @var array $options Process options
      */
     public array $options = [
-        'login' => REQUIRE_LOGOUT
+        'login' => REQUIRE_LOGOUT,
+        'verify' => [
+            'block' => '\Block\User',
+            'method' => 'getByVerifyCode',
+            'selector' => 'verify_code'
+        ]
     ];
 
     /**

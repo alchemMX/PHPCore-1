@@ -3,7 +3,6 @@
 $language = array_merge($language, [
     'L_NOTIFICATION' => 'Oznámení',
     'L_NOTIFICATION_LIST' => 'Seznam upozornení',
-    'L_NOTIFICATION_LIST_DESC' => 'Zde mužete spravovat svá upozornění',
     
     'L_NOTIFICATION_LIST_NO' => 'Žádná oznámení',
     'L_NOTIFICATION_NEW' => 'Nové oznámení',

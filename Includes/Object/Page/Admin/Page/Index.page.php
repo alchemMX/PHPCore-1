@@ -8,12 +8,15 @@ use Visualization\Field\Field;
 use Visualization\Lists\Lists;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Index
+ */
 class Index extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Overall',
         'permission' => 'admin.page'
     ];

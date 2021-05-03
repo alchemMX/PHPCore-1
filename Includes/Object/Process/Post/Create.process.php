@@ -2,6 +2,9 @@
 
 namespace Process\Post;
 
+/**
+ * Create
+ */
 class Create extends \Process\ProcessExtend
 {    
     /**

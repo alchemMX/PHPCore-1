@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Menu\ButtonSub;
 
+/**
+ * Create
+ */
 class Create extends \Process\ProcessExtend
 {    
     /**
@@ -53,11 +56,11 @@ class Create extends \Process\ProcessExtend
         ', [$this->data->get('button_id')]);
 
         $this->db->insert(TABLE_BUTTONS_SUB, [
-            'page_id'           => $this->data->is('is_external_link') ? null : $this->data->get('page_id'),
+            'page_id'           => $this->data->is('is_external_link') ? '' : $this->data->get('page_id'),
             'button_id'         => $this->data->get('button_id'),
             'position_index'    => '1',
             'button_sub_name'   => $this->data->get('button_sub_name'),
-            'button_sub_link'   => $this->data->is('is_external_link') ? $this->data->get('button_sub_link') : null,
+            'button_sub_link'   => $this->data->is('is_external_link') ? $this->data->get('button_sub_link') : '',
             'is_external_link'  => $this->data->get('is_external_link')
         ]);
 

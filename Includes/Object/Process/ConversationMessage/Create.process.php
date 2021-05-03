@@ -2,8 +2,11 @@
 
 namespace Process\ConversationMessage;
 
-use Block\conversation;
+use Block\Conversation;
 
+/**
+ * Create
+ */
 class Create extends \Process\ProcessExtend
 {    
     /**

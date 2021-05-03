@@ -9,14 +9,14 @@ use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
 /**
- * Add topic
+ * Add
  */
 class Add extends \Page\Page
 {    
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'editor' => EDITOR_BIG,
         'template' => 'Forum/Topic/New',

@@ -3,7 +3,6 @@ $('body').on('click', '[ajax="quote"]', function() {
     $('[ajax-selector="block block-form"] .trumbowyg-editor').html('<blockquote><span data-user="' + $.trim($block.find('[ajax-selector="user_name"]').text())+ '"></span>'+$block.find('[ajax-selector="block-content"').html()+'</blockquote><p><br></p>');
 });
 
-
 $('[ajax-selector="title"]').after($('[ajax-selector="title"]').clone().addClass('disabled'));
 $('[ajax="title"]').on({
     mouseenter: function() {
@@ -44,16 +43,6 @@ $('body').on('click', '[ajax="hide"]', function() {
     $(this).hide();
 });
 
-
-
-
-
-
-
-
-
-
-
 $.cAjax('create', {
     ajax: {
         url: '/ajax/process/',
@@ -87,13 +76,6 @@ $.cAjax('create', {
     }
 });
 
-
-
-
-
-
-
-
 // SHOW REST OF PROFILE POST COMMENTS
 $.cAjax('next-comments', {
     ajax: {
@@ -107,12 +89,6 @@ $.cAjax('next-comments', {
     }
 });
 
-
-
-
-
-
-
 // SHOW ALL USERS WHO LIKES GIVEN POST OF TOPIC
 $.cAjax('all-likes', {
     window: {
@@ -120,12 +96,6 @@ $.cAjax('all-likes', {
         context: {}
     }
 });
-
-
-
-
-
-
 
 // REPORT CONTENT
 $.cAjax('report', {
@@ -154,9 +124,6 @@ $.cAjax('report', {
     }
 });
 
-
-
-
 // LIKE POST OR TOPIC
 $.cAjax('like', {
     ajax: {
@@ -182,13 +149,6 @@ $.cAjax('like', {
         $(this).remove();
     }
 });
-
-
-
-
-
-
-
 
 // UNLIKE POST OR TOPIC
 $.cAjax('unlike', {
@@ -222,13 +182,16 @@ $.cAjax('delete', {
     },
     window: {
         url: '/ajax/language/',
-        context: {},
-        onload: function () {
-            $(this).find('[ajax-selector="window-body"]').empty();
-        }
+        context: {}
     },
 
     success: function (settings, $element) {
+
+        if ($element.find('.trumbowyg-box').length) {
+            $trumbowyg = $element.find('.trumbowyg-box');
+            $trumbowyg.before('<div class="block-content" ajax-selector="block-content">'+parseNewLines($trumbowyg.find('.trumbowyg-editor').html())+'</div>');
+            $trumbowyg.remove();
+        }
 
         if (settings.data.notice) {
             var $notice = $(settings.data.notice);
@@ -299,25 +262,6 @@ $('body').on('click', '[ajax="remove-recipient"]', function() {
     }
 });
 
-// ADD NEW RECIPIENT TO EXISTING CONVERSATION
-$.cAjax('recipient', {
-    ajax: {
-        url: '/ajax/recipient/',
-        method: 'get',
-        context: {}
-    },
-    onload: function (settings) {
-        settings.ajax.context.user = $(this).closest('[ajax-selector="list-row"]').find('input[type="text"]').val();
-    },
-    success: function(settings) {
-
-        $listRow = $(this).closest('[ajax-selector="list-row"]');
-
-        $listRow.before('<'+$listRow.prev().prop('tagName')+' class="'+$listRow.prev().attr('class')+'">'+settings.data.user+'</'+$listRow.prev().prop('tagName')+'>');
-        $(this).closest('[ajax-selector="list-row"]').find('input[type="text"]').val('');
-    }
-});
-
 // ADD NEW RECIPIENT
 $.cAjax('user', {
     ajax: {
@@ -345,12 +289,6 @@ $.cAjax('user', {
         $row.find('input[type="text"]').val('');
     }
 });
-
-
-
-
-
-
 
 // MARK USER NOTIFICATIONS
 $.cAjax('mark', {

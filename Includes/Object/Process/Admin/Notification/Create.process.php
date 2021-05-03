@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Notification;
 
+/**
+ * Create
+ */
 class Create extends \Process\ProcessExtend
 {    
     /**

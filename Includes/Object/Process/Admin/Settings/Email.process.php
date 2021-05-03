@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Settings;
 
+/**
+ * Email
+ */
 class Email extends \Process\ProcessExtend
 {    
     /**

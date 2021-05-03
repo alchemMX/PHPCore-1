@@ -55,7 +55,7 @@ class Visualization
     /**
      * Enables current object
      *
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function enable()
     {   
@@ -66,7 +66,7 @@ class Visualization
     /**
      * Disables current object
      *
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function disable()
     {   
@@ -78,7 +78,7 @@ class Visualization
     /**
      * Hides current object
      *
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function hide()
     {   
@@ -89,7 +89,7 @@ class Visualization
     /**
      * Shows current object
      *
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function show()
     {   
@@ -103,7 +103,7 @@ class Visualization
      * @param  string $key Option name
      * @param  string $value Option value
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function setOptions( string $key, $value )
     {
@@ -117,7 +117,7 @@ class Visualization
      * @param  string $key Data name
      * @param  string $value Data value
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function setData( string $key, $value )
     {   
@@ -138,7 +138,7 @@ class Visualization
     /**
      * Selects current object
      *
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function select()
     {   
@@ -151,7 +151,7 @@ class Visualization
      *
      * @param  string $title Title
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function title( string $title )
     {
@@ -165,7 +165,7 @@ class Visualization
      *
      * @param  string $desc Description
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function desc( string $desc )
     {
@@ -179,7 +179,7 @@ class Visualization
      * 
      * @param mixed $value Value
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function value( $value )
     {
@@ -190,7 +190,7 @@ class Visualization
     /**
      * Jumps to latest created object
      *
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function jumpTo()
     {
@@ -217,7 +217,7 @@ class Visualization
      *
      * @param string $object Object name
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function delete( string $object )
     {
@@ -226,11 +226,11 @@ class Visualization
     }
 
     /**
-     * Deletes given button
+     * Deletes given buttons
      *
-     * @param  string|array $button If null - deletes all buttons
+     * @param  string|array|null $button If null - deletes all buttons
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function delButton( string|array $button = null )
     {
@@ -255,7 +255,7 @@ class Visualization
      *
      * @param  array $data Row data
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function appTo( array $data )
     {
@@ -292,7 +292,7 @@ class Visualization
      *
      * @param  array $data Object data
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function fill( array $data )
     {
@@ -364,7 +364,7 @@ class Visualization
 
                 // LOAD TEMPLATE FROM DEFAULT STYLE TEMPLATE
                 default:
-                    $visual->obj->set->template($name, $path = $visual->template->require('/Blocks/' . $visual->visualization . $template));                    
+                    $visual->obj->set->template($name, $path = $visual->template->template('/Blocks/' . $visual->visualization . $template));                    
                 break;
             }
             
@@ -465,7 +465,7 @@ class Visualization
     /**
      * Synchronise object
      *
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function sync()
     {
@@ -483,7 +483,7 @@ class Visualization
      *
      * @param  string $objName Object name
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function object( string $objName )
     {
@@ -501,7 +501,7 @@ class Visualization
      *
      * @param  string $rowName Row name
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function row( string $rowName )
     {
@@ -520,7 +520,7 @@ class Visualization
      *
      * @param  string $optionName Option name
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function option( string $optionName )
     {
@@ -582,7 +582,7 @@ class Visualization
     /**
      * Moves one object up
      *
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function up()
     {

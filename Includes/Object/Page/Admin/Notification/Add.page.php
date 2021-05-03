@@ -5,12 +5,15 @@ namespace Page\Admin\Notification;
 use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Add
+ */
 class Add extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Overall',
         'redirect' => '/admin/notification/',
         'permission' => 'admin.notification'

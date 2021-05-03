@@ -4,6 +4,9 @@ namespace Process\Topic;
 
 use Model\File;
 
+/**
+ * Create
+ */
 class Create extends \Process\ProcessExtend
 {    
     /**
@@ -104,7 +107,7 @@ class Create extends \Process\ProcessExtend
         ],$this->data->get('forum_id'));
 
         // UPLOAD IMAGE
-        $file->upload('Topics/' . $id);
+        $file->upload('/Topics/' . $id);
 
         // SETS REDIRECT URL
         $this->redirectTo('/forum/topic/' . $id . '.' . parse($this->data->get('topic_name')));

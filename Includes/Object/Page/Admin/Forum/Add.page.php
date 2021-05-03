@@ -5,12 +5,15 @@ namespace Page\Admin\Forum;
 use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Add
+ */
 class Add extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'template' => 'Overall',
         'redirect' => '/admin/forum/',

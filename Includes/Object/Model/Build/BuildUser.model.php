@@ -62,7 +62,7 @@ class BuildUser extends Build
     /**
      * Builds advanced user information block
      *
-     * @param  array $data User data [is_deleted, user_id, user_profile_image, user_name, user_text, user_reputation, user_posts, ?user_last_activity]
+     * @param  array $data User data [is_deleted, user_id, user_profile_image, user_name, user_reputation, user_posts, ?user_last_activity]
      * @param  array $online If true - returned image will have online indicator
      * @param  array $prefix Prefix for data
      * 
@@ -75,7 +75,6 @@ class BuildUser extends Build
             ' . $this->image(data: $data, online: $online, prefix: $prefix) . '
             <div>
                 ' . $this->link(data: $data, prefix: $prefix) . '
-                <span class="grey">' . $data[$prefix.'user_text'] . '</span>
                 <br>
                 <span class="grey">' . $this->language->get('L_USER_REPUTATION') . ': <span class="fw-600">' . $data[$prefix.'user_reputation'] . ' </span>' . $this->language->get('L_POSTS') . ': <span class="fw-600">' . $data[$prefix.'user_posts'] . '</span></span>
             </div>

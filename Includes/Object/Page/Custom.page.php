@@ -7,14 +7,14 @@ use Block\Page as Blockpage;
 use Visualization\Breadcrumb\Breadcrumb;
 
 /**
- * Custom page 
+ * Custom 
  */
 class Custom extends Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int
     ];
 

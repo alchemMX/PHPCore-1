@@ -3,7 +3,7 @@
 namespace Page;
 
 /**
- * End page
+ * End
  */
 class End extends Page
 {

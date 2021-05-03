@@ -2,9 +2,6 @@
 
 namespace Page;
 
-use Model\Form;
-use Model\Session;
-
 /**
  * Page
  */
@@ -263,11 +260,20 @@ abstract class Page
     
     /**
      * Returns name of operation
+     * 
+     * @param $operation Operation name
      *
      * @return string|false
      */
-    protected function getOperation()
+    protected function getOperation( string $operation = null )
     {
+        if (!is_null($operation)) {
+            if (in_array($operation, self::$parsedURL)) {
+                return true;
+            }
+            return false;
+        }
+
         foreach (self::$parsedURL as $parameter) {
             if (in_array($_ex = explode('-', $parameter)[0], $this->listOfOperations)) {
 
@@ -338,7 +344,7 @@ abstract class Page
             eval($options['variable'] . ' = $options[\'data\'];');
         }
 
-        require($this->template->require($path));
+        require($this->template->template($path));
 
         return ob_get_clean();
     }

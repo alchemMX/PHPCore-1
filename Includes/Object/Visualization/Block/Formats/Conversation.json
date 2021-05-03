@@ -13,7 +13,7 @@
                         "convert": {
                             "id": "conversation_id",
                             "text": "conversation_text",
-                            "name": "conversation_subject",
+                            "name": "conversation_name",
                             "created": "conversation_created",
                             "edited_time": "conversation_edited"
                         }
@@ -31,7 +31,7 @@
                         "convert": {
                             "id": "conversation_message_id",
                             "text": "conversation_message_text",
-                            "name": "conversation_subject",
+                            "name": "conversation_name",
                             "created": "conversation_message_created",
                             "edited_time": "conversation_message_edited"
                         },

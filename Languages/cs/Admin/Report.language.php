@@ -44,7 +44,7 @@ $language = array_merge($language, [
     'L_REPORT_LAST' => 'Nahlášený obsah',
     'L_REPORT_LAST_DESC' => 'Poslední záznamy z nahlášeného obsahu',
 
-    'L_REPORT_USERS' => 'Nejlepší uživatelé',
+    'L_REPORT_USERS' => 'Problémoví uživatelé',
     'L_REPORT_USERS_COUNT' => 'Počet nahlášeného obsahu',
     'L_REPORT_USERS_DESC' => 'Uživatelé s nejvýšším počtem nahlášeného obsahu',
 

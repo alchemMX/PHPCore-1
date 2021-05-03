@@ -42,8 +42,8 @@
                         "type": "password"
                     },
                     "data": {
-                        "desc": "L_USER_PASSWORD_CURRENT_DESC",
-                        "title": "L_USER_PASSWORD_CURRENT",
+                        "desc": "L_PASSWORD_CURRENT_DESC",
+                        "title": "L_PASSWORD_CURRENT",
                         "placeholder": "L_PASSWORD"
                     }
                 }

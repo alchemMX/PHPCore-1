@@ -5,12 +5,15 @@ namespace Page\Admin\Group;
 use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Add
+ */
 class Add extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'group/group',
         'redirect' => '/admin/group/',
         'permission' => 'admin.group'

@@ -7,14 +7,14 @@ use Visualization\Sidebar\Sidebar;
 use Visualization\Breadcrumb\Breadcrumb;
 
 /**
- * Account page
+ * Account
  */
 class Account extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'User/Account',
         'loggedIn' => true
     ];

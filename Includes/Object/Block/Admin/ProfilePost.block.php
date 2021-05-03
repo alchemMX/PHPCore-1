@@ -42,7 +42,7 @@ class ProfilePost extends \Block\ProfilePost
             ' . $this->join->user('pp.user_id'). '
             LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = pp.report_id
             WHERE profile_id = ?
-            ORDER BY profile_post_time DESC
+            ORDER BY profile_post_created DESC
             LIMIT ?, ?
         ', [$profileID, $this->pagination['offset'], $this->pagination['max']], ROWS);
 

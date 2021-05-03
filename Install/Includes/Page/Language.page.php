@@ -3,7 +3,7 @@
 namespace Page;
 
 /**
- * Language page
+ * Language
  */
 class Language extends Page
 {

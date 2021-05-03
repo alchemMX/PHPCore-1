@@ -17,7 +17,7 @@ class User extends Block
     public function get( int $userID )
     {
         return $this->db->query('
-            SELECT u.*, g.group_name, g.group_class_name, g.group_index, fp.code AS forgot_code, v.code AS verify_code
+            SELECT u.*, g.group_name, g.group_class_name, g.group_index, fp.forgot_code, v.verify_code
             FROM ' . TABLE_USERS . '
             LEFT JOIN ' . TABLE_GROUPS . ' ON g.group_id = u.group_id
             LEFT JOIN ' . TABLE_FORGOT . ' ON fp.user_id = u.user_id
@@ -36,7 +36,7 @@ class User extends Block
     public function getByName( string $userName )
     {
         return $this->db->query('
-            SELECT u.*, g.group_name, g.group_class_name, g.group_index, fp.code AS forgot_code, v.code AS verify_code
+            SELECT u.*, g.group_name, g.group_class_name, g.group_index, fp.forgot_code, v.verify_code
             FROM ' . TABLE_USERS . '
             LEFT JOIN ' . TABLE_GROUPS . ' ON g.group_id = u.group_id
             LEFT JOIN ' . TABLE_FORGOT . ' ON fp.user_id = u.user_id
@@ -55,7 +55,7 @@ class User extends Block
     public function getByEmail( string $userEmail )
     {
         return $this->db->query('
-            SELECT u.*, g.group_name, g.group_class_name, g.group_index, fp.code
+            SELECT u.*, g.group_name, g.group_class_name, g.group_index, fp.forgot_code
             FROM ' . TABLE_USERS . '
             LEFT JOIN ' . TABLE_GROUPS . ' ON g.group_id = u.group_id
             LEFT JOIN ' . TABLE_FORGOT . ' ON fp.user_id = u.user_id
@@ -108,7 +108,7 @@ class User extends Block
             FROM ' . TABLE_USERS . '
             LEFT JOIN ' . TABLE_GROUPS . ' ON g.group_id = u.group_id
             WHERE is_deleted = 0
-            ORDER BY is_admin DESC, group_index DESC
+            ORDER BY is_admin DESC, group_index DESC, user_registered ASC
             LIMIT ?, ?
         ', [$this->pagination['offset'], $this->pagination['max']], ROWS);
     }
@@ -183,7 +183,7 @@ class User extends Block
         return $this->db->query('
             SELECT user_id
             FROM ' . TABLE_FORGOT . '
-            WHERE code = ?
+            WHERE forgot_code = ?
         ', [$forgotCode]);
     }
 
@@ -199,16 +199,16 @@ class User extends Block
         return $this->db->query('
             SELECT user_id
             FROM ' . TABLE_VERIFY . '
-            WHERE code = ?
+            WHERE verify_code = ?
         ', [$verifyCode]);
     }
 
     /**
-     * Returns user id of all registered users
+     * Returns id of all registered users
      *
      * @return array
      */
-    public function getAllId()
+    public function getAllID()
     {
         return array_column($this->db->query('SELECT user_id FROM ' . TABLE_USERS . ' WHERE is_deleted = 0', [], ROWS), 'user_id');
     }

@@ -5,14 +5,14 @@ namespace Page\Admin\Ajax;
 use Model\Get;
 
 /**
- * Ajax update page
+ * Update
  */
 class Update extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'loggedIn' => true,
         'permission' => 'admin.settings'
     ];
@@ -49,8 +49,7 @@ class Update extends \Page\Page
                 ]);
             } else {
 
-                $this->process->direct();
-                if ($this->process->call(type: 'Admin/Update', data: ['path' => $githubAPI[0]['zipball_url'], 'tag' => $githubAPI[0]['tag_name']])) {
+                if ($this->process->call(type: 'Admin/Update', mode: 'direct', data: ['path' => $githubAPI[0]['zipball_url'], 'tag' => $githubAPI[0]['tag_name']])) {
                     $this->data->data([
                         'url' => $this->system->url->build('/admin/update/'),
                         'text' => strtr($this->language->get('L_UPDATE_INSTALLED'), ['{name}' => $githubAPI[0]['name'] ?: $githubAPI[0]['tag_name']]),

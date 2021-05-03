@@ -2,6 +2,9 @@
 
 namespace Process\ConversationMessage;
 
+/**
+ * Edit
+ */
 class Edit extends \Process\ProcessExtend
 {    
     /**

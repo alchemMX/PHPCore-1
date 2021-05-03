@@ -8,12 +8,15 @@ use Visualization\Lists\Lists;
 use Visualization\Block\Block;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Index
+ */
 class Index extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Report',
         'permission' => 'admin.forum'
     ];

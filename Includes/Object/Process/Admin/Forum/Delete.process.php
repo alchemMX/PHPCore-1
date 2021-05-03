@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Forum;
 
+/**
+ * Delete
+ */
 class Delete extends \Process\ProcessExtend
 {    
     /**
@@ -12,9 +15,7 @@ class Delete extends \Process\ProcessExtend
             'forum_id'
         ],
         'block' => [
-            'forum_name',
-            'forum_posts',
-            'forum_topics'
+            'forum_name'
         ]
     ];
 

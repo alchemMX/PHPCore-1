@@ -11,7 +11,7 @@ foreach (glob(ROOT . '/Languages/cs/*.php') as $path) {
 $language = array_merge($language, [
     'L_DOMAIN' => $_SERVER['SERVER_NAME'],
     'L_ERROR' => 'Chyba 404',
-    'L_ERROR_DESC' => 'Omlouváme se, ale požadovaná stránka nebyla nalezena nebo nemáte patřičéá oprávnění pro přístup na tuto stránku.',
+    'L_ERROR_DESC' => 'Omlouváme se, ale požadovaná stránka nebyla nalezena nebo nemáte patřičná oprávnění pro přístup na tuto stránku.',
     'L_TITLE_PAGE' => 'Titulní stránka',
     'L_BY' => 'od',
 

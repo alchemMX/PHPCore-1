@@ -132,7 +132,7 @@ class Register extends \Model\Model
         $this->code = md5(mt_rand());
 
         $this->db->insert(TABLE_VERIFY, [
-            'code' => $this->code,
+            'verify_code' => $this->code,
             'user_id' => $this->db->lastInsertId()
         ]);
 

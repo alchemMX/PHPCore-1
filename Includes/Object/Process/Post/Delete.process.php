@@ -2,6 +2,9 @@
 
 namespace Process\Post;
 
+/**
+ * Delete
+ */
 class Delete extends \Process\ProcessExtend
 {    
     /**

@@ -9,7 +9,7 @@ $language = array_merge($language, [
 
     'L_WINDOW' => [
         'Post/Delete' => 'Opravdu si přejete smazat tento příspěvek ?',
-        'ProfilePost/Delete' => 'Opravdu si přejete smazat teto profilový příspěvek ?',
-        'ProfilePostComment/Delete' => 'Opravdu si přejete smazat teto profilový komentář ?',
+        'ProfilePost/Delete' => 'Opravdu si přejete smazat tento profilový příspěvek ?',
+        'ProfilePostComment/Delete' => 'Opravdu si přejete smazat tento profilový komentář ?',
     ]
 ]);

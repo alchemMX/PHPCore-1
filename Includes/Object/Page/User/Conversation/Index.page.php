@@ -18,7 +18,7 @@ class Index extends \Page\Page
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'User/Conversation/Index',
         'loggedIn' => true
     ];
@@ -52,9 +52,6 @@ class Index extends \Page\Page
         $list = new Lists('Conversation');
 
         foreach ($conversation->getAll() as $item) {
-
-            // GET USERS DATA
-            $item['users'] = $conversation->getRecipients($item['conversation_id']);
 
             $list->object('conversation')->appTo($item)->jumpTo();
 

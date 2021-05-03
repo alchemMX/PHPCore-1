@@ -34,7 +34,7 @@ class ProcessCheck
      * 
      * @return bool
      */
-    public function maxLength( mixed $var, string $key, int $length )
+    public function maxLength( int|array|string $var, string $key, int $length )
     {
         if ($this->getCount($var) <= $length) {
             return true;
@@ -54,7 +54,7 @@ class ProcessCheck
      * 
      * @return bool
      */
-    public function minLength( mixed $var, string $key, int $length )
+    public function minLength( int|array|string $var, string $key, int $length )
     {
         if ($this->getCount($var) >= $length) {
             return true;

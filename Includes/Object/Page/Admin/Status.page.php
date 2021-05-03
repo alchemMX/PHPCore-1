@@ -5,12 +5,15 @@ namespace Page\Admin;
 use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Status
+ */
 class Status extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Status',
         'permission' => 'admin.?'
     ];

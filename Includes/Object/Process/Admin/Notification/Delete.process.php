@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Notification;
 
+/**
+ * Delete
+ */
 class Delete extends \Process\ProcessExtend
 {    
     /**

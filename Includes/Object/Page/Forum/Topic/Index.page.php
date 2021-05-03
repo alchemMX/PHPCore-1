@@ -2,10 +2,10 @@
 
 namespace Page\Forum\Topic;
 
+use Block\Post;
 use Block\Label;
 use Block\Topic as BlockTopic;
 use Block\Forum;
-use Block\Post;
 use Block\Admin\Post as AdminPost;
 use Block\Admin\Topic as AdminTopic;
 
@@ -17,14 +17,14 @@ use Visualization\Panel\Panel;
 use Visualization\Breadcrumb\Breadcrumb;
 
 /**
- * Topic page
+ * Index
  */
 class Index extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'editor' => EDITOR_BIG,
         'template' => 'Forum/Topic/View',
@@ -61,10 +61,12 @@ class Index extends \Page\Page
 
         $this->data->data([
             'labels' => $topic['labels'],
+            'topic_id' => $topic['topic_id'],
             'report_id' => $topic['report_id'],
             'is_locked' => $topic['is_locked'],
             'topic_name' => $topic['topic_name'],
             'deleted_id' => $topic['deleted_id'],
+            'topic_image' => $topic['topic_image'],
             'report_status' => $topic['report_status'],
         ]);
 

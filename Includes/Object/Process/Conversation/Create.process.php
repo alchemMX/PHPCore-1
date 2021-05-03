@@ -2,6 +2,9 @@
 
 namespace Process\Conversation;
 
+/**
+ * Create
+ */
 class Create extends \Process\ProcessExtend
 {    
     /**
@@ -9,7 +12,7 @@ class Create extends \Process\ProcessExtend
      */
     public array $require = [
         'form' => [
-            'conversation_subject'    => [
+            'conversation_name'    => [
                 'type' => 'text',
                 'required' => true,
                 'length_max' => 100
@@ -46,10 +49,10 @@ class Create extends \Process\ProcessExtend
 
         // INSERT CONVERSATION TO DATABASE
         $this->db->insert(TABLE_CONVERSATIONS, [
-            'conversation_url'      => parse($this->data->get('conversation_subject')),
+            'conversation_url'      => parse($this->data->get('conversation_name')),
             'conversation_text'		=> $this->data->get('conversation_text'),
             'user_id'	            => LOGGED_USER_ID,
-            'conversation_subject'	=> $this->data->get('conversation_subject')
+            'conversation_name'	=> $this->data->get('conversation_name')
         ]);
 
         $lastInsertId = $this->db->lastInsertId();
@@ -71,6 +74,6 @@ class Create extends \Process\ProcessExtend
             }
         }
 
-        $this->redirectTo('/user/conversation/show/' .$lastInsertId . '.' . parse($this->data->get('conversation_subject')));
+        $this->redirectTo('/user/conversation/show/' .$lastInsertId . '.' . parse($this->data->get('conversation_name')));
     }
 }

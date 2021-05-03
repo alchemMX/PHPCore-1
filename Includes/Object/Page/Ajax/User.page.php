@@ -14,7 +14,7 @@ class User extends \Page\Page
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'loggedIn' => true
     ];
 
@@ -30,8 +30,6 @@ class User extends \Page\Page
         $get->get('user') or exit();
 
         $user = new BlockUser();
-
-        $this->process->direct();
 
         if ($data = $user->getByName($get->get('user'))) {
             if ($data['user_id'] != LOGGED_USER_ID) {

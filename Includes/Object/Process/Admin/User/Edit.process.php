@@ -4,6 +4,9 @@ namespace Process\Admin\User;
 
 use Model\File;
 
+/**
+ * Edit
+ */
 class Edit extends \Process\ProcessExtend
 {    
     /**

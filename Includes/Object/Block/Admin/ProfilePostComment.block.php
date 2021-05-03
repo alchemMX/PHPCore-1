@@ -44,7 +44,7 @@ class ProfilePostComment extends \Block\ProfilePostComment
             LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = ppc.report_id
             WHERE profile_post_id = ?
             GROUP BY ppc.profile_post_comment_id
-            ORDER BY profile_post_comment_time DESC
+            ORDER BY profile_post_comment_created DESC
             LIMIT ?
         ', [$profilePostID, $number], ROWS));
     }
@@ -66,7 +66,7 @@ class ProfilePostComment extends \Block\ProfilePostComment
             LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = ppc.report_id
             WHERE profile_post_id = ?
             GROUP BY ppc.profile_post_comment_id
-            ORDER BY profile_post_comment_time DESC
+            ORDER BY profile_post_comment_created DESC
             LIMIT ?, 18446744073709551615
         ', [$profilePostID, $number], ROWS));
     }

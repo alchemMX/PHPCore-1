@@ -2,12 +2,12 @@
     "body": {
         "conversation": {
             "body": {
-                "conversation_subject": {
+                "conversation_name": {
                     "options": {
                         "type": "text"
                     },
                     "data": {
-                        "title": "L_USER_CONVERSATION_SUBJECT",
+                        "title": "L_USER_CONVERSATION_NAME",
                         "placeholder": "L_NAME"
                     }
                 },

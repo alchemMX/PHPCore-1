@@ -7,14 +7,14 @@ use Block\User;
 use Visualization\Field\Field;
 
 /**
- * Reset forgotten pasword page
+ * Reset
  */
 class Reset extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => string,
         'template' => 'Forgot/Change',
         'loggedOut' => true
@@ -30,19 +30,22 @@ class Reset extends \Page\Page
         // BLOCK
         $user = new user();
 
-        if ($forgot = $user->getByForgotCode((string)$this->getID())) {
+        $data = $user->getByForgotCode((string)$this->getID());
 
-            // FIELD
-            $field = new Field('User/Forgot/Change');
-            $this->data->field = $field->getData();
+        if (!$data) {
+            redirect('/');
+        }
 
-            // RESET PROCESS
-            $this->process->form(type: 'Forgot/Reset', data: [
-                'user_id'   => $forgot['user_id'],
-                'options'   => [
-                    'url'   => '/'
-                ]
-            ]);
-        } else redirect('/');
+        // FIELD
+        $field = new Field('User/Forgot/Change');
+        $this->data->field = $field->getData();
+
+        // RESET PROCESS
+        $this->process->form(type: 'Forgot/Reset', data: [
+            'user_id'   => $data['user_id'],
+            'options'   => [
+                'url'   => '/'
+            ]
+        ]);
     }
 }

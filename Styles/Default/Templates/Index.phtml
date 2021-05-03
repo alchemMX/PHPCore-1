@@ -6,7 +6,7 @@
             <?php endif; ?>
             <div class="block-body">
                 <div class="block-title">
-                    <?php require $this->template->require('/Blocks/Labels.phtml'); ?>
+                    <?php require $this->template->template('/Blocks/Labels.phtml'); ?>
                     <a href="<?= $this->build->url->topic($row['data']) ?>"><?= $row['data']['name'] ?></a>
                 </div>
                 <div class="block-content" ajax-selector="content"><?= $row['data']['text'] ?></div>
@@ -28,4 +28,4 @@
         </div>
     <?php endforeach; ?>
 <?php endforeach; ?>
-<?php require $this->template->require('/Blocks/Pagination.phtml') ?>
+<?php require $this->template->template('/Blocks/Pagination.phtml') ?>

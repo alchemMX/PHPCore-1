@@ -42,7 +42,7 @@ class Forum extends Block
             SELECT t.*, f.*, f.forum_id, ' . $this->select->user() . '
             FROM ' . TABLE_FORUMS . ' 
             LEFT JOIN (
-                SELECT t.topic_id, t.forum_id, t.topic_name, t.topic_url, t.user_id, CASE WHEN t2.topic_created < p2.post_created THEN p2.post_created ELSE t2.topic_created END AS created
+                SELECT t.topic_id, t.forum_id, t.topic_name, t.topic_url, CASE WHEN t2.topic_created < p2.post_created THEN p2.user_id ELSE t2.user_id END AS user_id, CASE WHEN t2.topic_created < p2.post_created THEN p2.post_created ELSE t2.topic_created END AS created
                 FROM ' . TABLE_TOPICS . '
                 LEFT JOIN ' . TABLE_POSTS . '2 ON p2.post_id = (
                     SELECT MAX(post_id)
@@ -146,11 +146,16 @@ class Forum extends Block
             SELECT (
                 SELECT COUNT(*)
                 FROM ' . TABLE_POSTS . '
-                WHERE p.deleted_id IS NULL
+                LEFT JOIN ' . TABLE_FORUMS . ' ON f.forum_id = p.forum_id
+                LEFT JOIN ' . TABLE_CATEGORIES_PERMISSION_SEE . ' ON cps.category_id = f.category_id AND cps.group_id = ' . LOGGED_USER_GROUP_ID . '
+                LEFT JOIN ' . TABLE_FORUMS_PERMISSION_SEE . ' ON fps.forum_id = f.forum_id AND fps.group_id = ' . LOGGED_USER_GROUP_ID . '
+                WHERE p.deleted_id IS NULL AND cps.category_id IS NOT NULL AND fps.forum_id IS NOT NULL
             ) as post, (
                 SELECT COUNT(*)
                 FROM ' . TABLE_TOPICS . '
-                WHERE t.deleted_id IS NULL
+                LEFT JOIN ' . TABLE_CATEGORIES_PERMISSION_SEE . ' ON cps.category_id = t.category_id AND cps.group_id = ' . LOGGED_USER_GROUP_ID . '
+                LEFT JOIN ' . TABLE_FORUMS_PERMISSION_SEE . ' ON fps.forum_id = t.forum_id AND fps.group_id = ' . LOGGED_USER_GROUP_ID . '
+                WHERE t.deleted_id IS NULL AND cps.category_id IS NOT NULL AND fps.forum_id IS NOT NULL
             ) as topic, (
                 SELECT COUNT(*)
                 FROM ' . TABLE_USERS . '

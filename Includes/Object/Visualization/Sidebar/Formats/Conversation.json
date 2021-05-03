@@ -39,17 +39,13 @@
                         "template": {
                             "body": "$/Conversation/Recipients/Recipient.phtml"
                         }
-                    },
-                    "data": {}
+                    }
                 },
                 "bottom": {
                     "options": {
                         "template": {
                             "body": "$/Conversation/Recipients/AddRecipient.phtml"
                         }
-                    },
-                    "data": {
-                        "class": "bottom"
                     }
                 }
             }

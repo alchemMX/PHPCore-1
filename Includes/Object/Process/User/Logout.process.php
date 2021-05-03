@@ -5,6 +5,9 @@ namespace Process\User;
 use Model\Cookie;
 use Model\Session;
 
+/**
+ * Logout
+ */
 class Logout extends \Process\ProcessExtend
 {    
     /**

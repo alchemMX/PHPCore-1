@@ -4,6 +4,9 @@ namespace Process\Forgot;
 
 use Model\Mail\MailForgot;
 
+/**
+ * Send
+ */
 class Send extends \Process\ProcessExtend
 {    
     /**
@@ -38,13 +41,13 @@ class Send extends \Process\ProcessExtend
         }
 
         // GENERATE CODE
-        $code = !$data['code'] ? substr(md5(RAND), 0, 15) : $data['code'];
+        $code = !$data['forgot_code'] ? substr(md5(RAND), 0, 15) : $data['forgot_code'];
 
-        if (!$data['code']) {
+        if (!$data['forgot_code']) {
             // INSERT CODE TO DATABASE
             $this->db->insert(TABLE_FORGOT, [
-                'code' => $code,
-                'user_id' => $data['user_id']
+                'user_id' => $data['user_id'],
+                'forgot_code' => $code
             ]);
         }
 

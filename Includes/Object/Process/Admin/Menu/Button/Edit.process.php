@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Menu\Button;
 
+/**
+ * Edit
+ */
 class Edit extends \Process\ProcessExtend
 {    
     /**

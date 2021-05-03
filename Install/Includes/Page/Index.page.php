@@ -3,7 +3,7 @@
 namespace Page;
 
 /**
- * Index page
+ * Index
  */
 class Index extends Page
 {

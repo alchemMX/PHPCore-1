@@ -58,7 +58,7 @@ class ProfilePost extends Block
             ' . $this->join->user('pp.user_id'). '
             LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = pp.report_id
             WHERE profile_id = ? AND pp.deleted_id IS NULL
-            ORDER BY profile_post_time DESC
+            ORDER BY profile_post_created DESC
             LIMIT ?, ?
         ', [$profileID, $this->pagination['offset'], $this->pagination['max']], ROWS);
 
@@ -90,7 +90,7 @@ class ProfilePost extends Block
     public function getLast( int $number = 5 )
     {
         return $this->db->query('
-            SELECT profile_id, profile_post_text, profile_post_time, profile_post_id, ' . $this->select->user() . ', u.user_last_activity,
+            SELECT profile_id, profile_post_text, profile_post_created, profile_post_id, ' . $this->select->user() . ', u.user_last_activity,
                 g2.group_class_name AS color2,
                 u2.user_name AS name2,
                 u2.user_id AS id2,
@@ -100,7 +100,7 @@ class ProfilePost extends Block
             LEFT JOIN ' . TABLE_USERS . '2 ON u2.user_id = pp.profile_id 
             LEFT JOIN ' . TABLE_GROUPS . '2 ON g2.group_id = u2.group_id
             WHERE pp.deleted_id IS NULL
-            ORDER BY profile_post_time DESC
+            ORDER BY profile_post_created DESC
             LIMIT 0, ?
         ', [$number], ROWS);
     }

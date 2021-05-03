@@ -21,7 +21,7 @@ use Style\Style;
 use Visualization\Navbar\Navbar;
 
 /**
- * Main router
+ * Router
  */
 class Router extends Page
 {

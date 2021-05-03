@@ -86,7 +86,7 @@ class Report extends Block
      *
      * @param int $number Number of users
      * 
-     * @return void
+     * @return array
      */
     public function getUsers( int $number = 5 )
     {

@@ -2,7 +2,6 @@
     "body": {
         "group": {
             "data": {
-                "desc": "L_GROUP_NEW_DESC",
                 "title": "L_GROUP_NEW"
             },
             "body": {

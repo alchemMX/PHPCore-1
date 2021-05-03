@@ -2,6 +2,9 @@
 
 namespace Process\ProfilePostComment;
 
+/**
+ * Delete
+ */
 class Delete extends \Process\ProcessExtend
 {    
     /**

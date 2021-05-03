@@ -5,7 +5,7 @@ namespace Page\Ajax;
 use Model\Database;
 
 /**
- * Installation page
+ * Installation
  */
 class Installation extends \Page\Page
 {

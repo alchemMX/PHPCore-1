@@ -3,7 +3,6 @@
         "label": {
             "data": {
                 "icon": "fas fa-tag",
-                "desc": "L_LABEL_NEW_DESC",
                 "title": "L_LABEL_NEW"
             },
             "body": {

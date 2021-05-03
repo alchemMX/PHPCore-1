@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Forum;
 
+/**
+ * Up
+ */
 class Up extends \Process\ProcessExtend
 {    
     /**

@@ -4,6 +4,9 @@ namespace Process\User;
 
 use Model\Account\Login as ModelLogin;
 
+/**
+ * Login
+ */
 class Login extends \Process\ProcessExtend
 {    
     /**
@@ -44,6 +47,5 @@ class Login extends \Process\ProcessExtend
         if ($login->login() === true) {
             session_regenerate_id(true);
         }
-
     }
 }

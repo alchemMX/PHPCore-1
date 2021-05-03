@@ -2,6 +2,9 @@
 
 namespace Process\Topic;
 
+/**
+ * Label
+ */
 class Label extends \Process\ProcessExtend
 {    
     /**

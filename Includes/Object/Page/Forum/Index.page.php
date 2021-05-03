@@ -14,14 +14,14 @@ use Visualization\Sidebar\Sidebar;
 use Visualization\Breadcrumb\Breadcrumb;
 
 /**
- * Forum index page
+ * Index
  */
 class Index extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'header' => true,
         'template' => 'Forum/Index',
         'notification' => true

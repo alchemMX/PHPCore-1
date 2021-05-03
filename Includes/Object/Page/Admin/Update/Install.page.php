@@ -2,12 +2,15 @@
 
 namespace Page\Admin\Update;
 
+/**
+ * Install
+ */
 class Install extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'permission' => 'admin.settings'
     ];
     

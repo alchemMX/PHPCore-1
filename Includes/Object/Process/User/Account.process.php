@@ -2,6 +2,9 @@
 
 namespace Process\User;
 
+/**
+ * Account
+ */
 class Account extends \Process\ProcessExtend
 {    
     /**

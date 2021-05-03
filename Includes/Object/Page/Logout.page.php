@@ -2,17 +2,15 @@
 
 namespace Page;
 
-
-
 /**
- * Logout page
+ * Logout
  */
 class Logout extends Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'loggedIn' => true
     ];
 

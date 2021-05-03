@@ -4,6 +4,9 @@ namespace Process\Topic;
 
 use Model\File;
 
+/**
+ * Edit
+ */
 class Edit extends \Process\ProcessExtend
 {    
     /**
@@ -47,7 +50,7 @@ class Edit extends \Process\ProcessExtend
             if ($this->data->is('delete_topic_image')) {
 
                 // DELETE IMAGE
-                $file->deleteImage('/topics/' . $this->data->get('topic_id'));
+                $file->deleteImage('/Topics/' . $this->data->get('topic_id'));
 
                 // DELETE TOPIC IMAGE
                 $this->db->update(TABLE_TOPICS, [

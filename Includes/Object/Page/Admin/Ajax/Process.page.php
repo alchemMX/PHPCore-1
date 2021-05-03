@@ -5,15 +5,16 @@ namespace Page\Admin\Ajax;
 use Model\Get;
 
 /**
- * Ajax page
+ * Process
  */
 class Process extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
-        'loggedIn' => true
+    protected array $settings = [
+        'loggedIn' => true,
+        'permission' => 'admin.?'
     ];
 
     /**
@@ -27,8 +28,6 @@ class Process extends \Page\Page
 
         $get->get('id') or exit();
         $get->get('process') or exit();
-
-        $this->process->direct();
 
         $type = explode('/', $get->get('process'));
         array_pop($type);
@@ -65,7 +64,7 @@ class Process extends \Page\Page
             default => exit()
         };
         
-        if ($this->process->call(type: 'Admin/' . $get->get('process'), data: [
+        if ($this->process->call(type: 'Admin/' . $get->get('process'), mode: 'direct', data: [
             $id => $get->get('id')
         ])) {
             $this->data->data([

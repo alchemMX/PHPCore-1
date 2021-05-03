@@ -2,6 +2,9 @@
 
 namespace Process\Topic;
 
+/**
+ * Like
+ */
 class Like extends \Process\ProcessExtend
 {    
     /**

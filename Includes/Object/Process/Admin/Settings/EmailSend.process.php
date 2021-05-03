@@ -4,6 +4,9 @@ namespace Process\Admin\Settings;
 
 use Model\Mail\MailTest;
 
+/**
+ * EmailSend
+ */
 class EmailSend extends \Process\ProcessExtend
 {    
     /**

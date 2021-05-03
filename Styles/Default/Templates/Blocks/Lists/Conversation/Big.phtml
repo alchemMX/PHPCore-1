@@ -1,10 +1,6 @@
 <?= $this->build->user->image($row['data']) ?>
 <div class="inner">
-    <a class="fw-700" href="<?= $this->system->url->build('/user/conversation/show/' . $row['data']['conversation_id'] . '.' . $row['data']['conversation_url']) ?>"><?= $row['data']['conversation_subject'] ?></a>
+    <a class="fw-700" href="<?= $this->system->url->build('/user/conversation/show/' . $row['data']['conversation_id'] . '.' . $row['data']['conversation_url']) ?>"><?= $row['data']['conversation_name'] ?></a>
     <br>
-    <span class="sub-name commas">
-        <?php foreach ($row['data']['users'] as $user) : ?>
-            <?= $this->build->user->link($user) ?>
-        <?php endforeach; ?>
-    </span>
+    <?= $this->build->user->link($row['data']) ?> · <?= $this->build->date->long($row['data']['conversation_created']) ?>
 </div>

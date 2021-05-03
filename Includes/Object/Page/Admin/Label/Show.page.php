@@ -7,12 +7,15 @@ use Block\Label;
 use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Show
+ */
 class Show extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'template' => 'Overall',
         'redirect' => '/admin/label/',
@@ -38,12 +41,15 @@ class Show extends \Page\Page
 
         // FIELD
         $field = new Field('Admin/Label/Label');
-        $field->data($label->get($this->getID()));
+        $field->data($data = $label->get($this->getID()));
         $this->data->field = $field->getData();
         
         // EDIT LABEL
         $this->process->form(type: 'Admin/Label/Edit', data: [
             'label_id' => $this->getID()
         ]);
+
+        // PAGE TITLE
+        $this->data->head['title'] = $this->language->get('L_LABEL') . ' - ' . $data['label_name'];
     }
 }

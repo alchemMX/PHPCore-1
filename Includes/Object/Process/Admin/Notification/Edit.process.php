@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Notification;
 
+/**
+ * Edit
+ */
 class Edit extends \Process\ProcessExtend
 {    
     /**

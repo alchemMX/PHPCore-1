@@ -8,14 +8,14 @@ use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
 /**
- * Edit page
+ * Edit
  */
 class Edit extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'editor' => EDITOR_BIG,
         'template' => 'Forum/Topic/Edit',

@@ -16,7 +16,7 @@ class Template
      * 
      * @return string
      */
-    public function require( string $path )
+    public function template( string $path )
     {
         $templatePath = defined('ERROR_PAGE') ? TEMPLATE_PATH_DEFAULT : TEMPLATE_PATH;
 
@@ -39,35 +39,18 @@ class Template
      * Returns path to theme file
      *
      * @param  string $path
-     * @param bool $useDefaultPath
      * 
      * @throws \Exception\System If given file is not found
      * 
      * @return string
      */
-    public function theme( string $path, bool $useDefaultPath = false )
+    public function theme( string $path )
     {
         $templatePath = defined('ERROR_PAGE') ? TEMPLATE_PATH_DEFAULT : TEMPLATE_PATH;
 
-        if ($useDefaultPath === false) {
-            if (file_exists(ROOT . ($path = $templatePath . '/Themes' . $path))) {
-                return $path;
-            }
-            throw new \Exception\System('Hledaný vzhledový prvek nebyl nalezen: ' . $path); 
-        } else {
-
-            $paths = [
-                $templatePath . '/Themes' . $path,
-                '/Styles/Default/Themes' . $path
-            ];
-    
-            foreach ($paths as $_path) {
-    
-                if (file_exists(ROOT . $_path)) {
-                    return $_path;
-                }
-            }
-            throw new \Exception\System('Hledaný vzhledový prvek nebyl nalezen: ' . $paths[0]);
+        if (file_exists(ROOT . ($path = $templatePath . '/Themes' . $path))) {
+            return $path;
         }
+        throw new \Exception\System('Hledaný vzhledový prvek nebyl nalezen: ' . $path); 
     }
 }

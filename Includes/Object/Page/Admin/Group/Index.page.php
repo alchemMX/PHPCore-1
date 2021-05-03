@@ -8,12 +8,15 @@ use Visualization\Field\Field;
 use Visualization\Lists\Lists;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Index
+ */
 class Index extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Overall',
         'permission' => 'admin.group'
     ];
@@ -45,6 +48,7 @@ class Index extends \Page\Page
         // GROUPS
         $groups = $group->getAll();
 
+        $i = 1;
         $cache = $groups[0]['group_index'];
         foreach ($groups as $group) {
 
@@ -62,9 +66,13 @@ class Index extends \Page\Page
                     ]);
             }
 
-            if ($cache >= $this->user->get('group_index')) {
+            if ($cache >= $this->user->get('group_index') or $i === 1) {
 
                 $list->delButton('up');
+            }
+
+            if ($i === count($groups)) {
+                $list->delButton('down');
             }
 
             if ($group['group_id'] == $this->system->settings->get('default_group')) {
@@ -73,6 +81,7 @@ class Index extends \Page\Page
             }
 
             $cache = $group['group_index'];
+            $i++;
         }
 
         $this->data->list = $list->getData();

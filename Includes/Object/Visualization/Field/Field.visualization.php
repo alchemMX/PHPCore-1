@@ -78,7 +78,7 @@ class Field extends \Visualization\Visualization
      *
      * @param  mixed $value Value
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function setValue( $value )
     {   

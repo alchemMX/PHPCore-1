@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Group;
 
+/**
+ * Edit
+ */
 class Edit extends \Process\ProcessExtend
 {    
     /**

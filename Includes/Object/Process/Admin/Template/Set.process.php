@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Template;
 
+/**
+ * Set
+ */
 class Set extends \Process\ProcessExtend
 {    
     /**

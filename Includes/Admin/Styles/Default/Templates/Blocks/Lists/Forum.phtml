@@ -1,5 +1,5 @@
 <div class="vertical-align">
-    <?php if (isset($row['data']['forum_icon_name'])) : ?>
+    <?php if ($row['data']['forum_icon_name']) : ?>
         <i class="list-icon <?= $row['data']['forum_icon_style'] ?> fa-<?= $row['data']['forum_icon_name'] ?>"></i>
     <?php endif; ?>
     <div class="inner">

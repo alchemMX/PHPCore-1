@@ -62,7 +62,6 @@ $language = [
     'L_DATABASE_DESC' => 'Přístup k databázi',
 
     'L_DATABASE_HOST' => 'Databázový server',
-    'L_DATABASE_HOST_DESC' => 'Adresa databázového serveru',
 
     'L_DATABASE_USERNAME' => 'Uživatelské jméno',
 
@@ -71,7 +70,7 @@ $language = [
     'L_DATABASE_NAME' => 'Název databáze',
 
     'L_PORT' => 'Port',
-    'L_DATABASE_PORT_DESC' => 'Pokud necháte prázdný bude použít výchozí port 3306',
+    'L_DATABASE_PORT_DESC' => 'Pokud necháte port prázdný, bude použit výchozí port 3306',
 
 
     // ADMIN
@@ -88,7 +87,6 @@ $language = [
     'L_WEBSITE_SETTINGS_DESC' => 'Obecné nastavení webových stránek',
 
     'L_WEBSITE_NAME' => 'Název webových stránek',
-    'L_WEBSITE_NAME_DESC' => 'Bude zobrazen na každé stránce',
 
     'L_WEBSITE_DESCRIPTION' => 'Popis webových stránek',
     'L_WEBSITE_DESCRIPTION_DESC' => 'Stručný popis webových stránek',

@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Deleted\ProfilePost;
 
+/**
+ * Delete
+ */
 class Delete extends \Process\ProcessExtend
 {    
     /**

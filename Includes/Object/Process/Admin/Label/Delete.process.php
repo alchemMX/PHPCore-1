@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Label;
 
+/**
+ * Delete
+ */
 class Delete extends \Process\ProcessExtend
 {    
     /**

@@ -66,7 +66,7 @@
                 </div>
                 <div class="list-body">
                     <div class="list-row">
-                        <?php if (!empty($this->data->data['user_gender'])) : ?>
+                        <?php if ($this->data->data['user_gender'] != 'undefined') : ?>
                             <div class="table">
                                 <div class="table-left"><?= $L_USER_GENDER ?>:</div>
                                 <div class="table-right"><?= ${'L_USER_GENDER_' . strtoupper($this->data->data['user_gender'])} ?></div>
@@ -105,11 +105,11 @@
 
             <?php if (isset($this->data->pagination['enabled']) and $this->data->pagination['enabled'] == true) : ?>
                 <div class="panel panel-top">
-                    <?php require $this->template->require('/Blocks/Pagination.phtml'); ?>
+                    <?php require $this->template->template('/Blocks/Pagination.phtml'); ?>
                 </div>
             <?php endif; ?>
             <div class="block-list" ajax-selector="block-list">
-                <?php require $this->template->require('/Blocks/Block/ProfilePost.phtml'); ?>
+                <?php require $this->template->template('/Blocks/Block/ProfilePost.phtml'); ?>
 
                 <?php if (empty($this->data->block['body']['profilepost']['body'])) : ?>
                     <div class="block" ajax-selector="block block-empty">
@@ -118,7 +118,7 @@
                 <?php endif; ?>
 
             </div>
-            <?php require $this->template->require('/Blocks/Pagination.phtml'); ?>
+            <?php require $this->template->template('/Blocks/Pagination.phtml'); ?>
         </div>
 
         <?php if (!empty($this->data->data['user_signature'])) : ?>

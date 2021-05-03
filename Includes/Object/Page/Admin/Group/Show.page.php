@@ -7,12 +7,15 @@ use Block\Group;
 use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Show
+ */
 class Show extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'template' => 'Overall',
         'redirect' => '/admin/group/',

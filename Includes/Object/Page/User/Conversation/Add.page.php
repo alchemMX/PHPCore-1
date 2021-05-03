@@ -15,7 +15,7 @@ class Add extends \Page\Page
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'editor' => EDITOR_BIG,
         'template' => 'User/Conversation/New',
         'loggedIn' => true
@@ -31,10 +31,9 @@ class Add extends \Page\Page
         // BLOCK
         $user = new User();
 
-        // IF RECIPIENT IS DEFINED IN URL
-        if ($this->getParam('to') and $this->getParam('to') != LOGGED_USER_ID) {
-            $this->data->data['recipient'] = $user->get((int)$this->getParam('to'));
-        }
+        // BREADCRUMB
+        $breadcrumb = new Breadcrumb('User/Conversation');
+        $this->data->breadcrumb = $breadcrumb->getData();
 
         // FIELD
         $field = new Field('User/Conversation');
@@ -43,9 +42,10 @@ class Add extends \Page\Page
             ->row('recipients')->show();
         $this->data->field = $field->getData();
 
-        // BREADCRUMB
-        $breadcrumb = new Breadcrumb('User/Conversation');
-        $this->data->breadcrumb = $breadcrumb->getData();
+        // IF RECIPIENT IS DEFINED IN URL
+        if ($this->getParam('to') and $this->getParam('to') != LOGGED_USER_ID) {
+            $this->data->data['recipient'] = $user->get((int)$this->getParam('to'));
+        }
 
         // NEW CONVERSATION
         $this->process->form(type: 'Conversation/Create');

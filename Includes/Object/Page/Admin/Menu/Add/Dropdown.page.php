@@ -5,17 +5,25 @@ namespace Page\Admin\Menu\Add;
 use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Dropdown
+ */
 class Dropdown extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Overall',
         'redirect' => '/admin/menu/',
         'permission' => 'admin.menu'
     ];
 
+    /**
+     * Body of this page
+     *
+     * @return void
+     */
     protected function body()
     {
         // NAVBAR

@@ -8,12 +8,15 @@ use Block\Admin\Category;
 use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Permission
+ */
 class Permission extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'template' => 'Overall',
         'redirect' => '/admin/forum/',
@@ -59,5 +62,8 @@ class Permission extends \Page\Page
         $this->process->form(type: 'Admin/Category/Permission', data: [
             'category_id' => $this->getID()
         ]);
+
+        // PAGE TITLE
+        $this->data->head['title'] = $this->language->get('L_CATEGORY') . ' - ' . $_category['category_name'];
     }
 }

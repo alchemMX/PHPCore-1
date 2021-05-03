@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Label;
 
+/**
+ * Down
+ */
 class Down extends \Process\ProcessExtend
 {    
     /**

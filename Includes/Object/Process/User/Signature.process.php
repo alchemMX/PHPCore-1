@@ -2,6 +2,9 @@
 
 namespace Process\User;
 
+/**
+ * Signature
+ */
 class Signature extends \Process\ProcessExtend
 {    
     /**

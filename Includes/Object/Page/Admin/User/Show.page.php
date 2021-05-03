@@ -8,12 +8,15 @@ use Block\Group;
 use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Show
+ */
 class Show extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'template' => 'Overall',
         'redirect' => '/admin/user/',
@@ -40,7 +43,6 @@ class Show extends \Page\Page
 
         // USER
         $user = $userB->get($this->getID()) or $this->error();
-        $user['code'] = $user['verify_code'];
 
         // IF LOGGED USER HAS PERMISSION TO EDIT THIS USER
         $this->user->perm->compare(
@@ -54,7 +56,7 @@ class Show extends \Page\Page
         $field->object('user')->row('group_id')->fill($group->getLess());
 
         // IF USER DOESN'T HAVE ACTIVATED ACCOUNT
-        if ($user['code']) {
+        if ($user['verify_code']) {
 
             $field->row('activate')->show();
         }
@@ -101,13 +103,10 @@ class Show extends \Page\Page
             'user_id' => $user['user_id']
         ]);
 
-        if ($user['code']) {
+        if ($user['verify_code']) {
             // ACTIVATE USER
-            $this->process->call(type: 'Admin/User/Activate', data: [
-                'user_id' => $user['user_id'],
-                'options' => [
-                    'on' => [$this->getOperation() => 'activate']
-                ]
+            $this->process->call(type: 'Admin/User/Activate', on: $this->getOperation('activate'), data: [
+                'user_id' => $user['user_id']
             ]);
         }
 

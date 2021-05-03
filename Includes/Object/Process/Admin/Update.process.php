@@ -4,6 +4,9 @@ namespace Process\Admin;
 
 use Model\File;
 
+/**
+ * Update
+ */
 class Update extends \Process\ProcessExtend
 {
     /**

@@ -4,6 +4,9 @@ namespace Process\Admin\Template;
 
 use Model\File;
 
+/**
+ * Delete
+ */
 class Delete extends \Process\ProcessExtend
 {    
     /**

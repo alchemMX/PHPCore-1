@@ -3,7 +3,7 @@
 namespace Page;
 
 /**
- * Admin settings page
+ * Admin
  */
 class Admin extends Page
 {

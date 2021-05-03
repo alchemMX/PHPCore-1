@@ -4,6 +4,9 @@ namespace Process\Admin\User;
 
 use Model\File;
 
+/**
+ * Delete
+ */
 class Delete extends \Process\ProcessExtend
 {    
     /**
@@ -77,14 +80,12 @@ class Delete extends \Process\ProcessExtend
         ', [$this->data->get('user_id')]);
 
         $file = new File();
-        $file->deleteImage('/profiles/' . $this->data->get('user_id'));
-        $file->deleteImage('/headers/' . $this->data->get('user_id'));
+        $file->deleteImage('/User/' . $this->data->get('user_id') . '/Profile');
+        $file->deleteImage('/User/' . $this->data->get('user_id') . '/Header');
 
         $this->system->stats->set('user_deleted', +1);
 
         // ADD RECORD TO LOG
         $this->log($this->data->get('user_name'));
-
-        $this->redirectTo('/admin/user/');
     }
 }

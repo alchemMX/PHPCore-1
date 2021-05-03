@@ -5,6 +5,9 @@ namespace Process\User;
 use Model\Account\Register as ModelRegister;
 use Model\Mail\MailRegister;
 
+/**
+ * Register
+ */
 class Register extends \Process\ProcessExtend
 {    
     /**
@@ -72,7 +75,6 @@ class Register extends \Process\ProcessExtend
                 $mail->send();
 
                 return true;
-        
             }
         }
     }

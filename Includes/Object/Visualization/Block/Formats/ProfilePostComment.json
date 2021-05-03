@@ -11,7 +11,7 @@
                         "convert": {
                             "id": "profile_post_comment_id",
                             "text": "profile_post_comment_text",
-                            "created": "profile_post_comment_time",
+                            "created": "profile_post_comment_created",
                             "edited_time": "profile_post_comment_edited"
                         },
                         "notice": {

@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Menu\Button;
 
+/**
+ * Delete
+ */
 class Delete extends \Process\ProcessExtend
 {    
     /**

@@ -9,11 +9,14 @@ $language['notice'] = [
         'report_reason' => 'Zadejte důvod nahlášení',
         'report_reason_length_max' => 'Hlášení je příliš dlouhé',
         
-        'conversation_subject' => 'Zadejte předmět zprávy',
-        'conversation_subject_length_max' => 'Předmět zprávy je příliš dlouhý',
+        'conversation_name' => 'Zadejte předmět zprávy',
+        'conversation_name_length_max' => 'Předmět zprávy je příliš dlouhý',
         
         'conversation_text' => 'Zadejte obsah zprávy',
         'conversation_text_length_max' => 'Obsah zprávy je příliš dlouhý',
+
+        'conversation_user_exist' => 'Zadaný uživatel je již účastníkem této konverzace',
+        'conversation_user_myself' => 'Již jste účastníkem této konverzace',
         
         'text' => 'Zadejte zprávu',
         'text_length_max' => 'Zpráva je příliš dlouhá',
@@ -23,6 +26,8 @@ $language['notice'] = [
 
         'topic_label' => 'Vyberte platné štítky',
         'topic_label_length_max' => 'Maximální limit štítků je 4',
+
+        'to_length_max' => 'Maximální limit účastníku je 10',
 
         'topic_name' => 'Zadejte název tématu',
         'topic_name_length_max' => 'Název tématu je příliš dlouhý',
@@ -65,8 +70,10 @@ $language['notice'] = [
 
         'agree' => 'Musíte souhlasit s podmínkami',
 
-        'account_not_activated' => 'Váš účet není aktivován.<br>Pokud vám stále nepřišel potvrzovací email klikněte <a href="{url}" class="fw-600">zde</a>.',
+        'account_not_activated' => 'Váš účet není aktivován.<br>Na email jsme vám poslali odkaz k aktivaci účtu.',
         'login_validate' => 'Zadali jste špatné uživatelské jméno nebo heslo',
+
+        'Conversation/Recipient' => 'Uživatel s tímto jménem neexistuje'
     ],
 
     'success' => [
@@ -84,7 +91,6 @@ $language['notice'] = [
         'User/Signature' => 'Váš podpis byl změněn',
         'User/Settings' => 'Profilové nastavení bylo úspěšně aktualizováno',
 
-        'Verify/Send' => 'Odkaz pro aktivaci vašeho účtu jsme vám poslali na email',
-        'Verify/Verify' => 'Váš účet byl úspěšně aktivován'
+        'User/Verify' => 'Váš účet byl úspěšně aktivován'
     ]
 ];

@@ -3,7 +3,6 @@
         "group": {
             "data": {
                 "icon": "fas fa-users",
-                "desc": "L_GROUP_LIST_DESC",
                 "title": "L_GROUP_LIST"
             },
             "body": {

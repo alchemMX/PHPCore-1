@@ -17,7 +17,7 @@ class Navbar extends \Visualization\Visualization
      *
      * @param string $count Count
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function notifiCount( $count )
     {
@@ -32,7 +32,7 @@ class Navbar extends \Visualization\Visualization
      *
      * @param string $unicode Icon unicode
      * 
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function notifiIcon( string $unicode )
     {
@@ -43,7 +43,7 @@ class Navbar extends \Visualization\Visualization
     /**
      * Actives button in navbar
      *
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function active()
     {

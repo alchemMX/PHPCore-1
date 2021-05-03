@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Forum;
 
+/**
+ * Permission
+ */
 class Permission extends \Process\ProcessExtend
 {    
     /**

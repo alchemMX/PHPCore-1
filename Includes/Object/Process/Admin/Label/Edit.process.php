@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Label;
 
+/**
+ * Edit
+ */
 class Edit extends \Process\ProcessExtend
 {    
     /**

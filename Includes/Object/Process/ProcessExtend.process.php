@@ -25,27 +25,27 @@ class ProcessExtend {
     protected int $id;
     
     /**
-     * @var object $db Database
+     * @var \Model\Database\Query $db Database
      */
     public \Model\Database\Query $db;
     
     /**
-     * @var object $perm Permission model
+     * @var \Model\Permission $perm Permission model
      */
     protected \Model\Permission $perm;
 
     /**
-     * @var object $data ProcessData
+     * @var \Process\ProcessData $data ProcessData
      */
     protected \Process\ProcessData $data;
 
     /**
-     * @var object $system System model
+     * @var \Model\System\System $system System model
      */
     protected \Model\System\System $system;
 
     /**
-     * @var object $check ProcessCheck
+     * @var \Process\ProcessCheck $check ProcessCheck
      */
     protected \Process\ProcessCheck $check;
         
@@ -53,12 +53,10 @@ class ProcessExtend {
      * Constructor
      *
      * @param  string $process Name of process
-     * @param  \Model\System\System $system System model
-     * @param  \Model\Permission $perm Permission model
-     * 
-     * @return void
+     * @param  \Model\System\System $system System
+     * @param  \Model\Permission $perm Permission
      */
-    public function __construct( string $process, \Model\System\System $system , \Model\Permission $perm )
+    public function __construct( string $process, \Model\System\System $system, \Model\Permission $perm )
     {
         $this->db = new Query();
         $this->perm = $perm;
@@ -67,6 +65,11 @@ class ProcessExtend {
         $this->process = $process;
     }
 
+    /**
+     * Returns ID
+     * 
+     * @return int
+     */
     public function getID()
     {
         return $this->id ?? $this->db->lastInsertId();

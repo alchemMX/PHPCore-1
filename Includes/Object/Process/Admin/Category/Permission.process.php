@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Category;
 
+/**
+ * Permission
+ */
 class Permission extends \Process\ProcessExtend
 {    
     /**

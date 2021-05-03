@@ -10,12 +10,15 @@ use Block\Admin\Forum;
 use Visualization\Block\Block;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Statistics
+ */
 class Statistics extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Statistics',
         'permission' => 'admin.?'
     ];

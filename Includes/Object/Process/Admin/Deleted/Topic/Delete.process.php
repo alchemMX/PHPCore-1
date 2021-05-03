@@ -2,6 +2,11 @@
 
 namespace Process\Admin\Deleted\Topic;
 
+use Model\File;
+
+/**
+ * Delete
+ */
 class Delete extends \Process\ProcessExtend
 {    
     /**
@@ -12,7 +17,7 @@ class Delete extends \Process\ProcessExtend
             'deleted_id'
         ],
         'block' => [
-            'deleted_type_user_id'
+            'deleted_type_id'
         ]
     ];
 
@@ -61,6 +66,11 @@ class Delete extends \Process\ProcessExtend
 
         $this->system->stats->set('topic_deleted', +1);
         $this->system->stats->set('post_deleted', +($posts));
+
+        $file = new File();
+
+        // DELETE IMAGE
+        $file->deleteImage('/Topics/' . $this->data->get('deleted_type_id'));
 
         // ADD RECORD TO LOG
         $this->log();

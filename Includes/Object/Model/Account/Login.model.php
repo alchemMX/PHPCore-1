@@ -5,13 +5,14 @@ namespace Model\Account;
 use Model\Cookie;
 use Model\Session;
 use Model\Database\Query;
+use Model\Mail\MailRegister;
 
 use Block\User;
 
 /**
  * Login
  */
-class Login extends \Model\Model
+class Login
 {
     /**
      * @var string $username Name of user
@@ -46,9 +47,7 @@ class Login extends \Model\Model
      * @param int $remember
      */
     public function __construct( string $username, string $password, int $remember )
-    {
-        parent::__construct();
-        
+    {        
         $this->username = $username;
         $this->password = $password;
         $this->remember = (bool)$remember;
@@ -71,9 +70,14 @@ class Login extends \Model\Model
         }
 
         if ($this->result['verify_code']) {
-            throw new \Exception\Notice('account_not_activated', [
-                'url' => $this->system->url->build('/login/send-' . $this->result['user_id'])
-            ]);
+
+            // SEND AN EMAIL TO VERIFY ACCOUNT
+            $mail = new MailRegister();
+            $mail->mail->addAddress($this->result['user_email'], $this->result['user_name']);
+            $mail->assign(['code' => $this->result['verify_code']]);
+            $mail->send();
+
+            throw new \Exception\Notice('account_not_activated');
         }
 
         return true;
@@ -94,7 +98,7 @@ class Login extends \Model\Model
 
         if ($this->remember === true) {
 
-            Cookie::put('token', $token, 24 * 3600);
+            Cookie::put('token', $token, 365 * 24 * 3600);
             Session::delete('token');
 
         } else {
@@ -103,5 +107,4 @@ class Login extends \Model\Model
             Cookie::delete('token');
         }
     }
-
 }

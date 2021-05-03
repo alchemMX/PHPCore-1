@@ -9,6 +9,7 @@
                     "options": {
                         "template": {
                             "big": "/Conversation/Big.phtml",
+                            "small": "/Conversation/Small.phtml",
                             "medium": "/Conversation/Medium.phtml"
                         }
                     },

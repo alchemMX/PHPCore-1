@@ -2,6 +2,9 @@
 
 namespace Process\Post;
 
+/**
+ * Edit
+ */
 class Edit extends \Process\ProcessExtend
 {    
     /**

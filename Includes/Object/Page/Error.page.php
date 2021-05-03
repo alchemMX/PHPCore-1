@@ -3,14 +3,14 @@
 namespace Page;
 
 /**
- * Error page
+ * Error
  */
 class Error extends Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Error'
     ];
 

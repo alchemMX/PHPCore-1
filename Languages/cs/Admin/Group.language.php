@@ -5,10 +5,8 @@ $language = array_merge($language, [
     'L_GROUP' => 'Skupina',
     'L_GROUP_ADD' => 'Vytvořit skupinu',
     'L_GROUP_NEW' => 'Nová skupina',
-    'L_GROUP_NEW_DESC' => 'Zde můžete vytvořit novou skupinu',
     'L_GROUP_EDIT' => 'Upravit skupinu',
     'L_GROUP_LIST' => 'Seznam skupin',
-    'L_GROUP_LIST_DESC' => 'Zde můžete spravovat vaše skupiny',
 
     'L_GROUP_PERMISSION_LIST' => 'Seznam oprávnění',
     'L_GROUP_PERMISSION_LIST_DESC' => 'Zaškrtnutá oprávnění budou přidělena skupině',

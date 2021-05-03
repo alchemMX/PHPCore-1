@@ -8,12 +8,15 @@ use Visualization\Field\Field;
 use Visualization\Lists\Lists;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Index
+ */
 class Index extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Overall',
         'permission' => 'admin.label'
     ];
@@ -37,7 +40,26 @@ class Index extends \Page\Page
 
         // LIST
         $list = new Lists('Admin/Label');
-        $list->object('label')->fill($label->getAll());
+
+        // LABELS
+        $labels = $label->getAll();
+
+        $i = 1;
+        foreach ($labels as $label) {
+
+            $list->object('label')->appTo($label)->jumpTo();
+
+            if ($i === 1) {
+                $list->delButton('up');
+            }
+
+            if ($i === count($labels)) {
+                $list->delButton('down');
+            }
+
+            $i++;
+        }
+
         $this->data->list = $list->getData();
 
         // FIELD

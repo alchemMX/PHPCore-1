@@ -2,6 +2,9 @@
 
 namespace Process\Topic;
 
+/**
+ * Lock
+ */
 class Lock extends \Process\ProcessExtend
 {    
     /**

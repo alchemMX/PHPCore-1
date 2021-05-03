@@ -129,6 +129,9 @@ body {
     max-height: 700px;
 }
 code {
+    background-color: #f0f0f0;
+}
+pre {
     margin: 0;
     padding: 10px;
     background-color: #f0f0f0;
@@ -783,10 +786,19 @@ div.online {
 .field .recipients > :not(:last-child) {
     margin-right: 10px;
 }
+.field .recipient-list {
+    display: flex;
+    flex-wrap: wrap;
+}
 .field .field-option {
     width: 50%;
     display: flex;
     align-items: center;
+}
+.field .field-option,
+.field .field-option time {
+    color: #4e4e4e;
+    font-weight: 400;
 }
 .field .field-option > textarea {
     margin: 13px;
@@ -886,9 +898,24 @@ input[type="radio"] + label {
 .bottom {
     align-items: center;
 }
-.bottom a {
+.list-name-recipients .list-row-name-bottom input[type="submit"] {
     padding: 0 !important;
     margin-left: 10px;
+    font-weight: 700;
+    background-color: transparent;
+    font-size: 15px;
+}
+
+.list-name-recipients .list-row-name-bottom {
+    background-color: transparent !important;
+}
+
+.list-name-recipients .list-row-name-bottom input[type="submit"]:hover {
+    color: #3174d7;
+}
+.list-name-recipients .list-row-name-bottom form {
+    display: flex;
+    width: 100%;
 }
 .bottom input[type="submit"] {
     margin-left: 15px;
@@ -1706,7 +1733,8 @@ input:hover {
     color: #4e4e4e;
     font-weight: 700;
 }
-.table .table-right {
+.table .table-right,
+.table .table-right time {
     text-align: right;
     font-weight: 500;
     color: #4e4e4e;
@@ -1919,6 +1947,12 @@ input:hover {
 }
 .block .block-content {
     flex: 1 1 auto;
+}
+.block .block-content img {
+    max-width: 100%;
+}
+.block .block-content code {
+    max-width: 100%;
 }
 .block .block-signature {
     padding: 0;
@@ -2214,43 +2248,36 @@ input:hover {
     content: "";
 }
 .recipient {
-    display: inline-block;
+    display: flex;
     align-items: center;
-    border-radius: 100px;
-    padding-right: 10px;
     position: relative;
     margin-right: 10px;
+    background-color: #f9f9f9;
+    border-bottom: 2px solid #f3f3f3;
+    padding: 5px 10px;
+    margin-bottom: 10px;
 }
 .recipient a {
     font-size: 14px;
     font-weight: 600;
-    padding-right: 5px;
+    margin-right: 5px;
 }
 .navbar.navbar-mobile .container {
     padding: 0;
 }
 .recipient [ajax="remove-recipient"] {
-    margin-left: 5px;
-    position: absolute;
-    top: 0;
-    right: 0;
     padding: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
 }
 strong {
     font-weight: 700;
 }
 .recipient .profile {
-    margin-left: -3px;
-    margin-right: 7px;
+    margin-right: 5px;
 }
 .recipient .profile .profile-image {
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    border: 3px solid #fff;
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
 }
 .window {
     display: flex;
@@ -2266,7 +2293,7 @@ strong {
     margin-top: 150px;
     z-index: 999999;
     transition: opacity 0.5s ease, visibility 0.5s ease;
-    max-width: 400px;
+    max-width: 450px;
     width: 100%;
     background-color: #fff;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.35);
@@ -2313,9 +2340,6 @@ strong {
     min-height: 80px;
     max-height: 200px;
 }
-.window .window-content .window-body > :last-child {
-    margin-bottom: 20px;
-}
 .window .window-content .window-close {
     position: absolute;
     right: 0;
@@ -2326,9 +2350,13 @@ strong {
 }
 .window .window-content .window-body {
     font-weight: 600;
-    padding: 0 20px;
+    padding: 20px;
     max-height: 500px;
     overflow-y: auto;
+}
+.window.window-alert .window-content .window-body {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 .window .window-content .window-description {
     padding: 20px;
@@ -2353,9 +2381,6 @@ strong {
 .window .window-body > :not(:last-child) {
     margin-bottom: 20px;
 }
-.window .window-close a {
-    color: #fff;
-}
 .window .window-content .window-head {
     padding: 15px 20px;
     font-size: 20px;
@@ -2364,6 +2389,8 @@ strong {
     color: #3174d7;
     border-bottom: 2px solid #f3f3f3;
     box-shadow: none;
+    display: flex;
+    align-items: center;
 }
 .trumbowyg-button-pane.fixed {
     position: fixed;

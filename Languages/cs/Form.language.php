@@ -16,6 +16,7 @@ $language = array_merge($language, array(
     'L_PASSWORD_VERIFY' => 'Oveření hesla',
 
     'L_PASSWORD_NEW' => 'Nové heslo',
+    'L_PASSWORD_CURRENT' => 'Stávající heslo',
     'L_PASSWORD_NEW_VERIFY_DESC' => 'Pro změnu hesla potvrďte své nové heslo',
     'L_PASSWORD_NEW_VERIFY' => 'Potvrzení nového hesla',
 

@@ -7,7 +7,6 @@ $language = array_merge($language, [
     'L_LABEL' => 'Štítek',
     'L_LABEL_LIST_NO' => 'Žádné štítky',
     'L_LABEL_NEW' => 'Nový štítek',
-    'L_LABEL_NEW_DESC' => 'Zde můžete vytvořit nový štítek',
     'L_LABEL_DESC' => 'Upravit & vytvořit šítek',
     'L_LABEL_NAME'  => 'Název štítku',
     'L_LABEL_LIST' => 'Seznam štítků',

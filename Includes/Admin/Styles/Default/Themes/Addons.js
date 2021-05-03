@@ -83,20 +83,6 @@ $('[ajax-selector="dropdown"]').on('click', function() {
     }
 });
 
-$('[ajax-selector="list"]').each(function () {
-
-    $rowBody = $(this).find('[ajax-selector="list-body"]').children();
-    $rowBody.first().children('[ajax-selector="list-row-inner"]').find('[ajax="up"]').remove();
-    $rowBody.last().children('[ajax-selector="list-row-inner"]').find('[ajax="down"]').remove();
-    
-    $rowBody.each(function () {
-        $body = $(this).find('[ajax-selector^="list-body"]').children();
-        $body.first().find('[ajax="up"]').remove();
-        $body.last().find('[ajax="down"]').remove();
-    });
-
-});
-
 $('[ajax-selector="title"]').after($('[ajax-selector="title"]').clone().addClass('disabled'));
 $('[ajax="title"]').on({
     mouseenter: function() {
@@ -136,13 +122,18 @@ $.cAjax('up', {
         $listMedium = $element.children('[ajax-selector="list-row-inner"]').children('[ajax-selector="list-row-medium"]');
         $listPrevMedium = $element.prev('[ajax-selector="list-row"]').children('[ajax-selector="list-row-inner"]').children('[ajax-selector="list-row-medium"]');
 
-        if (!$element.prev('[ajax-selector="list-row"]').prev('[ajax-selector="list-row"]').length) {
+        if (!$element.prev().prev().length) {
             $listMedium.find('[ajax="up"]').remove();
             $listPrevMedium.find('[ajax="down"]').before('<a class="button button-up" ajax="up"><i class="fas fa-caret-up"></i></a>');
         }
 
         if (!$element.next().length) {
-            $listMedium.prepend('<a class="button button-down" ajax="down"><i class="fas fa-caret-down"></i></a>');
+            if ($listMedium.find('[ajax="up"]').length) {
+                $listMedium.find('[ajax="up"]').after('<a class="button button-down" ajax="down"><i class="fas fa-caret-down"></i></a>');
+            } else {
+                $listMedium.prepend('<a class="button button-down" ajax="down"><i class="fas fa-caret-down"></i></a>');
+            }
+
             $listPrevMedium.find('[ajax="down"]').remove();
         }
 
@@ -163,10 +154,10 @@ $.cAjax('down', {
 
         if (!$element.next().next().length) {
             $listMedium.find('[ajax="down"]').remove();
-            $listNextMedium.find('[ajax="up"]').before('<a class="button button-down" ajax="down"><i class="fas fa-caret-down"></i></a>');
+            $listNextMedium.find('[ajax="up"]').after('<a class="button button-down" ajax="down"><i class="fas fa-caret-down"></i></a>');
         }
         
-        if (!$element.prev('[ajax-selector="list-row"]').length) {
+        if (!$element.prev().length) {
             $listMedium.prepend('<a class="button button-up" ajax="up"><i class="fas fa-caret-up"></i></a>');
             $listNextMedium.find('[ajax="up"]').remove();
         }

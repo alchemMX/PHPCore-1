@@ -1,17 +1,15 @@
 <?php
 namespace Page;
 
-
-
 /**
- * Terms page
+ * Terms
  */
 class Terms extends Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Terms',
     ];
 

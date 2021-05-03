@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Notification;
 
+/**
+ * Down
+ */
 class Down extends \Process\ProcessExtend
 {    
     /**

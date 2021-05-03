@@ -8,18 +8,26 @@ use Block\ButtonSub as _ButtonSub;
 use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Buttonsub
+ */
 class Buttonsub extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'template' => 'Overall',
         'redirect' => '/admin/menu/',
         'permission' => 'admin.menu'
     ];
 
+    /**
+     * Body of this page
+     *
+     * @return void
+     */
     protected function body()
     {
         // NAVBAR

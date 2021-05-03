@@ -15,7 +15,7 @@ class Edit extends \Page\Page
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'editor' => EDITOR_BIG,
         'template' => 'User/Conversation/Edit',
@@ -53,6 +53,6 @@ class Edit extends \Page\Page
         ]);
 
         // HEAD
-        $this->data->head['title'] = $conversation['conversation_subject'];
+        $this->data->head['title'] = $conversation['conversation_name'];
     }
 }

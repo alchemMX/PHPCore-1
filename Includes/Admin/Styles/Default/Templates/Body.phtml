@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html id="html" lang="cs-cz" class="html-hidden">
 
-    <?php require $this->template->require('/Blocks/Head.phtml'); ?>
+    <?php require $this->template->template('/Blocks/Head.phtml'); ?>
 
     <body id="body">
         
-        <?php require $this->template->require('/Blocks/Navbar/Navbar.phtml'); ?>
+        <?php require $this->template->template('/Blocks/Navbar/Navbar.phtml'); ?>
 
         <div class="page" ajax-selector="page">
-            <?php require $this->template->require('/Blocks/NavbarTop.phtml'); ?>
+            <?php require $this->template->template('/Blocks/NavbarTop.phtml'); ?>
             <div class="page-body">
                 <div class="page-container container">
             
@@ -32,17 +32,17 @@
         <div class="window" ajax-selector="window">
             <div class="window-content">
                 <div class="window-head" ajax-selector="window-title"></div>
-                <div class="window-description" ajax-selector="window-description"></div>
+                <div class="window-body" ajax-selector="window-body"></div>
                 <div class="window-bottom" ajax-selector="window-bottom">
                     <a class="button button-confirm" ajax="confirm" ajax-selector="window-submit"></a>
-                    <a class="button" ajax="close" ajax-selector="window-cancel"></a>
+                    <a class="button" ajax="window-close" ajax-selector="window-cancel"></a>
                 </div>
             </div>
         </div>
         <div class="window-opacity"></div>
         <script src="/Assets/jQuery/jQuery.min.js?<?= $this->system->settings->get('session') ?>"></script> 
-        <script src="/Assets/cAjax/cAjax.js?33"></script>
-        <script src="/Includes/Admin/Styles/Default/Themes/Addons.min.js?44"></script>
+        <script src="/Assets/cAjax/cAjax.js?55"></script>
+        <script src="/Includes/Admin/Styles/Default/Themes/Addons.min.js?<?= RAND ?>"></script>
         <script src="/Assets/ApexCharts/ApexCharts.min.js"></script>
     </body>
     

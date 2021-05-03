@@ -10,14 +10,14 @@ use Visualization\Lists\Lists;
 use Visualization\Breadcrumb\Breadcrumb;
 
 /**
- * Users page
+ * Users
  */
 class Users extends Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Users',
     ];
 

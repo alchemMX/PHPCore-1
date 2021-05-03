@@ -2,6 +2,9 @@
 
 namespace Process\Conversation;
 
+/**
+ * Leave
+ */
 class Leave extends \Process\ProcessExtend
 {    
     /**

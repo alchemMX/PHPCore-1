@@ -10,12 +10,15 @@ use Visualization\Lists\Lists;
 use Visualization\Block\Block;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Comment
+ */
 class Comment extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Overall',
         'permission' => 'admin.forum'
     ];

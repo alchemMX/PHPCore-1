@@ -1,6 +1,6 @@
 <?php if ($this->data->panel['body'] ?? [] or $this->data->pagination['enabled'] === true) : ?>
     <div class="panel panel-top">
-        <?php require $this->template->require('/Blocks/Pagination.phtml'); ?>
+        <?php require $this->template->template('/Blocks/Pagination.phtml'); ?>
         <?php if ($this->data->panel['body'] ?? []) : ?>
             <div class="panel-buttons" ajax-selector="panel">
                 <?php foreach ((array)$this->data->panel['body'] as $objName => $object) : ?>

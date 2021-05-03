@@ -2,6 +2,9 @@
 
 namespace Process\Report;
 
+/**
+ * Send
+ */
 class Send extends \Process\ProcessExtend
 {    
     /**

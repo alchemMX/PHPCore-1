@@ -1,13 +1,5 @@
 <?php
 
-/*
- *	Made by Infin48
- *  https://phpcore.cz
- *
- *  License: GPL-3.0
- *  Copyright (c) 2020 Infin48
- */
-
 // ROOT
 define('ROOT', rtrim($_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']), '/'));
 define('DOMAIN', $_SERVER['SERVER_NAME']);

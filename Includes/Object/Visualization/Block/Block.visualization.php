@@ -10,7 +10,7 @@ class Block extends \Visualization\Visualization
     /**
      * Opens current object
      *
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function open()
     {
@@ -21,7 +21,7 @@ class Block extends \Visualization\Visualization
     /**
      * Closes current object
      *
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function close()
     {
@@ -34,7 +34,7 @@ class Block extends \Visualization\Visualization
      * 
      * @param string $notice Notice name
      *
-     * @return \Visualization\Visualization
+     * @return $this
      */
     public function notice( string $notice )
     {
@@ -58,7 +58,7 @@ class Block extends \Visualization\Visualization
                 if ($notice['hide'] === true) {
                     $visual->obj->set->notice($noticeName, false);
                 } else {
-                    $visual->obj->set->notice($noticeName, $this->template->require('/Blocks/Block/Notice/' . ucfirst($noticeName) . '.phtml'));
+                    $visual->obj->set->notice($noticeName, $this->template->template('/Blocks/Block/Notices/' . ucfirst($noticeName) . '.phtml'));
                 }
             }
         }
@@ -102,7 +102,7 @@ class Block extends \Visualization\Visualization
                 }
                 
                 // ASSIGN BUTTON TEMPLATE
-                $visual->obj->set->button($btn, $visual->template->require('/Blocks/Block/Buttons/' . ucfirst($btn) . '.phtml'));
+                $visual->obj->set->button($btn, $visual->template->template('/Blocks/Block/Buttons/' . ucfirst($btn) . '.phtml'));
             }
         }
     }

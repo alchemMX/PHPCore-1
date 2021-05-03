@@ -1,10 +1,10 @@
 <?= $this->build->user->image($row['data']) ?>
 <div class="inner">
-    <?php require $this->template->require('/Blocks/Labels.phtml'); ?>
+    <?php require $this->template->template('/Blocks/Labels.phtml'); ?>
     <a class="fw-700" href="<?= $this->build->url->topic($row['data'])  ?>"><?= $row['data']['topic_name'] ?></a>
     <br>
     <span class="user">
-        <?= $this->build->user->link($row['data']) ?> · <time><?= $this->build->date->long($row['data']['topic_created']) ?></time>
+        <?= $this->build->user->link($row['data']) ?> · <?= $this->build->date->long($row['data']['topic_created']) ?>
     </span>
 </div>
 <?php if ((bool)$row['data']['is_sticky'] === true or (bool)$row['data']['is_locked'] === true or $row['data']['topic_image']) : ?>

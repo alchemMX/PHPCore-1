@@ -11,14 +11,14 @@ use Visualization\Block\Block;
 use Visualization\Breadcrumb\Breadcrumb;
 
 /**
- * Admin deleted content page
+ * Index
  */
 class Index extends \Page\Page
 {    
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Overall',
         'permission' => 'admin.forum'
     ];

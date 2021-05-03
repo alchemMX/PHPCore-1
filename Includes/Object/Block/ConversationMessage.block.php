@@ -17,7 +17,7 @@ class ConversationMessage extends Block
     public function get( int $conversationMessageID )
     {
         return $this->db->query('
-            SELECT cm.*, c.conversation_subject
+            SELECT cm.*, c.conversation_name
             FROM ' . TABLE_CONVERSATIONS_MESSAGES . '
             LEFT JOIN ' . TABLE_CONVERSATIONS . ' ON c.conversation_id = cm.conversation_id
             WHERE conversation_message_id = ?', [$conversationMessageID]
@@ -34,7 +34,7 @@ class ConversationMessage extends Block
     public function getParent( int $conversationID )
     {
         return $this->db->query('
-            SELECT cm.*, c.conversation_subject, ' . $this->select->user() . ', group_name, user_last_activity, user_signature, user_topics, user_posts, user_reputation
+            SELECT cm.*, c.conversation_name, ' . $this->select->user() . ', group_name, user_last_activity, user_signature, user_topics, user_posts, user_reputation
             FROM ' . TABLE_CONVERSATIONS_MESSAGES . '
             LEFT JOIN ' . TABLE_CONVERSATIONS . ' ON c.conversation_id = cm.conversation_id
             ' . $this->join->user('cm.user_id'). '

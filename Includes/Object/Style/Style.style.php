@@ -142,7 +142,7 @@ class Style
 
         extract($this->language->get());
 
-        require $this->template->require('Error.phtml');
+        require $this->template->template('Error.phtml');
         exit();
     }
     
@@ -167,7 +167,7 @@ class Style
     {
         array_shift($this->templates);
         extract($this->language->get());
-        require $this->template->require($this->templates[0] . '.phtml');
+        require $this->template->template($this->templates[0] . '.phtml');
     }
 
     /**

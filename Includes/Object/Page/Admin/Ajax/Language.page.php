@@ -5,15 +5,16 @@ namespace Page\Admin\Ajax;
 use Model\Get;
 
 /**
- * Languages pack for ajax
+ * Language
  */
 class Language extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
-        'loggedIn' => true
+    protected array $settings = [
+        'loggedIn' => true,
+        'permission' => 'admin.?'
     ];
 
     /**
@@ -29,9 +30,9 @@ class Language extends \Page\Page
 
         $this->data->data([
             'windowTitle' => $this->language->get('L_WINDOW_CONFIRM_ACTION'),
-            'windowDesc' => $this->language->get('L_WINDOW_DESC')[$get->get('process')],
             'windowClose' => $this->language->get('L_NO'),
             'windowSubmit' => $this->language->get('L_YES'),
+            'windowContent' => $this->language->get('L_WINDOW_DESC')[$get->get('process')],
             'status' => 'ok'
         ]);
     }

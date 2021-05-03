@@ -69,7 +69,7 @@ $('body').on('click', function (event) {
     }
 });
 
-$('[ajax-selector="dropdown"] a').on('click', function() {
+$('[ajax-selector="dropdown"] > a').on('click', function() {
 
     var $dropdown = $(this).closest('[ajax-selector="dropdown"]');
 

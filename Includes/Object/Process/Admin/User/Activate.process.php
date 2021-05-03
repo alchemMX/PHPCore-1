@@ -2,6 +2,9 @@
 
 namespace Process\Admin\User;
 
+/**
+ * Activate
+ */
 class Activate extends \Process\ProcessExtend
 {
     /**

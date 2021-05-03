@@ -1,4 +1,4 @@
-<?php require $this->template->require('/Blocks/Block/Block.phtml'); ?>
+<?php require $this->template->template('/Blocks/Block/Block.phtml'); ?>
 <?php
         $cache = $this->data->list;
         $this->data->list['body'] = ['news' => $cache['body']['news']];
@@ -14,7 +14,7 @@
         <?php
             $this->data->list['body'] = ['news' => $cache['body']['news']];;
         ?>
-        <?php require $this->template->require('/Blocks/Lists/List.phtml'); ?>
+        <?php require $this->template->template('/Blocks/Lists/Lists.phtml'); ?>
     </div>
     <?php
         $this->data->list['body'] = ['users' => $cache['body']['users']];;
@@ -29,15 +29,15 @@
         <?php
             $this->data->list['body'] = ['users' => $cache['body']['users']];;
         ?>
-        <?php require $this->template->require('/Blocks/Lists/List.phtml'); ?>
+        <?php require $this->template->template('/Blocks/Lists/Lists.phtml'); ?>
     </div>
     <?php
         $this->data->list['body'] = ['log' => $cache['body']['log']];;
     ?>
     <div class="lists-middle">
-        <?php require $this->template->require('/Blocks/Lists/List.phtml'); ?>
+        <?php require $this->template->template('/Blocks/Lists/Lists.phtml'); ?>
 
-        <?php require $this->template->require('/Blocks/Field/Field.phtml'); ?>
+        <?php require $this->template->template('/Blocks/Field/Field.phtml'); ?>
     </div>
 </div>
 <script src="/Assets/ApexCharts/ApexCharts.min.js"></script>

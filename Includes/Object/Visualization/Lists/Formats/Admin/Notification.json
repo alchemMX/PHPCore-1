@@ -6,7 +6,6 @@
             },
             "data": {
                 "icon": "fas fa-bell",
-                "desc": "L_NOTIFICATION_LIST_DESC",
                 "title": "L_NOTIFICATION_LIST",
                 "button": {
                     "add": {

@@ -1,5 +1,10 @@
-<div class="inner">
-    <strong><?= $L_MESSAGES ?> :</strong> <span><?= $row['data']['conversation_messages'] ?></span>
-    <br>
-    <strong><?= $L_CREATED ?>:</strong> <span><?= $this->build->date->long($row['data']['conversation_created']) ?></span>
-</div>
+<?php if (!empty($row['data']['conversation_message_id'])) : ?>
+    <?= $this->build->user->image($row['data'], false, 'message_') ?>
+    <div class="inner">
+        <?= $this->build->user->link($row['data'], false, 'message_') ?>
+        <br>
+        <time><?= $this->build->date->long($row['data']['conversation_message_created'], true) ?></time>
+    </div>
+<?php else : ?>
+    <span class="fw-600"><?= $L_USER_CONVERSATION_MESSAGE_NO ?></span>
+<?php endif; ?>

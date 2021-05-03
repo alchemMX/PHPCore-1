@@ -21,7 +21,7 @@ class Index extends \Page\Page
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'editor' => EDITOR_BIG,
         'template' => 'User/Conversation/Show',
@@ -43,9 +43,15 @@ class Index extends \Page\Page
         // CONVERSATION DATA
         $conversation = $_conversation->get($this->getID()) or $this->error();
 
+        // HEAD
+        $this->data->head = [
+            'title'         => $conversation['conversation_name'],
+            'description'   => $conversation['conversation_text']
+        ];
+
         // ASSIGN DATA TO TEMPLATE
         $this->data->data([
-            'conversation_subject' => $conversation['conversation_subject']
+            'conversation_name' => $conversation['conversation_name']
         ]);
 
         // BREADCRUMB
@@ -105,33 +111,29 @@ class Index extends \Page\Page
             ->row('recipients')->value(count($recipients))
             ->object('recipients')->fill($recipients);
 
-        if (count($recipients) >= 10) {
+        if (count($recipients) >= 10 or $conversation['user_id'] != LOGGED_USER_ID) {
             $sidebar->row('bottom')->hide();
         }
 
         $this->data->sidebar = $sidebar->getData();
 
         // LEAVE CONVERSATION
-        $this->process->call(type: 'Conversation/Leave', url: '/user/conversation/', data: [
+        $this->process->call(type: 'Conversation/Leave', url: '/user/conversation/', on: $this->getOperation('leave'), data: [
             'conversation_id' => $conversation['conversation_id'],
-            'recipients' => array_column($recipients, 'user_id'),
-            'options' => [
-                'on' => [$this->getOperation() => 'leave']
-            ]
+            'recipients' => array_column($recipients, 'user_id')
         ]);
 
         // MARK AS UNREAD CONVERSATION
-        $this->process->call(type: 'Conversation/Mark', data: [
+        $this->process->call(type: 'Conversation/Mark', on: $this->getOperation('mark'), data: [
             'conversation_id' => $conversation['conversation_id'],
-            'options' => [
-                'on' => [$this->getOperation() => 'mark']
-            ]
         ]);
-    
-        // HEAD
-        $this->data->head = [
-            'title'         => $conversation['conversation_subject'],
-            'description'   => $conversation['conversation_text']
-        ];
+
+        if ($conversation['user_id'] == LOGGED_USER_ID) {
+
+            // ADD RECIPIENT
+            $this->process->form(type: 'Conversation/Recipient', data: [
+                'conversation_id' => $conversation['conversation_id'],
+            ]);
+        }
     }
 }

@@ -5,14 +5,14 @@ namespace Page;
 use Visualization\Field\Field;
 
 /**
- * Register page
+ * Register
  */
 class Register extends Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Register',
         'loggedOut' => true
     ];

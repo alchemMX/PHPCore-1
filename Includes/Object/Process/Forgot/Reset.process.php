@@ -2,6 +2,9 @@
 
 namespace Process\Forgot;
 
+/**
+ * Reset
+ */
 class Reset extends \Process\ProcessExtend
 {    
     /**

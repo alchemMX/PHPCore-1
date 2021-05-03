@@ -11,5 +11,5 @@
     <span class="trumbowyg">
         <?= truncate($row['data']['profile_post_text'], 100) ?>
     </span>
-    <span class="grey"><?= $this->build->date->long($row['data']['profile_post_time'], true) ?></span>
+    <span class="grey"><?= $this->build->date->long($row['data']['profile_post_created'], true) ?></span>
 </div>

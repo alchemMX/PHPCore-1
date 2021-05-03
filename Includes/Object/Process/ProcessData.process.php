@@ -3,20 +3,19 @@
 namespace Process;
 
 /**
- * Process
+ * ProcessData
  */
 class ProcessData
 {
     /**
      * @var array $data Process data
      */
-    private $data;
+    private array $data;
 
     /**
      * Constructor
      *
      * @param  array $data
-     * @return void
      */
     public function __construct( array $data )
     {
@@ -45,6 +44,7 @@ class ProcessData
      * Checks if given form radio or checkbox is checked
      *
      * @param  string $string The input name
+     * 
      * @return bool
      */
     public function is( string $string )

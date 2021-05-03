@@ -1,4 +1,4 @@
-<div ajax-selector="recipient-list">
+<div class="recipient-list" ajax-selector="recipient-list">
     <?php if (isset($this->data->data['recipient'])) : ?>
         <div class="recipient" ajax-selector="recipient" data-id="<?= $this->data->data['recipient']['user_id'] ?>">
             <?= $this->build->user->linkImg($this->data->data['recipient']) ?>

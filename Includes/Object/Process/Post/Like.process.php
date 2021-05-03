@@ -2,6 +2,9 @@
 
 namespace Process\Post;
 
+/**
+ * Like
+ */
 class Like extends \Process\ProcessExtend
 {    
     /**

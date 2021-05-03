@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Settings;
 
+/**
+ * Registration
+ */
 class Registration extends \Process\ProcessExtend
 {    
     /**

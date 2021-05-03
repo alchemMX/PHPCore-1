@@ -8,12 +8,15 @@ use Block\Admin\Category;
 use Visualization\Lists\Lists;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Index
+ */
 class Index extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Overall',
         'permission' => 'admin.forum'
     ];
@@ -39,10 +42,40 @@ class Index extends \Page\Page
         // LIST
         $list = new Lists('Admin/Forum');
 
-        // FOREACH CATEGORIES
-        foreach ($category->getAll() as $_category) {
+        // CATEGORIES
+        $categories = $category->getAll();
 
-            $list->object('forum')->appTo($_category)->jumpTo()->fill($forum->getParent($_category['category_id']));
+        $i = 1;
+        foreach ($categories as $_category) {
+
+            $list->object('forum')->appTo($_category)->jumpTo();
+
+            if ($i == 1) {
+                $list->delButton('up');
+            }
+
+            if ($i === count($categories)) {
+                $list->delButton('down');
+            }
+
+            // FORUMS
+            $forums = $forum->getParent($_category['category_id']);
+
+            $x = 1;
+            foreach ($forums as $_forum) {
+                $list->appTo($_forum)->jumpTo();
+
+                if ($x == 1) {
+                    $list->delButton('up');
+                }
+
+                if ($x === count($forums)) {
+                    $list->delButton('down');
+                }
+
+                $x++;
+            }
+            $i++;
         }
         $this->data->list = $list->getData();
     }

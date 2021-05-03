@@ -25,12 +25,10 @@
 
             if (!$element.data('id')) {
                 $.each(['block', 'field', 'list-row'], function (key, selector) {
-                    
                     if ($button.closest('[ajax-selector="'+selector+'"]').length) {
                         $element = $button.closest('[ajax-selector="'+selector+'"]').first();
-                        return true;
+                        return false;
                     }
-                    
                 });
             }
 
@@ -148,13 +146,8 @@
                     // SET WINDOW
                     $window.addClass('window-active');
                     $window.find('[ajax-selector="window-title"]').text(settings.data.windowTitle);
-                    $window.find('[ajax-selector="window-description"]').text(settings.data.windowDesc);
-
-                    if (settings.data.windowContent) {
-                        $window.find('[ajax-selector="window-body"]').html(settings.data.windowContent);
-                    } else {
-                        $window.find('[ajax-selector="window-body"]').empty();
-                    }
+                    console.log(settings.data.windowContent);
+                    $window.find('[ajax-selector="window-body"]').html(settings.data.windowContent);
 
                     if (settings.data.windowSubmit) {
                         $window.find('[ajax-selector="window-bottom"]').show();
@@ -177,7 +170,6 @@
                     $('[ajax="confirm"]').on('click', function (event) {
 
                         event.preventDefault();
-                        event.stopImmediatePropagation()
 
                         // SHOW LOADING ICON
                         $loading.show();
@@ -192,6 +184,20 @@
                             methods.ajax.get();
                         }
                     });
+
+                    $('body').on('click', function(event) {
+
+                        if (!$(event.target).parents('[ajax-selector="window"]').length) {
+                            $('[ajax="confirm"]').off('click');
+                            $window.removeClass('window-active');
+                        }
+                    
+                        if ($(event.target).attr('ajax') == 'window-close') {
+                            $('[ajax="confirm"]').off('click');
+                            $window.removeClass('window-active');
+                        }
+                    });
+
                 } else {
 
                     if (settings.ajax.method == 'post') {

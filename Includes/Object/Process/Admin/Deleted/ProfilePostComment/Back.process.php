@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Deleted\ProfilePostComment;
 
+/**
+ * Back
+ */
 class Back extends \Process\ProcessExtend
 {    
     /**

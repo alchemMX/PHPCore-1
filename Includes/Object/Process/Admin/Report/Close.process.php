@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Report;
 
+/**
+ * Close
+ */
 class Close extends \Process\ProcessExtend
 {    
     /**

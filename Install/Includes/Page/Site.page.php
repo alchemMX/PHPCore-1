@@ -3,7 +3,7 @@
 namespace Page;
 
 /**
- * Site settings page
+ * Site
  */
 class Site extends Page
 {

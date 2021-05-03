@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Deleted\Post;
 
+/**
+ * Delete
+ */
 class Delete extends \Process\ProcessExtend
 {    
     /**
@@ -10,9 +13,6 @@ class Delete extends \Process\ProcessExtend
     public array $require = [
         'data' => [
             'deleted_id'
-        ],
-        'block' => [
-            'deleted_type_user_id'
         ]
     ];
 

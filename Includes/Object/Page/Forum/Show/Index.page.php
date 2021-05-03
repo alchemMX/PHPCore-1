@@ -12,16 +12,15 @@ use Visualization\Lists\Lists;
 use Visualization\Panel\Panel;
 use Visualization\Breadcrumb\Breadcrumb;
 
-
 /**
- * Index forum page
+ * Index
  */
 class Index extends \Page\Page
 {    
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'template' => 'Forum/View',
         'notification' => true

@@ -5,14 +5,14 @@ namespace Page\Forgot;
 use Visualization\Field\Field;
 
 /**
- * Send email to reset password
+ * Index
  */
 class Index extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Forgot/Send',
         'loggedOut' => true
     ];

@@ -131,7 +131,7 @@ class Topic extends Block
     public function getLikesAll( int $topicID )
     {
         return $this->db->query('
-            SELECT ' . $this->select->user() . ', user_text, user_posts, user_reputation
+            SELECT ' . $this->select->user() . ', user_posts, user_reputation
             FROM ' . TABLE_TOPICS_LIKES . '
             ' . $this->join->user('tl.user_id'). '
             WHERE tl.topic_id = ?

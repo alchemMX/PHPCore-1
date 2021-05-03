@@ -3,7 +3,7 @@
 namespace Page;
 
 /**
- * Installation page
+ * Installation
  */
 class Installation extends Page
 {

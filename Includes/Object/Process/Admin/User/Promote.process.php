@@ -2,6 +2,9 @@
 
 namespace Process\Admin\User;
 
+/**
+ * Promote
+ */
 class Promote extends \Process\ProcessExtend
 {    
     /**

@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Category;
 
+/**
+ * Up
+ */
 class Up extends \Process\ProcessExtend
 {    
     /**

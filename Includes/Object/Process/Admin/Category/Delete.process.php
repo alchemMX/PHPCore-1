@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Category;
 
+/**
+ * Delete
+ */
 class Delete extends \Process\ProcessExtend
 {    
     /**

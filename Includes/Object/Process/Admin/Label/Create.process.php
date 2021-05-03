@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Label;
 
+/**
+ * Create
+ */
 class Create extends \Process\ProcessExtend
 {    
     /**

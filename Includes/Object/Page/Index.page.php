@@ -7,8 +7,8 @@ use Block\News;
 use Block\User;
 use Block\Topic;
 use Block\Forum;
-use Block\Admin\News as AdminNews;
 use Block\ProfilePost;
+use Block\Admin\News as AdminNews;
 
 use Model\Pagination;
 
@@ -17,14 +17,14 @@ use Visualization\Sidebar\Sidebar;
 use Visualization\Breadcrumb\Breadcrumb;
 
 /**
- * Index page
+ * Index
  */
 class Index extends Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'header' => true,
         'template' => 'Index',
         'notification' => true

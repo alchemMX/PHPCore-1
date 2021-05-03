@@ -1,13 +1,5 @@
 <?php
 
-/*
- *	Made by Infin48
- *  https://phpcore.cz
- *
- *  License: GPL-3.0
- *  Copyright (c) 2020 Infin48
- */
-
 // DEFINE ROOT
 $ex = explode('/', rtrim($_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']), '/'));
 array_pop($ex);

@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Forum;
 
+/**
+ * Create
+ */
 class Create extends \Process\ProcessExtend
 {    
     /**

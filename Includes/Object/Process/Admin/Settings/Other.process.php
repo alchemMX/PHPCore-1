@@ -4,6 +4,9 @@ namespace Process\Admin\Settings;
 
 use Model\File;
 
+/**
+ * Other
+ */
 class Other extends \Process\ProcessExtend
 {    
     /**

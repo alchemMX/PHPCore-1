@@ -4,7 +4,7 @@
             <?= $this->build->user->image($row['data']) ?>
         </div>
         <div class="inner">
-            <?php require $this->template->require('/Blocks/Labels.phtml'); ?>
+            <?php require $this->template->template('/Blocks/Labels.phtml'); ?>
             <a class="fw-700" href="<?= $this->build->url->topic($row['data']) ?>"><?= truncate($row['data']['topic_name'], 20) ?></a>
             <br>
             <span class="grey"><?= $L_BY ?> </span>

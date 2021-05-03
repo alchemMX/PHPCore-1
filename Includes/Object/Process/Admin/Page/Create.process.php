@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Page;
 
+/**
+ * Create
+ */
 class Create extends \Process\ProcessExtend
 {    
     /**

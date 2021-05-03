@@ -2,6 +2,9 @@
 
 namespace Process\ProfilePost;
 
+/**
+ * Create
+ */
 class Create extends \Process\ProcessExtend
 {    
     /**

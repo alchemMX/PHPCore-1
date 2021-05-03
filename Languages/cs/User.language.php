@@ -30,7 +30,7 @@ $language = array_merge($language, array(
     'L_USER_GENDER_MAN' => 'Muž',
     'L_USER_GENDER_WOMAN' => 'Žena',
 
-    'L_USER_GENDER_NOT_SPECIFIED' => 'Neuvedeno',
+    'L_USER_GENDER_UNDEFINED' => 'Neuvedeno',
 
     'L_USER_HEADER_IMAGE' => 'Záhlaví profilu',
     'L_USER_HEADER_IMAGE_DELETE' => 'Smazat záhlaví profilu',
@@ -43,8 +43,7 @@ $language = array_merge($language, array(
 
     // OPTIONS
 
-    'L_USER_PASSWORD_CURRENT' => 'Stávající heslo',
-    'L_USER_PASSWORD_CURRENT_DESC' => 'Pro změnu uživatelského nastavení musíte zadaz vaše stávající heslo',
+    'L_PASSWORD_CURRENT_DESC' => 'Pro změnu uživatelského nastavení musíte zadaz vaše stávající heslo',
 
     
     // SIGNATURE
@@ -57,11 +56,12 @@ $language = array_merge($language, array(
 
     'L_USER_CONVERSATION_SEND' => 'Poslat zprávu',
     'L_USER_CONVERSATION_NEW' => 'Nová konverzace',
-    'L_USER_CONVERSATION_SUBJECT' => 'Předmět konverzace',
+    'L_USER_CONVERSATION_NAME' => 'Předmět konverzace',
     'L_USER_CONVERSATION_INFO' => 'Informace o konverzaci',
     'L_USER_CONVERSATION_NO' => 'Žádné konverzace',
     'L_USER_CONVERSATION_BODY' => 'Tělo konverzace', 
     'L_USER_CONVERSATION_LEAVE' => 'Opustit konverzaci',
+    'L_USER_CONVERSATION_MESSAGE_NO' => 'Žádné zprávy',
     'L_USER_CONVERSATION_MESSAGE_COUNT' => 'Odpovědí',
     'L_USER_CONVERSATION_RECIPIENT_LIST' => 'Seznam účastníků',
     'L_USER_CONVERSATION_RECIPIENT_COUNT' => 'Účastníků',

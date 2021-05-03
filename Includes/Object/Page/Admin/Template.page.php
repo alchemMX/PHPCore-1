@@ -5,16 +5,24 @@ namespace Page\Admin;
 use Visualization\Lists\Lists;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Template
+ */
 class Template extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Overall',
         'permission' => 'admin.template'
     ];
 
+    /**
+     * Body of this page
+     *
+     * @return void
+     */
     protected function body()
     {
         // NAVBAR
@@ -56,11 +64,8 @@ class Template extends \Page\Page
         $this->data->list = $list->getData();
 
         // REFRESH TEMPLATE
-        $this->process->call(type: 'Admin/Template/Refresh', data: [
-            'template_name' => $this->system->template->get('name'),
-            'options' => [
-                'on' => [$this->getOperation() => 'refresh']
-            ]
+        $this->process->call(type: 'Admin/Template/Refresh', on: $this->getOperation('refresh'), data: [
+            'template_name' => $this->system->template->get('name')
         ]);
 
         // TEMPLATES FOLDER NAMES

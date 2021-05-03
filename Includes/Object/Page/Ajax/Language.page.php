@@ -12,7 +12,7 @@ class Language extends \Page\Page
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'loggedIn' => true
     ];
 
@@ -44,9 +44,9 @@ class Language extends \Page\Page
             case 'ProfilePostComment/Delete':
                 $this->data->data([
                     'windowTitle' => $this->language->get('L_WINDOW_CONFIRM'),
-                    'windowDesc' => $this->language->get('L_WINDOW')[$get->get('process')],
                     'windowClose' => $this->language->get('L_NO'),
                     'windowSubmit' => $this->language->get('L_YES'),
+                    'windowContent' => $this->language->get('L_WINDOW')[$get->get('process')],
                     'status' => 'ok'
                 ]);
             break;
@@ -57,11 +57,10 @@ class Language extends \Page\Page
             case 'ProfilePostComment/Report':
             
                 $this->data->data([
-                    'windowDesc' => $this->language->get('L_WINDOW_REPORT_DESC'),
                     'windowTitle' => $this->language->get('L_WINDOW_REPORT_TITLE'),
                     'windowClose' => $this->language->get('L_CANCEL'),
                     'windowSubmit' => $this->language->get('L_SUBMIT'),
-                    'windowContent' => '<textarea></textarea>',
+                    'windowContent' => $this->language->get('L_WINDOW_REPORT_DESC') . '<br><textarea></textarea>',
                     'status' => 'ok'
                 ]);
             break;

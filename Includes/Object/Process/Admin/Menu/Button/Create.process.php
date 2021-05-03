@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Menu\Button;
 
+/**
+ * Create
+ */
 class Create extends \Process\ProcessExtend
 {    
     /**

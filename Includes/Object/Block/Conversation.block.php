@@ -34,15 +34,17 @@ class Conversation extends Block
     public function getAll()
     {
         return $this->db->query('
-            SELECT c.*, ' . $this->select->user() . '
+            SELECT c.*, cm.conversation_message_created, cm.conversation_message_id, ' . $this->select->user() . ',  u2.user_id AS message_user_id, u2.user_name AS message_user_name, u2.user_profile_image AS message_user_profile_image, g2.group_class_name AS message_group_class_name, ( SELECT COUNT(*) FROM ' . TABLE_CONVERSATIONS_RECIPIENTS . '2 WHERE cr2.conversation_id = c.conversation_id ) AS recipients
             FROM ' . TABLE_CONVERSATIONS . '
             ' . $this->join->user('c.user_id'). '
-            LEFT JOIN ' . TABLE_CONVERSATIONS_RECIPIENTS . ' ON cr.conversation_id = c.conversation_id
-            WHERE cr.user_id = ?
-            GROUP BY c.conversation_id
-            ORDER BY conversation_id DESC
-            LIMIT ?, ?',
-        [LOGGED_USER_ID, $this->pagination['offset'], $this->pagination['max']], ROWS);
+            LEFT JOIN ' . TABLE_CONVERSATIONS_RECIPIENTS . ' ON cr.conversation_id = c.conversation_id AND cr.user_id = ?
+            LEFT JOIN ' . TABLE_CONVERSATIONS_MESSAGES . ' ON cm.conversation_message_id = ( SELECT MAX(conversation_message_id) FROM ' . TABLE_CONVERSATIONS_MESSAGES . '2 WHERE cm2.conversation_id = c.conversation_id )
+            LEFT JOIN ' . TABLE_USERS . '2 ON u2.user_id = cm.user_id
+            LEFT JOIN ' . TABLE_GROUPS . '2 ON g2.group_id = u2.group_id
+            WHERE cr.conversation_id IS NOT NULL
+            ORDER BY CASE WHEN cm.conversation_message_id IS NOT NULL THEN cm.conversation_message_created ELSE c.conversation_created END DESC
+            LIMIT ?, ?
+        ',[LOGGED_USER_ID, $this->pagination['offset'], $this->pagination['max']], ROWS);
     }
     
     /**
@@ -52,13 +54,13 @@ class Conversation extends Block
      */
     public function getAllCount()
     {
-        return  (int)$this->db->query('
-            SELECT IFNULL(COUNT(*), 0) as count
+        return (int)$this->db->query('
+            SELECT COUNT(*) AS count
             FROM ' . TABLE_CONVERSATIONS . '
-            LEFT JOIN ' . TABLE_CONVERSATIONS_RECIPIENTS . ' ON cr.conversation_id = c.conversation_id
-            WHERE cr.user_id = ?
-            GROUP BY c.conversation_id
-        ',[LOGGED_USER_ID])??['count'];
+            LEFT JOIN ' . TABLE_CONVERSATIONS_RECIPIENTS . ' ON cr.conversation_id = c.conversation_id AND cr.user_id = ?
+            WHERE cr.conversation_id IS NOT NULL
+            ORDER BY c.conversation_id DESC
+        ',[LOGGED_USER_ID])['count'] ?? 0;
     }
     
     /**

@@ -2,7 +2,7 @@
 <html id="html" lang="cs-cz" class="html-full html-hidden <?= $this->data->data['pageName'] ?>">
 
     <head>
-        <?php require $this->template->require('/Blocks/Head.phtml'); ?>
+        <?php require $this->template->template('/Blocks/Head.phtml'); ?>
     </head>
 
     <body>
@@ -11,7 +11,7 @@
 
             <?php $this->show(); ?>
         </div>
-        <?php require $this->template->require('/Blocks/Cookie.phtml'); ?>
+        <?php require $this->template->template('/Blocks/Cookie.phtml'); ?>
         <?php require ROOT . '/Includes/Template/Footer.phtml' ?>
         <script defer src="<?= $this->template->theme('/Addons.min.js') ?>?<?= RAND ?>"></script>
 

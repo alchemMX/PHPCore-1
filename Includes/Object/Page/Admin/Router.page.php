@@ -7,17 +7,25 @@ use Block\Deleted;
 
 use Visualization\Navbar\Navbar;
 
+/**
+ * Router
+ */
 class Router extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'template' => 'Header',
         'loggedIn' => true,
         'permission' => 'admin.?'
     ];
     
+    /**
+     * Body of this page
+     *
+     * @return void
+     */
     protected function body()
     {
         // LOAD LANGUAGE

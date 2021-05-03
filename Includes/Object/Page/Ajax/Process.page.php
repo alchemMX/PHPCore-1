@@ -14,7 +14,7 @@ class Process extends \Page\Page
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'loggedIn' => true
     ];
     
@@ -83,8 +83,7 @@ class Process extends \Page\Page
             $this->process->setBlock('\Block\\' . $type);
         }
 
-        $this->process->direct();
-        if ($this->process->{$method}(type: $process, data: $options)) {
+        if ($this->process->{$method}(type: $process, mode: 'direct', data: $options)) {
 
             switch ($get->get('process')) {
 
@@ -160,7 +159,7 @@ class Process extends \Page\Page
                     $this->data->data([
                         'url' => $this->user->perm->has('admin.forum') ? $this->system->url->build('/admin/report/show/' . $this->process->getID()) : '',
                         'status' => 'ok',
-                        'notice' => $this->user->perm->has('admin.forum') ? $this->file('/Blocks/Block/Notice/Reported.phtml') : '',
+                        'notice' => $this->user->perm->has('admin.forum') ? $this->file('/Blocks/Block/Notices/Reported.phtml') : '',
                         'message' => $this->language->get('notice')['success'][$this->process->getMessage()] ?? ''
                     ]);
                 
@@ -183,7 +182,7 @@ class Process extends \Page\Page
 
                     $this->data->data([
                         'url' => $this->system->url->build('/admin/deleted/show/' . $this->process->getID()),
-                        'notice' => $this->user->perm->has('admin.forum') ? $this->file('/Blocks/Block/Notice/Deleted.phtml') : '',
+                        'notice' => $this->user->perm->has('admin.forum') ? $this->file('/Blocks/Block/Notices/Deleted.phtml') : '',
                         'status' => 'ok'
                     ]);
                 break;

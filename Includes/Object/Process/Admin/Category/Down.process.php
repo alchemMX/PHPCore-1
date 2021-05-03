@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Category;
 
+/**
+ * Down
+ */
 class Down extends \Process\ProcessExtend
 {    
     /**

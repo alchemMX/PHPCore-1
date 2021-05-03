@@ -14,14 +14,14 @@ use Visualization\Block\Block;
 use Visualization\Breadcrumb\Breadcrumb;
 
 /**
- * Profile page
+ * Profile
  */
 class Profile extends Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'editor' => EDITOR_SMALL,
         'template' => 'Profile'

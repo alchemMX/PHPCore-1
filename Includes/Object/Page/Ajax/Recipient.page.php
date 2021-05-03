@@ -15,7 +15,7 @@ class Recipient extends \Page\Page
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'loggedIn' => true
     ];
 
@@ -34,8 +34,6 @@ class Recipient extends \Page\Page
         $conversation = new Conversation();
         $user = new User();
 
-        $this->process->direct();
-
         if ($data = $user->getByName($get->get('user'))) {
             if ($data['user_id'] != LOGGED_USER_ID) {
 
@@ -45,7 +43,7 @@ class Recipient extends \Page\Page
 
                         if (in_array(LOGGED_USER_ID, $recipients) === true and in_array($data['user_id'], $recipients) === false) {
 
-                            if ($this->process->call(type: 'Conversation/Recipient', data: ['conversation_id' => $get->get('id'), 'user_id' => $data['user_id']])) {;
+                            if ($this->process->call(type: 'Conversation/Recipient', mode: 'direct', data: ['conversation_id' => $get->get('id'), 'user_id' => $data['user_id']])) {;
                                 $this->data->data([
                                     'user' => $this->build->user->linkImg($data),
                                     'status' => 'ok'

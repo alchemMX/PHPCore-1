@@ -8,12 +8,15 @@ use Block\Admin\Category;
 use Visualization\Field\Field;
 use Visualization\Breadcrumb\Breadcrumb;
 
+/**
+ * Show
+ */
 class Show extends \Page\Page
 {
     /**
      * @var array $settings Page settings
      */
-    protected $settings = [
+    protected array $settings = [
         'id' => int,
         'template' => 'Overall',
         'redirect' => '/admin/forum/',
@@ -58,6 +61,7 @@ class Show extends \Page\Page
             'forum_id'  => $forum['forum_id']
         ]);
 
+        // PAGE TITLE
         $this->data->head['title'] = $this->language->get('L_FORUM') . ' - ' . $forum['forum_name'];
     }
 }

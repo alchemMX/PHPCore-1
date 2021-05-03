@@ -2,7 +2,6 @@
 
 namespace Process;
 
-use Exception;
 use Model\Form;
 use Model\Session;
 use Process\ProcessCheck;
@@ -23,9 +22,9 @@ class Process {
     private string $message = '';
 
     /**
-     * @var bool $direct Direct mode
+     * @var string $mode Mode type
      */
-    private bool $direct = false;
+    private string $mode = 'normal';
 
     /**
      * @var object $form Refers to Form class
@@ -95,9 +94,29 @@ class Process {
      *
      * @return void
      */
-    public function direct()
+    private function direct()
     {
-        $this->direct = true;
+        $this->mode = 'direct';
+    }
+
+    /**
+     * Enables silent mode
+     *
+     * @return void
+     */
+    private function silent()
+    {
+        $this->mode = 'silent';
+    }
+
+    /**
+     * Enables normal mode
+     *
+     * @return void
+     */
+    private function normal()
+    {
+        $this->mode = 'normal';
     }
 
     /**
@@ -145,7 +164,7 @@ class Process {
      * 
      * @param array $format Process form data
      * 
-     * @throws \Exception\Notice If is found some error
+     * @throws \Exception\Notice If is found some error in data
      *
      * @return bool
      */
@@ -155,7 +174,7 @@ class Process {
 
         require ROOT . '/Assets/HTMLPurifier/HTMLPurifier.auto.php';
         $config = \HTMLPurifier_Config::createDefault();
-        $config->set('HTML.Allowed', 'em,strong,del');
+        $config->set('HTML.Allowed', 'em,strong,del,pre,code');
         $config->set('HTML.AllowedAttributes', 'img.src,a.href,span.data-user');
         $def = $config->getHTMLDefinition(true);
         $def->addAttribute('span', 'data-user', 'Text');
@@ -305,14 +324,17 @@ class Process {
      * @param  string $type Path to process
      * @param  string $on Name of submit button
      * @param  string $url URL where user will be redirected after successfull process execution
+     * @param  string $mode 'direct' - Doesn't redirect user after process executing, 'silent' - Doesn't show error messages, 'normal' - Default mode
      * @param  array $data Additional process data
      *
-     * @return bool|void If is enabled "Direct mode", returns boolean otherwise user will be automatically redirected to set URL.
+     * @return bool|void If is enabled 'direct' mode, returns boolean otherwise user will be automatically redirected to set URL.
      */
-    public function form( string $type, string $on = 'submit', string $url = null, array $data = [] )
+    public function form( string $type, string $on = 'submit', string $url = null, string $mode = 'normal', array $data = [] )
     {
+        $this->{$mode}();
+
         // LOAD FORM
-        $this->form = new Form($this->direct);
+        $this->form = new Form($this->mode === 'direct' ? true : false);
         
         // IF SUBMIT BUTTON WAS PRESSED
         if ($this->form->isSend($on)) {
@@ -341,17 +363,19 @@ class Process {
      *
      * @param  string $type Path to process
      * @param  string $url URL where user will be redirected after successfull process execution
+     * @param  string $mode 'direct' - Doesn't redirect user after process executing, 'silent' - Doesn't show error messages, 'normal' - Default mode
+     * @param  bool $on If true - process will be executed
      * @param  array $data Additional process data
      * 
-     * @return bool|void If is enabled "Direct mode", returns boolean otherwise user will be automatically redirected to set URL.
+     * @return bool|void If is enabled 'direct' mode, returns boolean otherwise user will be automatically redirected to set URL.
      */
-    public function call( string $type, string $url = null, array $data = [] )
+    public function call( string $type, string $url = null, string $mode = 'normal', bool $on = true, array $data = [] )
     {
-        if (isset($data['options']['on'])) {
-            foreach ((array)$data['options']['on'] as $key => $value) {
-                if ((string)$key !== (string)$value) return false;
-            }
+        if ($on !== true) {
+            return false;
         }
+
+        $this->{$mode}();
 
         $this->redirectURL = $url ?? $this->redirectURL;
         $this->data = $data;
@@ -408,7 +432,11 @@ class Process {
      * Ends process
      *
      * @param  object $process
-     * @return void
+     * 
+     * @throws \Exception\Notice If is found any data error
+     * @throws \Exception\System If is found internal error
+     * 
+     * @return bool|void
      */
     private function _process( object $process )
     {
@@ -421,10 +449,20 @@ class Process {
             $block = new $block;
 
             if (!$blockData = $block->{$method}($this->data[$selector])) {
-                if ($this->direct === true) {
-                    return false;
+
+                switch ($this->mode) {
+                    case 'direct':
+                        return false;
+                    break;
+
+                    case 'silent':
+                        $this->redirect();
+                    break;
+
+                    default:
+                        throw new \Exception\Notice($this->process);
+                    break;
                 }
-                throw new \Exception\Notice($this->process);
             }
 
             foreach ($process->require['block'] ?? [] as $column) {
@@ -433,16 +471,9 @@ class Process {
 
         }
 
-        $allData = array_merge($blockData ?? [], $this->data ?? []);
-
-        $required = array_merge(
-                $process->require['block'] ?? [],
-                $process->require['data'] ?? []
-        );
-
-        foreach (array_filter($required) as $input) {
-            if (!isset($allData[$input])) {
-                throw new Exception($this->process . ' | Vyžaduje \'' . $input . '\'');
+        foreach (array_filter(array_merge($process->require['block'] ?? [], $process->require['data'] ?? [])) as $input) {
+            if (!isset($this->data[$input])) {
+                throw new \Exception\System($this->process . ' | Vyžaduje \'' . $input . '\'');
             }
         }
 
@@ -450,26 +481,29 @@ class Process {
         if ($process->process() !== false) {
 
             $this->id = $process->getID();
-
-            if ($process->options['success'] ?? SUCCESS_SESSION === SUCCESS_RETURN) {
-                $this->message = $this->process;
-            } else {
+            $this->message = $this->process;
+            if (($process->options['success'] ?? SUCCESS_SESSION) === SUCCESS_SESSION) {
                 Session::put('success', $this->process);
             }
 
-            if (AJAX) {
-                $this->redirectURL = $process->redirectURL ?: '';
-            } else {
-                $this->redirectURL = $process->redirectURL ?: $this->redirectURL;
-                $this->redirectURL .= PAGE != 1 ? '/page-' . PAGE . '/' : '';
+            switch ($this->mode) {
 
-                $this->redirect();
+                case 'direct':
+                    $this->redirectURL = $process->redirectURL ?: '';
+                    return true;
+                break;
+
+                default:
+                    $this->redirectURL = $process->redirectURL ?: $this->redirectURL;
+                    $this->redirectURL .= PAGE != 1 ? '/page-' . PAGE . '/' : '';
+                    $this->redirect();
+                break;
             }
-
-            return true;
-
         }
 
+        if ($this->mode === 'silent') {
+            $this->redirect();
+        }
         throw new \Exception\Notice($this->process);
         return false;
     }

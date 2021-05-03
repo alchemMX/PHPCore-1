@@ -2,6 +2,9 @@
 
 namespace Process\Admin\Label;
 
+/**
+ * Up
+ */
 class Up extends \Process\ProcessExtend
 {    
     /**
