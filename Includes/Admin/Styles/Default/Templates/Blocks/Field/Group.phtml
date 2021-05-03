@@ -1,7 +1,0 @@
-<div class="checkbox checkbox-inner">
-    <input id="<?= $id = mt_rand() ?>" type="checkbox" name="<?= $rowName ?>[]" value="<?= $option['data']['group_id'] ?>" <?php if ($option['checked'] === 'checked') : ?>checked<?php endif; ?>>
-    <label for="<?= $id ?>" class="statue statue--<?= $option['data']['group_class_name'] ?>">
-        <i class="fas fa-check"></i>
-        <?= $option['data']['group_name'] ?>
-    </label>
-</div>
