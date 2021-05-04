@@ -1,0 +1,18 @@
+<?php if ($this->user->isLogged()) : ?>
+    <?php if (isset($this->data->data['editor'])) : ?>
+        <link rel="stylesheet" type="text/css" href="/Assets/Trumbowyg/ui/trumbowyg.min.css?12">
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php if (isset($this->data->data['page_id'])) : ?>
+    <link rel="stylesheet" type="text/css" href="/Pages/<?= $this->data->data['page_id'] ?>/css.css?<?= RAND ?>">
+<?php endif; ?>
+
+<?php if($this->system->settings->get('background_image')) : ?>
+    <link rel="preload" as="image" href="/Uploads/Site/header.<?= $this->system->settings->get('background_image') ?>?<?= $this->system->settings->get('session') ?>">
+<?php endif; ?>
+
+<link defer rel="stylesheet" type="text/css" href="/Includes/Template/css/Group.min.css?<?= $this->system->settings->get('session') ?>">
+<link defer rel="stylesheet" type="text/css" href="/Includes/Template/css/Label.min.css?<?= $this->system->settings->get('session') ?>">
+
+<link async rel="stylesheet" type="text/css" href="/Assets/FontAwesome/css/all.min.css">

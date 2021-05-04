@@ -1,0 +1,18 @@
+{
+    "body": {
+        "signature": {
+            "body": {
+                "user_signature": {
+                    "options": {
+                        "type": "textarea"
+                    },
+                    "data": {
+                        "desc": "L_USER_SIGNATURE_DESC",
+                        "class": "editor",
+                        "title": "L_USER_SIGNATURE"
+                    }
+                }
+            }
+        }
+    }
+}

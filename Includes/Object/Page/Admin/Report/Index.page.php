@@ -1,0 +1,63 @@
+<?php
+
+namespace Page\Admin\Report;
+
+use Block\Report;
+
+use Visualization\Lists\Lists;
+use Visualization\Block\Block;
+use Visualization\Breadcrumb\Breadcrumb;
+
+/**
+ * Index
+ */
+class Index extends \Page\Page
+{
+    /**
+     * @var array $settings Page settings
+     */
+    protected array $settings = [
+        'template' => 'Report',
+        'permission' => 'admin.forum'
+    ];
+    
+    /**
+     * Body of this page
+     *
+     * @return void
+     */
+    protected function body()
+    {
+        // NAVBAR
+        $this->navbar->object('forum')->row('reported')->active()->option('index')->active();
+
+        // REPORT BLOCK
+        $report = new Report();
+
+        // BREADCRUMB
+        $breadcrumb = new Breadcrumb('Admin/Admin');
+        $this->data->breadcrumb = $breadcrumb->getData();
+
+        // LIST
+        $list = new Lists('Admin/Report/Index');
+        $list->object('last')->fill($report->getLastPending())
+            ->object('users')->fill($report->getUsers())
+            ->object('solved')->fill($report->getLastSolved());
+        $this->data->list = $list->getData();
+
+        // REPORT STATS
+        $stats = $report->getStats();
+
+        // BLOCK
+        $block = new Block('Admin/Report/Index');
+        $block
+            ->object('post')->value($stats['post'])
+            ->object('topic')->value($stats['topic'])
+            ->object('profile_post')->value($stats['profile_post'])
+            ->object('profile_post_comment')->value($stats['profile_post_comment']);
+        $this->data->block = $block->getData();
+
+        // CHANGE REPORT TYPE
+        $this->process->form(type: 'Admin/Report/Change', on: 'change');
+    }
+}

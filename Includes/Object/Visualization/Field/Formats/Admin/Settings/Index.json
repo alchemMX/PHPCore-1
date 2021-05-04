@@ -1,0 +1,77 @@
+{
+    "body": {
+        "settings": {
+            "data": {
+                "title": "L_WEBSITE_SETTINGS",
+                "desc": "L_WEBSITE_SETTINGS_DESC",
+                "icon": "fas fa-cogs"
+            },
+            "body": {
+                "site.name": {
+                    "options": {
+                        "type": "text"
+                    },
+                    "data": {
+                        "title": "L_WEBSITE_NAME",
+                        "placeholder": "L_NAME"
+                    }
+                },
+                "site.description": {
+                    "options": {
+                        "type": "text"
+                    },
+                    "data": {
+                        "desc": "L_WEBSITE_DESCRIPTION_DESC",
+                        "title": "L_WEBSITE_DESCRIPTION",
+                        "placeholder": "L_DESCRIPTION"
+                    }
+                },
+                "image.max_size": {
+                    "options": {
+                        "type": "number"
+                    },
+                    "data": {
+                        "desc": "L_WEBSITE_IMAGE_SIZE_DESC",
+                        "title": "L_WEBSITE_IMAGE_SIZE"
+                    }
+                }
+            }
+        },
+        "cookie": {
+            "data": {
+                "title": "L_WEBSITE_COOKIE",
+                "desc": "L_WEBSITE_COOKIE_DESC",
+                "icon": "fas fa-cookie"
+            },
+            "body": {
+                "cookie.enabled": {
+                    "options": {
+                        "type": "checkbox"
+                    },
+                    "data": {
+                        "title": "L_WEBSITE_COOKIE_ENABLE"
+                    },
+                    "body": {
+                        "cookie_enabled": {
+                            "data": {
+                                "value": 1
+                            }
+                        }
+                    }
+                },
+                "cookie.text": {
+                    "options": {
+                        "type": "textarea",
+                        "on": {
+                            "show": "cookie.enabled"
+                        }
+                    },
+                    "data": {
+                        "title": "L_WEBSITE_COOKIE_TEXT",
+                        "placeholder": "L_TEXT"
+                    }
+                }
+            }
+        }
+    }
+}

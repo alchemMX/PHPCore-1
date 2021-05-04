@@ -1,0 +1,35 @@
+{
+    "body": {
+        "profilepost": {
+            "options": {
+                "empty": "L_REPORT_PROFILE_POST_NO"
+            },
+            "data": {
+                "icon": "fas fa-bug",
+                "desc": "L_REPORT_PROFILE_POST_DESC",
+                "title": "L_REPORT_PROFILE_POST"
+            },
+            "body": {
+                "default": {
+                    "options": {
+                        "template": {
+                            "big": "/Report/Report.phtml"
+                        }
+                    },
+                    "data": {
+                        "convert": {
+                            "id": "report_id"
+                        },
+                        "button": {
+                            "info": {
+                                "data": {
+                                    "href": "~/admin/report/show/{id}/"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

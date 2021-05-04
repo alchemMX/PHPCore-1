@@ -1,0 +1,83 @@
+{
+    "body": {
+        "log": {
+            "options": {
+                "empty": "L_LOG_LIST_NO"
+            },
+            "data": {
+                "icon": "fas fa-clipboard-list",
+                "desc": "L_LOG_LIST_LAST_DESC",
+                "title": "L_LOG_LIST"
+            },
+            "body": {
+                "default": {
+                    "options": {
+                        "template": {
+                            "big": "/Log.phtml"
+                        }
+                    },
+                    "data": {}
+                }
+            }
+        },
+        "news": {
+            "options": {
+                "empty": "L_FRONT_NEWS_NO"
+            },
+            "data": {
+                "icon": "fas fa-newspaper",
+                "desc": "L_FRONT_NEWS_DESC",
+                "title": "L_FRONT_NEWS"
+            },
+            "body": {
+                "default": {
+                    "options": {
+                        "template": {
+                            "big": "/News.phtml"
+                        }
+                    },
+                    "data": {
+                        "convert": {
+                            "id": "html_url"
+                        },
+                        "button": {
+                            "info": {
+                                "data": {
+                                    "href": "${id}"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "users": {
+            "data": {
+                "icon": "fas fa-user",
+                "desc": "L_FRONT_USER_DESC",
+                "title": "L_FRONT_USER"
+            },
+            "body": {
+                "default": {
+                    "options": {
+                        "template": {
+                            "big": "/User.phtml"
+                        }
+                    },
+                    "data": {
+                        "convert": {
+                            "id": "user_id"
+                        },
+                        "button": {
+                            "edit": {
+                                "data": {
+                                    "href": "/user/show/{id}/"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
