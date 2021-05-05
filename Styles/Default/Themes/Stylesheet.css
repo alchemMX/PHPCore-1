@@ -120,6 +120,7 @@ html {
     min-height: 100%;
     position: relative;
     overflow-x: hidden;
+    width: 100%;
 }
 body {
     margin: 0;
@@ -1564,8 +1565,17 @@ input:hover {
 }
 .panel.panel-top {
     line-height: 41px;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.panel.panel-top .panel-right {
+    width: 100%;
     text-align: right;
-    display: flow-root;
+}
+.panel.panel-top .pagination + .panel-right {
+    width: auto;
 }
 .panel.panel-bottom {
     text-align: right;
@@ -1577,7 +1587,6 @@ input:hover {
 }
 .panel.panel-top .pagination {
     display: inline-block;
-    float: left;
     font-size: 0;
     line-height: 22px;
     margin: 4px 0;
@@ -1588,7 +1597,7 @@ input:hover {
     justify-content: space-between;
     line-height: 32px;
 }
-.panel .panel-buttons > * {
+.panel .panel-right > * {
     display: inline-block;
 }
 .panel.panel-footer .panel-bottom {
@@ -1598,7 +1607,7 @@ input:hover {
 .panel .dropdown.dropdown-opened > a {
     color: #3174d7;
 }
-.panel .panel-buttons .dropdown > a {
+.panel .panel-right .dropdown > a {
     line-height: 41px;
     font-weight: 500;
     background-color: #fff;
@@ -1631,10 +1640,10 @@ input:hover {
     padding: 0;
     content: "";
 }
-.panel .panel-buttons > a:not(.button) {
+.panel .panel-right > a:not(.button) {
     padding: 10px 0;
 }
-.panel .panel-buttons > :not(:last-child) {
+.panel .panel-right > :not(:last-child) {
     margin-right: 10px;
 }
 .page-breadcumb {
@@ -2359,6 +2368,7 @@ strong {
 .window.window-alert .window-content .window-body {
     padding-top: 0;
     padding-bottom: 0;
+    word-break: break-word;
 }
 .window .window-content .window-description {
     padding: 20px;
@@ -2405,7 +2415,7 @@ strong {
     text-align: center;
 }
 .window.window-hide {
-    animation: fade 1s forwards;
+    /* animation:fade 1s forwards */
 }
 @keyframes fade {
     from {

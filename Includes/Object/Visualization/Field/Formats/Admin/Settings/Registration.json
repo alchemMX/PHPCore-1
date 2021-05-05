@@ -2,8 +2,8 @@
     "body": {
         "settings": {
             "data": {
-                "title": "L_WEBSITE_SETTINGS",
-                "desc": "L_WEBSITE_SETTINGS_DESC",
+                "title": "L_SETTINGS_SETTINGS",
+                "desc": "L_SETTINGS_SETTINGS_DESC",
                 "icon": "fas fa-cogs"
             },
             "body": {
@@ -12,7 +12,7 @@
                         "type": "checkbox"
                     },
                     "data": {
-                        "title": "L_WEBSITE_ALLOW_REGISTRATION"
+                        "title": "L_SETTINGS_ALLOW_REGISTRATION"
                     },
                     "body": {
                         "registration_enabled": {
@@ -30,8 +30,8 @@
                         }
                     },
                     "data": {
-                        "desc": "L_WEBSITE_RECAPTCHA",
-                        "title": "L_WEBSITE_RECAPTCHA_SITE",
+                        "desc": "L_SETTINGS_RECAPTCHA",
+                        "title": "L_SETTINGS_RECAPTCHA_SITE",
                         "placeholder": "L_KEY"
                     }
                 },
@@ -43,8 +43,8 @@
                         }
                     },
                     "data": {
-                        "desc": "L_WEBSITE_RECAPTCHA",
-                        "title": "L_WEBSITE_RECAPTCHA_SECRET",
+                        "desc": "L_SETTINGS_RECAPTCHA",
+                        "title": "L_SETTINGS_RECAPTCHA_SECRET",
                         "placeholder": "L_KEY"
                     }
                 },
@@ -56,8 +56,8 @@
                         }
                     },
                     "data": {
-                        "desc": "L_WEBSITE_REGISTER_TERMS_DESC",
-                        "title": "L_WEBSITE_REGISTER_TERMS",
+                        "desc": "L_SETTINGS_REGISTER_TERMS_DESC",
+                        "title": "L_SETTINGS_REGISTER_TERMS",
                         "placeholder": "L_TEXT"
                     }
                 }

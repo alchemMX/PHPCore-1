@@ -8,7 +8,7 @@ $language = [
         'L_INSTALL' => 'Instalace',
         'L_DATABASE' => 'Databáze',
         'L_ADMIN' => 'Administrátor',
-        'L_WEBSITE_SETTINGS' => 'Globální nastavení',
+        'L_SETTINGS_SETTINGS' => 'Globální nastavení',
         'L_INSTALLED' => 'Nainstalováno',
         'L_REPEAT_INSTALLATION' => 'Opakovat instalaci'
     ],
@@ -84,12 +84,12 @@ $language = [
 
     // WEBSITE
 
-    'L_WEBSITE_SETTINGS_DESC' => 'Obecné nastavení webových stránek',
+    'L_SETTINGS_SETTINGS_DESC' => 'Obecné nastavení webových stránek',
 
-    'L_WEBSITE_NAME' => 'Název webových stránek',
+    'L_SETTINGS_NAME' => 'Název webových stránek',
 
-    'L_WEBSITE_DESCRIPTION' => 'Popis webových stránek',
-    'L_WEBSITE_DESCRIPTION_DESC' => 'Stručný popis webových stránek',
+    'L_SETTINGS_DESCRIPTION' => 'Popis webových stránek',
+    'L_SETTINGS_DESCRIPTION_DESC' => 'Stručný popis webových stránek',
 
     // OTHER
 

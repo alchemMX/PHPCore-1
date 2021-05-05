@@ -2,7 +2,7 @@
     "body": {
         "test": {
             "data": {
-                "title": "L_WEBSITE_EMAIL_TEST"
+                "title": "L_SETTINGS_EMAIL_TEST"
             },
             "body": {
                 "send": {
@@ -11,8 +11,8 @@
                     },
                     "data": {
                         "icon": "f0e0",
-                        "desc": "L_WEBSITE_EMAIL_TEST_SEND_DESC",
-                        "title": "L_WEBSITE_EMAIL_TEST_SEND",
+                        "desc": "L_SETTINGS_EMAIL_TEST_SEND_DESC",
+                        "title": "L_SETTINGS_EMAIL_TEST_SEND",
                         "button": "L_SEND"
                     }
                 }
@@ -20,7 +20,7 @@
         },
         "email": {
             "data": {
-                "title": "L_WEBSITE_EMAIL_OUTGOING"
+                "title": "L_SETTINGS_EMAIL_OUTGOING"
             },
             "body": {
                 "email.prefix": {
@@ -28,7 +28,7 @@
                         "type": "text"
                     },
                     "data": {
-                        "title": "L_WEBSITE_EMAIL_PREFIX",
+                        "title": "L_SETTINGS_EMAIL_PREFIX",
                         "placeholder": "L_EMAIL"
                     }
                 }
@@ -36,8 +36,8 @@
         },
         "smtp": {
             "data": {
-                "title": "L_WEBSITE_EMAIL",
-                "desc": "L_WEBSITE_EMAIL_DESC"
+                "title": "L_SETTINGS_EMAIL",
+                "desc": "L_SETTINGS_EMAIL_DESC"
             },
             "body": {
                 "email_smtp_enabled": {
@@ -45,7 +45,7 @@
                         "type": "radio"
                     },
                     "data": {
-                        "title": "L_WEBSITE_EMAIL_TYPE",
+                        "title": "L_SETTINGS_EMAIL_TYPE",
                         "value": "email.smtp_enabled",
                         "placeholder": "L_NAME"
                     },
@@ -111,6 +111,7 @@
                         }
                     },
                     "data": {
+                        "desc": "L_SETTINGS_EMAIL_SMTP_PORT_DESC",
                         "title": "L_PORT",
                         "value": "email.smtp_port",
                         "placeholder": "L_PORT"

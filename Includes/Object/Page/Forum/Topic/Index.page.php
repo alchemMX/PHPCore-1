@@ -67,7 +67,7 @@ class Index extends \Page\Page
             'topic_name' => $topic['topic_name'],
             'deleted_id' => $topic['deleted_id'],
             'topic_image' => $topic['topic_image'],
-            'report_status' => $topic['report_status'],
+            'report_status' => $topic['report_status'] ?? 0,
         ]);
 
         // HEAD
@@ -215,7 +215,7 @@ class Index extends \Page\Page
                 $block->delButton();
             }
 
-            if ($item['report_id'] and $item['report_status'] == 0 and $this->user->perm->has('admin.forum')) {
+            if ($item['report_id'] and $item['report_status'] ?? 0 == 0 and $this->user->perm->has('admin.forum')) {
                 $block->notice('reported');
                 $block->disable();
             }

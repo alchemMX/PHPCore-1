@@ -2,8 +2,8 @@
     "body": {
         "background": {
             "data": {
-                "title": "L_WEBISTE_HEADER_IMAGE",
-                "desc": "L_WEBISTE_HEADER"
+                "title": "L_SETTINGS_HEADER_IMAGE",
+                "desc": "L_SETTINGS_HEADER"
             },
             "body": {
                 "site.background_image": {
@@ -12,8 +12,8 @@
                         "deleteCheckBox": true
                     },
                     "data": {
-                        "title": "L_WEBISTE_HEADER_IMAGE",
-                        "delete": "L_WEBSITE_HEADER_IMAGE_DELETE"
+                        "title": "L_SETTINGS_HEADER_IMAGE",
+                        "delete": "L_SETTINGS_HEADER_IMAGE_DELETE"
                     }
                 },
                 "site.favicon": {
@@ -22,9 +22,9 @@
                         "deleteCheckBox": true
                     },
                     "data": {
-                        "desc": "L_WEBISTE_ICON_DESC",
-                        "title": "L_WEBISTE_ICON",
-                        "delete": "L_WEBSITE_ICON_DELETE"
+                        "desc": "L_SETTINGS_ICON_DESC",
+                        "title": "L_SETTINGS_ICON",
+                        "delete": "L_SETTINGS_ICON_DELETE"
                     }
                 },
                 "site.background_image_position": {
@@ -32,25 +32,25 @@
                         "type": "radio"
                     },
                     "data": {
-                        "title": "L_WEBSITE_HEADER_POSITION",
+                        "title": "L_SETTINGS_HEADER_POSITION",
                         "placeholder": "L_SIZE"
                     },
                     "body": {
                         "up": {
                             "data": {
-                                "title": "L_WEBISTE_HEADER_IMAGE_UP",
+                                "title": "L_SETTINGS_HEADER_IMAGE_UP",
                                 "value": "top"
                             }
                         },
                         "center": {
                             "data": {
-                                "title": "L_WEBISTE_HEADER_IMAGE_CENTER",
+                                "title": "L_SETTINGS_HEADER_IMAGE_CENTER",
                                 "value": "center"
                             }
                         },
                         "down": {
                             "data": {
-                                "title": "L_WEBISTE_HEADER_IMAGE_DOWN",
+                                "title": "L_SETTINGS_HEADER_IMAGE_DOWN",
                                 "value": "bottom"
                             }
                         }
@@ -60,8 +60,8 @@
         },
         "language": {
             "data": {
-                "title": "L_WEBSITE_LANGUAGE",
-                "desc": "L_WEBSITE_LANGUAGE_DESC"
+                "title": "L_SETTINGS_LANGUAGE",
+                "desc": "L_SETTINGS_LANGUAGE_DESC"
             },
             "body": {
                 "site.locale": {
@@ -69,8 +69,8 @@
                         "type": "select"
                     },
                     "data": {
-                        "desc": "L_WEBSITE_LOCALISATION_DESC",
-                        "title": "L_WEBSITE_LOCALISTION"
+                        "desc": "L_SETTINGS_LOCALISATION_DESC",
+                        "title": "L_SETTINGS_LOCALISTION"
                     },
                     "body": {
                         "cs": {
@@ -98,7 +98,7 @@
                         "type": "select"
                     },
                     "data": {
-                        "title": "L_WEBSITE_TIMEZONE"
+                        "title": "L_SETTINGS_TIMEZONE"
                     },
                     "body": {
                         "Europe/Berlin": {
@@ -138,7 +138,7 @@
                         "type": "select"
                     },
                     "data": {
-                        "title": "L_WEBSITE_LANGUAGE_WEBSITE"
+                        "title": "L_SETTINGS_LANGUAGE_WEBSITE"
                     },
                     "body": {
                         "default": {
@@ -155,7 +155,7 @@
                         "type": "select"
                     },
                     "data": {
-                        "title": "L_WEBSITE_LANGUAGE_EDITOR"
+                        "title": "L_SETTINGS_LANGUAGE_EDITOR"
                     },
                     "body": {
                         "default": {

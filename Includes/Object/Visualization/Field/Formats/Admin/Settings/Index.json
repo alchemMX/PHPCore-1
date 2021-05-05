@@ -2,8 +2,8 @@
     "body": {
         "settings": {
             "data": {
-                "title": "L_WEBSITE_SETTINGS",
-                "desc": "L_WEBSITE_SETTINGS_DESC",
+                "title": "L_SETTINGS_SETTINGS",
+                "desc": "L_SETTINGS_SETTINGS_DESC",
                 "icon": "fas fa-cogs"
             },
             "body": {
@@ -12,7 +12,7 @@
                         "type": "text"
                     },
                     "data": {
-                        "title": "L_WEBSITE_NAME",
+                        "title": "L_SETTINGS_NAME",
                         "placeholder": "L_NAME"
                     }
                 },
@@ -21,8 +21,8 @@
                         "type": "text"
                     },
                     "data": {
-                        "desc": "L_WEBSITE_DESCRIPTION_DESC",
-                        "title": "L_WEBSITE_DESCRIPTION",
+                        "desc": "L_SETTINGS_DESCRIPTION_DESC",
+                        "title": "L_SETTINGS_DESCRIPTION",
                         "placeholder": "L_DESCRIPTION"
                     }
                 },
@@ -31,16 +31,16 @@
                         "type": "number"
                     },
                     "data": {
-                        "desc": "L_WEBSITE_IMAGE_SIZE_DESC",
-                        "title": "L_WEBSITE_IMAGE_SIZE"
+                        "desc": "L_SETTINGS_IMAGE_SIZE_DESC",
+                        "title": "L_SETTINGS_IMAGE_SIZE"
                     }
                 }
             }
         },
         "cookie": {
             "data": {
-                "title": "L_WEBSITE_COOKIE",
-                "desc": "L_WEBSITE_COOKIE_DESC",
+                "title": "L_SETTINGS_COOKIE",
+                "desc": "L_SETTINGS_COOKIE_DESC",
                 "icon": "fas fa-cookie"
             },
             "body": {
@@ -49,7 +49,7 @@
                         "type": "checkbox"
                     },
                     "data": {
-                        "title": "L_WEBSITE_COOKIE_ENABLE"
+                        "title": "L_SETTINGS_COOKIE_ENABLE"
                     },
                     "body": {
                         "cookie_enabled": {
@@ -67,7 +67,7 @@
                         }
                     },
                     "data": {
-                        "title": "L_WEBSITE_COOKIE_TEXT",
+                        "title": "L_SETTINGS_COOKIE_TEXT",
                         "placeholder": "L_TEXT"
                     }
                 }

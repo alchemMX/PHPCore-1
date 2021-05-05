@@ -10,6 +10,9 @@
             },
             "body":{
                 "edit": {
+                    "options": {
+                        "hide": true
+                    },
                     "data": {
                         "title": "L_EDIT",
                         "href": "/edit/"

@@ -22,8 +22,8 @@ Jednoduchý a chytrý forum software.
 
 ## Podpora
 Pokud potřebujete s něčím pomoct, můžete využít tyto možnosti:
-- [Oficiální fórum](https://www.phpcore.cz/forum/)
-- [Discord](https://discord.gg/AAXS7SFr)
+- [Oficiální fórum](https://phpcore.cz/forum/)
+- [Discord](https://discord.gg/pCfbQhdE)
 - [Dokumentace](http://doc.phpcore.cz)
 
 ## Součástí aplikace

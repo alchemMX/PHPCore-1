@@ -1,43 +1,18 @@
 <head>
-    <meta charset="UTF-8" />
-    <title><?= $this->data->head['title'] . ' | ' . $this->system->settings->get('site.name') ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="<?= $this->data->head['description'] ?>" />
-    <meta name="keywords" content="<?= $this->data->head['keyWords'] ?? '' ?>" />
-
-    <link rel="icon" href="<?= $this->data->data['favicon'] ?>?<?= $this->system->settings->get('session') ?>" type="image/svg+xml">
-
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="<?= $_SERVER['SERVER_NAME'] ?>">
-    <meta property="og:url" content="<?= $this->getURL() ?>">
-    <meta property="og:title" content="<?= $this->data->head['title'] . ' | ' . $this->system->settings->get('site.name') ?>">
-    <meta property="og:description" content="<?= $this->data->head['description'] ?>">
-
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:site" content="<?= $_SERVER['SERVER_NAME'] ?>">
-    <meta property="twitter:title" content="<?= $this->data->head['title'] . ' | ' . $this->system->settings->get('site.name') ?>">
-    <meta property="twitter:description" content="<?= $this->data->head['description'] ?>">
-
-    <?php if ($this->data->data['topic_image'] ?? false and $this->data->data['topic_id'] ?? false) : ?>
-        <meta property="og:image" content="/Uploads/Topics/<?= $this->data->data['topic_id'] ?>.<?= $this->data->data['topic_image'] ?>">
-        <meta property="twitter:image:src" content="/Uploads/Topics/<?= $this->data->data['topic_id'] ?>.<?= $this->data->data['topic_image'] ?>">
-    <?php endif; ?>
+    
+    <?php require ROOT . '/Includes/Template/Head.phtml' ?>
 
     <link rel="preload" as="font" type="font/woff2" href="<?= $this->template->theme('/Fonts/Quicksand-Light.woff2') ?>" crossorigin>
     <link rel="preload" as="font" type="font/woff" href="<?= $this->template->theme('/Fonts/Quicksand-Light.woff') ?>" crossorigin>
-    <link rel="preload" as="font" type="font/ttf" href="<?= $this->template->theme('/Fonts/Quicksand-Light.ttf') ?>" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="<?= $this->template->theme('/Fonts/Quicksand-Regular.woff2') ?>" crossorigin>
     <link rel="preload" as="font" type="font/woff" href="<?= $this->template->theme('/Fonts/Quicksand-Regular.woff') ?>" crossorigin>
-    <link rel="preload" as="font" type="font/ttf" href="<?= $this->template->theme('/Fonts/Quicksand-Regular.ttf') ?>" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="<?= $this->template->theme('/Fonts/Quicksand-Medium.woff2') ?>" crossorigin>
     <link rel="preload" as="font" type="font/woff" href="<?= $this->template->theme('/Fonts/Quicksand-Medium.woff') ?>" crossorigin>
-    <link rel="preload" as="font" type="font/ttf" href="<?= $this->template->theme('/Fonts/Quicksand-Medium.ttf') ?>" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="<?= $this->template->theme('/Fonts/Quicksand-Bold.woff2') ?>" crossorigin>
     <link rel="preload" as="font" type="font/woff" href="<?= $this->template->theme('/Fonts/Quicksand-Bold.woff') ?>" crossorigin>
-    <link rel="preload" as="font" type="font/ttf" href="<?= $this->template->theme('/Fonts/Quicksand-Bold.ttf') ?>" crossorigin>
 
-    <link async rel="stylesheet" type="text/css" href="<?= $this->template->theme('/Stylesheet.min.css') ?>?290">
-    <link async rel="stylesheet" type="text/css" href="<?= $this->template->theme('/Quicksand.min.css') ?>">
+    <link rel="preload" as="style" href="<?= $this->template->theme('/Stylesheet.min.css') ?>?355">
 
-    <?php require ROOT . '/Includes/Template/Head.phtml' ?>
+    <link async rel="stylesheet" type="text/css" href="<?= $this->template->theme('/Stylesheet.min.css') ?>?358">
+    <link async rel="stylesheet" type="text/css" href="<?= $this->template->theme('/Quicksand.min.css') ?>?15">
 </head>

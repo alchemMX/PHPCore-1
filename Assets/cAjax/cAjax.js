@@ -83,8 +83,17 @@
                     // HIDE LOADING ICON
                     $loading.hide();
 
-                    // PARSE RETURN STATUS
-                    settings.data = $.parseJSON(data);
+                    try {
+                        // PARSE RETURNED DATA
+                        settings.data = $.parseJSON(data);
+                    } catch (error) {
+                        $alert.removeClass('window-hide').addClass('window-active').removeClass('window-alert-success');
+                        $alert.find('[ajax-selector="window-alert-body"]').text(data);
+                        setTimeout(function() {
+                            $alert.addClass('window-hide').removeClass('window-active');
+                        }, 1500);
+                        return false;
+                    }
 
                     // IF EVERYTHING OK
                     if (settings.data.status != 'ok') {
@@ -135,9 +144,22 @@
                 settings.window.context.process = settings.process;
 
                 $.get(settings.window.url, settings.window.context, function (data) {
-                    settings.data = $.parseJSON(data);
 
+                    // HIDE LOADING ICON
                     $loading.hide();
+
+                    try {
+                        // PARSE RETURNED DATA
+                        settings.data = $.parseJSON(data);
+                    } catch (error) {
+                        $alert.removeClass('window-hide').addClass('window-active').removeClass('window-alert-success');
+                        $alert.find('[ajax-selector="window-alert-body"]').text(data);
+                        setTimeout(function() {
+                            $alert.addClass('window-hide').removeClass('window-active');
+                        }, 1500);
+
+                        return false;
+                    }
                     
                     if (settings.data.status != 'ok') {
                         return false;

@@ -273,6 +273,9 @@ html {
     align-items: center;
     flex-wrap: wrap;
 }
+.lists-middle .list .list-row .list-row-medium {
+    width: auto;
+}
 .list .list-row-medium > :not(:last-child) {
     margin-right: 5px;
 }
@@ -1078,7 +1081,7 @@ i.d-none {
 }
 .navbar .navbar-button .navbar-button-arrow {
     padding: 11px !important;
-    width: max-content !important;
+    width: auto !important;
 }
 .open-navbar a i {
     margin: 0 !important;
@@ -1094,6 +1097,7 @@ i.d-none {
 }
 .navbar.navbar-top .navbar-content {
     padding-left: 300px;
+    display: flex;
 }
 .navbar.navbar-top .breadcrumb {
     background-color: #fff;
@@ -1103,7 +1107,6 @@ i.d-none {
 }
 .navbar.navbar-top .navbar-content .navbar-button {
     color: #fff;
-    display: inline-block;
 }
 .navbar.navbar-top .navbar-content .navbar-button a {
     width: 100%;
