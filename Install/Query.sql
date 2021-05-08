@@ -360,8 +360,6 @@ CREATE TABLE IF NOT EXISTS `phpcore_profile_posts` (
   `profile_id` bigint(11) NOT NULL,
   `profile_post_text` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `profile_post_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `is_edited` tinyint(4) NOT NULL DEFAULT '0',
-  `profile_post_edited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`profile_post_id`)
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -380,8 +378,6 @@ CREATE TABLE IF NOT EXISTS `phpcore_profile_posts_comments` (
   `profile_id` bigint(11) NOT NULL,
   `profile_post_comment_text` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `profile_post_comment_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `is_edited` tinyint(4) NOT NULL DEFAULT '0',
-  `profile_post_comment_edited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`profile_post_comment_id`)
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 

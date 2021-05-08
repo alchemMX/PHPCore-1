@@ -8,7 +8,6 @@ b {
     font-weight: 700;
 }
 i {
-    vertical-align: -0.125em;
     position: relative;
 }
 i + i,
@@ -2137,9 +2136,8 @@ input:hover {
     color: #868686;
     font-weight: 600;
 }
-.block.block-small .block-description {
-    font-weight: 500;
-    color: #868686;
+.block .block-description > :not(:last-child) {
+    margin-right: 10px;
 }
 .block.block-small .block-head {
     padding-bottom: 10px;
@@ -2413,9 +2411,6 @@ strong {
 }
 .trumbowyg-modal-box .trumbowyg-modal-button {
     text-align: center;
-}
-.window.window-hide {
-    /* animation:fade 1s forwards */
 }
 @keyframes fade {
     from {

@@ -37,7 +37,7 @@ class Visualization
     /**
      * Constructor
      *
-     * @param  string $format Format path
+     * @param  string $format Path to format
      */
     public function __construct( string $format )
     {
@@ -181,7 +181,7 @@ class Visualization
      * 
      * @return $this
      */
-    public function value( $value )
+    public function value( mixed $value )
     {
         $this->obj->set->data('value', $value);
         return $this;

@@ -17,13 +17,13 @@
                                 <i class="fas fa-clock"></i> 
                                 <?= $this->build->date->long($row['data']['created']) ?>
                             </span>
+                            <?php if ($row['data']['is_edited'] == 1) : ?>
+                                <span ajax="title" data-title="<?= $L_LAST_EDITED ?>">
+                                    <i class="fas fa-edit"></i> 
+                                    <?= $this->build->date->long($row['data']['edited_time']) ?>
+                                </span>
+                            <?php endif; ?>
                         </span>
-                        <?php if ($row['data']['is_edited'] == 1) : ?>
-                            <span class="block-description" ajax="title" data-title="<?= $L_LAST_EDITED ?>">
-                                <i class="fas fa-edit"></i> 
-                                <?= $this->build->date->long($row['data']['edited_time']) ?>
-                            </span>
-                        <?php endif; ?>
                     </div>
                 </div>
                 <?php if (!empty($row['data']['image'])) : ?>

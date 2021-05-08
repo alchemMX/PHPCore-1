@@ -8,15 +8,12 @@
                         <div class="block-title"><span ajax-selector="name"><?= $row['data']['name'] ?></span></div>
                     <?php endif; ?>
                     <?= $this->build->user->link($row['data'], true) ?>
-                    <span class="block-description" ajax="title" data-title="<?= $L_CREATED ?>">
-                        <?= $this->build->date->long($row['data']['created']) ?>
-                    </span>
-                    <?php if ($row['data']['is_edited'] == 1) : ?>
-                        <span class="block-description" ajax="title" data-title="<?= $L_LAST_EDITED ?>">
-                            <?= $L_EDITED ?>: 
-                            <?= $this->build->date->long($row['data']['edited_time']) ?>
+                    <span class="block-description">
+                        <span ajax="title" data-title="<?= $L_CREATED?>">
+                            <i class="fas fa-clock"></i>
+                            <?= $this->build->date->long($row['data']['created']) ?>
                         </span>
-                    <?php endif; ?>
+                    </span>
                 </div>
             </div>
             <?php require $this->template->template('/Blocks/Block/Notices/Load.phtml'); ?>

@@ -52,9 +52,7 @@ class Edit extends \Process\ProcessExtend
 
         // UPDATE PROFILE SUB POST
         $this->db->update(TABLE_PROFILE_POSTS_COMMENTS, [
-            'is_edited' => '1',
-            'profile_post_comment_text' => $this->data->get('text'),
-            'profile_post_comment_edited' => DATE_DATABASE
+            'profile_post_comment_text' => $this->data->get('text')
         ], $this->data->get('profile_post_comment_id'));
 
         return true;

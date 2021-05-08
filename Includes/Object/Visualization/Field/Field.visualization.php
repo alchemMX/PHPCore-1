@@ -80,7 +80,7 @@ class Field extends \Visualization\Visualization
      * 
      * @return $this
      */
-    public function setValue( $value )
+    public function setValue( mixed $value )
     {   
         $this->data[$this->list[1]] = $value;
 
@@ -110,7 +110,28 @@ class Field extends \Visualization\Visualization
                 $value = $this->obj->get->data('value') ?: $row;
 
                 if ($this->obj->get->options('type') !== 'password') {
-                    $this->obj->set->data('value', $this->data[$value] ?? '');
+
+                    switch ($this->obj->get->options('type')) {
+
+                        case 'text':
+                            $this->obj->set->data('value', (string)$this->data[$value] ?? '');
+                        break;
+
+                        case 'number':
+
+                            if ($this->data[$value] == 0) {
+                                $this->data[$value] = '';
+                            } else {
+                                $this->data[$value] = (int)$this->data[$value];
+                            }
+
+                            $this->obj->set->data('value', $this->data[$value] ?? '');
+                        break;
+
+                        default:
+                            $this->obj->set->data('value', $this->data[$value] ?? '');
+                        break;
+                    }    
                 }
 
                 foreach ($this->obj->get->body() as $option => $data) { $this->option($option);

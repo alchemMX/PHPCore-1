@@ -57,7 +57,7 @@ class ProcessData
      * @param  mixed $value
      * @return void
      */
-    public function set( string $valueName, $value )
+    public function set( string $valueName, mixed $value )
     {
         $this->data[$valueName] = $value;
     }

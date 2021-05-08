@@ -17,7 +17,7 @@ Jednoduchý a chytrý forum software.
 
 ### Instrukce
 1. Stáhněte si nejnovější verzi [zde](https://github.com/Infin48/PHPCore/releases).
-2. Stažený obsah rozbalte a celý vložte na váš web, můžete jej vložit do kořenového adresáře nebo i subdomény, pokud se rozhodnete pro subdoménu nezapomeňte soubor .htaccess nahrát do kořenového adresáře a v tomto novém .htaccess nastavit přesměrování na subdomény.
+2. Stažený obsah rozbalte a celý vložte na váš web, můžete jej vložit do kořenového adresáře nebo subdomény, pokud se rozhodnete pro subdoménu nezapomeňte soubor .htaccess nahrát do kořenového adresáře a v tomto novém .htaccess nastavit přesměrování na subdomény.
 3. Navštivte svůj web a postupujte dle instakcí k instalaci.
 
 ## Podpora

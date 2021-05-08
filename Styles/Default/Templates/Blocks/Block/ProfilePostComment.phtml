@@ -5,10 +5,12 @@
         <div class="block-body" ajax-selector="block-body">
             <div class="block-head">
                 <?= $this->build->user->link($row['data'], true) ?>
-                <span class="block-description" ajax="title" data-title="<?= $L_CREATED ?>"><?= $this->build->date->long($row['data']['created']) ?></span>
-                <?php if ($row['data']['is_edited'] == 1) : ?>
-                    <span class="block-description" ajax="title" data-title="<?= $L_LAST_EDITED ?>"><?= $L_EDITED ?>: <?= $this->build->date->long($row['data']['edited_time']) ?></span>
-                <?php endif; ?>
+                <span class="block-description">
+                    <span ajax="title" data-title="<?= $L_CREATED ?>">
+                        <i class="fas fa-clock"></i>
+                        <?= $this->build->date->long($row['data']['created']) ?>
+                    </span>
+                </span>
             </div>
             <div class="block-content" ajax-selector="block-content">
                 <?= $row['data']['text'] ?>

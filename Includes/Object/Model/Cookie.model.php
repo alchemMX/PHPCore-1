@@ -40,7 +40,7 @@ class Cookie
      * 
      * @return void
      */
-    public static function put( string $cookie, $value, int $expiry = 0 )
+    public static function put( string $cookie, mixed $value, int $expiry = 0 )
     {
         setcookie($cookie, $value, time() + $expiry, '/', null, null, true);
     }
