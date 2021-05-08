@@ -42,6 +42,9 @@
                         },
                         "button": {
                             "info": {
+                                "options": {
+                                    "target": "_blank"
+                                },
                                 "data": {
                                     "href": "${id}"
                                 }

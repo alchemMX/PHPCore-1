@@ -12,31 +12,31 @@ class Edit extends \Process\ProcessExtend
      */
     public array $require = [
         'form' => [
-            'forum_name'            => [
+            'forum_name' => [
                 'type' => 'text',
                 'required' => true
             ],
-            'forum_description'     => [
+            'forum_description' => [
                 'type' => 'text',
                 'required' => true
             ],
-            'is_main'               => [
+            'is_main' => [
                 'type' => 'checkbox'
             ],
-            'category_id_new'       => [
+            'category_id_new' => [
                 'type' => 'number',
                 'block' => '\Block\Admin\Category.GetAllID'
             ],
-            'enable_link'           => [
+            'enable_link' => [
                 'type' => 'radio'
             ],
-            'forum_link'            => [
+            'forum_link' => [
                 'type' => 'text'
             ],
-            'forum_icon_name'               => [
+            'forum_icon' => [
                 'type'  => 'text'
             ],
-            'forum_icon_style'               => [
+            'forum_icon_style' => [
                 'custom'  => ['fas', 'far', 'fab']
             ]
         ],
@@ -91,7 +91,7 @@ class Edit extends \Process\ProcessExtend
             'forum_link'        => $this->data->is('enable_link') ? $this->data->get('forum_link') : '',
             'forum_url'         => parse($this->data->get('forum_name')),
             'forum_name'        => $this->data->get('forum_name'),
-            'forum_icon_name'   => $this->data->get('forum_icon_name'),
+            'forum_icon'        => $this->data->get('forum_icon'),
             'forum_icon_style'  => $this->data->get('forum_icon_style'),
             'forum_description' => $this->data->get('forum_description')
         ], $this->data->get('forum_id'));

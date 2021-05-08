@@ -51,13 +51,7 @@ class Edit extends \Process\ProcessExtend
     /**
      * @var array $options Process options
      */
-    public array $options = [
-        'verify' => [
-            'block' => '\Block\User',
-            'method' => 'get',
-            'selector' => 'user_id'
-        ]
-    ];
+    public array $options = [];
 
     /**
      * Body of process

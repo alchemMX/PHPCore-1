@@ -29,7 +29,7 @@ class Create extends \Process\ProcessExtend
             'is_main'               => [
                 'type' => 'checkbox'
             ],
-            'forum_icon_name'       => [
+            'forum_icon'            => [
                 'type'  => 'text'
             ],
             'forum_icon_style'      => [
@@ -75,8 +75,8 @@ class Create extends \Process\ProcessExtend
             'forum_url'         => parse($this->data->get('forum_name')),
             'forum_link'        => $this->data->get('forum_link'),
             'forum_name'        => $this->data->get('forum_name'),
+            'forum_icon'        => $this->data->get('forum_icon'),
             'category_id'       => $this->data->get('category_id'),
-            'forum_icon_name'   => $this->data->get('forum_icon_name'),
             'forum_icon_style'  => $this->data->get('forum_icon_style'),
             'forum_description' => $this->data->get('forum_description')
         ]);

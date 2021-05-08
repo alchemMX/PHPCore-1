@@ -184,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `phpcore_forums` (
   `forum_description` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `forum_url` varchar(225) COLLATE utf8_general_ci NOT NULL,
   `forum_link` varchar(225) COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `forum_icon_name` varchar(225) COLLATE utf8_general_ci NOT NULL,
+  `forum_icon` varchar(225) COLLATE utf8_general_ci NOT NULL,
   `forum_icon_style` varchar(225) COLLATE utf8_general_ci NOT NULL,
   `forum_topics` mediumint(11) NOT NULL DEFAULT '0',
   `forum_posts` mediumint(11) NOT NULL DEFAULT '0',
@@ -193,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `phpcore_forums` (
   PRIMARY KEY (`forum_id`)
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-INSERT INTO `phpcore_forums` (`category_id`, `forum_name`, `forum_description`, `forum_url`, `forum_icon_name`, `forum_icon_style`, `is_main`, `forum_topics`) VALUES
+INSERT INTO `phpcore_forums` (`category_id`, `forum_name`, `forum_description`, `forum_url`, `forum_icon`, `forum_icon_style`, `is_main`, `forum_topics`) VALUES
 (1, 'První fórum', 'Popis prvního fóra', 'prvni-forum',  'comments', 'fas', 1, 1);
 
 -- --------------------------------------------------------

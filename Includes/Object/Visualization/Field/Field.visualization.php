@@ -114,7 +114,7 @@ class Field extends \Visualization\Visualization
                     switch ($this->obj->get->options('type')) {
 
                         case 'text':
-                            $this->obj->set->data('value', (string)$this->data[$value] ?? '');
+                            $this->obj->set->data('value', (string)($this->data[$value] ?? ''));
                         break;
 
                         case 'number':

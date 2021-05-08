@@ -17,7 +17,7 @@ class Forum extends Block
     public function get( int $forumID )
     {
         return $this->db->query('
-            SELECT f.forum_id, f.forum_link, forum_name, forum_url, forum_description, forum_posts, forum_topics, is_main, category_name, c.category_id, forum_icon_style, forum_icon_name,
+            SELECT f.forum_id, f.forum_link, forum_name, forum_url, forum_description, forum_posts, forum_topics, is_main, category_name, c.category_id, forum_icon_style, forum_icon,
                 CASE WHEN fpt.forum_id IS NOT NULL THEN 1 ELSE 0 END as topic_permission
             FROM ' . TABLE_FORUMS . '
             LEFT JOIN ' . TABLE_CATEGORIES . ' ON c.category_id = f.category_id

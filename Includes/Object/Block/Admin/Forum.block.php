@@ -49,7 +49,7 @@ class Forum extends \Block\Forum
     public function getParent( int $categoryID )
     {
         return $this->db->query('
-            SELECT f.forum_id, forum_name, forum_url, forum_description, is_main, forum_icon_style, forum_icon_name
+            SELECT f.forum_id, forum_name, forum_url, forum_description, is_main, forum_icon_style, forum_icon
             FROM ' . TABLE_FORUMS . '
             WHERE f.category_id = ?
             GROUP BY f.forum_id

@@ -129,7 +129,7 @@
                         "button": "L_ICON_LIST"
                     }
                 },
-                "forum_icon_name": {
+                "forum_icon": {
                     "options": {
                         "type": "text"
                     },
