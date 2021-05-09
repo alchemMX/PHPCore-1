@@ -228,14 +228,16 @@ abstract class Page
 
                     $shifted = array_shift(self::$parsedURL);
                     array_push($_path, ucfirst($shifted));
+                    break;
                 }
 
             }
             
-            if ($this->url->is('edit')) {
+            if ($this->url->is('edit') or $this->url->is('add')) {
                 
-                if (file_exists($path . 'Edit.page.php')) {
-                    array_push($_path, 'Edit');
+                $param = $this->url->is('edit') ? 'Edit' : 'Add';
+                if (file_exists($path . $param . '.page.php')) {
+                    array_push($_path, $param);
 
                     break;
                 }

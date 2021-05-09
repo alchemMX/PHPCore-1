@@ -408,8 +408,8 @@ CREATE TABLE IF NOT EXISTS `phpcore_reports_reasons` (
  `report_id` bigint(11) NOT NULL,
  `user_id` bigint(11) NOT NULL,
  `report_reason_text` varchar(225) COLLATE utf8_general_ci NOT NULL,
- `report_reason_type` tinyint(1) NOT NULL DEFAULT '1',
- `report_reason_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `report_reason_type` tinyint(1) NOT NULL DEFAULT '0',
+ `report_reason_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
  PRIMARY KEY (`report_reason_id`)
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 

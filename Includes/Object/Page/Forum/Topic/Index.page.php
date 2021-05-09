@@ -215,7 +215,7 @@ class Index extends \Page\Page
                 $block->delButton();
             }
 
-            if ($item['report_id'] and $item['report_status'] ?? 0 == 0 and $this->user->perm->has('admin.forum')) {
+            if ($item['report_id'] and ($item['report_status'] ?? 0) == 0 and $this->user->perm->has('admin.forum')) {
                 $block->notice('reported');
                 $block->disable();
             }

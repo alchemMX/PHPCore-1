@@ -114,7 +114,7 @@ class Report extends Block
             LEFT JOIN ' . TABLE_REPORTS_REASONS . ' ON rr.report_reason_id = (
                 SELECT MAX(report_reason_id)
                 FROM ' . TABLE_REPORTS_REASONS . '
-                WHERE r.report_id = report_id AND report_reason_type = 2 
+                WHERE r.report_id = report_id AND report_reason_type = 1
                 ORDER BY report_reason_created DESC
             )
             WHERE report_status = 1
@@ -135,7 +135,7 @@ class Report extends Block
         return (int)$this->db->query('
             SELECT COUNT(*) as count
             FROM ' . TABLE_REPORTS_REASONS . '
-            WHERE report_reason_type = 1 AND report_id = ?
+            WHERE report_reason_type = 0 AND report_id = ?
         ', [$reportID])['count'];
     }
 
