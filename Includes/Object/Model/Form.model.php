@@ -23,7 +23,7 @@ class Form
     }
     
     /**
-     * Returns given value from form
+     * Returns value from form
      *
      * @param  string $key
      * 
@@ -45,7 +45,7 @@ class Form
     }
 
     /**
-     * Checks if submit button was pressed.
+     * Checks if submit button was pressed
      *
      * @param string $button Button name
      * 

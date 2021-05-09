@@ -24,9 +24,8 @@ $language['notice'] = [
         'topic_text' => 'Zadejte obsah tématu',
         'topic_text_length_max' => 'Obsah tématu je příliš dlouhý',
 
-        'topic_label' => 'Vyberte platné štítky',
+        'topic_label' => 'Vyberte štítky',
         'topic_label_length_max' => 'Maximální počet štítků je 5',
-
 
         'topic_name' => 'Zadejte název tématu',
         'topic_name_length_max' => 'Název tématu je příliš dlouhý',
@@ -37,12 +36,11 @@ $language['notice'] = [
         
         'user_name' => 'Zadejte platné uživatelské jméno',
         'user_name_exist' => 'Uživatel s tímto uživatelským jménem již existuje',
-        'user_name_no_exist' => 'Uživatel s tímto uživatelským jménem neexistuje',
         'user_name_characters' => 'Uživatelské jméno obsahuje nepovolené znaky',
         'user_name_length_max' => 'Uživatelské jméno je příliš dlouhé',
         'user_name_length_min' => 'Uživatelské jméno je příliš krátké',
         
-        'user_password' => 'Zadejte platné heslo',
+        'user_password' => 'Zadejte heslo',
         'user_password_wrong' => 'Zadané heslo je nesprávné',
         'user_password_verify' => 'Potvrďte své heslo',
         'user_password_no_match' => 'Zadaná hesla se neshodují',
@@ -50,13 +48,11 @@ $language['notice'] = [
         'user_password_length_max' => 'Heslo je příliš dlouhé',
         'user_password_length_min' => 'Heslo je příliš krátké',
         
-        'user_email' => 'Zadejte platný e-mail',
-        'user_email_exist' => 'Uživatel s tímto emailem již existuje',
-        'user_email_no_exist' => 'Zadaný e-mail neexistuje',
+        'user_email' => 'Zadejte e-mail',
+        'user_email_wrong' => 'Zadaný e-mail není platný',
+        'user_email_exist' => 'Uživatel s tímto e-mailem již existuje',
         'user_email_length_max' => 'E-mail je příliš dlouhý',
         'user_email_length_min' => 'E-mail je příliš krátký',
-
-        'email_wrong' => 'Zadaný e-mail není platný',
 
         'user_signature_length_max' => 'Podpis je příliš dlouhý',
 
@@ -73,7 +69,8 @@ $language['notice'] = [
         'account_not_activated' => 'Váš účet není aktivován.<br>Na e-mail jsme vám poslali odkaz k aktivaci účtu.',
         'login_validate' => 'Zadali jste špatné uživatelské jméno nebo heslo',
 
-        'Conversation/Recipient' => 'Uživatel s tímto jménem neexistuje'
+        'Conversation/Recipient' => 'Uživatel s tímto jménem neexistuje',
+        'Forgot/Send' => 'Uživatel s tímto e-mailem neexistuje'
     ],
 
     'success' => [
@@ -84,7 +81,7 @@ $language['notice'] = [
 
         'User/Login' => 'Byli jste úspěšně přihlášeni',
         'User/Logout' => 'Byli jste úspěšně odhlášeni',
-        'User/Register' => 'Váš účet byl vytvořen. <br> Pro aktivaci účtu klikněte na odkaz který jsme vám poslali na e-mail',
+        'User/Register' => 'Váš účet byl vytvořen.<br>Pro aktivaci účtu klikněte na odkaz který jsme vám poslali na e-mail',
 
         'User/About' => 'Profilové nastavení bylo úspěšně aktualizováno',
         'User/Account' => 'Uživatelské nastavení bylo úspěšně změněno',

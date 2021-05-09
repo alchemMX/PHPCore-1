@@ -2,7 +2,7 @@
 
 namespace Process;
 
-class Site extends Process
+class Site extends \Process\ProcessExtend
 {    
     /**
      * @var array $require Required data

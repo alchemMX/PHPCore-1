@@ -3,104 +3,122 @@
 namespace Process;
 
 /**
- * Check process data
+ * ProcessCheck
  */
-class ProcessCheck {
-    
+class ProcessCheck
+{    
     /**
-     * @var array $inputData Loaded data
-     */
-    public $inputData;
-
-    /**
-     * @var array $noticeName Current checking string name
-     */
-    public $noticeName;
-
-    /**
-     * Checks max length of given string
+     * Returns lenght of given string, integer or array
      *
-     * @param  string $inputName
-     * @param  int $lenght
-     * @return bool
+     * @param  mixed $var
+     * 
+     * @return int
      */
-    public function maxLength( string $string, string $key = null, int $lenght )
+    private function getCount( mixed $var )
     {
-        if (strlen($string) <= $lenght) {
-            return true;
-        }
-
-        throw new \Exception\Notice($key ?: $this->noticeName . '_max_length');
-        return false;
+        return (double)match (gettype($var)) {
+            'array' => count($var),
+            'string' => strlen($var),
+            'integer', 'double' => $var
+        };
     }
 
     /**
-     * Checks max length of given string
+     * Checks max length of given variable
      *
-     * @param  string $inputName
-     * @param  int $lenght
+     * @param  int|array|string $var
+     * @param  string $key
+     * @param  int $length Max length
+     * 
+     * @throws \Exception\Notice If length of variable is greater than the limit
+     * 
      * @return bool
      */
-    public function minLength( string $string, string $key = null, int $lenght )
+    public function maxLength( int|array|string $var, string $key, int $length )
     {
-        if (strlen($string) >= $lenght) {
+        if ($this->getCount($var) <= $length) {
             return true;
         }
 
-        throw new \Exception\Notice($key ?: $this->noticeName . '_min_length');
-        return false;
+        throw new \Exception\Notice($key . '_length_max');
+    }
+
+    /**
+     * Checks max length of given variable
+     *
+     * @param  int|array|string $var
+     * @param  string $key
+     * @param  int $length Min length
+     * 
+     * @throws \Exception\Notice If length of variable is less than the limit
+     * 
+     * @return bool
+     */
+    public function minLength( int|array|string $var, string $key, int $length )
+    {
+        if ($this->getCount($var) >= $length) {
+            return true;
+        }
+
+        throw new \Exception\Notice($key . '_length_min');
     }
 
     /**
      * Checks if given string contains valid characters
      *
-     * @param  string $string
+     * @param  string $var
+     * @param  string $key
+     * 
+     * @throws \Exception\Notice If given string coontains illegal characters
+     * 
      * @return bool
      */
-    private function characters( string $string, string $key = null)
+    private function characters( string $var, string $key )
     {
-        if (preg_match("/^[\p{L}0-9\_\&]+\$/u", utf8_decode($string))) {
+        if (preg_match("/^[\p{L}0-9\_\&]+\$/u", utf8_decode($var))) {
             return true;
         }
         
-        throw new \Exception\Notice($key ?: $this->noticeName . '_characters');
+        throw new \Exception\Notice($key . '_characters');
         return false;
     }
     
     /**
      * Checks if given email is valid
      *
-     * @param  string $email
+     * @param  string $email The email
+     * 
+     * @throws \Exception\Notice If given email is not valid
+     * 
      * @return bool
      */
     public function email( string $email )
     {
-        $this->noticeName = 'user_email';
-
-        if ($this->minLength(string: $email, lenght: 4)) {
-            if ($this->maxLength(string: $email, lenght: 254)) {
+        if ($this->minLength(var: $email, key: 'email', length: 4)) {
+            if ($this->maxLength(var: $email, key: 'email', length: 254)) {
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     return true;
                 }
-                throw new \Exception\Notice($this->noticeName);
+                throw new \Exception\Notice('user_email_wrong');
             }
         }
         return false;
     }
     
     /**
-     * Checks if given user name is valid
+     * Checks if given username is valid
      *
-     * @param  string $userName
+     * @param  string $userName The username
+     * 
+     * @throws \Exception\Notice If given username is not valid
+     * 
      * @return bool
      */
     public function userName( string $userName )
     {
-        $this->noticeName = 'user_name';
-
-        if ($this->minLength(string: $userName, lenght: 4)) {
-            if ($this->maxLength(string: $userName, lenght: 16)) {
-                if ($this->characters($userName)) {
+        if ($this->minLength(var: $userName, key: 'user_name', length: 5)) {
+            if ($this->maxLength(var: $userName, key: 'user_name', length: 16)) {
+                if ($this->characters(var: $userName, key: 'user_name')) {
                     return true;
                 }
             }
@@ -111,16 +129,17 @@ class ProcessCheck {
     /**
      * Checks if given password is valid
      *
-     * @param  string $password
+     * @param  string $password The password
+     * 
+     * @throws \Exception\Notice If given password is not valid
+     * 
      * @return bool
      */
     public function password( string $password )
     {
-        $this->noticeName = 'user_password';
-
-        if ($this->minLength(string: $password, lenght: 6)) {
-            if ($this->maxLength(string: $password, lenght: 40)) {
-                if ($this->characters($password)) {
+        if ($this->minLength(var: $password, key: 'user_password', length: 6)) {
+            if ($this->maxLength(var: $password, key: 'user_password', length: 40)) {
+                if ($this->characters(var: $password, key: 'user_password')) {
                     return true;
                 }
             }

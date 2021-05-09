@@ -22,10 +22,10 @@
 
         <?php require ROOT . '/Install/Style/Templates/Blocks/Navbar.phtml' ?>
         <div class="page">
-            <?php if (!empty(self::$data->notice)) : ?>
+            <?php if (isset($this->data->data['notice'])) : ?>
                 <div class="page-alert">
                     <div class="page-alert-body">
-                        <?= self::$data->notice ?>
+                        <?= $this->data->data['notice'] ?>
                     </div>
                 </div>
             <?php endif; ?>
@@ -34,8 +34,8 @@
         <script src="/Assets/jQuery/jQuery.min.js"></script>
         <script src="/Install/Style/Themes/Addons.min.js"></script>
 
-        <?php if (isset(self::$data->install)) : ?>
-            <script src="/Install/Style/Themes/Install.min.js"></script>
+        <?php if (isset($this->data->data['install'])) : ?>
+            <script src="/Install/Style/Themes/Install.min.js?45"></script>
         <?php endif; ?>
     </body>
 </html>

@@ -5,20 +5,19 @@ namespace Process;
 use Exception;
 
 /**
- * Process
+ * ProcessData
  */
 class ProcessData
 {
     /**
      * @var array $data Process data
      */
-    private $data;
+    private array $data;
 
     /**
      * Constructor
      *
      * @param  array $data
-     * @return void
      */
     public function __construct( array $data )
     {
@@ -29,6 +28,9 @@ class ProcessData
      * Returns value from data
      *
      * @param  string $input
+     * 
+     * @throws \Exception\System If given input will not set
+     * 
      * @return mixed
      */
     public function get( string $input )
@@ -41,34 +43,14 @@ class ProcessData
     }
 
     /**
-     * Checks if given data input is checked
+     * Checks if given form radio or checkbox is checked
      *
+     * @param  string $string The input name
+     * 
      * @return bool
      */
     public function is( string $string )
     {
         return (int)$this->data[$string] === (int)1 ? true : false;
-    }
-    
-    /**
-     * Sets value
-     *
-     * @param  string $valueName
-     * @param  mixed $value
-     * @return void
-     */
-    public function set( string $valueName, mixed $value )
-    {
-        $this->data[$valueName] = $value;
-    }
-
-    /**
-     * Returns data
-     *
-     * @return array
-     */
-    public function getData()
-    {
-        return $this->data;
     }
 }

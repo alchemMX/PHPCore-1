@@ -3,8 +3,6 @@
 namespace Page;
 
 use Model\Form;
-use Model\Session;
-use Model\System\System;
 
 /**
  * Page
@@ -12,64 +10,80 @@ use Model\System\System;
 abstract class Page
 {
     /**
-     * @var array $language Language
-     */
-    public static $language;
-
-    /**
      * @var array $head Head of page
      */
-    protected $head = ['title', 'description', 'keyWords'];
+    protected array $head = ['title', 'description', 'keyWords'];
     
     /**
      * @var string $templateName Name of default template
      */
-    protected $templateName;
+    protected string $templateName;
     
     /**
      * @var string $favicon Favicon
      */
-    protected $favicon = '/Uploads/Site/PHPCore_icon.svg';
+    protected string $favicon = '/Uploads/Site/PHPCore_icon.svg';
     
     /**
      * @var object $page Page class
      */
-    protected $page;
+    protected object $page;
 
     /**
-     * @var object $page Process
+     * @var \Model\Data $data Data
      */
-    protected \Process\process $process;
+    protected \Model\Data $data;
 
     /**
-     * @var object $system System model
+     * @var \Model\Language $language Language
+     */
+    public \Model\Language $language;
+
+    /**
+     * @var \Model\System $system System
      */
     protected \Model\System $system;
 
     /**
-     * @var object $data Page data
+     * @var \Process\process $page Process
      */
-    protected static $data;
+    protected \Process\process $process;
 
     /**
      * Displays page
      *
-     * @param string $exceptionMessage
+     * @param string $notice Notice
+     * 
      * @return void
      */
-    public function showPage( string $exceptionMessage = null )
+    public function showPage( string $notice = null )
     {
-        // EXTRACT LANGUAGE
-        extract(self::$language);
-
         // IF IS ENTERED EXCEPTION MESSAGE
-        if (!is_null($exceptionMessage)) {
-            self::$data->notice = $exceptionMessage;
+        if (!is_null($notice)) {
+            $this->data->data([
+                'notice' => $notice
+            ]);
         }
+
+        // EXTRACT LANGUAGE
+        extract($this->language->get());
 
         $form = new Form();
 
         require ROOT . '/Install/Style/Templates/' . $this->templateName . '.phtml';
+    }
+    
+    /**
+     * Shows notice to page
+     *
+     * @param  string $notice The notice
+     * 
+     * @return void
+     */
+    public function notice( string $notice )
+    {
+        $message = $this->language->get('notice')[$notice] ?? $notice;
+        $this->showPage($message);
     }
 
     /**

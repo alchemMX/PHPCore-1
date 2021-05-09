@@ -2,7 +2,7 @@
 
 namespace Process;
 
-class Start extends Process
+class Start extends \Process\ProcessExtend
 {    
     /**
      * Body of process

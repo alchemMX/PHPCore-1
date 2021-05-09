@@ -68,7 +68,7 @@ class Edit extends \Process\ProcessExtend
         }
 
         if ($this->db->query('SELECT user_id FROM ' . TABLE_USERS . ' WHERE user_email = ? and user_id <> ?', [$this->data->get('user_email'), $this->data->get('user_id')])) {
-            throw new \Exception\Notice('email_exist');
+            throw new \Exception\Notice('user_email_exist');
         }
 
         if ($this->data->get('user_password')) {
@@ -98,7 +98,7 @@ class Edit extends \Process\ProcessExtend
         $this->db->update(TABLE_USERS, [
             'group_id'          => $this->data->get('group_id'),
             'user_name'         => $this->data->get('user_name'),
-            'user_text'        => $this->data->get('user_text'),
+            'user_text'         => $this->data->get('user_text'),
             'user_email'        => $this->data->get('user_email')
         ], $this->data->get('user_id'));
 

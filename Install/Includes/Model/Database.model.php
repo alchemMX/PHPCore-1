@@ -2,11 +2,19 @@
 
 namespace Model;
 
+/**
+ * Database
+ */
 class Database
 {
-
+    /**
+     * @var \PDO $connect PDO
+     */
     public $connect;
-
+    
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $allow = json_decode(file_get_contents(ROOT . '/Install/Includes/Settings.json'), true);
@@ -27,18 +35,17 @@ class Database
 
     }
     
-    public function query($query, $param = [])
+    /**
+     * Executes query
+     *
+     * @param  string $query The query
+     * @param  array $param Prameters
+     * 
+     * @return void
+     */
+    public function query(string $query, array $param = [] )
     {
         $row = $this->connect->prepare($query);
         $row->execute($param);
     }
-
-    public function get($query, $param = [])
-    {
-        $row = $this->connect->prepare($query);
-        $row->execute($param);
-
-        return $row->fetch();
-    }
-
 }

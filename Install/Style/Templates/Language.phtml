@@ -12,7 +12,7 @@
                 </div>
                 <div class="field-option">
                     <select name="language">
-                        <?php foreach (self::$data->languages as $_language) :?>
+                        <?php foreach ($this->data->data['languages'] as $_language) :?>
                             <option value="<?= $_language['iso'] ?>"><?= $_language['name'] ?></option>
                         <?php endforeach; ?>
                     </select>

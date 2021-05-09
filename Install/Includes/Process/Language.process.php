@@ -2,7 +2,7 @@
 
 namespace Process;
 
-class Language extends Process
+class Language extends \Process\ProcessExtend
 {    
     /**
      * @var array $require Required data

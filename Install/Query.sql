@@ -404,13 +404,13 @@ CREATE TABLE IF NOT EXISTS `phpcore_reports` (
 --
 
 CREATE TABLE IF NOT EXISTS `phpcore_reports_reasons` (
- `reason_id` bigint(11) NOT NULL AUTO_INCREMENT,
+ `report_reason_id` bigint(11) NOT NULL AUTO_INCREMENT,
  `report_id` bigint(11) NOT NULL,
  `user_id` bigint(11) NOT NULL,
- `reason_text` varchar(225) COLLATE utf8_general_ci NOT NULL,
- `reason_type` tinyint(11) NOT NULL DEFAULT '1',
- `reason_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
- PRIMARY KEY (`reason_id`)
+ `report_reason_text` varchar(225) COLLATE utf8_general_ci NOT NULL,
+ `report_reason_type` tinyint(1) NOT NULL DEFAULT '1',
+ `report_reason_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (`report_reason_id`)
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 

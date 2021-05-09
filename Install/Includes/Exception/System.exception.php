@@ -2,6 +2,8 @@
 
 namespace Exception;
 
+use Model\Language;
+
 /**
  * System exception 
  */
@@ -10,27 +12,26 @@ class System extends \Exception {
     /**
      * Construct
      *
-     * @param string $error
+     * @param string $error The error
      */
-    public function __construct( string $error, array $assignData = null )
+    public function __construct( string $error )
     {
-        $language = \Page\Page::$language;
-        extract((array)$language);
+        $language = new Language();
 
-        $error = $language[$error] ?? $error;
+        if (AJAX === true) {
+            echo json_encode([
+                'status' => 'error',
+                'error' => $error,
+                'title' => $language->get('L_INSTALL_ERROR'),
+                'button' => $language->get('L_RETRY')
+            ]);
 
-        if (isset($assignData)) {
-
-            foreach ($assignData as $key => $value) {
-                $assignData['{' . $key . '}'] = $value;
-            }
-
-            $error = strtr($error, $assignData);
+            exit();
         }
 
+        extract($language->get());
 
-        require ROOT . '/Includes/Exception/Template/body.phtml';
+        require ROOT . '/Includes/Object/Exception/Template/Body.phtml';
         exit();
     }
-
 }

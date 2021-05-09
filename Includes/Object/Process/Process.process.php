@@ -68,8 +68,6 @@ class Process {
     
     /**
      * Constructor
-     *
-     * @return void
      */
     public function __construct( \Model\System\System $system, \Model\Permission $perm )
     { 
@@ -164,7 +162,7 @@ class Process {
      * 
      * @param array $format Process form data
      * 
-     * @throws \Exception\Notice If is found some error in data
+     * @throws \Exception\Notice If is found any error in data
      *
      * @return bool
      */
@@ -294,7 +292,7 @@ class Process {
                             switch ($value) {
 
                                 case 'email':
-                                    $this->check->email($formData[$input]);
+                                    $this->check->email($formData[$input], $input);
                                 break;
 
                                 case 'username':

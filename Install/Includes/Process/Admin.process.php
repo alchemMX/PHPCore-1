@@ -2,7 +2,7 @@
 
 namespace Process;
 
-class Admin extends Process
+class Admin extends \Process\ProcessExtend
 {    
     /**
      * @var array $require Required data

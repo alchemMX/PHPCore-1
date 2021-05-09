@@ -3,23 +3,20 @@ $language['notice'] = [
 
     'failure' => [
 
-        'user_name' => 'Zadejte platné uživatelské jméno',
+        'user_name' => 'Zadejte uživatelské jméno',
         'user_name_exist' => 'Uživatel s tímto uživatelským jménem již existuje',
-        'user_name_no_exist' => 'Uživatel s tímto uživatelským jménem neexistuje',
         'user_name_characters' => 'Uživatelské jméno obsahuje nepovolené znaky',
         'user_name_length_max' => 'Uživatelské jméno je příliš dlouhé',
         'user_name_length_min' => 'Uživatelské jméno je příliš krátké',
         
-        'user_password' => 'Zadejte platné heslo',
-        'user_password_verify' => 'Potvrďte své heslo',
-        'user_password_no_match' => 'Zadaná hesla se neshodují',
+        'user_password' => 'Zadejte heslo',
         'user_password_characters' => 'Heslo obsahuje nepovolené znaky',
         'user_password_length_max' => 'Heslo je příliš dlouhé',
         'user_password_length_min' => 'Heslo je příliš krátké',
         
-        'user_email' => 'Zadejte platný e-mail',
-        'user_email_exist' => 'Uživatel s tímto emailem již existuje',
-        'user_email_no_exist' => 'Zadaný e-mail neexistuje',
+        'user_email' => 'Zadejte e-mail',
+        'user_email_wrong' => 'Zadaný e-mail není platný',
+        'user_email_exist' => 'Uživatel s tímto e-mailem již existuje',
         'user_email_length_max' => 'E-mail je příliš dlouhý',
         'user_email_length_min' => 'E-mail je příliš krátký',
 
@@ -38,49 +35,25 @@ $language['notice'] = [
         'label_name' => 'Zadejte název štítku',
         'label_color' => 'Zadejte barvu štítku',
 
-        'email_wrong' => 'Zadaný e-mail není platný',
-
-        'email_prefix' => 'Zadejte platný prefix emailu',
+        'group_name' => 'Zadejte název skupiny',
+        'group_color' => 'Zadejte barvu skupiny',
         
-        'e-mail' => 'Zadejte platný e-mail',
-        'email_wrong' => 'Zadaný e-mail není platný',
-        'email_exist' => 'Zadaný e-mail už existuje',
+        'email' => 'Zadejte e-mail',
+        'email_prefix' => 'Zadejte prefix emailu',
 
         'page_name' => 'Zadejte název stránky',
 
         'image_size' => 'Nahraný obrázek je příliš velký',
         'image_format' => 'Formát nahráneho obrázku není podporován',
 
-        'name' => 'Zadejte platný název',
-        'name_max_length' => 'Název je příliš dlouhý',
-
-        'text' => 'Zadejte platnou zprávu',
-        'text_max_length' => 'Text je příliš dlouhý',
-
         'site_name' => 'Zadejte název webových stránek',
         'site_description' => 'Zadejte popis webových stránek',
 
         'image_max_size' => 'Zadejte maximální velikost nahrávání obrázků',
 
-        'title' => 'Zadejte platný název',
-        'text' => 'Zadejte platnou zprávu',
-        'to' => 'Zadejte platné účastníky konverzace',
-        'agree' => 'Musíte souhlasit s podmínkami',
-        'group_name' => 'Zadejte platný název skupiny',
-        'group_color' => 'Zadejte platnou barvu skupiny',
-        'subject' => 'Zadejte platný předmět zprávy',
+        'enter_correct_link' => 'Zadejte odkaz nebo vyberte stránku',
         
-        'description' => 'Zadejte platný popis',
-        'icon' => 'Vyberte ikonu',
-        'color' => 'Zadejte barvu',
-        'unicode' => 'Zadejte platný unicode',
-        'max_image_size' => 'Zadejte platnou velikost obrázků',
-
-        'enter_correct_link' => 'Zadejte platný odkaz nebo stránku',
-        
-        'Admin/User/Search' => 'Uživatel s tímto uživatelským jménem neexistuje',
-    
-    
+        'Admin/User/Search' => 'Uživatel s tímto uživatelským jménem neexistuje'
     ],
 
     'success' => [

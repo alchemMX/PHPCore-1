@@ -28,9 +28,6 @@ class Router extends Page
 {
     /**
      * Constructor
-     * Loads basic models and process
-     *
-     * @return void
      */
     public function __construct()
     {

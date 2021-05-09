@@ -10,21 +10,12 @@ class Notice extends \Exception {
     /**
      * Construct
      *
-     * @param string $exceptionMessage
+     * @param string $notice Notice
      */
-    public function __construct( string $message )
+    public function __construct( string $notice )
     {
         global $router;
-
-        $language = $router::$language;
-
-        $noticeMessage = $language['notice'][$message] ?? '';
-
-        if (empty($noticeMessage)) {
-            $noticeMessage = $message;
-        }
-
-        $router->showPage($noticeMessage);
+        $router->notice($notice);
         exit();
     }
 }

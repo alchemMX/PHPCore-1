@@ -16,7 +16,7 @@ class Language extends Page
     {   
         $this->templateName = 'Language';
 
-        self::$data->languages = [];
+        $languages = [];
 
         // LOADS LANGUAGES FROM FOLDER
         foreach (glob(ROOT . '/Languages/*', GLOB_ONLYDIR) as $dir) {
@@ -25,15 +25,19 @@ class Language extends Page
 
             $iso = explode('/', $dir)[count(explode('/', $dir)) - 1];
             $json = json_decode(file_get_contents($dir . '/Info.json'), true);
-            self::$data->languages[] = [
+            $languages[] = [
                 'iso' => $iso,
                 'name' => $json['name']
             ];
         }
 
+        $this->data->data([
+            'languages' => $languages
+        ]);
+
         // SET LANGUAGE
         $this->process->form(type: 'Language', data: [
-            'languageList' => array_column(self::$data->languages, 'iso')
+            'languageList' => array_column($languages, 'iso')
         ]);
     }
 }

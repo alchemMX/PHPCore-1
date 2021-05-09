@@ -3,71 +3,41 @@
 namespace Process;
 
 use Model\Form;
-use Model\Database;
 
 /**
  * Process
  */
-class Process {
+class Process
+{
+    /**
+     * @var array $data Data
+     */
+    private array $data = [];
 
     /**
-     * @var string $redirectURL Url where will be user redirected after process execution
+     * @var \Model\Form $form Form
      */
-    private $redirectURL = '/Install/';
+    private \Model\Form $form;
 
     /**
-     * @var bool $_options Process options
+     * @var \Process\ProcessCheck $check ProcessCheck
      */
-    private $_options = [];
-
-    /**
-     * @var object $form Refers to Form class
-     */
-    private $form = [];
-
-    /**
-     * @var array $_data Process data
-     */
-    private $_data = [];
-
-    /**
-     * @var object $db Database
-     */
-    protected $db;
-    
-    /**
-     * @var object $check Check class
-     */
-    protected $check;
-
-    /**
-     * @var object $notice Notice class
-     */
-    protected $notice;
-
-    /**
-     * @var object $data ProcessData
-     */
-    protected $data;
-
-    /**
-     * @var object $system Model
-     */
-    public \Model\System $system;
+    private \Process\ProcessCheck $check;
     
     /**
      * Constructor
-     *
-     * @return void
      */
     public function __construct()
-    { 
-        $this->db = new Database();
+    {
         $this->check = new ProcessCheck();
     }
 
     /**
      * Checks form data
+     * 
+     * @param array $format Process form data
+     * 
+     * @throws \Exception\Notice If is found any error in data
      *
      * @return bool
      */
@@ -170,7 +140,7 @@ class Process {
                             }
                         }
 
-                        $this->_data[$input] = $formData[$input];
+                        $this->data[$input] = $formData[$input];
                     break;
                 }
             }
@@ -181,10 +151,12 @@ class Process {
     }
 
     /**
-     * Submits form and starts process
+     * Starts process on form submitting
      *
-     * @param  string $type
-     * @param  array $data
+     * @param  string $type Path to process
+     * @param  string $on Name of submit button
+     * @param  array $data Additional process data
+     *
      * @return void
      */
     public function form( string $type, string $on = 'submit', array $data = [] )
@@ -195,24 +167,16 @@ class Process {
         // IF SUBMIT BUTTON WAS PRESSED
         if ($this->form->isSend($on)) {
 
-            $this->_data = $data;
-
             // EXPLODE PROCESS NAME
             $ex = explode('/', $type);
 
-            // SET VARIABLES
-            $this->process = $type;
-
             $process = 'Process\\' . implode('\\', $ex);
-
-            $process =  new $process;
+            $process =  new $process();
     
             if ($this->checkData($process->require['form'] ?? [])) {
 
                 // CHECK INPUTS
-                $process->_data = $this->_data;
-                $process->system = $this->system;
-                $process->data = new ProcessData($this->_data);
+                $process->data(array_merge($data, $this->data));
                 if ($process->process() !== false) {
                     $this->redirect();
                     return true;
@@ -233,6 +197,6 @@ class Process {
      */
     private function redirect()
     {
-        redirect($this->redirectURL);
+        redirect('/Install/');
     }
 }

@@ -87,11 +87,13 @@
                         // PARSE RETURNED DATA
                         settings.data = $.parseJSON(data);
                     } catch (error) {
-                        $alert.removeClass('window-hide').addClass('window-active').removeClass('window-alert-success');
-                        $alert.find('[ajax-selector="window-alert-body"]').text(data);
-                        setTimeout(function() {
-                            $alert.addClass('window-hide').removeClass('window-active');
-                        }, 1500);
+                        if (data) {
+                            $alert.removeClass('window-hide').addClass('window-active').removeClass('window-alert-success');
+                            $alert.find('[ajax-selector="window-alert-body"]').text(data);
+                            setTimeout(function() {
+                                $alert.addClass('window-hide').removeClass('window-active');
+                            }, 1500);
+                        }
                         return false;
                     }
 
@@ -152,11 +154,13 @@
                         // PARSE RETURNED DATA
                         settings.data = $.parseJSON(data);
                     } catch (error) {
-                        $alert.removeClass('window-hide').addClass('window-active').removeClass('window-alert-success');
-                        $alert.find('[ajax-selector="window-alert-body"]').text(data);
-                        setTimeout(function() {
-                            $alert.addClass('window-hide').removeClass('window-active');
-                        }, 1500);
+                        if (data) {
+                            $alert.removeClass('window-hide').addClass('window-active').removeClass('window-alert-success');
+                            $alert.find('[ajax-selector="window-alert-body"]').text(data);
+                            setTimeout(function() {
+                                $alert.addClass('window-hide').removeClass('window-active');
+                            }, 1500);
+                        }
 
                         return false;
                     }

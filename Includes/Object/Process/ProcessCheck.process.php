@@ -87,19 +87,20 @@ class ProcessCheck
      * Checks if given email is valid
      *
      * @param  string $email The email
+     * @param  string $key
      * 
      * @throws \Exception\Notice If given email is not valid
      * 
      * @return bool
      */
-    public function email( string $email )
+    public function email( string $email, string $key )
     {
-        if ($this->minLength(var: $email, key: 'email', length: 4)) {
-            if ($this->maxLength(var: $email, key: 'email', length: 254)) {
+        if ($this->minLength(var: $email, key: $key, length: 4)) {
+            if ($this->maxLength(var: $email, key: $key, length: 254)) {
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     return true;
                 }
-                throw new \Exception\Notice('email_wrong');
+                throw new \Exception\Notice($key . '_wrong');
             }
         }
         return false;

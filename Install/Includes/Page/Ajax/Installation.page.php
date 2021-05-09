@@ -16,31 +16,20 @@ class Installation extends \Page\Page
      */
     protected function body()
     {
-        try {
-            $db = new Database();
+        $db = new Database();
 
-            $db->connect->exec(file_get_contents(ROOT . '/Install/Query.sql'));
+        $db->connect->exec(file_get_contents(ROOT . '/Install/Query.sql'));
 
-            echo json_encode([
-                'status' => 'ok',
-                'title' => self::$language['L_INSTALL_SUCCESS'],
-                'button' => self::$language['L_CONTINUE']
-            ]);
+        echo json_encode([
+            'status' => 'ok',
+            'title' => $this->language->get('L_INSTALL_SUCCESS'),
+            'button' => $this->language->get('L_CONTINUE')
+        ]);
 
-            $this->system->install([
-                'db' => true,
-                'page' => 4,
-            ]);
-        
-        } catch (\PDOException $e) {
-            echo json_encode([
-                'status' => 'error',
-                'error' => $e->getMessage(),
-                'title' => self::$language['L_INSTALL_ERROR'],
-                'button' => self::$language['L_RETRY']
-            ]);
-        }
-    
+        $this->system->install([
+            'db' => true,
+            'page' => 4,
+        ]);
     
         exit();
     }

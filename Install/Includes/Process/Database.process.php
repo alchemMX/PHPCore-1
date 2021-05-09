@@ -2,7 +2,7 @@
 
 namespace Process;
 
-class Database extends Process
+class Database extends \Process\ProcessExtend
 {    
     /**
      * @var array $require Required data
@@ -37,7 +37,7 @@ class Database extends Process
      */
     public function process()
     {
-        $port = empty($this->data->get('port')) ? 3306 : $this->data->get('port');
+        $port = $this->data->get('port') ?: 3306;
 
         try {
             // TEST CONNECTION

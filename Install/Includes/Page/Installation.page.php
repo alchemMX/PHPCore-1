@@ -16,6 +16,8 @@ class Installation extends Page
     {
         $this->templateName = 'Installation';
 
-        self::$data->install = true;
+        $this->data->data([
+            'install' => true
+        ]);
     }
 }

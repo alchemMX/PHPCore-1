@@ -88,7 +88,7 @@ abstract class Page
     protected static array $urlData = ['page' => 1];
 
     /**
-     * Construct
+     * Constructor
      */
     public function __construct()
     {
@@ -328,9 +328,7 @@ abstract class Page
     {
         $message = $this->language->get('notice')['failure'][$notice] ?? '';
 
-        if (!$message) {
-            $message = 'Vyskytla se chyba: ' . $notice;
-        } else {
+        if ($message) {
             foreach ($assign as $variable => $data) {
                 $message = strtr($message, ['{' . $variable . '}' => $data]);
             }
@@ -346,7 +344,9 @@ abstract class Page
 
         $this->data->navbar = ($this->navbar ?? $this->page->navbar)->getData();
         $this->style->load($this->data, $this->build, $this->user);
-        $this->style->notice($message);
+        if ($message) {
+            $this->style->notice($message);
+        }
         $this->style->show();
     }
 
