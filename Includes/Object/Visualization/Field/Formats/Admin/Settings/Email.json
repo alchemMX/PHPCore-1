@@ -36,8 +36,7 @@
         },
         "smtp": {
             "data": {
-                "title": "L_SETTINGS_EMAIL",
-                "desc": "L_SETTINGS_EMAIL_DESC"
+                "title": "L_SETTINGS_EMAIL"
             },
             "body": {
                 "email_smtp_enabled": {

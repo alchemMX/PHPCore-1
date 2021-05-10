@@ -11,11 +11,8 @@ $language = array_merge($language, [
     'L_REPORT_REASON_TYPE_CLOSED' => 'uzavřel toto hlášení',
 
     'L_REPORT_REASON' => 'Uživatelká hlášení',
-    'L_REPORT_REASON_DESC' => 'Všechny nahlášené důvody',
 
     'L_REPORT_DETAILS' => 'Nahlášený obsah',
-    'L_REPORT_DETAILS_DESC' => 'Podrobnosti o nahlášeném obsahu',
-
     'L_REPORT_TOPIC' => 'Nahlášená témata',
     'L_REPORT_TOPIC_NO' => 'Žádná nahlášená témata',
     'L_REPORT_TOPIC_SHOW' => 'Podrobnosti o nahlášeném tématu',
@@ -32,7 +29,7 @@ $language = array_merge($language, [
     'L_REPORT_REASON' => 'Důvody',
 
     'L_REPORT_PENDING' => 'Nevyřešená hlášení',
-    'L_REPORT_PENDING_DESC' => 'Poslední nevyřešená hlášení', 
+    'L_REPORT_PENDING_DESC' => 'Nejnovější nevyřešená hlášení', 
     'L_REPORT_PENDING_NO' => 'Žádná nevyřešená hlášení',
 
     'L_REPORT_SHOW' => 'Zobrazit',
@@ -63,7 +60,7 @@ $language = array_merge($language, [
     'L_REPORT_PROFILE_POST_DELETED' => 'Profilový příspěvek je v koši!',
 
 
-    'L_REPORT_PROFILE_POST_COMMENT' => 'Nahlášení profilové komentáře',
+    'L_REPORT_PROFILE_POST_COMMENT' => 'Nahlášené profilové komentáře',
     'L_REPORT_PROFILE_POST_COMMENT_DESC' => 'Všechny nahlášené profilové komentáře',
     'L_REPORT_PROFILE_POST_COMMENT_ON' => 'Na profilu uživatele',
     'L_REPORT_PROFILE_POST_COMMENT_SHOW' => 'Zobrazit profilový příspěvek',

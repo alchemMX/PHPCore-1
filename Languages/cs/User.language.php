@@ -60,7 +60,6 @@ $language = array_merge($language, array(
     'L_USER_CONVERSATION_NAME' => 'Předmět konverzace',
     'L_USER_CONVERSATION_INFO' => 'Informace o konverzaci',
     'L_USER_CONVERSATION_NO' => 'Žádné konverzace',
-    'L_USER_CONVERSATION_BODY' => 'Tělo konverzace', 
     'L_USER_CONVERSATION_LEAVE' => 'Opustit konverzaci',
     'L_USER_CONVERSATION_MESSAGE_NO' => 'Žádné zprávy',
     'L_USER_CONVERSATION_MESSAGE_SEND' => 'Poslat zprávu',

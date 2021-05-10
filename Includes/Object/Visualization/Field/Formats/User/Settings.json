@@ -18,7 +18,8 @@
                     },
                     "data": {
                         "desc": "L_USER_PROFILE_ON",
-                        "title": "L_USER_LOCATION"
+                        "title": "L_USER_LOCATION",
+                        "placeholder": "L_USER_LOCATION"
                     }
                 },
                 "user_age": {
@@ -27,7 +28,8 @@
                     },
                     "data": {
                         "desc": "L_USER_PROFILE_ON",
-                        "title": "L_USER_AGE"
+                        "title": "L_USER_AGE",
+                        "placeholder": "L_USER_AGE"
                     }
                 },
                 "user_gender": {

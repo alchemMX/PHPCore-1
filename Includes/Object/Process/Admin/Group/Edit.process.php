@@ -44,7 +44,14 @@ class Edit extends \Process\ProcessExtend
      */
     public function process()
     {
-        if ($this->data->is('is_default')) {                
+        if ($this->data->is('is_default')) {         
+            
+            $this->db->query('
+                UPDATE ' . TABLE_USERS . '
+                SET group_id = ?
+                WHERE group_id = ?
+            ', [$this->data->get('group_id'), $this->system->settings->get('default_group')]);
+
             $this->system->settings->set('default_group', $this->data->get('group_id'));
         }
 

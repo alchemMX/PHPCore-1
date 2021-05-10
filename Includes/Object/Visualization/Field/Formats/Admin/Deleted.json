@@ -7,8 +7,7 @@
             },
             "data": {
                 "icon": "fas fa-info-circle",
-                "title": "L_DELETED_DETAILS",
-                "desc": "L_DELETED_DETAILS_DESC"
+                "title": "L_DELETED_DETAILS"
             },
             "body": {
                 "topic_id": {

@@ -26,7 +26,7 @@ $language = array_merge($language, [
     
     'L_FORUM_LINK' => 'Externí odkaz',
     'L_FORUM_LINK_ENABLE' => 'Povolit externí odkaz',
-    'L_FORUM_LINK_DESC' => 'Kliknutím na fórum se uživatel přesměruje na vámy daný odkaz.',
+    'L_FORUM_LINK_DESC' => 'Kliknutím na fórum bude uživatel přesměrován na vámy daný odkaz',
 
     'L_FORUM_CATEGORY_CHANGE' => 'Kategorie ve které se fórum nachází',
 

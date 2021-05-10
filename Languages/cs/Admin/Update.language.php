@@ -20,10 +20,8 @@ $language = array_merge($language, [
     'L_UPDATE_TYPE_STABLE' => 'Stabilní verze',
 
     'L_UPDATE_PUBLISHED' => 'Datum vydání',
-    'L_UPDATE_PUBLISHED_DESC' => 'Datum od kdy je verze k dispozici ke stáhnutí',
 
     'L_UPDATE_VERSION' => 'Verze',
-    'L_UPDATE_VERSION_DESC' => 'Označení verze',
 
     'L_UPDATE_INSTALL_BUTTON' => 'Nainstalovat aktualizaci',
     'L_UPDATE_INSTALL' => 'Nainstalovat',

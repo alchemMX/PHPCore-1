@@ -16,8 +16,7 @@
                         "type": "field"
                     },
                     "data": {
-                        "title": "L_UPDATE_VERSION",
-                        "desc": "L_UPDATE_VERSION_DESC"
+                        "title": "L_UPDATE_VERSION"
                     }
                 },
                 "name": {
@@ -42,7 +41,6 @@
                         "type": "date"
                     },
                     "data": {
-                        "desc": "L_UPDATE_PUBLISHED_DESC",
                         "title": "L_UPDATE_PUBLISHED"
                     }
                 },

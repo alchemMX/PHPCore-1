@@ -3,8 +3,7 @@
         "show": {
             "data": {
                 "icon": "fas fa-info-circle",
-                "title": "L_REPORT_DETAILS",
-                "desc": "L_REPORT_DETAILS_DESC"
+                "title": "L_REPORT_DETAILS"
             },
             "body": {
                 "topic_id": {

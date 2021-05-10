@@ -14,7 +14,7 @@ $language = array_merge($language, array(
 
     'L_ICON' => 'Ikona',
     'L_ICON_LIST' => 'Seznam ikon',
-    'L_ICON_LIST_DESC' => 'Po kliknutí na tlačítko budete přesměrování na stránku FontAwesome',
+    'L_ICON_LIST_DESC' => 'Kliknutím na tlačítko se vám v novém okně otevře stránka FontAwesome',
     'L_ICON_NAME' => 'Název ikony',
     'L_ICON_STYLE' => 'Styl ikony',
     

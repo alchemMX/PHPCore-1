@@ -15,7 +15,7 @@ $language = array_merge($language, [
     'L_MENU_DROPDOWN_EDIT' => 'Upravit rozbalovací seznam',
     'L_MENU_BUTTON_REFERS_TO' => 'Odkazuje na',
 
-    'L_MENU_BUTTON_URL' => 'Talčitko má externí odkaz ?',
+    'L_MENU_BUTTON_URL' => 'Talčitko má externí odkaz',
     'L_MENU_BUTTON_NAME' => 'Název talčítka',
     'L_MENU_BUTTON_URL_DESC' => 'Kliknutím na tlačítko bude uživatel přesměrován na vámi daný odkaz',
 

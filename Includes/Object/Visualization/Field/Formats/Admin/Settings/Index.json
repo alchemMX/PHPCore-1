@@ -3,7 +3,6 @@
         "settings": {
             "data": {
                 "title": "L_SETTINGS_SETTINGS",
-                "desc": "L_SETTINGS_SETTINGS_DESC",
                 "icon": "fas fa-cogs"
             },
             "body": {
@@ -40,7 +39,6 @@
         "cookie": {
             "data": {
                 "title": "L_SETTINGS_COOKIE",
-                "desc": "L_SETTINGS_COOKIE_DESC",
                 "icon": "fas fa-cookie"
             },
             "body": {

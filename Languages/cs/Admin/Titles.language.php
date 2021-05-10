@@ -13,7 +13,7 @@ $language['L_TITLE'] = [
 
     'Page\Admin\Settings\Index' => 'Nastavení webových stránek',
     'Page\Admin\Settings\Registration' => 'Nastavení registrace',
-    'Page\Admin\Settings\Email' => 'Nastavení emailů',
+    'Page\Admin\Settings\Email' => 'Nastavení e-mailů',
     'Page\Admin\Settings\Other' => 'Ostatní',
 
     'Page\Admin\Update\Index' => 'Aktualizace',

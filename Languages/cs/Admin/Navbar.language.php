@@ -11,7 +11,7 @@ $language['L_NAVBAR'] = [
     'L_SETTINGS' => 'Nastavení',
     'L_SETTINGS_SITE' => 'Globální nastavení',
     'L_SETTINGS_REGISTRATION' => 'Registrace',
-    'L_SETTINGS_EMAIL' => 'Nastavení emailů',
+    'L_SETTINGS_EMAIL' => 'Nastavení e-mailů',
     'L_SETTINGS_OTHER' => 'Ostatní',
 
     'L_UPDATE' => 'Aktualizace',

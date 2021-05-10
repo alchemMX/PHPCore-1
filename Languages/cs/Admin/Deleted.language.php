@@ -3,7 +3,6 @@
 $language = array_merge($language, [
 
     'L_DELETED_DETAILS' => 'Smazaný obsah',
-    'L_DELETED_DETAILS_DESC' => 'Podrobnosti o smazaném obsahu',
 
     'L_DELETED_OPERATIONS' => 'Dostupné operace',
     'L_DELETED_OPERATIONS_DESC' => 'Operace, které lze provádět s tímto příspěvkem',
@@ -22,7 +21,7 @@ $language = array_merge($language, [
     'L_DELETED_POST_DELETED_TOPIC' => 'Téma ve kterém se tento příspěvek nachází je také smazáno!',
 
     'L_DELETED_RETURN' => 'Vrátit zpět',
-    'L_DELETED_RETURN_DESC' => 'Smazaný obsah bude odstraněn z koše a bude opět viditelný všem uživatelům',
+    'L_DELETED_RETURN_DESC' => 'Smazaný obsah bude odstraněn z koše a bude vracen zpět na web',
 
     'L_DELETED_DELETE' => 'Smazat',
     'L_DELETED_DELETE_DESC' => 'Obsah bude nenávratně smazán z koše',
