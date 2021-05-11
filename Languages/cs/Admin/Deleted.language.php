@@ -12,8 +12,7 @@ $language = array_merge($language, [
 
     'L_DELETED_BY_DESC' => 'Uživatel, který smazal tento obsah',
 
-    'L_DELETED_CONTENT' => 'Smazaný obsah',
-    'L_DELETED_CONTENT_DESC' => 'Všechen smazaný obsah',
+    'L_DELETED_CONTENT' => 'Všechen smazaný obsah',
     'L_DELETED_CONTENT_NO' => 'Žádný smazaný obsah',
 
     'L_DELETED_POST_TOPIC' => 'Téma je smazáno!',

@@ -2,7 +2,6 @@
     "body": {
         "user": {
             "data": {
-                "icon": "fas fa-users",
                 "title": "L_USER_LIST"
             },
             "body": {

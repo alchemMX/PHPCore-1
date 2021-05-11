@@ -2,7 +2,6 @@
     "body": {
         "current": {
             "data": {
-                "icon": "fas fa-file",
                 "title": "L_TEMPLATE_CURRENT"
             },
             "body": {
@@ -20,7 +19,6 @@
                 "empty": "L_TEMPLATE_LIST_NO"
             },
             "data": {
-                "icon": "fas fa-copy",
                 "title": "L_TEMPLATE_LIST"
             },
             "body": {

@@ -33,27 +33,24 @@ class Index extends \Page\Page
         $breadcrumb = new Breadcrumb('Admin/Admin');
         $this->data->breadcrumb = $breadcrumb->getData();
 
-        // CURRENT VERSION DETAILS
-        $githubAPI = json_decode(@file_get_contents(GITHUB, false, CONTEXT), true);
-
         // FIELD
         $field = new Field('Admin/Update');
         $field->disButtons();
 
-        if (isset($githubAPI[0])) {
+        if (isset($GLOBALS['GITHUB'][0])) {
 
-            $field->data(array_merge($githubAPI[0], [
-                'pre-release' => $this->language->get($githubAPI[0]['prerelease'] == 1 ? 'L_UPDATE_TYPE_PRERELEASE' : 'L_UPDATE_TYPE_STABLE')
+            $field->data(array_merge($GLOBALS['GITHUB'][0], [
+                'pre-release' => $this->language->get($GLOBALS['GITHUB'][0]['prerelease'] == 1 ? 'L_UPDATE_TYPE_PRERELEASE' : 'L_UPDATE_TYPE_STABLE')
             ]));
 
-            $field->object('available')->row('details')->setData('href', '$' . $githubAPI[0]['html_url']);
+            $field->object('available')->row('details')->setData('href', '$' . $GLOBALS['GITHUB'][0]['html_url']);
     
-            if (empty($githubAPI[0]['name'])) {
-                $field->row('name')->value($githubAPI[0]['tag_name']);
+            if (empty($GLOBALS['GITHUB'][0]['name'])) {
+                $field->row('name')->value($GLOBALS['GITHUB'][0]['tag_name']);
             }
         }
 
-        if (!isset($githubAPI[0]) or $githubAPI[0]['tag_name'] == $this->system->settings->get('site.version')) {
+        if (!isset($GLOBALS['GITHUB'][0]) or $GLOBALS['GITHUB'][0]['tag_name'] == $this->system->settings->get('site.version')) {
             $field->object('latest')->show();
         } else {
             $field->object('available')->show();

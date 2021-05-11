@@ -2,8 +2,7 @@
     "body": {
         "notification": {
             "data": {
-                "title": "",
-                "icon": "fas fa-bell"
+                "title": ""
             },
             "body": {
                 "notification_name": {

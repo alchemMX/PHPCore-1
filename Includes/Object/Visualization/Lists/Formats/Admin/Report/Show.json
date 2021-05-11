@@ -7,7 +7,6 @@
                 }
             },
             "data": {
-                "icon": "fas fa-bug",
                 "title": "L_REPORT_REASON"
             },
             "body": {

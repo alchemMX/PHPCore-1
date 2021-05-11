@@ -2,8 +2,7 @@
     "body": {
         "sub": {
             "data": {
-                "title": "",
-                "icon": "fas fa-link"
+                "title": ""
             },
             "body": {
                 "button_sub_name": {

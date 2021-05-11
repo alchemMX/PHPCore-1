@@ -2,8 +2,7 @@
     "body": {
         "page": {
             "data": {
-                "title": "L_PAGE_EDIT",
-                "icon": "fas fa-file"
+                "title": "L_PAGE_EDIT"
             },
             "body": {
                 "page_name": {

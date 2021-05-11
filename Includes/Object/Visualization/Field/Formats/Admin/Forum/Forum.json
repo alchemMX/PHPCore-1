@@ -2,8 +2,7 @@
     "body": {
         "forum": {
             "data": {
-                "title": "",
-                "icon": "fas fa-comments"
+                "title": ""
             },
             "body": {
                 "forum_name": {

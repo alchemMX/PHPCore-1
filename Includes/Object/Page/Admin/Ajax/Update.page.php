@@ -37,10 +37,8 @@ class Update extends \Page\Page
             ]);
 
         } else {
-
-            $githubAPI = json_decode(@file_get_contents(GITHUB, false, CONTEXT), true);
             
-            if (empty($githubAPI) or $githubAPI[0]['tag_name'] == $this->system->settings->get('site.version')) {
+            if (empty($GLOBALS['GITHUB']) or $GLOBALS['GITHUB'][0]['tag_name'] == $this->system->settings->get('site.version')) {
                 $this->data->data([
                     'url' => $this->system->url->build('/admin/update/'),
                     'back' => $this->language->get('L_BACK'),
@@ -49,10 +47,10 @@ class Update extends \Page\Page
                 ]);
             } else {
 
-                if ($this->process->call(type: 'Admin/Update', mode: 'direct', data: ['path' => $githubAPI[0]['zipball_url'], 'tag' => $githubAPI[0]['tag_name']])) {
+                if ($this->process->call(type: 'Admin/Update', mode: 'direct', data: ['path' => $GLOBALS['GITHUB'][0]['zipball_url'], 'tag' => $GLOBALS['GITHUB'][0]['tag_name']])) {
                     $this->data->data([
                         'url' => $this->system->url->build('/admin/update/'),
-                        'text' => strtr($this->language->get('L_UPDATE_INSTALLED'), ['{name}' => $githubAPI[0]['name'] ?: $githubAPI[0]['tag_name']]),
+                        'text' => strtr($this->language->get('L_UPDATE_INSTALLED'), ['{name}' => $GLOBALS['GITHUB'][0]['name'] ?: $GLOBALS['GITHUB'][0]['tag_name']]),
                         'back' => $this->language->get('L_BACK'),
                         'status' => 'installed',
                     ]);

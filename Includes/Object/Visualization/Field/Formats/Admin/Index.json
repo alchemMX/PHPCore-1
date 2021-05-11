@@ -2,7 +2,6 @@
     "body": {
         "info": {
             "data": {
-                "desc": "L_FRONT_INFO_DESC",
                 "title": "L_FRONT_INFO"
             },
             "body": {

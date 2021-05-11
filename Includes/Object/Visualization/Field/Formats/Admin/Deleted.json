@@ -6,7 +6,6 @@
                 "type": "Deleted"
             },
             "data": {
-                "icon": "fas fa-info-circle",
                 "title": "L_DELETED_DETAILS"
             },
             "body": {

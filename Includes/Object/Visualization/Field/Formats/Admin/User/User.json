@@ -7,8 +7,7 @@
                 "type": "User"
             },
             "data": {
-                "title": "L_USER_EDIT",
-                "icon": "fas fa-user"
+                "title": "L_USER_EDIT"
             },
             "body": {
                 "user_name": {

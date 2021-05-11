@@ -3,7 +3,7 @@
 $language = array_merge($language, [
     'L_LOG_LIST' => 'Auditní protokol',
     'L_LOG_LIST_NO' => 'Žádné záznamy',
-    'L_LOG_LIST_LAST_DESC' => 'Poslední záznamy z auditu',
+    'L_LOG_LIST_LAST' => 'Poslední záznamy z auditu',
 ]);
 
 $language['L_LOG_PROTOCOL'] = [

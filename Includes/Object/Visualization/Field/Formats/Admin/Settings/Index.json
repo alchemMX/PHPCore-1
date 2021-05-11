@@ -2,8 +2,7 @@
     "body": {
         "settings": {
             "data": {
-                "title": "L_SETTINGS_SETTINGS",
-                "icon": "fas fa-cogs"
+                "title": "L_SETTINGS_SETTINGS"
             },
             "body": {
                 "site.name": {
@@ -38,8 +37,7 @@
         },
         "cookie": {
             "data": {
-                "title": "L_SETTINGS_COOKIE",
-                "icon": "fas fa-cookie"
+                "title": "L_SETTINGS_COOKIE"
             },
             "body": {
                 "cookie.enabled": {

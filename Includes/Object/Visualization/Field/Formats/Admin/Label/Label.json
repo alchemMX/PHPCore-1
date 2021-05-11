@@ -2,7 +2,6 @@
     "body": {
         "label": {
             "data": {
-                "icon": "fas fa-tag",
                 "title": "L_LABEL_EDIT"
             },
             "body": {

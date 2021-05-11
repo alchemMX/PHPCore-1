@@ -5,7 +5,6 @@
                 "empty": "L_MENU_LIST_NO"
             },
             "data": {
-                "icon": "fas fa-link",
                 "title": "L_MENU_LIST",
                 "button": {
                     "add": {

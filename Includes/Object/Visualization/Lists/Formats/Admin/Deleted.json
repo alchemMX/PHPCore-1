@@ -5,8 +5,6 @@
                 "empty": "L_DELETED_CONTENT_NO"
             },
             "data": {
-                "icon": "fas fa-trash",
-                "desc": "L_DELETED_CONTENT_DESC",
                 "title": "L_DELETED_CONTENT"
             },
             "body": {

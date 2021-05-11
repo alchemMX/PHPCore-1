@@ -84,7 +84,5 @@ define('EDITOR_MEDIUM', 'Medium');
 
 define('CONTEXT', stream_context_create(['http' => ['method' => 'GET','header' => ['User-Agent: PHP']]]));
 
-define('GITHUB', 'https://api.github.com/repos/Infin48/PHPCore/releases');
-
 define('SUCCESS_SESSION', 'SUCCESS_SESSION');
 define('SUCCESS_RETURN', 'SUCCESS_RETURN');

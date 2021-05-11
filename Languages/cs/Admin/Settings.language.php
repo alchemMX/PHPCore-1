@@ -48,7 +48,7 @@ $language = array_merge($language, [
     'L_SETTINGS_TIMEZONE' => 'Časové pásmo',
 
     'L_SETTINGS_ICON' => 'Ikona webových stránek',
-    'L_SETTINGS_ICON_DESC' => 'Doporučené rozlišení je 32x32',
+    'L_SETTINGS_ICON_DESC' => 'Doporučená velikost je 32x32',
     'L_SETTINGS_ICON_DELETE' => 'Smazat ikonu webových stránek',
 
     'L_SETTINGS_OTHER' => 'Ostatní',

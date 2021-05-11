@@ -2,8 +2,7 @@
     "body": {
         "category": {
             "data": {
-                "title": "",
-                "icon": "fas fa-comments"
+                "title": ""
             },
             "body": {
                 "category_name": {

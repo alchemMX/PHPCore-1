@@ -71,8 +71,8 @@ class Index extends \Page\Page
             }
         }
 
-        if ($api = @file_get_contents(GITHUB, false, CONTEXT)) {
-            $list->object('news')->fill(array_slice(json_decode($api, true), 0, 5));
+        if ($GLOBALS['GITHUB']) {
+            $list->object('news')->fill($GLOBALS['GITHUB']);
         }
 
         $this->data->list = $list->getData();

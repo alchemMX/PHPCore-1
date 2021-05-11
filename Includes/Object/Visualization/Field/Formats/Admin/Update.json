@@ -7,7 +7,6 @@
             "data": {
                 "title": "L_UPDATE_AVAILABLE",
                 "desc": "L_UPDATE_AVAILABLE_DESC",
-                "icon": "fas fa-sync-alt",
                 "empty": "L_UPDATE_NO"
             },
             "body": {

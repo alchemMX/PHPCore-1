@@ -5,9 +5,7 @@
                 "empty": "L_LOG_LIST_NO"
             },
             "data": {
-                "icon": "fas fa-clipboard-list",
-                "desc": "L_LOG_LIST_LAST_DESC",
-                "title": "L_LOG_LIST"
+                "title": "L_LOG_LIST_LAST"
             },
             "body": {
                 "default": {
@@ -25,8 +23,6 @@
                 "empty": "L_FRONT_NEWS_NO"
             },
             "data": {
-                "icon": "fas fa-newspaper",
-                "desc": "L_FRONT_NEWS_DESC",
                 "title": "L_FRONT_NEWS"
             },
             "body": {
@@ -57,7 +53,6 @@
         "users": {
             "data": {
                 "icon": "fas fa-user",
-                "desc": "L_FRONT_USER_DESC",
                 "title": "L_FRONT_USER"
             },
             "body": {

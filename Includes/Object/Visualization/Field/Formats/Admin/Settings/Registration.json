@@ -2,8 +2,7 @@
     "body": {
         "settings": {
             "data": {
-                "title": "L_SETTINGS_REGISTER",
-                "icon": "fas fa-cogs"
+                "title": "L_SETTINGS_REGISTER"
             },
             "body": {
                 "registration.enabled": {

@@ -2,7 +2,6 @@
     "body": {
         "topic": {
             "data": {
-                "icon": "fas fa-bug",
                 "title": "L_STATISTICS_TOPIC_REPORTED",
                 "value": "",
                 "color": "red"

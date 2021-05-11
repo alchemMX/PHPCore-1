@@ -2,7 +2,6 @@
     "body": {
         "group": {
             "data": {
-                "icon": "fas fa-users",
                 "title": "L_GROUP_EDIT"
             },
             "body": {

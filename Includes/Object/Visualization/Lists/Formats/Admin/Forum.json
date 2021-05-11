@@ -5,7 +5,6 @@
                 "empty": "L_FORUM_LIST_NO"
             },
             "data": {
-                "icon": "fas fa-comments",
                 "title": "L_FORUM",
                 "button": {
                     "add": {

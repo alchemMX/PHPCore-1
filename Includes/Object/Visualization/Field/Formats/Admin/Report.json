@@ -2,7 +2,6 @@
     "body": {
         "show": {
             "data": {
-                "icon": "fas fa-info-circle",
                 "title": "L_REPORT_DETAILS"
             },
             "body": {

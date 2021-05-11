@@ -5,8 +5,6 @@
                 "empty": "L_REPORT_TOPIC_NO"
             },
             "data": {
-                "icon": "fas fa-bug",
-                "desc": "L_REPORT_TOPIC_DESC",
                 "title": "L_REPORT_TOPIC"
             },
             "body": {

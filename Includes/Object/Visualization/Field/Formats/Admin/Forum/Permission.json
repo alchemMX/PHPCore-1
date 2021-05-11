@@ -3,8 +3,7 @@
         "groups": {
             "data": {
                 "desc": "L_FORUM_PERMISSION_DESC",
-                "title": "L_FORUM_PERMISSION",
-                "icon": "fas fa-clipboard-list"
+                "title": "L_FORUM_PERMISSION"
             },
             "body": {
                 "top": {
