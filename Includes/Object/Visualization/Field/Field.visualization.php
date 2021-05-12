@@ -97,6 +97,23 @@ class Field extends \Visualization\Visualization
         foreach ($this->obj->get->body() as $object => $data) { $this->object($object);
 
             foreach ($this->obj->get->body() as $row => $data) { $this->row($row);
+                
+                if ($this->obj->is->data('href')) {
+                    switch (substr($this->obj->get->data('href'), 0, 1)) {
+            
+                        case '$':
+                            $this->obj->set->data('href', substr($this->obj->get->data('href'), 1));
+                        break;
+    
+                        case '~':
+                            $this->obj->set->data('href', $this->system->url->build(substr($this->obj->get->data('href'), 1)));
+                        break;
+        
+                        default:
+                            $this->obj->set->data('href', $this->system->url->build(URL . $this->obj->get->data('href')));
+                        break;
+                    }
+                }
 
                 if (!in_array($this->obj->get->options('type'), array_keys($this->type)) and $this->obj->is->template('option') === false) {
                     $this->obj->set->delete->delete();

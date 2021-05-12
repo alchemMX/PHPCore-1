@@ -33,7 +33,7 @@ class Panel extends \Visualization\Visualization
                 break;
                     
                 case '~':
-                    $href = $this->system->url->build(substr($href, 0, 1));
+                    $href = $this->system->url->build(substr($href, 1));
                 break;
                     
                 default:

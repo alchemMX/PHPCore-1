@@ -60,7 +60,7 @@
                         "type": "button"
                     },
                     "data": {
-                        "href": "/install/",
+                        "href": "~/admin/update/install/",
                         "icon": "fas fa-download",
                         "desc": "L_UPDATE_INSTALL_DESC",
                         "title": "L_UPDATE_INSTALL",

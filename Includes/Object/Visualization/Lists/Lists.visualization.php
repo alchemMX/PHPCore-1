@@ -80,7 +80,7 @@ class Lists extends \Visualization\Visualization
                     break;
     
                     default:
-                        $btn['data']['href'] = $this->system->url->build(URL . substr($btn['data']['href'], 1));
+                        $btn['data']['href'] = $this->system->url->build(URL . $btn['data']['href']);
                     break;
                 }
             }
