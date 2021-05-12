@@ -65,11 +65,11 @@ class SystemUrl
         if ($url === '/' or empty($url)) {
             return '/';
         }
-
+        
         $url = '/' . implode('/', array_filter(explode('/', $url))) . '/';
-
+        
         $url = $this->translate($url, false);
-        $url = strtr($url, self::$pages['default']);
+        $url = str_ireplace(array_keys(self::$pages['default']), array_values(self::$pages['default']), $url);
 
         if (preg_match('/[#]/', $url)) {
             $url = rtrim($url, '/');

@@ -105,7 +105,7 @@ abstract class Page
     protected function initialise()
     {
         // LOADS URL
-        $pageClass = array_values(array_filter(explode('\\', get_class($this))));
+        $pageClass = $org = array_values(array_filter(explode('\\', get_class($this))));
         
         foreach (['Page', 'Index', 'Router'] as $item) {
 
@@ -134,6 +134,10 @@ abstract class Page
             }
 
             $this->style->URL .= self::$parsedURL[0] . '/';
+        }
+
+        if (!in_array('Router', $org)) {
+            define('URL', $this->style->URL);
         }
         
         // LOADS TITLE

@@ -68,8 +68,23 @@ class Lists extends \Visualization\Visualization
                         $btn['data']['href'] = strtr($btn['data']['href'], ['{' . $key . '}' => $value]);
                     }
                 }
-            }
 
+                switch (substr($btn['data']['href'], 0, 1)) {
+            
+                    case '$':
+                        $btn['data']['href'] = substr($btn['data']['href'], 1);
+                    break;
+
+                    case '~':
+                        $btn['data']['href'] = $this->system->url->build(substr($btn['data']['href'], 1));
+                    break;
+    
+                    default:
+                        $btn['data']['href'] = $this->system->url->build(URL . substr($btn['data']['href'], 1));
+                    break;
+                }
+            }
+            
             // SET EDITED DATA TO BUTTON
             $visual->obj->set->button($btnName, $btn);
         }

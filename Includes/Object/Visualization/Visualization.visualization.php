@@ -3,6 +3,7 @@
 namespace Visualization;
 
 use Model\Template;
+use \Model\System\System;
 
 /**
  * Visualization
@@ -25,6 +26,11 @@ class Visualization
     protected bool $hideEmpty = false;
     
     /**
+     * @var \Model\System\System $system System
+     */
+    protected \Model\System\System $system;
+    
+    /**
      * @var \Model\Template $template Template
      */
     protected \Model\Template $template;
@@ -41,6 +47,7 @@ class Visualization
      */
     public function __construct( string $format )
     {
+        $this->system = new System();
         $this->template = new Template();
 
         $t = array_filter(explode('\\', get_class($this)));
@@ -349,18 +356,15 @@ class Visualization
                 
             switch (substr($template, 0, 1)) {
                 
-
                 // LOAD TEMPLATE FROM ROOT
                 case '~':
                     $visual->obj->set->template($name, $path = ROOT . substr($template, 1));
                 break;
-                
 
                 // LOAD TEMPLATE FROM VISUALIZATION TEMPLATE
                 case '$':
                     $visual->obj->set->template($name, $path = ROOT . $visual->templatePath . substr($template, 1));
                 break;
-                
 
                 // LOAD TEMPLATE FROM DEFAULT STYLE TEMPLATE
                 default:
@@ -428,8 +432,7 @@ class Visualization
     
     /**
      * Calls 'each' method for every object
-     * 
-     * If method returns false, will be called 'continue;' 
+     * If method returns false, will be called 'continue;'.
      *
      * @param  string $method Method name
      * 
@@ -437,10 +440,12 @@ class Visualization
      */
     protected function each( string $method )
     {
-        if (method_exists($this, 'each_' . $method)) {
+        $this->sync();
 
-            foreach ($this->obj->get->body() as $object => $data) { $this->object($object);
+        if (method_exists($this, 'each_' . $method)) {
             
+            foreach ($this->obj->get->body() as $object => $data) { $this->object($object);
+                
                 if ($this->{'each_' . $method}($this, $object) === false) {
                     continue;
                 }

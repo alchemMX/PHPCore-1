@@ -33,7 +33,7 @@
                                                 <?php if (isset($row['options']['template']['body'])) : ?>
                                                     <?php require $row['options']['template']['body']; ?>
                                                 <?php else : ?>
-                                                    <a href="<?= $this->system->url->build($this->getURL() . (isset($row['data']['id']) ? strtr($row['data']['href'], ['{id}' => $row['data']['id']]) : $row['data']['href'])) ?>">
+                                                    <a href="<?= $row['data']['href'] ?>">
                                                         <?= str_starts_with($row['data']['title'], '$') ? substr($row['data']['title'], 1) : ${$row['data']['title']} ?>
                                                     </a>
                                                 <?php endif; ?>
@@ -54,7 +54,7 @@
                         <?php if (isset($object['options']['template']['body'])) : ?>
                             <?php require $object['options']['template']['body']; ?>
                         <?php else : ?>
-                            <a class="button" href="<?= $this->system->url->build($this->getURL() . $object['data']['href']) ?>"><i class="<?= $object['data']['icon'] ?>"></i><span><?= ${$object['data']['title']} ?></span></a>
+                            <a class="button" href="<?= $this->system->url->build($object['data']['href']) ?>"><i class="<?= $object['data']['icon'] ?>"></i><span><?= ${$object['data']['title']} ?></span></a>
                         <?php endif; ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
