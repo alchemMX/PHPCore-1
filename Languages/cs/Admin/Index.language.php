@@ -4,7 +4,6 @@ $language = array_merge($language, [
     
     'L_FRONT_NEWS' => 'PHPCore novinky',
     'L_FRONT_NEWS_NO' => 'Žádné novinky',
-    'L_FRONT_NEWS_PRERELASE' => 'Pre-release',
 
     'L_FRONT_USER' => 'Nejnovější registrovaní uživatelé',
 

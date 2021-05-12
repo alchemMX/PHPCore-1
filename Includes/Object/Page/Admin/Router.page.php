@@ -57,14 +57,6 @@ class Router extends \Page\Page
             $this->navbar->object('forum')->row('deleted')->notifiCount($count);
         }
 
-        $GLOBALS['GITHUB'] = array_slice(json_decode(@file_get_contents('https://api.github.com/repos/Infin48/PHPCore/releases', false, CONTEXT), true), 0, 5);
-
-        if (isset($GLOBALS['GITHUB'][0])) {
-            if ($GLOBALS['GITHUB'][0]['tag_name'] != $this->system->settings->get('site.version')) {
-                $this->navbar->object('other')->row('update')->notifiIcon('f12a');
-            }
-        }
-
         $this->page->url = $this->url;
         $this->page->data = $this->data;
         $this->page->style = $this->style;

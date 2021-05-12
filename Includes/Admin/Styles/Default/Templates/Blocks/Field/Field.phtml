@@ -58,7 +58,7 @@
         <?php if (isset($this->data->field['button']) and !empty($this->data->field['button'])) : ?>
             <div class="field-submit" ajax-selector="field-submit">
                 <?php foreach ((array)$this->data->field['button'] as $btnName => $btn) : ?>
-                    <input class="button" type="<?= $btn['data']['type'] ?>" name="<?= $btnName ?>" value="<?= isset($btn['data']['value']) ? ${$btn['data']['value']} : '' ?>">
+                    <input class="button" type="<?= $btn['data']['type'] ?? '' ?>" name="<?= $btnName ?>" <?php if ($btn['data']['ajax'] ?? false) : ?>ajax="<?= $btn['data']['ajax'] ?>"<?php endif; ?>value="<?= isset($btn['data']['value']) ? ${$btn['data']['value']} : '' ?>">
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>

@@ -8,6 +8,9 @@ $language = array_merge($language, [
 
     'L_UPDATE_LATEST' => 'Máte nainstalovanou nejnovější verzi!',
 
+    'L_UPDATE_SEARCH' => 'Vyhledat aktualizace',
+    'L_UPDATE_SEARCH_NO' => 'Nebyly nalezeny žádné aktualizace',
+
     'L_UPDATE_DETAILS' => 'Podrobnosti',
     'L_UPDATE_DETAILS_DESC' => 'Po kliknutí na tlačítko budete přesměrování na GitHub',
 

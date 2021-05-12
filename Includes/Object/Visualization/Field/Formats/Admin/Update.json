@@ -45,7 +45,8 @@
                 },
                 "details": {
                     "options": {
-                        "type": "button"
+                        "type": "button",
+                        "target": "_blank"
                     },
                     "data": {
                         "icon": "fas fa-info-circle",
@@ -74,10 +75,28 @@
             },
             "data": {
                 "title": "L_UPDATE_LATEST",
-                "icon": "fas fa-info-circle",
                 "empty": "L_UPDATE_NO"
             },
             "body": {}
+        },
+        "empty": {
+            "options": {
+                "hide": true
+            },
+            "data": {
+                "title": "L_UPDATE_SEARCH_NO",
+                "empty": "L_UPDATE_NO"
+            },
+            "body": {}
+        }
+    },
+    
+    "button": {
+        "submit": {
+            "data": {
+                "ajax": "update-search",
+                "value": "L_UPDATE_SEARCH"
+            }
         }
     }
 }

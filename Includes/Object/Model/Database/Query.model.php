@@ -16,7 +16,7 @@ class Query extends Database
      * 
      * @return array
      */
-    public function query( string $query, array $parameters = [], int $catchType = SINGLE)
+    public function query( string $query, array $parameters = [], int $catchType = SINGLE )
     {
         $result = $this->execute($query, $parameters);
         if ($catchType === ROWS) return $result->fetchAll();

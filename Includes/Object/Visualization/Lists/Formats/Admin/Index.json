@@ -34,7 +34,7 @@
                     },
                     "data": {
                         "convert": {
-                            "id": "html_url"
+                            "url": "url"
                         },
                         "button": {
                             "info": {
@@ -42,7 +42,7 @@
                                     "target": "_blank"
                                 },
                                 "data": {
-                                    "href": "${id}"
+                                    "href": "${url}"
                                 }
                             }
                         }

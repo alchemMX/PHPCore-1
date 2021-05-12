@@ -5,8 +5,8 @@ namespace Exception;
 /**
  * Notice exception
  */
-class Notice extends \Exception {
-
+class Notice extends \Exception
+{
     /**
      * Constructor
      *

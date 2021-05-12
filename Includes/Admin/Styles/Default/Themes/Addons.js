@@ -199,3 +199,14 @@ $.cAjax('promote', {
     },
     success: function() {}
 });
+$.cAjax('update-search', {
+    ajax: {
+        url: "/admin/ajax/search/",
+        method: "get",
+        context: {}
+    },
+    success: function(settings) {
+        $('.field').first().replaceWith(settings.data.content);
+        $('.field-submit').remove();
+    }
+});

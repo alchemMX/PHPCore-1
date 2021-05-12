@@ -8,8 +8,8 @@ use Model\System\System as _System;
 /**
  * System exception 
  */
-class System extends \Exception {
-
+class System extends \Exception
+{
     /**
      * Construct
      *

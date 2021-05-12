@@ -71,9 +71,8 @@ class Index extends \Page\Page
             }
         }
 
-        if ($GLOBALS['GITHUB']) {
-            $list->object('news')->fill($GLOBALS['GITHUB']);
-        }
+        $news = json_decode(file_get_contents('http://api.phpcore.cz/novinky/'), true);
+        $list->object('news')->fill($news);
 
         $this->data->list = $list->getData();
 
