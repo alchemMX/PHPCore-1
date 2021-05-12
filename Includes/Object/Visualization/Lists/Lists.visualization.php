@@ -84,7 +84,7 @@ class Lists extends \Visualization\Visualization
                     break;
                 }
             }
-            
+
             // SET EDITED DATA TO BUTTON
             $visual->obj->set->button($btnName, $btn);
         }
