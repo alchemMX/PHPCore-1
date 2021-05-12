@@ -62,7 +62,7 @@
                 "page_id": {
                     "options": {
                         "type": "select",
-                        "multiple": true,
+                        "empty": "L_MENU_PAGE_NO",
                         "on": {
                             "disable": "is_external_link"
                         }

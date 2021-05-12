@@ -5,6 +5,8 @@ $language = array_merge($language, [
     'L_MENU_BUTTON' => 'Tlačítko',
     'L_MENU_DROPDOWN' => 'Rozbalovací seznam',
 
+    'L_MENU_PAGE_NO' => 'Žádné stránky',
+
     'L_MENU_LIST' => 'Seznam tlačítek',
     'L_MENU_LIST_NO' => 'Žádné menu',
     'L_MENU_BUTTON_ADD' => 'Přidat tlačítko',
