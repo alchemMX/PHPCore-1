@@ -343,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `phpcore_posts` (
 CREATE TABLE IF NOT EXISTS `phpcore_posts_likes` (
   `post_id` bigint(11) NOT NULL,
   `user_id` bigint(11) NOT NULL,
-  `like_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `like_created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -464,7 +464,7 @@ CREATE TABLE IF NOT EXISTS `phpcore_topics_labels` (
 CREATE TABLE IF NOT EXISTS `phpcore_topics_likes` (
   `topic_id` bigint(11) NOT NULL,
   `user_id` bigint(11) NOT NULL,
-  `like_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `like_created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------

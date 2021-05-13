@@ -130,7 +130,7 @@ class Post extends Block
             FROM ' . TABLE_POSTS_LIKES . '
             LEFT JOIN ' . TABLE_USERS . ' ON u.user_id = pl.user_id
             WHERE post_id = ?
-            ORDER BY FIELD(u.user_id, ?) DESC, like_time DESC
+            ORDER BY FIELD(u.user_id, ?) DESC, like_created DESC
             LIMIT ?
         ', [$postID, LOGGED_USER_ID, $number], ROWS);
     }
@@ -149,7 +149,7 @@ class Post extends Block
             FROM ' . TABLE_POSTS_LIKES . '
             ' . $this->join->user('pl.user_id'). '
             WHERE pl.post_id = ?
-            ORDER BY FIELD(u.user_id, ?) DESC
+            ORDER BY FIELD(u.user_id, ?) DESC, pl.like_created DESC
         ', [$postID, LOGGED_USER_ID], ROWS);
     }
 }

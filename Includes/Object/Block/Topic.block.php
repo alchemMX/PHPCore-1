@@ -116,7 +116,7 @@ class Topic extends Block
             FROM ' . TABLE_TOPICS_LIKES . '
             LEFT JOIN ' . TABLE_USERS . ' ON u.user_id = tl.user_id
             WHERE tl.topic_id = ?
-            ORDER BY FIELD(u.user_id, ?) DESC, like_time DESC
+            ORDER BY FIELD(u.user_id, ?) DESC, like_created DESC
             LIMIT ?
         ', [$topicID, LOGGED_USER_ID, $number], ROWS);
     }
@@ -135,7 +135,7 @@ class Topic extends Block
             FROM ' . TABLE_TOPICS_LIKES . '
             ' . $this->join->user('tl.user_id'). '
             WHERE tl.topic_id = ?
-            ORDER BY FIELD(u.user_id, ?) DESC
+            ORDER BY FIELD(u.user_id, ?) DESC, tl.like_created DESC
         ', [$topicID, LOGGED_USER_ID], ROWS);
     }
     
