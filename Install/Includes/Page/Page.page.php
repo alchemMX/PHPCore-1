@@ -82,7 +82,7 @@ abstract class Page
      */
     public function notice( string $notice )
     {
-        $message = $this->language->get('notice')[$notice] ?? $notice;
+        $message = $this->language->get('L_NOTICE')[$notice] ?? $notice;
         $this->showPage($message);
     }
 

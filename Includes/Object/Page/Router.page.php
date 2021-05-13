@@ -262,10 +262,8 @@ class Router extends Page
             $_ex = explode('-', $parameter);
             if (count($_ex) > 1) {
                 if ($_ex[0] === $this->system->url->getPage()) {
-                    self::$urlData['page'] = trim(strip_tags($_ex[1]));
+                    $page = trim(strip_tags($_ex[1]));
                     unset($parsedURL[$i]);
-                } else {
-                    self::$urlData[trim($this->system->url->translate($_ex[0]), '/')] = trim(strip_tags($_ex[1]));
                 }
             }
 
@@ -273,7 +271,7 @@ class Router extends Page
         }
 
         // DEFINE PAGE
-        define('PAGE', (int)self::$urlData['page']);
+        define('PAGE', $page ?? 1);
         self::$parsedURL = array_values(array_filter(explode('/', $this->system->url->translate(implode('/', $parsedURL)))));
     }
 

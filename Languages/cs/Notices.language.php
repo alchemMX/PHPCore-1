@@ -1,7 +1,7 @@
 <?php
-$language['notice'] = [
+$language['L_NOTICE'] = [
     
-    'failure' => [
+    'L_FAILURE' => [
         
         'to' => 'Zadejte platné účastníky konverzace',
         'to_length_max' => 'Maximální počet účastníku je 10',
@@ -73,7 +73,7 @@ $language['notice'] = [
         'Forgot/Send' => 'Uživatel s tímto e-mailem neexistuje'
     ],
 
-    'success' => [
+    'L_SUCCESS' => [
         'Forgot/Reset' => 'Heslo bylo úspěšně změněno',
         'Forgot/Send' => 'Odkaz pro změnu hesla jsme vám poslali na zadaný e-mail',
 

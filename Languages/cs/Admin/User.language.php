@@ -3,7 +3,7 @@
 $language = array_merge($language, [
 
     'L_USER_SERACH' => 'Vyhledat uživatele',
-    'L_USER_SEARCH_DESC' => 'Zadejte uživatelské jméno uživatele, kterého chcete najít',
+    'L_USER_SEARCH_DESC' => 'Rozlišujte malá a velká písmena',
     'L_USER_NAME_DESC' => 'Uživatelské jméno musí obsahovat minimálně 5 znaků',
 
     'L_USER_LIST' => 'Seznam uživatelů',

@@ -18,7 +18,6 @@ class ProfilePostComment extends \Block\ProfilePostComment
     {
         return $this->db->query('
             SELECT ppc.user_id, profile_post_comment_id, pp.profile_id, u.user_name, u.user_id AS profile_user_id, u.user_name AS profile_user_name,
-                pp.deleted_id AS profile_post_deleted_id, ppc.deleted_id AS profile_post_comment_deleted_id,
                 (SELECT COUNT(*) FROM ' . TABLE_PROFILE_POSTS . '2 WHERE pp2.profile_post_id >= ppc.profile_post_id AND pp2.profile_id = pp.profile_id) AS position
             FROM ' . TABLE_PROFILE_POSTS_COMMENTS . '
             LEFT JOIN ' . TABLE_PROFILE_POSTS . ' ON pp.profile_post_id = ppc.profile_post_id

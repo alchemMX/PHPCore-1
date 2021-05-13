@@ -45,62 +45,6 @@
                         "title": "L_PROFILE_POST_COMMENT_ID"
                     }
                 },
-                "post_deleted_id": {
-                    "options": {
-                        "type": "button",
-                        "hide": true,
-                        "template": {
-                            "text": "/Report/Attention.phtml"
-                        }
-                    },
-                    "data": {
-                        "icon": "fas fa-info-circle",
-                        "title": "L_REPORT_POST_DELETED",
-                        "button": "L_DETAILS"
-                    }
-                },
-                "topic_deleted_id": {
-                    "options": {
-                        "type": "button",
-                        "hide": true,
-                        "template": {
-                            "text": "/Report/Attention.phtml"
-                        }
-                    },
-                    "data": {
-                        "icon": "fas fa-info-circle",
-                        "title": "L_REPORT_TOPIC_DELETED",
-                        "button": "L_DETAILS"
-                    }
-                },
-                "profile_post_deleted_id": {
-                    "options": {
-                        "type": "button",
-                        "hide": true,
-                        "template": {
-                            "text": "/Report/Attention.phtml"
-                        }
-                    },
-                    "data": {
-                        "icon": "fas fa-info-circle",
-                        "title": "L_REPORT_PROFILE_POST_DELETED",
-                        "button": "L_DETAILS"
-                    }
-                },
-                "profile_post_comment_deleted_id": {
-                    "options": {
-                        "type": "button",
-                        "hide": true,
-                        "template": {
-                            "text": "/Report/Attention.phtml"
-                        }
-                    },
-                    "data": {
-                        "icon": "fas fa-info-circle",
-                        "title": "L_REPORT_PROFILE_POST_COMMENT_DELETED",
-                        "button": "L_DETAILS"
-                    }
-                },
                 "show": {
                     "options": {
                         "type": "button",

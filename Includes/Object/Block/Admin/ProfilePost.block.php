@@ -18,8 +18,7 @@ class ProfilePost extends \Block\ProfilePost
     {
         return $this->db->query('
             SELECT pp.user_id, profile_post_id, u.user_name, profile_id, u.user_id AS profile_user_id, u.user_name AS profile_user_name,
-                (SELECT COUNT(*) FROM ' . TABLE_PROFILE_POSTS . '2 WHERE pp2.profile_post_id >= pp.profile_post_id AND pp2.profile_id = pp.profile_id) AS position,
-                pp.deleted_id as profile_post_deleted_id
+                (SELECT COUNT(*) FROM ' . TABLE_PROFILE_POSTS . '2 WHERE pp2.profile_post_id >= pp.profile_post_id AND pp2.profile_id = pp.profile_id) AS position
             FROM ' . TABLE_PROFILE_POSTS . '
             LEFT JOIN ' . TABLE_USERS . ' ON u.user_id = pp.profile_id
             WHERE profile_post_id = ?

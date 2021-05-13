@@ -72,7 +72,7 @@ class Style
     }
 
     /**
-     * Loads data to template
+     * Constructor
      *
      * @param  \Model\Data $data
      * @param  \Model\Build\Build $build
@@ -93,11 +93,11 @@ class Style
 
         // IF IS SET SUCCESS MESSAGE
         if (Session::exists('success')) {
-            if (isset($this->language->get('notice')['success'][Session::get('success')])) {
+            if (isset($this->language->get('L_NOTICE')['L_SUCCESS'][Session::get('success')])) {
 
                 $this->data->data([
                     'message' => [
-                        'text' => $this->language->get('notice')['success'][Session::get('success')],
+                        'text' => $this->language->get('L_NOTICE')['L_SUCCESS'][Session::get('success')],
                         'type' => 'success'
                     ]
                 ]);

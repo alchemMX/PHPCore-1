@@ -38,7 +38,6 @@ class Show extends \Page\Page
         // GROUP
         $group = $group->get($this->getID()) or $this->error();
 
-        // IF LOGGED USER DOENSN'T HAVE PERMISISON TO EDIT THIS GROUP 
         $this->user->perm->index($group['group_index']) or $this->redirect();
 
         // BREADCRUMB

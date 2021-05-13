@@ -1,6 +1,6 @@
 <?php
 
-$language['notice'] = [
+$language['L_NOTICE'] = [
     'host' => 'Zadejte platnou adresu databázového serveru',
     'database' => 'Zadejte platný název databáze',
     'user_email' => 'Zadejte platný e-mail',

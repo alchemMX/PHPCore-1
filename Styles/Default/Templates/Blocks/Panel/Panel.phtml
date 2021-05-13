@@ -5,7 +5,7 @@
             <div class="panel-right" ajax-selector="panel">
                 <?php foreach ((array)$this->data->panel['body'] as $objName => $object) : ?>
                     <?php if ($object['options']['type'] === 'form' or $object['options']['type'] === 'dropdown') : ?>
-                        <div class="dropdown<?= $object['options']['type'] === 'form' ? ' dropdown-type-form' : '' ?> dropdown-name-<?= $objName ?>" ajax-selector="dropdown">
+                        <div class="dropdown dropdown-type-<?= $object['options']['type'] ?? 'default' ?> dropdown-name-<?= $objName ?>" ajax-selector="dropdown">
                             <?php if (isset($object['options']['template']['body'])) : ?>
                                 <?php require $object['options']['template']['body']; ?>
                             <?php else : ?>

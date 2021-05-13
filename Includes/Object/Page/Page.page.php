@@ -83,11 +83,6 @@ abstract class Page
     protected static array $parsedURL = [];
 
     /**
-     * @var array $urlData Data from URL
-     */
-    protected static array $urlData = ['page' => 1];
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -332,7 +327,7 @@ abstract class Page
      */
     public function notice( string $notice, array $assign = [] )
     {
-        $message = $this->language->get('notice')['failure'][$notice] ?? '';
+        $message = $this->language->get('L_NOTICE')['L_FAILURE'][$notice] ?? '';
 
         if ($message) {
             foreach ($assign as $variable => $data) {

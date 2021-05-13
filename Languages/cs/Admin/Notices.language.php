@@ -1,7 +1,7 @@
 <?php
-$language['notice'] = [
+$language['L_NOTICE'] = [
 
-    'failure' => [
+    'L_FAILURE' => [
 
         'user_name' => 'Zadejte uživatelské jméno',
         'user_name_exist' => 'Uživatel s tímto uživatelským jménem již existuje',
@@ -56,7 +56,7 @@ $language['notice'] = [
         'Admin/User/Search' => 'Uživatel s tímto uživatelským jménem neexistuje'
     ],
 
-    'success' => [
+    'L_SUCCESS' => [
 
         'Admin/Deleted/Post/Back' => 'Příspěvek byl úspěšně vacen zpět do fóra',
         'Admin/Deleted/Post/Delete' => 'Příspěvek byl úspěšně smazán',

@@ -31,7 +31,7 @@ class SystemUrl
     {
         $pages = array_merge(self::$pages['default'], self::$pages['hidden']);
 
-        return isset($pages['/page-']) ? substr($pages['/page-'], 1, 1) : '';
+        return isset($pages['/page-']) ? substr($pages['/page-'], 1, 1) : 'page';
     }
 
     /**

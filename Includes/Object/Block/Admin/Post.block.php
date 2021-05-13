@@ -18,8 +18,7 @@ class Post extends \Block\Post
     {
         return $this->db->query('
             SELECT p.*, t.topic_id, t.topic_url, t.topic_name, t.topic_posts, 1 AS post_permission,
-                (SELECT COUNT(*) FROM ' . TABLE_POSTS . '2 WHERE p2.post_id <= p.post_id AND p2.topic_id = p.topic_id) AS position,
-               t.deleted_id AS topic_deleted_id, p.deleted_id AS post_deleted_id
+                (SELECT COUNT(*) FROM ' . TABLE_POSTS . '2 WHERE p2.post_id <= p.post_id AND p2.topic_id = p.topic_id) AS position
             FROM ' . TABLE_POSTS . ' 
             LEFT JOIN ' . TABLE_TOPICS . ' ON t.topic_id = p.topic_id
             WHERE p.post_id = ?
@@ -37,7 +36,7 @@ class Post extends \Block\Post
     {
         return $this->db->query('
             SELECT r.report_id, r.report_status, p.*, t.topic_name, user_last_activity, ' . $this->select->user() . ', user_signature, user_posts, user_topics, group_name, user_reputation,
-                CASE WHEN pl.post_id IS NULL THEN 0 ELSE 1 END AS is_like, t.topic_name, t.deleted_id AS topic_deleted_id, p.deleted_id AS post_deleted_id,
+                CASE WHEN pl.post_id IS NULL THEN 0 ELSE 1 END AS is_like, t.topic_name,
                 CASE WHEN ( SELECT COUNT(*) FROM ' . TABLE_POSTS_LIKES . ' WHERE post_id = p.post_id ) > 5 THEN 1 ELSE 0 END AS is_more_likes,
                 ( SELECT COUNT(*) FROM ' . TABLE_POSTS_LIKES . ' WHERE post_id = p.post_id ) AS count_of_likes
             FROM ' . TABLE_POSTS . '

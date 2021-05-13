@@ -21,7 +21,7 @@ class Topic extends \Block\Topic
                 CASE WHEN fpt.forum_id IS NOT NULL THEN 1 ELSE 0 END as topic_permission,
                 CASE WHEN fpp.forum_id IS NOT NULL THEN 1 ELSE 0 END as post_permission,
                 CASE WHEN ( SELECT COUNT(*) FROM ' . TABLE_TOPICS_LIKES . ' WHERE topic_id = t.topic_id ) > 5 THEN 1 ELSE 0 END AS is_more_likes,
-                ( SELECT COUNT(*) FROM ' . TABLE_TOPICS_LIKES . ' WHERE topic_id = t.topic_id ) AS count_of_likes, t.deleted_id AS topic_deleted_id
+                ( SELECT COUNT(*) FROM ' . TABLE_TOPICS_LIKES . ' WHERE topic_id = t.topic_id ) AS count_of_likes
             FROM ' . TABLE_TOPICS . ' 
             ' . $this->join->user('t.user_id'). '
             LEFT JOIN ' . TABLE_REPORTS . ' ON r.report_id = t.report_id 

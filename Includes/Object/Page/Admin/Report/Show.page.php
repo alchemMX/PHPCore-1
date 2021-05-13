@@ -76,12 +76,12 @@ class Show extends \Page\Page
             break;
         }
 
-        // NAVBAR
-        $this->navbar->object('forum')->row('reported')->active()->option(strtolower($data['report_type']))->active();
-
         if (empty($content)) {
             redirect('/admin/report/');
         }
+
+        // NAVBAR
+        $this->navbar->object('forum')->row('reported')->active()->option(strtolower($data['report_type']))->active();
 
         $data = array_merge($content, $data);
         
@@ -89,13 +89,6 @@ class Show extends \Page\Page
         $field->object('show')->row('show')->setData('href', '$' . $this->build->url->{lcfirst($data['report_type'])}($data));
 
         $field->data($data);
-
-        // IF CONTENT OR HIS PARENT IS IN TRASH
-        foreach (['post_deleted_id', 'topic_deleted_id', 'profile_post_deleted_id', 'profile_post_comment_deleted_id'] as $id) {
-            if (isset($data[$id]) and !empty($data[$id])) {
-                $field->object('show')->row($id)->show()->setData('href', '$/admin/deleted/show/' . $data[$id]);
-            }
-        }
 
         if ($data['report_status'] == 0) {
             $field->object('show')->row('submit')->show();

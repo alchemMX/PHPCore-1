@@ -58,7 +58,6 @@ class Update extends \Page\Page
                     ]);
                 } else {
 
-
                     $this->data->data([
                         'url' => $this->system->url->build('/admin/update/'),
                         'back' => $this->language->get('L_BACK'),
